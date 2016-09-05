@@ -1,0 +1,11 @@
+# Ignore everythong
+*
+.vim/bundle/*
+
+# Except the following files
+!.gitignore
+!.tmux.conf
+!.vim/*
+!.vimrc
+!.zshrc
+!.vim/bundle/Vundle.vim/
