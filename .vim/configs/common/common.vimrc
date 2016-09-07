@@ -9,12 +9,23 @@ set expandtab
 set shiftwidth=2
 set cindent
 
+" View settings
 set rnu
 set nu
 set ai
 set showcmd
 set linebreak
 set autoread
+" --> Syntax highlighting
+" syntax enable
+" hi clear Normal
+" set background=dark
+" set t_Co=256
+" colorscheme lucario
+syntax enable
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 
 "folding settings
 set foldmethod=indent   "fold based on indent
@@ -22,9 +33,6 @@ set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
-" Syntax highlighting
-syntax on
-colorscheme peachpuff
 
 set wildmenu
 set wcm=<Tab>
