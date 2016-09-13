@@ -1,6 +1,10 @@
 # Ignore everythong
 /*
 /.vim/bundle/*
+/.emacs.d/*
+*~
+\#*\#
+.\#*
 
 # Except the following files
 !.gitignore
@@ -11,3 +15,5 @@
 !.zshrc
 !.bash_profile
 !.emacs
+!.emacs.d/
+!.emacs.d/configs/
