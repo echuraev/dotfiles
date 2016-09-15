@@ -17,6 +17,7 @@
 		     linum-relative
 		     yasnippet
 		     llvm-mode
+		     opencl-mode
 		     ))
 
 (defun install-packages ()
