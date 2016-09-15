@@ -1,3 +1,17 @@
+; turn off panels
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+; ???
+(ido-mode)
+
+; show column in comand line
+(column-number-mode)
+
+; show paren
+(show-paren-mode)
+
 ;; System-type definition
 (defun system-is-linux()
   (string-equal system-type "gnu/linux"))
