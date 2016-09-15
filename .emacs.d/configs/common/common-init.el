@@ -3,7 +3,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-; ???
+; Interactively Do Things 
 (ido-mode)
 
 ; show column in comand line
@@ -19,5 +19,7 @@
   (string-equal system-type "darwin"))
 (defun system-is-windows()
   (string-equal system-type "windows-nt"))
+
+(require 'common-file-associating)
 
 (provide 'common-init)

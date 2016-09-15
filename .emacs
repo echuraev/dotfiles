@@ -16,6 +16,7 @@
 		     idea-darkula-theme
 		     linum-relative
 		     yasnippet
+		     llvm-mode
 		     ))
 
 (defun install-packages ()
