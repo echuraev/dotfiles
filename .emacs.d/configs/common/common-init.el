@@ -21,5 +21,6 @@
   (string-equal system-type "windows-nt"))
 
 (require 'common-file-associating)
+(require 'common-key-bindings)
 
 (provide 'common-init)
