@@ -12,6 +12,9 @@
 ; show paren
 (show-paren-mode)
 
+; Enable mouse support
+(xterm-mouse-mode t)
+
 ;; System-type definition
 (defun system-is-linux()
   (string-equal system-type "gnu/linux"))
