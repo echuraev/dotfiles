@@ -18,6 +18,7 @@
 		     llvm-mode
 		     opencl-mode
 		     powerline-evil
+		     airline-themes
 		     ))
 
 (defun install-packages ()
@@ -39,7 +40,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(custom-safe-themes
+   (quote
+    ("133222702a3c75d16ea9c50743f66b987a7209fb8b964f2c0938a816a83379a0" "8f0334c430540bf45dbcbc06184a2e8cb01145f0ae1027ce6b1c40876144c0c9" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
