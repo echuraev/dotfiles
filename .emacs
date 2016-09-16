@@ -1,4 +1,3 @@
-;(setq url-proxy-services '(("http" . "proxy-chain.intel.com:911")))
 ; START package.el with emacs
 (require 'package)
 ; add MELPA to repository list
