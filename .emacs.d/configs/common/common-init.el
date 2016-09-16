@@ -1,16 +1,5 @@
-; turn off panels
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-
 ; Interactively Do Things 
 (ido-mode)
-
-; show column in comand line
-(column-number-mode)
-
-; show paren
-(show-paren-mode)
 
 ; Enable mouse support
 (xterm-mouse-mode t)
@@ -25,5 +14,6 @@
 
 (require 'common-file-associating)
 (require 'common-key-bindings)
+(require 'common-appearance)
 
 (provide 'common-init)
