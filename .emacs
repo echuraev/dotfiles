@@ -1,7 +1,11 @@
 ; START package.el with emacs
 (require 'package)
+; make all "yes or no" prompts show "y or n" instead
+;(fset 'yes-or-no-p 'y-or-n-p)
 ; add MELPA to repository list
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 ; initialize package.el
 (package-initialize)
 
@@ -9,8 +13,8 @@
 
 ; list the packages you want
 (defconst packages-list '(
-		     auto-complete                    ; Auto completion
-		     auto-complete-c-headers          ; Auto complete c headers
+		     ;auto-complete                    ; Auto completion
+		     ;auto-complete-c-headers          ; Auto complete c headers
 
 		     evil                             ; Vim mode for emacs
 		     linum-relative                   ; Relative numbers for evil mode
@@ -18,6 +22,7 @@
 		     evil-search-highlight-persist    ; persistently search highlighting
 
 		     idea-darkula-theme               ; Theme
+		     iedit                         ;; Code refactoring (change variables)
 		     yasnippet                        ; snippets
 		     llvm-mode                        ; Syntax highlighting for llvm and spirv
 		     opencl-mode                      ; Syntax highlighting for opencl

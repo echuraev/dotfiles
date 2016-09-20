@@ -4,6 +4,10 @@
 ; Enable mouse support
 (xterm-mouse-mode t)
 
+; Trim spaces at the end of line
+(require 'ws-butler)
+(add-hook 'prog-mode-hook 'ws-butler-mode)
+
 ;; System-type definition
 (defun system-is-linux()
   (string-equal system-type "gnu/linux"))
@@ -15,5 +19,7 @@
 (require 'common-file-associating)
 (require 'common-key-bindings)
 (require 'common-appearance)
+(require 'common-bkps-conf)
+(require 'common-code-inspection)
 
 (provide 'common-init)
