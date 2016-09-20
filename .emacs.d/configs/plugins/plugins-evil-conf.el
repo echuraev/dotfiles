@@ -9,4 +9,9 @@
   (setq linum-relative-format "%4s \u2502 ")
 )
 
+; Search highlighting
+(require 'highlight)
+(require 'evil-search-highlight-persist)
+(global-evil-search-highlight-persist t)
+
 (provide 'plugins-evil-conf)
