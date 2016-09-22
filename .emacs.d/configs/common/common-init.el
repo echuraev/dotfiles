@@ -1,4 +1,4 @@
-; Interactively Do Things 
+; Interactively Do Things
 (ido-mode)
 
 ; Enable mouse support
@@ -21,5 +21,6 @@
 (require 'common-appearance)
 (require 'common-bkps-conf)
 (require 'common-code-inspection)
+(require 'common-debug)
 
 (provide 'common-init)

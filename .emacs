@@ -22,7 +22,6 @@
 		     evil-search-highlight-persist    ; persistently search highlighting
 
 		     idea-darkula-theme               ; Theme
-		     iedit                         ;; Code refactoring (change variables)
 		     yasnippet                        ; snippets
 		     llvm-mode                        ; Syntax highlighting for llvm and spirv
 		     opencl-mode                      ; Syntax highlighting for opencl
@@ -31,18 +30,19 @@
 		     cmake-mode                       ; Show cmake syntax
 		     projectile                       ; Project
 
-		     ecb                              ; Emacs Code Browser
-		     ws-butler                        ; Remove spaces from end of line
-		     irony                            ; Auto-complete server
-		     company                          ; Auto-complete
-		     company-irony                                 
-		     company-c-headers                             
-		     company-irony-c-headers                       
-		     flycheck-irony                   ; Code check   
-	     
-		     helm                             ; Complete all 
-		     helm-gtags                                    
-		     helm-projectile                              
+;		     iedit                            ; Code refactoring (change variables)
+;		     ecb                              ; Emacs Code Browser
+;		     ws-butler                        ; Remove spaces from end of line
+;		     irony                            ; Auto-complete server
+;		     company                          ; Auto-complete
+;		     company-irony
+;		     company-c-headers
+;		     company-irony-c-headers
+;		     flycheck-irony                   ; Code check
+;
+;		     helm                             ; Complete all
+;		     helm-gtags
+;		     helm-projectile
 		     ))
 
 (defun install-packages ()
