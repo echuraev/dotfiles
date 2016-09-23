@@ -1,7 +1,7 @@
 ;     _____________________________________________________________________________________
 ;    |                                          |                                          |
-;    |              BREAKPOINTS                 |                                          |
-;    |__________________________________________|                                          |
+;    |              BREAKPOINTS                 |                    I/O                   |
+;    |__________________________________________|__________________________________________|
 ;    |                                          |                                          |
 ;    |                 STACK                    |                                          |
 ;    |__________________________________________|                                          |
@@ -9,19 +9,19 @@
 ;    |                                          |                                          |
 ;    |		       LOCALS                   |                                          |
 ;    |                                          |                                          |
-;    |__________________________________________|                 SOURCE CODE              |
+;    |__________________________________________|                                          |
 ;    |                                          |                                          |
 ;    |                                          |                                          |
-;    |                                          |                                          |
+;    |                                          |                SOURCE CODE               |
 ;    |                                          |                                          |
 ;    |                                          |                                          |
 ;    |                                          |                                          |
 ;    |                  GDB                     |                                          |
 ;    |                                          |                                          |
 ;    |                                          |                                          |
-;    |                                          |__________________________________________|
 ;    |                                          |                                          |
-;    |                                          |                    I/O                   |
+;    |                                          |                                          |
+;    |                                          |                                          |
 ;    |__________________________________________|__________________________________________|
 
 (require 'gud)
@@ -41,7 +41,7 @@
   (let
     ((win0 (selected-window))             ; breakpoints
      (win1 (split-window-horizontally
-	     (floor (* 0.5 (window-width)))))   ; source
+	     (floor (* 0.5 (window-width)))))   ; source + i/o
      (win2 (split-window-vertically
 	     (floor (* 0.5 (window-body-height))))) ; gdb
      (win3 (split-window-vertically
@@ -49,20 +49,22 @@
      (win4 (split-window-vertically
 	     (floor (* 0.6 (window-body-height))))) ; stack
     )
-    ; set source buffer
-    (set-window-buffer
-     win1
-     (if gud-last-last-frame
+    (select-window win1)
+    ; configurating right window
+    (let
+	((winIO (selected-window)) ; i/o
+	 (winSrc (split-window-vertically (floor (* 0.14 (window-body-height))))) ; source
+	 )
+      (set-window-buffer winIO (gdb-get-buffer-create 'gdb-inferior-io))
+      (set-window-buffer
+	winSrc
+	(if gud-last-last-frame
 	 (gud-find-file (car gud-last-last-frame))
-       (if gdb-main-file
+	  (if gdb-main-file
 	   (gud-find-file gdb-main-file)
 	 (list-buffers-noselect))))
-    (setq gdb-source-window win1)
-
-    (select-window win1)
-    (split-window-vertically (floor (* 0.9 (window-body-height))))
-    (other-window 1)
-    (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-inferior-io)) ; i/o
+      (setq gdb-source-window winSrc)
+   )
 
     (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
     (set-window-buffer win3 (gdb-get-buffer-create 'gdb-locals-buffer))
