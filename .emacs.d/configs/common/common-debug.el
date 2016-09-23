@@ -9,8 +9,8 @@
 ;    |                                          |                                          |
 ;    |		       LOCALS                   |                                          |
 ;    |                                          |                                          |
-;    |__________________________________________|                                          |
-;    |                                          |                 SOURCE CODE              |
+;    |__________________________________________|                 SOURCE CODE              |
+;    |                                          |                                          |
 ;    |                                          |                                          |
 ;    |                                          |                                          |
 ;    |                                          |                                          |
@@ -19,9 +19,9 @@
 ;    |                  GDB                     |                                          |
 ;    |                                          |                                          |
 ;    |                                          |                                          |
+;    |                                          |__________________________________________|
 ;    |                                          |                                          |
-;    |                                          |                                          |
-;    |                                          |                                          |
+;    |                                          |                    I/O                   |
 ;    |__________________________________________|__________________________________________|
 
 ;; invoke
@@ -56,6 +56,11 @@
 	   (gud-find-file gdb-main-file)
 	 (list-buffers-noselect))))
     (setq gdb-source-window win1)
+
+    (select-window win1)
+    (split-window-vertically (floor (* 0.9 (window-body-height))))
+    (other-window 1)
+    (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-inferior-io))
 
     (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
     (set-window-buffer win3 (gdb-get-buffer-create 'gdb-locals-buffer))
