@@ -13,8 +13,8 @@
 
 ; list the packages you want
 (defconst packages-list '(
-		     ;auto-complete                    ; Auto completion
-		     ;auto-complete-c-headers          ; Auto complete c headers
+		     auto-complete                    ; Auto completion
+		     auto-complete-c-headers          ; Auto complete c headers
 
 		     evil                             ; Vim mode for emacs
 		     linum-relative                   ; Relative numbers for evil mode

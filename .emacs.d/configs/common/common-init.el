@@ -1,3 +1,6 @@
+;; no startup msg
+(setq inhibit-startup-message t)
+
 ; Interactively Do Things
 (ido-mode)
 
