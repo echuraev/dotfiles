@@ -32,13 +32,13 @@
 
 ;		     iedit                            ; Code refactoring (change variables)
 ;		     ecb                              ; Emacs Code Browser
-;		     ws-butler                        ; Remove spaces from end of line
+		     ws-butler                        ; Remove spaces from end of line
 ;		     irony                            ; Auto-complete server
 ;		     company                          ; Auto-complete
 ;		     company-irony
 ;		     company-c-headers
 ;		     company-irony-c-headers
-;		     flycheck-irony                   ; Code check
+		     flycheck-irony                   ; Code check
 ;
 ;		     helm                             ; Complete all
 ;		     helm-gtags
