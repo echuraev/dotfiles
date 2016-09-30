@@ -21,11 +21,9 @@ set autoread
 " hi clear Normal
 " set background=dark
 " set t_Co=256
-" colorscheme lucario
 syntax enable
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+" set background=dark
+colorscheme lucario 
 
 "folding settings
 set foldmethod=indent   "fold based on indent
