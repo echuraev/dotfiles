@@ -42,7 +42,7 @@ menu Encoding.utf-8    :e ++enc=utf-8<CR>
 map <F12> :emenu Encoding.<Tab>
 
 " Mouse options
-"set mouse=a
+set mouse=a
 
 set laststatus=2
 set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ fenc:%{&fenc}%={ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ [%2p%%]

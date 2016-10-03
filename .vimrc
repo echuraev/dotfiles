@@ -4,7 +4,6 @@ let g:vim_configuration_files = [
 \ '.vim/configs/plugins/vundle.vimrc',
 \ '.vim/configs/plugins/syntastic.vimrc',
 \ '.vim/configs/plugins/youcompleteme.vimrc',
-\ '.vim/configs/plugins/vim-startify.vimrc',
 \ '.vim/configs/plugins/nerdtree.vimrc',
 \]
 
