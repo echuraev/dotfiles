@@ -49,42 +49,35 @@
 ;    (eval-after-load 'company
 ;      '(add-to-list 'company-backends 'company-irony))
 ;
-;    ;;; Semantic on
-;    (require 'semantic)
-;    (semantic-mode 1)
-;
-;    ;;; start yasnippet with emacs
-;    (require 'yasnippet)
-;    (yas-global-mode 1)
-;
-;    (defun check-expansion ()
-;      (save-excursion
-;        (if (looking-at "\\_>")
-;    	(backward-char 1)
-;          (if (looking-at "\\.") t
-;    	(backward-char 1)
-;    	(if (looking-at "->") t nil)))))
-;
-;    (defun do-yas-expand ()
-;      (let ((yas/fallback-behavior 'return-nil))
-;        (yas/expand)))
-;
-;    (defun tab-indent-or-complete ()
-;      (interactive)
-;      (if (minibufferp)
-;          (minibuffer-complete)
-;        (if (or (not yas/minor-mode)
-;                (null (do-yas-expand)))
-;            (if (check-expansion)
-;                (company-complete-common)
-;              (indent-for-tab-command)))))
-;
-;    (require 'company-irony-c-headers)
-;    ;; Load with `irony-mode` as a grouped backend
-;    (eval-after-load 'company
-;      '(add-to-list
-;        'company-backends '(company-irony-c-headers company-irony)))
+;;; Semantic on
+(require 'semantic)
+(semantic-mode 1)
 
-
+;;; start yasnippet with emacs
+(require 'yasnippet)
+(yas-global-mode 1)
+;; Completing point by some yasnippet key
+(defun yas-ido-expand ()
+  "Lets you select (and expand) a yasnippet key"
+  (interactive)
+  (let ((original-point (point)))
+    (while (and
+	    (not (= (point) (point-min) ))
+	    (not
+	     (string-match "[[:space:]\n]" (char-to-string (char-before)))))
+      (backward-word 1))
+    (let* ((init-word (point))
+	   (word (buffer-substring init-word original-point))
+	   (list (yas-active-keys)))
+      (goto-char original-point)
+      (let ((key (remove-if-not
+		  (lambda (s) (string-match (concat "^" word) s)) list)))
+	(if (= (length key) 1)
+	    (setq key (pop key))
+	  (setq key (ido-completing-read "key: " list nil nil word)))
+	(delete-char (- init-word original-point))
+	(insert key)
+		(yas-expand)))))
+(define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-ido-expand)
 
 (provide 'plugins-auto-complete-conf)
