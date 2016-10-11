@@ -13,9 +13,6 @@
 
 ; list the packages you want
 (defconst packages-list '(
-		     auto-complete                    ; Auto completion
-		     auto-complete-c-headers          ; Auto complete c headers
-
 		     evil                             ; Vim mode for emacs
 		     linum-relative                   ; Relative numbers for evil mode
 		     highlight
@@ -33,13 +30,13 @@
 ;		     iedit                            ; Code refactoring (change variables)
 ;		     ecb                              ; Emacs Code Browser
 		     ws-butler                        ; Remove spaces from end of line
-;		     irony                            ; Auto-complete server
-;		     company                          ; Auto-complete
-;		     company-irony
-;		     company-c-headers
-;		     company-irony-c-headers
+		     irony                            ; Auto-complete server
+		     company                          ; Auto-complete
+		     company-irony
+		     company-c-headers
+		     company-irony-c-headers
 		     flycheck-irony                   ; Code check
-;
+
 ;		     helm                             ; Complete all
 ;		     helm-gtags
 ;		     helm-projectile
