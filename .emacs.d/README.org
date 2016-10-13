@@ -1,0 +1,20 @@
+* Configuration of my emacs
+
+** Autocomplete
+For autocomplete I use irony-mode and company-mode. During configuration, I have used this article: [[http://cachestocaches.com/2015/8/c-completion-emacs/][C/C++ completion in emacs]]
+
+*** Ubuntu 14.04 installation
+#+BEGIN_SRC sh
+  $ sudo apt-get install libclang-3.5-dev
+  $ sudo apt-get install global
+#+END_SRC
+
+*** Activating irony
+For Irony installation run this command in Emacs:
+#+BEGIN_SRC emacs-lisp
+  M-x irony-install-server
+#+END_SRC
+And add to cmake command following options:
+#+BEGIN_SRC makefile
+  -DLIBCLANG_LIBRARY=/usr/lib/llvm-3.5/lib/libclang.so -DLIBCLANG_INCLUDE_DIR=/usr/lib/llvm-3.5/include/
+#+END_SRC
