@@ -16,14 +16,9 @@ set ai
 set showcmd
 set linebreak
 set autoread
-" --> Syntax highlighting
-" syntax enable
-" hi clear Normal
-" set background=dark
-" set t_Co=256
 syntax enable
-" set background=dark
 colorscheme lucario 
+set colorcolumn=120
 
 "folding settings
 set foldmethod=indent   "fold based on indent
