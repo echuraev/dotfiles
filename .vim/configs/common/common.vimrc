@@ -17,7 +17,8 @@ set showcmd
 set linebreak
 set autoread
 syntax enable
-colorscheme lucario 
+colorscheme xoria256
+set term=screen-256color
 set colorcolumn=120
 
 "folding settings
