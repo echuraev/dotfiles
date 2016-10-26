@@ -16,6 +16,7 @@ Plugin 'scrooloose/syntastic'           " Syntax checking plugin
 Plugin 'vim-scripts/DfrankUtil'
 " Plugin 'wikitopian/hardmode'            " Vim hardcode mode
 Plugin 'vim-scripts/Conque-GDB'         " Conque GDB
+Plugin 'jceb/vim-orgmode'               " Org-Mode for vim
 
 " Project
 Plugin 'vim-scripts/vimprj'
