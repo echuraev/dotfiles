@@ -19,7 +19,13 @@ set autoread
 syntax enable
 colorscheme xoria256
 set term=screen-256color
-set colorcolumn=120
+set colorcolumn=120     " Set Color Column
+" Transparent background
+hi Normal ctermbg=none
+hi LineNr ctermbg=none
+hi SignColumn ctermbg=none
+hi VertSplit ctermbg=none
+hi NonText ctermbg=none
 
 "folding settings
 set foldmethod=indent   "fold based on indent
