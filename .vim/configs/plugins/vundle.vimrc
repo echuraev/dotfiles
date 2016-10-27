@@ -17,6 +17,7 @@ Plugin 'vim-scripts/DfrankUtil'
 " Plugin 'wikitopian/hardmode'            " Vim hardcode mode
 Plugin 'vim-scripts/Conque-GDB'         " Conque GDB
 Plugin 'jceb/vim-orgmode'               " Org-Mode for vim
+Plugin 'tpope/vim-speeddating'          " Speeddating it is necassery for Org-Mode
 
 " Project
 Plugin 'vim-scripts/vimprj'

@@ -1,6 +1,7 @@
 let g:VIM_ROOT_DIRECTORY = expand('<sfile>:p:h')
 let g:vim_configuration_files = [
 \ '.vim/configs/common/common.vimrc',
+\ '.vim/configs/common/key-bindings.vimrc',
 \ '.vim/configs/plugins/vundle.vimrc',
 \ '.vim/configs/plugins/syntastic.vimrc',
 \ '.vim/configs/plugins/youcompleteme.vimrc',
