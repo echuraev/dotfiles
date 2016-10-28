@@ -1,6 +1,7 @@
 # Ignore everythong
 /*
 /.vim/bundle/*
+/.vim/plugged/*
 /.emacs.d/*
 *~
 \#*\#

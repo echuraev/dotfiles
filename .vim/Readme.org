@@ -1,1 +1,5 @@
 Found fix for vim background [[https://sunaku.github.io/vim-256color-bce.html][here]]
+
+* YouCompleteMe
+1. Try to run this command after installation in dir with YouCompleteMe: git submodule update --init --recursive
+
