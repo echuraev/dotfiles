@@ -20,6 +20,7 @@ syntax enable
 colorscheme xoria256
 set term=screen-256color
 set colorcolumn=120     " Set Color Column
+set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
 " Transparent background
 hi Normal ctermbg=none
 hi LineNr ctermbg=none
