@@ -8,7 +8,6 @@ let g:vim_configuration_files = [
 \ '.vim/configs/plugins/nerdtree.vimrc',
 \]
 
-"\ '.vim/configs/plugins/vundle.vimrc',
 for file in g:vim_configuration_files
   execute('source ' . g:VIM_ROOT_DIRECTORY . '/' . file)
 endfor

@@ -9,9 +9,11 @@ call plug#begin('~/.vim/plugged')
 
 " Common
 Plug 'tpope/vim-fugitive'             " Git plugin
+Plug 'airblade/vim-gitgutter'         " Extencion for git
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'vim-scripts/opencl.vim'         " OpenCL syntax highlight 
 Plug 'scrooloose/syntastic'           " Syntax checking plugin
+Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 " vimprj for project management, indexer for file indexing and vimprj and
 " inexer depends from DfrankUtil
 Plug 'vim-scripts/DfrankUtil' | Plug 'vim-scripts/vimprj' | Plug 'vim-scripts/indexer.tar.gz'
