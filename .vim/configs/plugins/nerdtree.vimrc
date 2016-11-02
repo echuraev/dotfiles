@@ -47,5 +47,5 @@ endfunction
 
 " Немного магии, если мы запустим Vim без указания файла для редактирования,
 " то дерево будет открыто, а если будет указан файл, то дерево открыто не будет
-"autocmd StdinReadPre * let s:std_in=1                                           
+"autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter *  NERDTree

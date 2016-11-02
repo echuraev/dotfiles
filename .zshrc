@@ -69,6 +69,8 @@ setopt inc_append_history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
+setopt noincappendhistory
+setopt nosharehistory
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
