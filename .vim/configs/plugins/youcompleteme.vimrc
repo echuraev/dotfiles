@@ -22,7 +22,7 @@ let g:clang_conceal_snippets = 1                            " clang_complete eng
 "let g:clang_complete_patterns = 1                          " (Does not work for me) Turn-on autocompletion for language constructs (i.e. loops)
 "let g:clang_complete_macros = 1
 "let g:clang_user_options='|| exit 0'                       " Avoid freezing on offending code
-let g:ycm_global_ycm_extra_conf = '/home/echuraev/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 
 
