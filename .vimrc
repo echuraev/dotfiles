@@ -1,3 +1,5 @@
+set runtimepath=~/.vim
+
 let g:VIM_ROOT_DIRECTORY = expand('<sfile>:p:h')
 let g:vim_configuration_files = [
 \ '.vim/configs/plugins/vim-plug.vimrc',
