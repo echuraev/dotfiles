@@ -1,4 +1,6 @@
-set runtimepath=~/.vim
+" Next line is fix for Windows but it brake colors in linux
+" TODO: Fix it.
+" set runtimepath=~/.vim
 
 let g:VIM_ROOT_DIRECTORY = expand('<sfile>:p:h')
 let g:vim_configuration_files = [
