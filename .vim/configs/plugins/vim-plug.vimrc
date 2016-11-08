@@ -10,6 +10,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 " Common
 Plug 'tpope/vim-fugitive'             " Git plugin
 Plug 'airblade/vim-gitgutter'         " Extencion for git
+Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'vim-scripts/opencl.vim'         " OpenCL syntax highlight 
 Plug 'scrooloose/syntastic'           " Syntax checking plugin
