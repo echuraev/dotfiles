@@ -1,13 +1,15 @@
 call plug#begin('~/.vim/plugged')
 
 " Code Complition
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+Plug 'davidhalter/jedi-vim'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Common
+Plug 'ervandew/supertab'              " Plugin for complition with <Tab>
 Plug 'tpope/vim-fugitive'             " Git plugin
 Plug 'airblade/vim-gitgutter'         " Extencion for git
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
@@ -24,9 +26,9 @@ Plug 'vim-scripts/Conque-GDB'         " Conque GDB
 Plug 'jceb/vim-orgmode'               " Org-Mode for vim
 Plug 'tpope/vim-speeddating'          " Speeddating it is necassery for Org-Mode
 " Vim Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'powerline/fonts', { 'do': './install.sh' }
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'powerline/fonts', { 'do': './install.sh' }
 
 " Tree
 Plug 'scrooloose/nerdtree' ", { 'on':  'NERDTreeToggle' }

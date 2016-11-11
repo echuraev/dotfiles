@@ -24,6 +24,8 @@ let g:clang_conceal_snippets = 1                            " clang_complete eng
 "let g:clang_user_options='|| exit 0'                       " Avoid freezing on offending code
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
-
+" Python complition
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
+let g:ycm_python_binary_path = 'python'
 
 "set shortmess+=c
