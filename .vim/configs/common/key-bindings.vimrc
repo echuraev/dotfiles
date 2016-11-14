@@ -18,3 +18,6 @@ nnoremap <C-y> "+y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
+
+" Build 
+nnoremap <F5> :make!<cr>

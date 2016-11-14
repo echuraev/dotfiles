@@ -16,6 +16,7 @@ Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'vim-scripts/opencl.vim'         " OpenCL syntax highlight 
 Plug 'scrooloose/syntastic'           " Syntax checking plugin
+" Plug 'L9' | Plug 'FuzzyFinder'
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 " vimprj for project management, indexer for file indexing and vimprj and
 " inexer depends from DfrankUtil
