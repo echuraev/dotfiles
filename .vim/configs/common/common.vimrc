@@ -49,6 +49,7 @@ set secure
 
 " Backup and temporary files
 set nobackup                            " Don't create files with backup copy (filename.txt~)
+silent !mkdir ~/.vim/swapfiles > /dev/null 2>&1
 set dir=~/.vim/swapfiles                " Directory for saving swp files
 
 " Command line
