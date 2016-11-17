@@ -26,13 +26,16 @@ Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'vim-scripts/Conque-GDB'         " Conque GDB
 Plug 'jceb/vim-orgmode'               " Org-Mode for vim
 Plug 'tpope/vim-speeddating'          " Speeddating it is necassery for Org-Mode
+" View
+Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
+Plug 'octol/vim-cpp-enhanced-highlight' " C++ highlighting
 " Vim Airline
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 " Plug 'powerline/fonts', { 'do': './install.sh' }
 
 " Tree
-Plug 'scrooloose/nerdtree' ", { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 

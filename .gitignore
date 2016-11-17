@@ -2,6 +2,7 @@
 /*
 /.vim/bundle/*
 /.vim/plugged/*
+/.vim/swapfiles/*
 /.emacs.d/*
 *~
 \#*\#
