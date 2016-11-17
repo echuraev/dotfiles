@@ -1,8 +1,8 @@
 call plug#begin('~/.vim/plugged')
 
 " Code Complition
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 Plug 'davidhalter/jedi-vim'           " Python autocomplition
 
 " Plugin outside ~/.vim/plugged with post-update hook
