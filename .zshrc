@@ -98,3 +98,5 @@ setopt nosharehistory
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source $HOME/.bashrc
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

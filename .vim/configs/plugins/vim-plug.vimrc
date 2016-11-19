@@ -6,7 +6,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 Plug 'davidhalter/jedi-vim'           " Python autocomplition
 
 " Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Common
 Plug 'ervandew/supertab'              " Plugin for complition with <Tab>
@@ -30,9 +30,9 @@ Plug 'tpope/vim-speeddating'          " Speeddating it is necassery for Org-Mode
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
 Plug 'octol/vim-cpp-enhanced-highlight' " C++ highlighting
 " Vim Airline
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'powerline/fonts', { 'do': './install.sh' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'powerline/fonts', { 'do': './install.sh' }
 
 " Tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
