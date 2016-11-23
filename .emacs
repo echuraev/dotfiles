@@ -66,7 +66,7 @@
     ("133222702a3c75d16ea9c50743f66b987a7209fb8b964f2c0938a816a83379a0" "8f0334c430540bf45dbcbc06184a2e8cb01145f0ae1027ce6b1c40876144c0c9" default)))
  '(package-selected-packages
    (quote
-    (projectile yasnippet powerline-evil opencl-mode llvm-mode linum-relative idea-darkula-theme cmake-mode auto-complete-c-headers))))
+    (exec-path-from-shell projectile yasnippet powerline-evil opencl-mode llvm-mode linum-relative idea-darkula-theme cmake-mode auto-complete-c-headers))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
