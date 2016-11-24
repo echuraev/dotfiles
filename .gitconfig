@@ -22,11 +22,14 @@
 [color "diff"]
     meta = yellow bold
     frag = magenta bold
-    old = red bold
-    new = green bold
+    old = red
+    new = green
     whitespace = red reverse
 
 [color "status"]
-    added = yellow
-    changed = green
+    #added = yellow
+    #changed = green
     untracked = cyan
+[user]
+	name = Egor Churaev
+	email = egor.churaev@intel.com
