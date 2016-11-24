@@ -10,6 +10,7 @@
 /.vim/.netrwhist
 
 # Except the following files
+!.gitconfig
 !.gitignore
 !.gitmodules
 !.tmux.conf
