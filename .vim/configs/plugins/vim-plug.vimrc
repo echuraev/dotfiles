@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 " Code Complition
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
-Plug 'davidhalter/jedi-vim'           " Python autocomplition
+Plug 'davidhalter/jedi-vim', {'for': 'python'}           " Python autocomplition
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -14,7 +14,7 @@ Plug 'tpope/vim-fugitive'             " Git plugin
 Plug 'airblade/vim-gitgutter'         " Extencion for git
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
-Plug 'vim-scripts/opencl.vim'         " OpenCL syntax highlight 
+Plug 'vim-scripts/opencl.vim', { 'for': 'cl' }         " OpenCL syntax highlight
 Plug 'scrooloose/syntastic'           " Syntax checking plugin
 " Plug 'marcweber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate'            " Snippets
 " Plug 'L9' | Plug 'FuzzyFinder'
@@ -24,12 +24,11 @@ Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 Plug 'vim-scripts/DfrankUtil' | Plug 'vim-scripts/vimprj' | Plug 'vim-scripts/indexer.tar.gz'
 " Plugin 'wikitopian/hardmode'            " Vim hardcode mode
 Plug 'majutsushi/tagbar'              " Tagbar
-Plug 'vim-scripts/Conque-GDB'         " Conque GDB
-Plug 'jceb/vim-orgmode'               " Org-Mode for vim
-Plug 'tpope/vim-speeddating'          " Speeddating it is necassery for Org-Mode
+Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
+Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'       " Org-Mode for vim
 " View
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
-Plug 'octol/vim-cpp-enhanced-highlight' " C++ highlighting
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] } " C++ highlighting
 " Vim Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
