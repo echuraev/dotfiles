@@ -23,3 +23,4 @@
 !.emacs.d/configs/
 !.emacs.d/gen_tags.sh
 !.emacs.d/README.org
+!.bashrc.global
