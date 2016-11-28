@@ -16,6 +16,7 @@ Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'vim-scripts/opencl.vim', { 'for': 'cl' }         " OpenCL syntax highlight
 Plug 'scrooloose/syntastic'           " Syntax checking plugin
+Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
 " Plug 'marcweber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate'            " Snippets
 " Plug 'L9' | Plug 'FuzzyFinder'
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs

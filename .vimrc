@@ -11,6 +11,7 @@ let g:vim_configuration_files = [
 \ '.vim/configs/plugins/syntastic.vimrc',
 \ '.vim/configs/plugins/youcompleteme.vimrc',
 \ '.vim/configs/plugins/nerdtree.vimrc',
+\ '.vim/configs/plugins/diff.vimrc',
 \]
 
 for file in g:vim_configuration_files
