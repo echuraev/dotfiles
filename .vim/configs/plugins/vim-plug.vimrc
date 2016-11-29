@@ -14,7 +14,7 @@ Plug 'tpope/vim-fugitive'             " Git plugin
 Plug 'airblade/vim-gitgutter'         " Extencion for git
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
-Plug 'vim-scripts/opencl.vim', { 'for': 'cl' }         " OpenCL syntax highlight
+Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }         " OpenCL syntax highlight
 Plug 'scrooloose/syntastic'           " Syntax checking plugin
 Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
 " Plug 'marcweber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate'            " Snippets

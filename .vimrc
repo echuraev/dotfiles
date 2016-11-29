@@ -7,6 +7,7 @@ let g:vim_configuration_files = [
 \ '.vim/configs/plugins/vim-plug.vimrc',
 \ '.vim/configs/common/common.vimrc',
 \ '.vim/configs/common/key-bindings.vimrc',
+\ '.vim/configs/common/file-association.vimrc',
 \ '.vim/configs/plugins/airline.vimrc',
 \ '.vim/configs/plugins/syntastic.vimrc',
 \ '.vim/configs/plugins/youcompleteme.vimrc',
