@@ -22,7 +22,7 @@ Plug 'vim-scripts/DfrankUtil' | Plug 'vim-scripts/vimprj' | Plug 'vim-scripts/in
 Plug 'ervandew/supertab'              " Plugin for complition with <Tab>
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
-Plug 'scrooloose/syntastic'           " Syntax checking plugin
+" Plug 'scrooloose/syntastic'           " Syntax checking plugin
 Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
 " Plug 'marcweber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate'            " Snippets
 " Plug 'L9' | Plug 'FuzzyFinder'
