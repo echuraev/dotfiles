@@ -13,13 +13,14 @@ set cindent
 set rnu                      " Relative numbers
 set nu                       " Show numbers
 set ai                       " auto indent
+set cursorline               " Highlight current line
 set showcmd
 set linebreak
 set autoread
 syntax enable
 colorscheme xoria256
 set term=screen-256color
-set colorcolumn=120     " Set Color Column
+set colorcolumn=80     " Set Color Column
 set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
 " Transparent background
 hi Normal ctermbg=none
