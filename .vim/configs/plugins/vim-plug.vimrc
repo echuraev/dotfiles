@@ -51,6 +51,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 
 " LaTeX
 Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
+Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
 
 call plug#end()
 
