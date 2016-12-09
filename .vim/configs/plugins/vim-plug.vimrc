@@ -1,9 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
 " Code Complition
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
-Plug 'davidhalter/jedi-vim', {'for': 'python'}           " Python autocomplition
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+" Plug 'davidhalter/jedi-vim', {'for': 'python'}           " Python autocomplition
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -31,6 +31,9 @@ Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'       " Org-Mode for vim
 
+" Shell
+Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
+
 " View
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] } " C++ highlighting
@@ -45,6 +48,9 @@ Plug 'powerline/fonts', { 'do': './install.sh' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
+
+" LaTeX
+Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
 
 call plug#end()
 
