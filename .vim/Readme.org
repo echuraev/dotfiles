@@ -6,5 +6,8 @@
 * Indexer
 1. Install ctags: [[http://ctags.sourceforge.net/]]
 
+* Latex
+For configuration I used this article: [[https://coderwall.com/p/s1i5pw/latex-with-vim]]
+
 * Misc.
 Found fix for vim background [[https://sunaku.github.io/vim-256color-bce.html][here]]

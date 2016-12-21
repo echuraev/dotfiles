@@ -6,6 +6,7 @@ let s:vim_configuration_files = [
 \ 'youcompleteme.vimrc',
 \ 'nerdtree.vimrc',
 \ 'diff.vimrc',
+\ 'latex.vimrc',
 \]
 
 for file in s:vim_configuration_files
