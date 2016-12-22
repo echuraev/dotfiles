@@ -7,6 +7,7 @@ let s:vim_configuration_files = [
 \ 'nerdtree.vimrc',
 \ 'diff.vimrc',
 \ 'latex.vimrc',
+\ 'wintabs.vimrc',
 \]
 
 for file in s:vim_configuration_files

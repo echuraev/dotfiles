@@ -30,6 +30,7 @@ Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'       " Org-Mode for vim
+Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 
 " Shell
 Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
@@ -40,9 +41,7 @@ Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] } " C++ highlighting
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }         " OpenCL syntax highlight
 
 " Vim Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'powerline/fonts', { 'do': './install.sh' }
+"Plug 'powerline/fonts', { 'do': './install.sh' } | Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
 
 " Tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
