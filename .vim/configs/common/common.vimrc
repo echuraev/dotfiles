@@ -41,9 +41,6 @@ set mouse=a
 " filetype detection
 filetype plugin indent on
 
-set laststatus=2
-set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ fenc:%{&fenc}%={ch:%3b\ hex:%2B)\ col:%2c\ line:%2l/%L\ [%2p%%]
-
 " Find another vimrc
 set exrc
 set secure

@@ -1,8 +1,8 @@
 let g:wintabs_ui_active_left='<'
 let g:wintabs_ui_active_right='>'
-let g:wintabs_ui_active_lsepgroup='<'
-let g:wintabs_ui_active_rsepgroup='>'
-let g:wintabs_ui_show_tab_name=1
+let g:wintabs_ui_active_vimtab_left='<'
+let g:wintabs_ui_active_vimtab_right='>'
+let g:wintabs_ui_show_vimtab_name = 2
 
 map gw <Plug>(wintabs_next)
 map gW <Plug>(wintabs_previous)

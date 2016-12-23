@@ -3,6 +3,7 @@ let s:vim_configuration_files = [
 \ 'common.vimrc',
 \ 'key-bindings.vimrc',
 \ 'file-association.vimrc',
+\ 'statusline.vimrc',
 \]
 
 for file in s:vim_configuration_files
