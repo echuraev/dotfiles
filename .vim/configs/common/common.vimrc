@@ -55,3 +55,4 @@ set dir=~/.vim/swapfiles                " Directory for saving swp files
 set wildmenu                            " cmd autocomplition
 set wildmode=longest:list,full          " autocomplition like in bash
 
+set updatetime=100

@@ -20,17 +20,35 @@ let g:currentmode={
     \ 't'  : 'Terminal ',
     \}
 
-function! ChangeStatuslineColor()
-  if (mode() =~# '\v(n|no)')
-    exe 'hi! StatusLine ctermfg=008'
-  elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
-    exe 'hi! StatusLine ctermfg=005'
-  elseif (mode() ==# 'i')
-    exe 'hi! StatusLine ctermfg=004'
-  else
-    exe 'hi! StatusLine ctermfg=006'
-  endif
-
+let defaultAccentColor=161
+let colorsAndModes= {
+  \ 'n' : 34,
+  \ 'i' : 33,
+  \ 'v' : 127,
+  \ 'V' : 127,
+  \ '': 127,
+  \ 'R' : 166,
+\}
+let defaultAccentColorGui='#d7005f'
+let colorsAndModesGui= {
+  \ 'n' : '#00d75f',
+  \ 'i' : '#0087ff',
+  \ 'v' : '#af00af',
+  \ 'V' : '#af00af',
+  \ '': '#af00af',
+  \ 'R' : '#d75f00',
+\}
+function! ChangeAccentColor()
+  let accentColor=get(g:colorsAndModes, mode(), g:defaultAccentColor)
+  let accentColorGui=get(g:colorsAndModesGui, mode(), g:defaultAccentColorGui)
+  "execute 'hi User1 ctermfg=0 guifg=#000000 ctermbg=' . accentColor . ' guibg=' . accentColorGui
+  "execute 'hi User2 ctermbg=0 guibg=#2e3436 ctermfg=' . accentColor . ' guifg=' . accentColorGui
+  "execute 'hi User3 ctermfg=0 guifg=#000000 cterm=bold gui=bold ctermbg=' . accentColor . ' guibg=' . accentColorGui
+  execute 'hi TabLineSel ctermfg=0 cterm=bold ctermbg=' . accentColor
+  execute 'hi TabLine ctermbg=0 ctermfg=' . accentColor
+  execute 'hi CursorLineNr ctermfg=' . accentColor . ' guifg=' . accentColorGui
+  execute 'hi StatusLine ctermfg=231 ctermbg='.accentColor.' cterm=bold guifg=#ffffff guibg='.accentColorGui.' gui=bold'
+  execute 'hi StatusLineNC ctermfg=231 ctermbg='.accentColor.' cterm=NONE guifg=#ffffff guibg='.accentColorGui.' gui=NONE'
   return ''
 endfunction
 
@@ -73,15 +91,14 @@ function! GitInfo()
 endfunction
 
 set laststatus=2        " Always show statusline
-set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ fenc:%{&fenc}%=col:%2c\ line:%2l/%L\ [%2p%%]
-if version >= 700
-  au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
-  au InsertLeave * hi StatusLine   ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e cterm=bold gui=bold
-endif
+"set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ fenc:%{&fenc}%=col:%2c\ line:%2l/%L\ [%2p%%]
+"if version >= 700
+"  au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
+"  au InsertLeave * hi StatusLine   ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e cterm=bold gui=bold
+"endif
 
-set laststatus=2
 set statusline=
-set statusline+=%{ChangeStatuslineColor()}               " Changing the statusline color
+set statusline+=%{ChangeAccentColor()}               " Changing the statusline color
 set statusline+=%0*\ %{toupper(g:currentmode[mode()])}   " Current mode
 set statusline+=%8*\ [%n]                                " buffernr
 set statusline+=%8*\ %{GitInfo()}                        " Git Branch name
@@ -93,4 +110,5 @@ set statusline+=%9*\ %=                                  " Space
 set statusline+=%8*\ %y\                                 " FileType
 set statusline+=%7*\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
 set statusline+=%8*\ %-3(%{FileSize()}%)                 " File size
-set statusline+=%0*\ %3p%%\ \ %l:\ %3c\                 " Rownumber/total (%)
+set statusline+=%0*\ %3p%%\ line:\ %2l/%L,\ col:\ %3c\                 " Rownumber/total (%)
+
