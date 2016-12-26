@@ -17,6 +17,7 @@ set cursorline               " Highlight current line
 set showcmd
 set linebreak
 set autoread
+set synmaxcol=300            " Don't try to highlight long lines"
 syntax enable
 colorscheme xoria256
 set term=screen-256color
