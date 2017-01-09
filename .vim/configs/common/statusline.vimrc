@@ -92,17 +92,13 @@ endfunction
 
 set laststatus=2        " Always show statusline
 "set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ fenc:%{&fenc}%=col:%2c\ line:%2l/%L\ [%2p%%]
-"if version >= 700
-"  au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
-"  au InsertLeave * hi StatusLine   ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e cterm=bold gui=bold
-"endif
 
 set statusline=
 set statusline+=%{ChangeAccentColor()}               " Changing the statusline color
 set statusline+=%0*\ %{toupper(g:currentmode[mode()])}   " Current mode
 set statusline+=%8*\ [%n]                                " buffernr
 set statusline+=%8*\ %{GitInfo()}                        " Git Branch name
-set statusline+=%8*\ %<%F\ %{ReadOnly()}\ %m\ %w\        " File+path
+set statusline+=%8*\ %<%f%m%{ReadOnly()}%h%w\            " File+path
 set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}             " Syntastic errors
 set statusline+=%*
@@ -111,4 +107,10 @@ set statusline+=%8*\ %y\                                 " FileType
 set statusline+=%7*\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
 set statusline+=%8*\ %-3(%{FileSize()}%)                 " File size
 set statusline+=%0*\ %3p%%\ line:\ %2l/%L,\ col:\ %3c\                 " Rownumber/total (%)
+
+" Speed up the redraw
+"au InsertEnter * call ChangeAccentColor()
+"au InsertChange * call ChangeAccentColor()
+"au InsertLeave * call ChangeAccentColor()
+"au CursorHold * let &ro = &ro
 

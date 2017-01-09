@@ -44,9 +44,7 @@ Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }         " OpenCL syntax highlig
 "Plug 'powerline/fonts', { 'do': './install.sh' } | Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
 
 " Tree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 
 " LaTeX
 Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
