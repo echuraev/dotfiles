@@ -77,7 +77,7 @@ endfunction
 
 function! PasteMode()
   if &paste
-    return ' : PASTE '
+    return ': PASTE '
   else
     return ''
 endfunction
