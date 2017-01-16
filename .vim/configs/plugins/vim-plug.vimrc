@@ -1,8 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
 " Code Complition
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+Plug 'sirver/ultisnips' " Snippets
 " Plug 'davidhalter/jedi-vim', {'for': 'python'}           " Python autocomplition
 
 " Plugin outside ~/.vim/plugged with post-update hook
@@ -16,7 +17,9 @@ Plug 'gregsexton/gitv'                " Gitk for vim
 " Project
 " vimprj for project management, indexer for file indexing and vimprj and
 " inexer depends from DfrankUtil
-Plug 'vim-scripts/DfrankUtil' | Plug 'vim-scripts/vimprj' | Plug 'vim-scripts/indexer.tar.gz'
+Plug 'lyuts/vim-rtags'                " Goto defenition and some other features
+Plug 'vim-scripts/DfrankUtil' | Plug 'vim-scripts/vimprj' " | Plug 'vim-scripts/indexer.tar.gz'
+Plug 'tpope/vim-dispatch'             " Project compiling
 
 " Common
 Plug 'ervandew/supertab'              " Plugin for complition with <Tab>
