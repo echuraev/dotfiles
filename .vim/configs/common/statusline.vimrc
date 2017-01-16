@@ -75,6 +75,13 @@ function! FileSize()
     endif
 endfunction
 
+function! PasteMode()
+  if &paste
+    return ' : PASTE '
+  else
+    return ''
+endfunction
+
 function! ReadOnly()
   if &readonly || !&modifiable
     return ''
@@ -96,6 +103,7 @@ set laststatus=2        " Always show statusline
 set statusline=
 set statusline+=%{ChangeAccentColor()}               " Changing the statusline color
 set statusline+=%0*\ %{toupper(g:currentmode[mode()])}   " Current mode
+set statusline+=%{PasteMode()}
 set statusline+=%8*\ [%n]                                " buffernr
 set statusline+=%8*\ %{GitInfo()}                        " Git Branch name
 set statusline+=%8*\ %<%f%m%{ReadOnly()}%h%w\            " File+path
