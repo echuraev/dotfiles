@@ -14,16 +14,6 @@ if get(g:, 'profile')
     call ProfileStart()
 endif
 
-let g:VIM_ROOT_DIRECTORY = expand('<sfile>:p:h')
-let g:vim_configuration_files = [
-\ '.vim/configs/plugins/conf.vimrc',
-\ '.vim/configs/common/conf.vimrc',
-\]
-
-for file in g:vim_configuration_files
-  execute('source ' . g:VIM_ROOT_DIRECTORY . '/' . file)
-endfor
-
 " Vim start time
 if has('vim_starting') && has('reltime')
     let g:startuptime = reltime()
@@ -33,4 +23,14 @@ if has('vim_starting') && has('reltime')
                     \ | echomsg 'startuptime: ' . reltimestr(g:startuptime)
     augroup END
 endif
+
+let g:VIM_ROOT_DIRECTORY = expand('<sfile>:p:h')
+let g:vim_configuration_files = [
+\ '.vim/configs/plugins/conf.vimrc',
+\ '.vim/configs/common/conf.vimrc',
+\]
+
+for file in g:vim_configuration_files
+  execute('source ' . g:VIM_ROOT_DIRECTORY . '/' . file)
+endfor
 
