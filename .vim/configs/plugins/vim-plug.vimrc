@@ -3,8 +3,7 @@ call plug#begin('~/.vim/plugged')
 " Code Complition
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
-Plug 'sirver/ultisnips' " Snippets
-" Plug 'davidhalter/jedi-vim', {'for': 'python'}           " Python autocomplition
+Plug 'sirver/ultisnips'               " Snippets
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -17,8 +16,7 @@ Plug 'gregsexton/gitv'                " Gitk for vim
 " Project
 " vimprj for project management, indexer for file indexing and vimprj and
 " inexer depends from DfrankUtil
-Plug 'lyuts/vim-rtags'                " Goto defenition and some other features
-Plug 'vim-scripts/DfrankUtil' | Plug 'vim-scripts/vimprj' " | Plug 'vim-scripts/indexer.tar.gz'
+"Plug 'vim-scripts/DfrankUtil' | Plug 'vim-scripts/vimprj'
 Plug 'tpope/vim-dispatch'             " Project compiling
 
 " Common
@@ -27,9 +25,8 @@ Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
 " Plug 'scrooloose/syntastic'           " Syntax checking plugin
 Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
-" Plug 'marcweber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate'            " Snippets
-" Plug 'L9' | Plug 'FuzzyFinder'
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
+Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'       " Org-Mode for vim
@@ -39,12 +36,15 @@ Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
 
 " View
+Plug 'nathanaelkane/vim-indent-guides' " Highlight indents
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
+Plug 'sjl/gundo.vim'                  " Visualize vim undo tree
+
+" Syntax highlight
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] } " C++ highlighting
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }         " OpenCL syntax highlight
-
-" Vim Airline
-"Plug 'powerline/fonts', { 'do': './install.sh' } | Plug 'vim-airline/vim-airline-themes' | Plug 'vim-airline/vim-airline'
+Plug 'pearance/vim-tmux'              " Tmux configuration highlight
+Plug 'tpope/vim-git'                  " git syntax highlight
 
 " Tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
@@ -52,6 +52,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerd
 " LaTeX
 Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
 Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
+
+" Other
+Plug 'wakatime/vim-wakatime'          " Time tracking
 
 call plug#end()
 

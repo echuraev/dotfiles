@@ -1,5 +1,6 @@
 * YouCompleteMe
-1. Try to run this command after installation in dir with YouCompleteMe: git submodule update --init --recursive
++1. Try to run this command after installation in dir with YouCompleteMe: git submodule update --init --recursive+
+1. Global YCM Config: [[https://jonasdevlieghere.com/a-better-youcompleteme-config/]]
 
 * Vimprj
 
@@ -14,3 +15,13 @@ Found fix for vim background [[https://sunaku.github.io/vim-256color-bce.html][h
 
 Status line configuration I found [[https://gabri.me/blog/diy-vim-statusline][here]] and [[http://vim.wikia.com/wiki/Change_statusline_color_to_show_insert_or_normal_mode][here]].
 Information about colors I found [[http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim][here]] and [[https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg][here]].
+
+* Try the following plugins
+[[https://github.com/neilagabriel/vim-geeknote]]
+
+[[https://github.com/severin-lemaignan/vim-minimap]]
+
+[[https://github.com/amoffat/snake]]
+
+[[https://github.com/tbabej/taskwiki]]
+

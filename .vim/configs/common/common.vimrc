@@ -52,6 +52,7 @@ silent !mkdir ~/.vim/swapfiles > /dev/null 2>&1
 set dir=~/.vim/swapfiles                " Directory for saving swp files
 
 " Command line
+set path+=**                            " Provides tab-completion for all file-related tasks
 set wildmenu                            " cmd autocomplition
 set wildmode=longest:list,full          " autocomplition like in bash
 

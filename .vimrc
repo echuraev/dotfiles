@@ -1,6 +1,7 @@
-" Next line is fix for Windows but it brake colors in linux
-" TODO: Fix it.
-" set runtimepath=~/.vim
+set nocompatible
+
+syntax enable
+filetype plugin on
 
 " Vim Profiling
 fun! ProfileStart()
