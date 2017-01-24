@@ -29,7 +29,7 @@ let g:ycm_python_binary_path = '/usr/local/bin/python3'
 let g:ycm_python_binary_path = 'python'
 
 " Goto definition with F3
-map <leader>gt :YcmCompleter GoTo<CR>
+map <leader>] :YcmCompleter GoTo<CR>
 
 "set shortmess+=c
 
