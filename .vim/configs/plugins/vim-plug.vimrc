@@ -36,7 +36,6 @@ Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
 
 " View
-Plug 'nathanaelkane/vim-indent-guides' " Highlight indents
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
 Plug 'sjl/gundo.vim'                  " Visualize vim undo tree
 

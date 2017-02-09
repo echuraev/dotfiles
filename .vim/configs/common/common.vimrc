@@ -41,6 +41,7 @@ set mouse=a
 
 " filetype detection
 filetype plugin indent on
+filetype plugin on
 
 " Find another vimrc
 set exrc
