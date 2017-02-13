@@ -47,6 +47,6 @@ function zle-line-finish {
 }
 zle -N zle-line-finish
 
-source $HOME/.bashrc                                    # Load variables from bashrc
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+[ -f $HOME/.bashrc.global ] && source $HOME/.bashrc.global
+[ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
