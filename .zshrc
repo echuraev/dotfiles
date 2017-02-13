@@ -14,7 +14,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 PROMPT='%{$PROMPT_SUCCESS_COLOR%}%n@%m%{$reset_color%}:%{$PROMPT_SUCCESS_COLOR%}%c%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}ᐅ%{$reset_color%} '
-RPROMPT='${vim_mode} %b%D %T'
+RPROMPT='${vim_mode} %D{%d %b %Y} %T' # See man page strftime(3) for more details.
 
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=9999
