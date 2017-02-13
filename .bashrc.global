@@ -12,6 +12,3 @@ alias grep='grep --color'
 alias emacs='emacs -nw'
 #alias vim='vim --startuptime vim.log'
 
-if [ "$SHELL" != "/bin/zsh" ]; then
-  [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-fi
