@@ -1,3 +1,5 @@
+au BufNewFile,BufRead *.cls set filetype=tex
+
 " vim-latex configuration
 let g:tex_flavor='latex'
 
