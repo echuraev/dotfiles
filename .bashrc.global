@@ -1,6 +1,8 @@
 # include it in your bash rc by this command:
 # [ -f ~/.bashrc.global ] && source ~/.bashrc.global
 
+export LANG="en_US.UTF-8"
+
 export SVN_EDITOR=/usr/bin/vim
 
 export TERM=xterm-256color
