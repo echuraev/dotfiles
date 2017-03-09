@@ -7,6 +7,7 @@ ZSH_THEME="muse"
 
 plugins=(git autojump command-not-found)
 
+setopt +o nomatch # Allow * commands i.g.: rm -f *
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH

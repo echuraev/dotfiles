@@ -1,3 +1,13 @@
+# If you wish use zsh and don't have root access. Then add the following lines in bashrc
+#
+# if type "zsh" > /dev/null; then
+#     exec zsh
+# else
+#     [ -f $HOME/.bashrc.global ] && source $HOME/.bashrc.global
+#     [ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
+#     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# fi
+
 # include it in your bash rc by this command:
 # [ -f ~/.bashrc.global ] && source ~/.bashrc.global
 
