@@ -8,6 +8,7 @@
 \#*\#
 .\#*
 /.vim/.netrwhist
+*.DS_Store
 
 # Except the following files
 !.gitconfig

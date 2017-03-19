@@ -1,11 +1,17 @@
 * YouCompleteMe
-+1. Try to run this command after installation in dir with YouCompleteMe: git submodule update --init --recursive+
 1. Global YCM Config: [[https://jonasdevlieghere.com/a-better-youcompleteme-config/]]
 
-* Vimprj
+** Known issues:
+*** Mac OS:
+1. Had a problem with installation and got the following error:
+'''
+$ xz clang+llvm-4.0.0-x86_64-apple-darwin.tar.xz
 
-* Indexer
-1. Install ctags: [[http://ctags.sourceforge.net/]]
+dyld: Library not loaded: /Library/Frameworks/Mono.framework/Versions/4.0.5/lib/libintl.8.dylib
+Referenced from: /Applications/Unity/MonoDevelop.app/Contents/Frameworks/Mono.framework/Versions/Current/bin/xz
+Reason: image not found
+'''
+The solution is: remove this binary file and install xz
 
 * Latex
 For configuration I used this article: [[https://coderwall.com/p/s1i5pw/latex-with-vim]]
