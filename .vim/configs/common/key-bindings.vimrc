@@ -1,6 +1,3 @@
-" Map Russian keyboard in normal mode
-" set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
-
 let c='a'
 while c <= 'z'
   exec "set <A-".c.">=\e".c
@@ -9,6 +6,9 @@ while c <= 'z'
 endw
 
 set timeout ttimeoutlen=50
+
+" Map leader key to custom
+:let mapleader=","
 
 " Hot keys to change window size
 map <m-h> <c-w><
