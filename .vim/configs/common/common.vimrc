@@ -58,3 +58,5 @@ set wildmenu                            " cmd autocomplition
 set wildmode=longest:list,full          " autocomplition like in bash
 
 set updatetime=100
+
+au VimEnter * if &diff | execute 'windo set wrap' | endif
