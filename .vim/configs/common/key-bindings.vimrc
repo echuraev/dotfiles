@@ -1,20 +1,16 @@
-let c='a'
-while c <= 'z'
-  exec "set <A-".c.">=\e".c
-  exec "imap \e".c." <A-".c.">"
-  let c = nr2char(1+char2nr(c))
-endw
-
-set timeout ttimeoutlen=50
-
 " Map leader key to custom
 :let mapleader=","
 
 " Hot keys to change window size
-map <m-h> <c-w><
-map <m-l> <c-w>>
-map <m-j> <c-w>-
-map <m-k> <c-w>+
+" Workaround for working with Meta key (Alt)
+exec "set <M-h>=\eh"
+exec "set <M-l>=\el"
+exec "set <M-j>=\ej"
+exec "set <M-k>=\ek"
+map <M-h> <c-w><
+map <M-l> <c-w>>
+map <M-j> <c-w>-
+map <M-k> <c-w>+
 
 " Copy and paste to system buffer
 nnoremap <C-y> "+y
