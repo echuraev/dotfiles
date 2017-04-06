@@ -1,9 +1,11 @@
 call plug#begin('~/.vim/plugged')
 
 " Code Complition
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
-Plug 'sirver/ultisnips'               " Snippets
+if !has('win32')
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+    Plug 'sirver/ultisnips'               " Snippets
+endif
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -21,7 +23,7 @@ Plug 'gregsexton/gitv'                " Gitk for vim
 Plug 'tpope/vim-dispatch'             " Project compiling
 
 " Common
-Plug 'ervandew/supertab'              " Plugin for complition with <Tab>
+" Plug 'ervandew/supertab'              " Plugin for complition with <Tab>
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
 " Plug 'scrooloose/syntastic'           " Syntax checking plugin
@@ -29,9 +31,11 @@ Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'              " Tagbar
-Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'       " Org-Mode for vim
 Plug 'zefei/vim-wintabs'              " Separate tabs for windows
+if !has('win32')
+    Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
+endif
 
 " Shell
 Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
@@ -43,15 +47,19 @@ Plug 'sjl/gundo.vim'                  " Visualize vim undo tree
 " Syntax highlight
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] } " C++ highlighting
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }         " OpenCL syntax highlight
-Plug 'pearance/vim-tmux'              " Tmux configuration highlight
 Plug 'tpope/vim-git'                  " git syntax highlight
+if !has('win32')
+    Plug 'pearance/vim-tmux'              " Tmux configuration highlight
+endif
 
 " Tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 
 " LaTeX
-Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
-Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
+if !has('win32')
+    Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
+    Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
+endif
 
 " Other
 Plug 'wakatime/vim-wakatime'          " Time tracking

@@ -1,6 +1,9 @@
+if has('win32')
+    set runtimepath+=~/.vim
+endif
+
 set nocompatible
 
-syntax enable
 filetype plugin on
 
 " Vim Profiling

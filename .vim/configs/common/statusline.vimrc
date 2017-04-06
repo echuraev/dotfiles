@@ -84,6 +84,8 @@ endfunction
 
 function! ReadOnly()
   if &readonly || !&modifiable
+    if has('win32')
+      return '[ro]'
     return ''
   else
     return ''
@@ -92,6 +94,8 @@ endfunction
 function! GitInfo()
   let git = fugitive#head()
   if git != ''
+    if has('win32')
+      return 'git: '.fugitive#head()
     return ' '.fugitive#head()
   else
     return ''

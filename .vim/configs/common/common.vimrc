@@ -22,7 +22,9 @@ syntax enable
 colorscheme xoria256
 set term=screen-256color
 set colorcolumn=80     " Set Color Column
-set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
+if !has('win32')
+    set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
+endif
 " Transparent background
 hi Normal ctermbg=none
 hi LineNr ctermbg=none
@@ -48,9 +50,11 @@ set exrc
 set secure
 
 " Backup and temporary files
-set nobackup                            " Don't create files with backup copy (filename.txt~)
-silent !mkdir ~/.vim/swapfiles > /dev/null 2>&1
-set dir=~/.vim/swapfiles                " Directory for saving swp files
+if !has('win32')
+    set nobackup                            " Don't create files with backup copy (filename.txt~)
+    silent !mkdir ~/.vim/swapfiles > /dev/null 2>&1
+    set dir=~/.vim/swapfiles                " Directory for saving swp files
+endif
 
 " Command line
 set path+=**                            " Provides tab-completion for all file-related tasks
