@@ -4,6 +4,8 @@ endif
 
 set nocompatible
 
+syntax enable
+
 filetype plugin on
 
 " Vim Profiling
