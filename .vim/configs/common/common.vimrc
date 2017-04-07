@@ -20,9 +20,9 @@ set autoread
 set synmaxcol=300            " Don't try to highlight long lines"
 syntax enable
 colorscheme xoria256
-set term=screen-256color
 set colorcolumn=80     " Set Color Column
 if !has('win32')
+    set term=screen-256color
     set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
 endif
 " Transparent background
