@@ -25,3 +25,5 @@
 !.emacs.d/gen_tags.sh
 !.emacs.d/README.org
 !.bashrc.global
+!.gdbinit
+!.gdb-dashboard/
