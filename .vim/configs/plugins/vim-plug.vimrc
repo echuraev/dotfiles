@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 " Code Complition
 if !has('win32')
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'sirver/ultisnips'               " Snippets
 endif
 

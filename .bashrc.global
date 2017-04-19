@@ -22,5 +22,6 @@ if [[ `uname` != 'Darwin' ]]; then
 fi
 alias grep='grep --color'
 alias emacs='emacs -nw'
+alias gitv='vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv" -c "tabonly"'
 #alias vim='vim --startuptime vim.log'
 
