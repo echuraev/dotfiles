@@ -64,6 +64,7 @@ endif
 
 " Other
 Plug 'wakatime/vim-wakatime'          " Time tracking
+Plug 'echuraev/ReplaceHighlighter'
 
 call plug#end()
 

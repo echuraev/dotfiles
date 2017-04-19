@@ -1,4 +1,0 @@
-[%dir_name(..)%]
-
- $VIMPRJ_PROJECT_ROOT
- option:ctags_params = "--languages=c++"
