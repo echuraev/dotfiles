@@ -4,8 +4,9 @@ call plug#begin('~/.vim/plugged')
 if !has('win32')
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-    Plug 'sirver/ultisnips'               " Snippets
 endif
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -24,7 +25,6 @@ Plug 'gregsexton/gitv'                " Gitk for vim
 Plug 'tpope/vim-dispatch'             " Project compiling
 
 " Common
-" Plug 'ervandew/supertab'              " Plugin for complition with <Tab>
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
 " Plug 'scrooloose/syntastic'           " Syntax checking plugin

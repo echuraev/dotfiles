@@ -6,6 +6,7 @@ let s:vim_configuration_files = [
 \ 'diff.vimrc',
 \ 'latex.vimrc',
 \ 'wintabs.vimrc',
+\ 'ultisnips.vimrc',
 \]
 
 for file in s:vim_configuration_files
