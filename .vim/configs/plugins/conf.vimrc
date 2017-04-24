@@ -7,6 +7,7 @@ let s:vim_configuration_files = [
 \ 'latex.vimrc',
 \ 'wintabs.vimrc',
 \ 'ultisnips.vimrc',
+\ 'calendar.vimrc',
 \]
 
 for file in s:vim_configuration_files
