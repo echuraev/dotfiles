@@ -32,7 +32,7 @@ Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'              " Tagbar
-Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'       " Org-Mode for vim
+" Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'       " Org-Mode for vim
 Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 if !has('win32')
     Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
