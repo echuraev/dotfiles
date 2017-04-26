@@ -2,7 +2,7 @@
 " Code completion plugin
 " """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set complete-=t                                             " Do not search tag files when auto-completing
-set complete-=i                                             " Do not search include files when auto-completing
+"set complete-=i                                             " Do not search include files when auto-completing
 set completeopt=menu,menuone                                " Complete options (disable preview scratch window, longest removed to aways show menu)
 set pumheight=20                                            " Limit popup menu height
 set concealcursor=inv                                       " Conceal in insert (i), normal (n) and visual (v) modes

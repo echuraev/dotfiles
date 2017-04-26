@@ -8,6 +8,10 @@ set ts=4
 set expandtab
 set shiftwidth=4
 set cindent
+" Python shiftwidth, tabstop, softtabstop
+autocmd FileType python set sw=4
+autocmd FileType python set ts=4
+autocmd FileType python set sts=4
 
 " View settings
 set rnu                      " Relative numbers
