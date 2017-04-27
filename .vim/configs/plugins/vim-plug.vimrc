@@ -27,7 +27,7 @@ Plug 'tpope/vim-dispatch'             " Project compiling
 " Common
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
-" Plug 'scrooloose/syntastic'           " Syntax checking plugin
+Plug 'vim-syntastic/syntastic'           " Syntax checking plugin
 Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 Plug 'tpope/vim-surround'
