@@ -1,10 +1,12 @@
 call plug#begin('~/.vim/plugged')
 
-" Code Complition
+" Code Completion
 if !has('win32')
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 endif
+let g:omni_install = 'git submodule update --init --recursive && cd server && xbuild'
+Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
