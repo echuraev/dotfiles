@@ -29,12 +29,11 @@ Plug 'tpope/vim-dispatch'             " Project compiling
 " Common
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
-Plug 'vim-syntastic/syntastic'           " Syntax checking plugin
+Plug 'vim-syntastic/syntastic'        " Syntax checking plugin
 Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'              " Tagbar
-" Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'       " Org-Mode for vim
 Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 if !has('win32')
     Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
@@ -51,6 +50,7 @@ Plug 'sjl/gundo.vim'                  " Visualize vim undo tree
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] } " C++ highlighting
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }         " OpenCL syntax highlight
 Plug 'tpope/vim-git'                  " git syntax highlight
+Plug 'OrangeT/vim-csharp',            " C# highlighting
 if !has('win32')
     Plug 'pearance/vim-tmux'              " Tmux configuration highlight
 endif
