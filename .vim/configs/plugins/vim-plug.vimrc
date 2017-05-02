@@ -25,6 +25,11 @@ Plug 'gregsexton/gitv'                " Gitk for vim
 " inexer depends from DfrankUtil
 "Plug 'vim-scripts/DfrankUtil' | Plug 'vim-scripts/vimprj'
 Plug 'tpope/vim-dispatch'             " Project compiling
+Plug 'osyo-manga/vim-over'            " Replace highlighter
+Plug 'dkprice/vim-easygrep'           " Easy grep
+" Tree
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
+"Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
 
 " Common
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
@@ -39,9 +44,6 @@ if !has('win32')
     Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 endif
 
-" Shell
-Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
-
 " View
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
 Plug 'sjl/gundo.vim'                  " Visualize vim undo tree
@@ -55,9 +57,6 @@ if !has('win32')
     Plug 'pearance/vim-tmux'              " Tmux configuration highlight
 endif
 
-" Tree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
-
 " LaTeX
 if !has('win32')
     Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
@@ -67,7 +66,6 @@ endif
 " Other
 Plug 'wakatime/vim-wakatime'          " Time tracking
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
-Plug 'osyo-manga/vim-over'            " Replace highlighter
 
 call plug#end()
 
