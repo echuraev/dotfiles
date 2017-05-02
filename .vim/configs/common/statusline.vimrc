@@ -41,14 +41,15 @@ let colorsAndModesGui= {
 function! ChangeAccentColor()
   let accentColor=get(g:colorsAndModes, mode(), g:defaultAccentColor)
   let accentColorGui=get(g:colorsAndModesGui, mode(), g:defaultAccentColorGui)
-  "execute 'hi User1 ctermfg=0 guifg=#000000 ctermbg=' . accentColor . ' guibg=' . accentColorGui
-  "execute 'hi User2 ctermbg=0 guibg=#2e3436 ctermfg=' . accentColor . ' guifg=' . accentColorGui
-  "execute 'hi User3 ctermfg=0 guifg=#000000 cterm=bold gui=bold ctermbg=' . accentColor . ' guibg=' . accentColorGui
-  execute 'hi TabLineSel ctermfg=0 cterm=bold ctermbg=' . accentColor
-  execute 'hi TabLine ctermbg=0 ctermfg=' . accentColor
-  execute 'hi CursorLineNr ctermfg=' . accentColor . ' guifg=' . accentColorGui
-  execute 'hi StatusLine ctermfg=231 ctermbg='.accentColor.' cterm=bold guifg=#ffffff guibg='.accentColorGui.' gui=bold'
-  execute 'hi StatusLineNC ctermfg=231 ctermbg='.accentColor.' cterm=NONE guifg=#ffffff guibg='.accentColorGui.' gui=NONE'
+  " Status line background
+  execute 'hi statusBackground ctermfg=15 guifg=#ffffff ctermbg=236 guibg=#303030'
+  " Modified color
+  execute 'hi statusModified ctermfg=160 guifg=#d70000 ctermbg=236 guibg=#303030'
+  execute 'hi TabLineSel ctermfg=15 cterm=bold ctermbg='.accentColor
+  execute 'hi TabLine ctermbg=0 ctermfg='.accentColor
+  execute 'hi CursorLineNr ctermfg='.accentColor.' guifg='.accentColorGui
+  execute 'hi StatusLine ctermfg=15 ctermbg='.accentColor.' cterm=bold guifg=#ffffff guibg='.accentColorGui.' gui=bold'
+  execute 'hi StatusLineNC ctermfg=15 ctermbg='.accentColor.' cterm=NONE guifg=#ffffff guibg='.accentColorGui.' gui=NONE'
   return ''
 endfunction
 
@@ -107,20 +108,22 @@ set laststatus=2        " Always show statusline
 "set statusline=%f%m%r%h%w\ %y\ enc:%{&enc}\ fenc:%{&fenc}%=col:%2c\ line:%2l/%L\ [%2p%%]
 
 set statusline=
-set statusline+=%{ChangeAccentColor()}               " Changing the statusline color
-set statusline+=%0*\ %{toupper(g:currentmode[mode()])}   " Current mode
+set statusline+=%{ChangeAccentColor()}                                   " Changing the statusline color
+set statusline+=%0*\ %{toupper(g:currentmode[mode()])}                   " Current mode
 set statusline+=%{PasteMode()}
-set statusline+=%8*\ [%n]                                " buffernr
-set statusline+=%8*\ %{GitInfo()}                        " Git Branch name
-set statusline+=%8*\ %<%f%m%{ReadOnly()}%h%w\            " File+path
+set statusline+=%#statusBackground#\ [%n]                                " buffernr
+set statusline+=%#statusBackground#\ %{GitInfo()}                        " Git Branch name
+set statusline+=%#statusBackground#\ %<%f                                " File name
+set statusline+=%#statusModified#\%m                                     " modified
+set statusline+=%#statusBackground#%{ReadOnly()}%h%w\                    " File+path
 set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}             " Syntastic errors
-set statusline+=%*
-set statusline+=%9*\ %=                                  " Space
-set statusline+=%8*\ %y\                                 " FileType
-set statusline+=%7*\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
-set statusline+=%8*\ %-3(%{FileSize()}%)                 " File size
-set statusline+=%0*\ %3p%%\ line:\ %2l/%L,\ col:\ %3c\                 " Rownumber/total (%)
+set statusline+=%{SyntasticStatuslineFlag()}                             " Syntastic errors
+set statusline+=%#statusBackground#
+set statusline+=%#statusBackground#\ %=                                  " Space
+set statusline+=%#statusBackground#\ %y\                                 " FileType
+set statusline+=%#statusBackground#\ %{(&fenc!=''?&fenc:&enc)}\ [%{&ff}] " Encoding & Fileformat
+set statusline+=%#statusBackground#\ %-3(%{FileSize()}%)                 " File size
+set statusline+=%0*\ %3p%%\ line:\ %2l/%L,\ col:\ %3c\                   " Rownumber/total (%)
 
 " Speed up the redraw
 "au InsertEnter * call ChangeAccentColor()
