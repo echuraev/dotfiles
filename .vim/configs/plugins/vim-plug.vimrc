@@ -68,7 +68,6 @@ endif
 Plug 'wakatime/vim-wakatime'          " Time tracking
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'osyo-manga/vim-over'            " Replace highlighter
-Plug 'echuraev/ReplaceHighlighter'
 
 call plug#end()
 
