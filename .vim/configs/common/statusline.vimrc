@@ -22,7 +22,7 @@ let g:currentmode={
 
 let defaultAccentColor=161
 let colorsAndModes= {
-  \ 'n' : 34,
+  \ 'n' : 28,
   \ 'i' : 33,
   \ 'v' : 127,
   \ 'V' : 127,
@@ -31,7 +31,7 @@ let colorsAndModes= {
 \}
 let defaultAccentColorGui='#d7005f'
 let colorsAndModesGui= {
-  \ 'n' : '#00d75f',
+  \ 'n' : '#008700',
   \ 'i' : '#0087ff',
   \ 'v' : '#af00af',
   \ 'V' : '#af00af',
