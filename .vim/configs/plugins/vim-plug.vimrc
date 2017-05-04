@@ -49,13 +49,12 @@ Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each i
 Plug 'sjl/gundo.vim'                  " Visualize vim undo tree
 
 " Syntax highlight
-Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] } " C++ highlighting
-Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }         " OpenCL syntax highlight
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting
+Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }            " OpenCL syntax highlight
 Plug 'tpope/vim-git'                  " git syntax highlight
-Plug 'OrangeT/vim-csharp',            " C# highlighting
-if !has('win32')
-    Plug 'pearance/vim-tmux'              " Tmux configuration highlight
-endif
+Plug 'OrangeT/vim-csharp', { 'for': 'cs' }                  " C# highlighting
+Plug 'pearance/vim-tmux', { 'for': 'tmux' }                 " Tmux configuration highlight
+"Plug 'Superbil/llvm.vim', { 'for': ['llvm', 'tablegen'] }   " llvm and opencl syntax highlight
 
 " LaTeX
 if !has('win32')

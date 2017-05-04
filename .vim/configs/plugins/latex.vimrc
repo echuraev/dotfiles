@@ -1,5 +1,3 @@
-au BufNewFile,BufRead *.cls set filetype=tex
-
 " Fix for using ctrl+j key
 "imap <C-space> <Plug>IMAP_JumpForward
 nnoremap <SID>I_won’t_ever_type_this <Plug>IMAP_JumpForward
