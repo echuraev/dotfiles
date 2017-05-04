@@ -101,13 +101,13 @@ function! ChangeAccentColor(active)
     " Modified color
     execute 'hi statusModified ctermfg='.statModifFg.' guifg='.statModifFgGui.' ctermbg='.statBgBg.' guibg='.statBgBgGui
     " Workaround for mode background
-    execute 'hi statusModeBackground ctermfg='.statBgFg.' ctermbg='.accentColor.' cterm=bold guifg=#'.statBgFgGui.' guibg='.accentColorGui.' gui=bold'
+    execute 'hi statusModeBackground ctermfg='.statBgFg.' ctermbg='.accentColor.' cterm=bold guifg='.statBgFgGui.' guibg='.accentColorGui.' gui=bold'
 
     execute 'hi TabLineSel ctermfg='.statBgFg.' cterm=bold ctermbg='.accentColor
     execute 'hi TabLine ctermbg=0 ctermfg='.accentColor
     execute 'hi CursorLineNr ctermfg='.accentColor.' guifg='.accentColorGui
-    execute 'hi StatusLine ctermfg='.statBgFg.' ctermbg='.accentColor.' cterm=bold guifg=#'.statBgFgGui.' guibg='.accentColorGui.' gui=bold'
-    execute 'hi StatusLineNC ctermfg='.statBgFg.' ctermbg='.accentColor.' cterm=NONE guifg=#'.statBgFgGui.' guibg='.accentColorGui.' gui=NONE'
+    execute 'hi StatusLine ctermfg='.statBgFg.' ctermbg='.accentColor.' cterm=bold guifg='.statBgFgGui.' guibg='.accentColorGui.' gui=bold'
+    execute 'hi StatusLineNC ctermfg='.statBgFg.' ctermbg='.accentColor.' cterm=NONE guifg='.statBgFgGui.' guibg='.accentColorGui.' gui=NONE'
     return ''
 endfunction
 
