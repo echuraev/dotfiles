@@ -23,8 +23,6 @@ Status line configuration I found [[https://gabri.me/blog/diy-vim-statusline][he
 Information about colors I found [[http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim][here]] and [[https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg][here]].
 
 * Try the following plugins
-[[https://github.com/neilagabriel/vim-geeknote]]
-
 [[https://github.com/severin-lemaignan/vim-minimap]]
 
 [[https://github.com/amoffat/snake]]
@@ -42,7 +40,5 @@ Information about colors I found [[http://vim.wikia.com/wiki/Xterm256_color_name
 [[https://github.com/stobenski/dotfiles/blob/master/.vimrc]]
 
 [[https://github.com/rking/ag.vim]]
-
-[[https://github.com/vimwiki/vimwiki]]
 
 [[https://github.com/jaxbot/semantic-highlight.vim]]

@@ -4,9 +4,8 @@ call plug#begin('~/.vim/plugged')
 if !has('win32')
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+    Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
 endif
-let g:omni_install = 'git submodule update --init --recursive && cd server && xbuild'
-Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
@@ -21,12 +20,10 @@ Plug 'airblade/vim-gitgutter'            " Extencion for git
 Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 
 " Project
-" vimprj for project management, indexer for file indexing and vimprj and
-" inexer depends from DfrankUtil
-"Plug 'vim-scripts/DfrankUtil' | Plug 'vim-scripts/vimprj'
 Plug 'tpope/vim-dispatch'             " Project compiling
 Plug 'osyo-manga/vim-over'            " Replace highlighter
 Plug 'dkprice/vim-easygrep'           " Easy grep
+
 " Tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
@@ -65,6 +62,7 @@ endif
 " Other
 Plug 'wakatime/vim-wakatime'          " Time tracking
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
+Plug 'vimwiki/vimwiki'                " Organize notes
 
 call plug#end()
 
