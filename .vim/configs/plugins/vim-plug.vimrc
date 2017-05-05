@@ -15,10 +15,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Git
-Plug 'tpope/vim-fugitive'             " Git plugin
-Plug 'tpope/vim-unimpaired'           " Fast navigation by commits for fugitive
-Plug 'airblade/vim-gitgutter'         " Extencion for git
-Plug 'gregsexton/gitv'                " Gitk for vim
+Plug 'tpope/vim-fugitive'                " Git plugin
+Plug 'tpope/vim-unimpaired'              " Fast navigation by commits for fugitive
+Plug 'airblade/vim-gitgutter'            " Extencion for git
+Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 
 " Project
 " vimprj for project management, indexer for file indexing and vimprj and

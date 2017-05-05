@@ -59,6 +59,7 @@ if !has('win32')
     silent !mkdir ~/.vim/swapfiles > /dev/null 2>&1
     set dir=~/.vim/swapfiles                " Directory for saving swp files
 endif
+set noswapfile                          " Don't create swap files
 
 " Command line
 set path+=**                            " Provides tab-completion for all file-related tasks
