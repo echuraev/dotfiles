@@ -8,6 +8,21 @@ syntax enable
 
 filetype plugin on
 
+" Enabled different configuration
+" personalConfig helps to set some parameters (e.g. sync with google calendar)
+" only on personal machine.
+" extendedConfig enable some parameters that could be disabled by default.
+" If you want to use personal or extended configurations, create file
+" .personalConfig or .extendedConfig in your home directory.
+let g:personalConfig = 0
+if filereadable($HOME."/.personalConfig")
+    let g:personalConfig = 1
+endif
+let g:extendedConfig = 0
+if filereadable($HOME."/.extendedConfig")
+    let g:extendedConfig = 1
+endif
+
 " Vim Profiling
 fun! ProfileStart()
     let profile_file = '/tmp/vim.'.getpid().'.profile.txt'

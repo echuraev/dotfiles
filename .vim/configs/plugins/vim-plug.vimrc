@@ -60,7 +60,9 @@ if !has('win32')
 endif
 
 " Other
-Plug 'wakatime/vim-wakatime'          " Time tracking
+if g:personalConfig == 1 || g:extendedConfig == 1
+    Plug 'wakatime/vim-wakatime'          " Time tracking
+endif
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'vimwiki/vimwiki'                " Organize notes
 
