@@ -23,6 +23,7 @@ Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 Plug 'tpope/vim-dispatch'             " Project compiling
 Plug 'osyo-manga/vim-over'            " Replace highlighter
 Plug 'dkprice/vim-easygrep'           " Easy grep
+Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
 
 " Tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
@@ -44,6 +45,8 @@ endif
 " View
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
 Plug 'sjl/gundo.vim'                  " Visualize vim undo tree
+Plug 'vim-scripts/xoria256.vim'       " Color scheme
+"Plug 'nanotech/jellybeans.vim'
 
 " Syntax highlight
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting

@@ -42,3 +42,5 @@ Information about colors I found [[http://vim.wikia.com/wiki/Xterm256_color_name
 [[https://github.com/rking/ag.vim]]
 
 [[https://github.com/jaxbot/semantic-highlight.vim]]
+
+[[https://github.com/cohama/agit.vim]]
