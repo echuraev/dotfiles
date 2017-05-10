@@ -10,6 +10,7 @@ let s:vim_configuration_files = [
 \ 'ultisnips.vimrc',
 \ 'calendar.vimrc',
 \ 'gitv.vimrc',
+\ 'indentline.vimrc',
 \]
 
 for file in s:vim_configuration_files
