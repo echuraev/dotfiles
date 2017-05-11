@@ -11,6 +11,7 @@ let s:vim_configuration_files = [
 \ 'calendar.vimrc',
 \ 'gitv.vimrc',
 \ 'indentline.vimrc',
+\ 'easygrep.vimrc',
 \]
 
 for file in s:vim_configuration_files
