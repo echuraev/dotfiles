@@ -88,3 +88,7 @@ set history=5000
 " Diff settings {{{ "
 au VimEnter * if &diff | execute 'windo set wrap' | endif " Wrap words if diff
 " }}} Diff settings "
+" Spell checking {{{ "
+:set spell spelllang=ru,en         " Enable spell checking
+" Run :set spell to download dictionaries
+" }}} Spell checking "
