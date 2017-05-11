@@ -36,7 +36,10 @@ endif
 " }}} Vim Profiling "
 " Load VIM configs {{{ "
 let g:VIM_ROOT_DIRECTORY = expand('<sfile>:p:h')
+
+" First I have to initialize my key-bindings otherwise it will not working in plugins
 let g:vim_configuration_files = [
+\ '.vim/configs/common/key-bindings.vimrc',
 \ '.vim/configs/plugins/conf.vimrc',
 \ '.vim/configs/common/conf.vimrc',
 \]

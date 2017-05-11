@@ -1,5 +1,5 @@
 " Map leader key to custom
-:let mapleader=","
+let mapleader=","
 
 " Hot keys to change window size {{{ "
 " Workaround for working with Meta key (Alt) {{{ "
