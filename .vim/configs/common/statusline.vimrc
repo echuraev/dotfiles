@@ -24,7 +24,7 @@ let g:currentmode={
     \ 't'  : 'Terminal ',
 \}
 
-" Default active colors
+" Default active colors {{{ "
 let defaultAccentColor=161
 let colorsAndModes= {
     \ 'n'           : 28,
@@ -49,8 +49,8 @@ let colorsAndModesGui= {
     \ 'statBgBg'    : '#303030',
     \ 'statModifFg' : '#d70000',
 \}
-
-" Default inactive colors
+" }}} Default active colors "
+" Default inactive colors {{{ "
 let defaultInactiveAccentColor=89
 let inactiveColorsAndModes= {
     \ 'n'           : 22,
@@ -75,6 +75,7 @@ let inactiveColorsAndModesGui= {
     \ 'statBgBg'    : '#121212',
     \ 'statModifFg' : '#870000',
 \}
+" }}} Default inactive colors "
 
 function! ChangeAccentColor(active)
     let accentColor=get(g:colorsAndModes, mode(), g:defaultAccentColor)

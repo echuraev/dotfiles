@@ -3,11 +3,10 @@ if has('win32')
 endif
 
 set nocompatible
-
 syntax enable
-
 filetype plugin on
 
+" Determine VIM configuration {{{ "
 " Enabled different configuration
 " personalConfig helps to set some parameters (e.g. sync with google calendar)
 " only on personal machine.
@@ -22,8 +21,8 @@ let g:extendedConfig = 0
 if filereadable($HOME."/.extendedConfig")
     let g:extendedConfig = 1
 endif
-
-" Vim Profiling
+" }}} Determine VIM configuration "
+" Vim Profiling {{{ "
 fun! ProfileStart()
     let profile_file = '/tmp/vim.'.getpid().'.profile.txt'
     echom "Profiling into" profile_file
@@ -34,17 +33,8 @@ endfun
 if get(g:, 'profile')
     call ProfileStart()
 endif
-
-" Vim start time
-if has('vim_starting') && has('reltime')
-    let g:startuptime = reltime()
-    augroup vimrc-startuptime
-        autocmd! VimEnter * let g:startuptime = reltime(g:startuptime)
-                    \ | redraw
-                    \ | echomsg 'startuptime: ' . reltimestr(g:startuptime)
-    augroup END
-endif
-
+" }}} Vim Profiling "
+" Load VIM configs {{{ "
 let g:VIM_ROOT_DIRECTORY = expand('<sfile>:p:h')
 let g:vim_configuration_files = [
 \ '.vim/configs/plugins/conf.vimrc',
@@ -54,4 +44,15 @@ let g:vim_configuration_files = [
 for file in g:vim_configuration_files
   execute('source ' . g:VIM_ROOT_DIRECTORY . '/' . file)
 endfor
+" }}} Load VIM configs "
+" Display VIM start time {{{ "
+if has('vim_starting') && has('reltime')
+    let g:startuptime = reltime()
+    augroup vimrc-startuptime
+        autocmd! VimEnter * let g:startuptime = reltime(g:startuptime)
+                    \ | redraw
+                    \ | echomsg 'startuptime: ' . reltimestr(g:startuptime)
+    augroup END
+endif
+" }}} Display VIM start time "
 
