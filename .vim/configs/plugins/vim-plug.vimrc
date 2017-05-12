@@ -5,6 +5,7 @@ if !has('win32')
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
+    Plug 'wellle/tmux-complete.vim'                       " Add completion for text from tmux panel
 endif
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'       " Snippets
 " }}} Code Completion "
@@ -27,6 +28,8 @@ Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
 " }}} Project "
 " File Tree {{{ "
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
+Plug 'shougo/vimfiler.vim'
+Plug 'lpenz/vimcommander'
 " }}} File Tree "
 " Common {{{ "
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
