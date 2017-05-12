@@ -10,7 +10,7 @@ let g:currentmode={
     \ '' : 'V·Block',
     \ 's'  : 'Select ',
     \ 'S'  : 'S·Line ',
-    \ '^S' : 'S·Block ',
+    \ '' : 'S·Block ',
     \ 'i'  : 'I ',
     \ 'R'  : 'R ',
     \ 'Rv' : 'V·Replace ',
