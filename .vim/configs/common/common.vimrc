@@ -93,3 +93,6 @@ au VimEnter * if &diff | execute 'windo set wrap' | endif " Wrap words if diff
 autocmd FileType conque_term setlocal nospell
 " Run :set spell to download dictionaries
 " }}} Spell checking "
+" Other {{{ "
+set backspace=2 " Fix backspace behavior on mac os
+" }}} Other "
