@@ -28,7 +28,7 @@ Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
 " }}} Project "
 " File Tree {{{ "
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
-Plug 'shougo/vimfiler.vim'
+Plug 'Shougo/unite.vim' | Plug 'shougo/vimfiler.vim'
 Plug 'lpenz/vimcommander'
 " }}} File Tree "
 " Common {{{ "
