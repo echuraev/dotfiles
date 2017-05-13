@@ -95,4 +95,5 @@ autocmd FileType conque_term setlocal nospell
 " }}} Spell checking "
 " Other {{{ "
 set backspace=2 " Fix backspace behavior on mac os
+set hidden      " Can open new buffer even if current buffer has unsaved changes
 " }}} Other "
