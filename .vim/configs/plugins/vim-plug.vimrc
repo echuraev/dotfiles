@@ -37,6 +37,7 @@ Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'vim-syntastic/syntastic'        " Syntax checking plugin
 Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
+Plug 'tmhedberg/matchit'              " Extend behavior of %
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'zefei/vim-wintabs'              " Separate tabs for windows

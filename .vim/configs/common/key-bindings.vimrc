@@ -1,5 +1,7 @@
 " Map leader key to custom
 let mapleader=","
+" \ works instead of ,
+noremap \ ,
 
 " Hot keys to change window size {{{ "
 " Workaround for working with Meta key (Alt) {{{ "
@@ -19,3 +21,5 @@ nnoremap <C-y> "+y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
+
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%' " Get directory of current file
