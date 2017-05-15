@@ -25,5 +25,7 @@ alias emacs='emacs -nw'
 alias gitv='vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv" -c "tabonly"'
 #alias vim='vim --startuptime vim.log'
 
-if [ -f /usr/bin/screenfetch  ]; then screenfetch; fi
+if type "screenfetch" > /dev/null ; then
+    screenfetch -E # -E option will suppress errors
+fi
 
