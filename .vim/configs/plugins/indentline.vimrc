@@ -1,2 +1,2 @@
-let g:indentLine_fileTypeExclude=['calendar']
+let g:indentLine_fileTypeExclude=['calendar', 'startify']
 

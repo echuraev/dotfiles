@@ -12,6 +12,7 @@ let s:vim_configuration_files = [
 \ 'gitv.vimrc',
 \ 'indentline.vimrc',
 \ 'easygrep.vimrc',
+\ 'vimfiler.vimrc',
 \]
 
 for file in s:vim_configuration_files
