@@ -41,6 +41,7 @@ Plug 'tmhedberg/matchit'              " Extend behavior of %
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'zefei/vim-wintabs'              " Separate tabs for windows
+Plug 'easymotion/vim-easymotion'      " Easy motion in files
 if !has('win32')
     Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 endif
