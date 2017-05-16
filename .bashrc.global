@@ -29,3 +29,110 @@ if type "screenfetch" > /dev/null ; then
     screenfetch -E # -E option will suppress errors
 fi
 
+##########################################################################
+### FZF CONFIGS
+##########################################################################
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fe() {
+  local files
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+# fcd - including hidden directories
+fcd() {
+  local dir
+  local file
+  file=$(locate $(pwd) | fzf -e -q "$*")
+  if [ ! -d "$file" ]; then
+    file=$(dirname "$file")
+  fi
+  cd "$file"
+}
+
+# fcdh - cd from home
+fcdh() {
+  local dir
+  local file
+  file=$(locate ~ | fzf -e -q "$*")
+  if [ ! -d "$file" ]; then
+    file=$(dirname "$file")
+  fi
+  cd "$file"
+}
+
+# fcdr - cd to directory from root
+fcdr() {
+  local dir
+  local file
+  file=$(locate / | fzf -e -q "$*")
+  if [ ! -d "$file" ]; then
+    file=$(dirname "$file")
+  fi
+  cd "$file"
+}
+
+# fk - kill process
+fk() {
+  local pid
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+  then
+    echo $pid | xargs kill -${1:-9}
+  fi
+}
+
+# gcol - checkout git branch (locals)
+gcol() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# gcor - checkout git branch (including remote branches)
+gcor() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# gcot - checkout git branch/tag
+gcot() {
+  local tags branches target
+  tags=$(
+    git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+  branches=$(
+    git branch --all | grep -v HEAD             |
+    sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
+    sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$tags"; echo "$branches") |
+    fzf-tmux -- --no-hscroll --ansi +m -d "\t" -n 2) || return
+  git checkout $(echo "$target" | awk '{print $2}')
+}
+
+# gcoc - checkout git commit
+gcoc() {
+  local commits commit
+  commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
+  commit=$(echo "$commits" | fzf --tac +s +m -e) &&
+  git checkout $(echo "$commit" | sed "s/ .*//")
+}
+
+# gshow - git commit browser
+gshow() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
+}
