@@ -6,8 +6,8 @@ if !has('win32')
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
     Plug 'wellle/tmux-complete.vim'                       " Add completion for text from tmux panel
+    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'   " Snippets.
 endif
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'       " Snippets
 " }}} Code Completion "
 " Fuzzy Finder {{{ "
 " Plugin outside ~/.vim/plugged with post-update hook
@@ -23,7 +23,9 @@ Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 Plug 'tpope/vim-dispatch'             " Project compiling
 Plug 'osyo-manga/vim-over'            " Replace highlighter
 Plug 'dkprice/vim-easygrep'           " Easy grep
-Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
+if !has('win32')
+    Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
+endif
 " }}} Project "
 " File Tree {{{ "
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
@@ -42,7 +44,11 @@ Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 Plug 'easymotion/vim-easymotion'      " Easy motion in files
 Plug 'lyokha/vim-xkbswitch'           " Automatically switch keyboard layout to English in normal mode
-Plug 'ierton/xkb-switch', { 'do': 'mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX:PATH=../install && make && make install' }
+if !has('win32')
+    Plug 'ierton/xkb-switch', { 'do': 'mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX:PATH=../install && make && make install' }
+else
+    Plug 'DeXP/xkb-switch-win'
+endif
 if !has('win32')
     Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 endif
