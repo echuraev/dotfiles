@@ -3,6 +3,10 @@ let mapleader=","
 " \ works instead of ,
 noremap \ ,
 
+" Trick from 'Practical VIM' filtering for history
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
 " Hot keys to change window size {{{ "
 " Workaround for working with Meta key (Alt) {{{ "
 "exec "set <M-h>=\eh"
