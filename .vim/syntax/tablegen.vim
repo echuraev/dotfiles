@@ -21,14 +21,14 @@ syn match   tgNumber    /\<\d\+\>/
 syn match   tgNumber    /\<\d\+\.\d*\>/
 syn match   tgNumber    /\<0b[01]\+\>/
 syn match   tgNumber    /\<0x[0-9a-fA-F]\+\>/
-syn region  tgString    start=/"/ skip=/\\"/ end=/"/    oneline
+syn region  tgString    start=/"/ skip=/\\"/ end=/"/    oneline contains=@Spell
 
 syn region  tgCode      start=/\[{/ end=/}\]/
 
 syn keyword tgTodo             contained TODO FIXME
-syn match   tgComment   /\/\/.*$/         contains=tgTodo
+syn match   tgComment   /\/\/.*$/         contains=tgTodo,@Spell
 " Handle correctly imbricated comment
-syn region  tgComment2 matchgroup=tgComment2  start=+/\*+ end=+\*/+ contains=tgTodo,tgComment2
+syn region  tgComment2 matchgroup=tgComment2  start=+/\*+ end=+\*/+ contains=tgTodo,tgComment2,@Spell
 
 if version >= 508 || !exists("did_c_syn_inits")
   if version < 508
