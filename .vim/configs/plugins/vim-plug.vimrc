@@ -2,7 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 " Code Completion {{{ "
 if !has('win32')
-    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': [] }
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
     Plug 'wellle/tmux-complete.vim'                       " Add completion for text from tmux panel
@@ -16,7 +16,6 @@ Plug 'junegunn/fzf.vim'
 " }}} Fuzzy Finder "
 " Git {{{ "
 Plug 'tpope/vim-fugitive'                " Git plugin
-Plug 'tpope/vim-unimpaired'              " Fast navigation by commits for fugitive
 Plug 'airblade/vim-gitgutter'            " Extencion for git
 Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 " }}} Git "
@@ -29,7 +28,6 @@ Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
 " File Tree {{{ "
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 Plug 'Shougo/unite.vim' | Plug 'shougo/vimfiler.vim'
-Plug 'lpenz/vimcommander'
 " }}} File Tree "
 " Common {{{ "
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
@@ -39,9 +37,12 @@ Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 Plug 'tmhedberg/matchit'              " Extend behavior of %
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'           " Fast navigation
 Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 Plug 'easymotion/vim-easymotion'      " Easy motion in files
+Plug 'lyokha/vim-xkbswitch'           " Automatically switch keyboard layout to English in normal mode
+Plug 'ierton/xkb-switch', { 'do': 'mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX:PATH=../install && make && make install' }
 if !has('win32')
     Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 endif
