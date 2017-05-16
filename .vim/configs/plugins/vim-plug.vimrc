@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Code Completion {{{ "
-if !has('win32')
+if CheckOS() != 'Windows'
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': [] }
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
@@ -23,7 +23,7 @@ Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 Plug 'tpope/vim-dispatch'             " Project compiling
 Plug 'osyo-manga/vim-over'            " Replace highlighter
 Plug 'dkprice/vim-easygrep'           " Easy grep
-if !has('win32')
+if CheckOS() != 'Windows'
     Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
 endif
 " }}} Project "
@@ -44,12 +44,18 @@ Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 Plug 'easymotion/vim-easymotion'      " Easy motion in files
 Plug 'lyokha/vim-xkbswitch'           " Automatically switch keyboard layout to English in normal mode
-if !has('win32')
+" Dependency of vim-xkbswitch {{{ "
+if CheckOS() == 'Linux'
     Plug 'ierton/xkb-switch', { 'do': 'mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX:PATH=../install && make && make install' }
-else
+endif
+if CheckOS() == 'Darwin'
+    Plug 'vovkasm/input-source-switcher', { 'do': 'mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX:PATH=../install && make && make install' }
+endif
+if CheckOS() == 'Windows'
     Plug 'DeXP/xkb-switch-win'
 endif
-if !has('win32')
+" }}} Dependency of vim-xkbswitch "
+if CheckOS() != 'Windows'
     Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 endif
 " }}} Common "
@@ -68,7 +74,7 @@ Plug 'pearance/vim-tmux', { 'for': 'tmux' }                 " Tmux configuration
 "Plug 'Superbil/llvm.vim', { 'for': ['llvm', 'tablegen'] }   " llvm and opencl syntax highlight
 " }}} Syntax highlight "
 " LaTeX {{{ "
-if !has('win32')
+if CheckOS() != 'Windows'
     Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
     Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
 endif
