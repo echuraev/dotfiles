@@ -93,6 +93,7 @@ au VimEnter * if &diff | execute 'windo set wrap' | endif " Wrap words if diff
 autocmd FileType conque_term setlocal nospell
 autocmd FileType gitv setlocal nospell
 autocmd FileType git setlocal nospell
+autocmd FileType gitrebase setlocal nospell
 " Run :set spell to download dictionaries
 " }}} Spell checking "
 " Other {{{ "
