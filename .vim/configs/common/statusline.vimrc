@@ -144,7 +144,7 @@ endfunction
 
 function! ReadOnly()
     if &readonly || !&modifiable
-        if CheckOS() == 'Windows'
+        if g:isWindows
             return '[ro]'
         endif
         return ''
@@ -155,7 +155,7 @@ endfunction
 function! GitInfo()
     let git = fugitive#head()
     if git != ''
-        if CheckOS() == 'Windows'
+        if g:isWindows
             return 'git:'.fugitive#head()
         endif
         return ' '.fugitive#head()

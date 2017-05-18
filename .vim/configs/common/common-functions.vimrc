@@ -1,15 +1,15 @@
 " OS detection {{{ "
-function! CheckOS()
-    if has('win32')
-        return 'Windows'
-    elseif has('unix')
-        if system('uname -s') =~ 'Darwin'
-            return 'Darwin'
-        else
-            return 'Linux'
-        endif
+let g:isWindows = 0
+let g:isLinux = 0
+let g:isMac = 0
+if has('win32')
+    let g:isWindows = 1
+elseif has('unix')
+    if system('uname -s') =~ 'Darwin'
+        let g:isMac = 1
+    else
+        let g:isLinux = 1
     endif
-    return 'Unknown'
-endfunction
+endif
 " }}} OS detection "
 

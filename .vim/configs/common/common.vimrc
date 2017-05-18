@@ -31,7 +31,7 @@ syntax enable
 colorscheme xoria256 " jellybeans
 set colorcolumn=80     " Set Color Column
 "hi ColorColumn ctermbg=1 guibg='#800000'
-if CheckOS() != 'Windows'
+if !g:isWindows
     set term=screen-256color
     set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
 endif
@@ -71,7 +71,7 @@ set exrc
 set secure
 " }}} Find another vimrc "
 " Backup and temporary files {{{ "
-if CheckOS() != 'Windows'
+if !g:isWindows
     set nobackup                            " Don't create files with backup copy (filename.txt~)
     silent !mkdir ~/.vim/swapfiles > /dev/null 2>&1
     set dir=~/.vim/swapfiles                " Directory for saving swp files
