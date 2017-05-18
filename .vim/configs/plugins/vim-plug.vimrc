@@ -61,6 +61,7 @@ endif
 " }}} Common "
 " View {{{ "
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
+Plug 'ntpeters/vim-better-whitespace' " Highlight whitespaces
 Plug 'sjl/gundo.vim'                  " Visualize vim undo tree
 Plug 'vim-scripts/xoria256.vim'       " Color scheme
 "Plug 'nanotech/jellybeans.vim'
