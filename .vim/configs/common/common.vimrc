@@ -2,6 +2,9 @@
 filetype plugin indent on
 filetype plugin on
 " }}} Filetype detection "
+" Files Encryption {{{ "
+set cm=blowfish2
+" }}} Files Encryption "
 " Search {{{
 set ignorecase                  " ignore register for search
 set incsearch                   " momental search
@@ -71,11 +74,7 @@ set exrc
 set secure
 " }}} Find another vimrc "
 " Backup and temporary files {{{ "
-if !g:isWindows
-    set nobackup                            " Don't create files with backup copy (filename.txt~)
-    silent !mkdir ~/.vim/swapfiles > /dev/null 2>&1
-    set dir=~/.vim/swapfiles                " Directory for saving swp files
-endif
+set nobackup                            " Don't create files with backup copy (filename.txt~)
 set noswapfile                          " Don't create swap files
 " }}} Backup and temporary files "
 " Command line options {{{ "
@@ -84,7 +83,6 @@ set wildmenu                            " cmd autocomplition
 set wildmode=longest:list,full          " autocomplition like in bash
 set history=5000
 " }}} Command line options "
-"set updatetime=100
 " Diff settings {{{ "
 au VimEnter * if &diff | execute 'windo set wrap' | endif " Wrap words if diff
 " }}} Diff settings "

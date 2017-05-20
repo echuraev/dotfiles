@@ -102,6 +102,15 @@ gcor() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
+# gcort - checkout remote git branch with track option (including remote branches)
+gcort() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout --track $(echo "$branch" | sed "s/.* //")
+}
+
 # gcot - checkout git branch/tag
 gcot() {
   local tags branches target

@@ -80,6 +80,9 @@ if !g:isWindows
     Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
 endif
 " }}} LaTeX "
+" Markdown {{{ "
+Plug 'plasticboy/vim-markdown'
+" }}} Markdown "
 " Other {{{ "
 if g:personalConfig == 1 || g:extendedConfig == 1
     Plug 'wakatime/vim-wakatime'          " Time tracking
