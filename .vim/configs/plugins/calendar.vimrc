@@ -9,3 +9,25 @@ if g:personalConfig == 1
     let g:calendar_google_calendar = 1           " Use Google Calendar
     let g:calendar_google_task = 1               " Allow using Google task
 endif
+
+" CalendarToggle function {{{ "
+let s:calendarToggle = 0
+let s:calendarBuf = -1
+function! CalendarToggle()
+    if s:calendarBuf > -1 && bufwinnr(s:calendarBuf) == -1
+        let s:calendarToggle = 0
+    endif
+    if s:calendarToggle
+        silent execute 'bd' s:calendarBuf
+        let s:calendarToggle = 0
+    else
+        :Calendar -view=year -split=vertical -width=27
+        let s:calendarToggle = 1
+        let s:calendarBuf = bufnr("%")
+    endif
+endfunction
+
+command CalendarToggle execute 'call CalendarToggle()'
+noremap <leader>c :CalendarToggle<CR>
+" }}} CalendarToggle function "
+
