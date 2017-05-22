@@ -1,21 +1,16 @@
-# See more here: https://dustri.org/b/my-zsh-configuration.html
+if [[ ! -d ~/.zplug ]];then
+    git clone https://github.com/b4b4r07/zplug ~/.zplug
+fi
 
-# Path to your oh-my-zsh installation.
-export ZSH=${HOME}/.oh-my-zsh
+source ~/.zplug/init.zsh
 
-ZSH_THEME="muse"
+zplug "plugins/git", from:oh-my-zsh, if:"which git"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-plugins=(git autojump command-not-found)
+zplug load
 
-setopt +o nomatch # Allow * commands i.g.: rm -f *
-# User configuration
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-source $ZSH/oh-my-zsh.sh
-
-PROMPT='%{$PROMPT_SUCCESS_COLOR%}%n@%m%{$reset_color%}:%{$PROMPT_SUCCESS_COLOR%}%c%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}ᐅ%{$reset_color%} '
-RPROMPT='${vim_mode} %D{%d %b %Y} %T' # See man page strftime(3) for more details.
+# Load theme
+[ -f $HOME/.zsh/colors/theme.zsh ] && source $HOME/.zsh/colors/theme.zsh
 
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=9999
@@ -39,13 +34,11 @@ vim_mode=$vim_ins_mode
 function zle-keymap-select {
         vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
             zle reset-prompt
-
 }
 zle -N zle-keymap-select
 
 function zle-line-finish {
         vim_mode=$vim_ins_mode
-
 }
 zle -N zle-line-finish
 
