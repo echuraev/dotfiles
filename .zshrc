@@ -26,23 +26,14 @@ setopt hist_reduce_blanks
 setopt noincappendhistory
 setopt nosharehistory
 
+# User configuration
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 # Vim Mode
 bindkey -v
+KEYTIMEOUT=1
 bindkey -a '^[[3~' delete-char
-vim_ins_mode="%{$fg[yellow]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg[cyan]%}[CMD]%{$reset_color%}"
-vim_mode=$vim_ins_mode
-
-function zle-keymap-select {
-        vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-            zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-        vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
+setopt +o nomatch # Allow * commands i.g.: rm -f *
 
 [ -f $HOME/.bashrc.global ] && source $HOME/.bashrc.global
 [ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local

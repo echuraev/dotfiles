@@ -28,11 +28,6 @@ function spectrum_bls() {
   done
 }
 
-setopt +o nomatch # Allow * commands i.g.: rm -f *
-# User configuration
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 PROMPT_SUCCESS_COLOR=$FG[117]
 PROMPT_FAILURE_COLOR=$FG[124]
 PROMPT_VCS_INFO_COLOR=$FG[242]
@@ -54,6 +49,17 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$FG[190]%}✭%{$reset_color%}"
 
 ZSH_THEME_VIRTUALENV_PREFIX=" ["
 ZSH_THEME_VIRTUALENV_SUFFIX="]"
+
+vim_ins_mode="%{$fg[yellow]%}[INS]%{$reset_color%}"
+vim_cmd_mode="%{$fg[cyan]%}[CMD]%{$reset_color%}"
+vim_mode=$vim_ins_mode
+
+function zle-line-init zle-keymap-select {
+    RPS1="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}} %D{%d %b %Y} %T"
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 PROMPT="%{$PROMPT_SUCCESS_COLOR%}%n@%m%{$reset_color%}:%{$PROMPT_SUCCESS_COLOR%}%c%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}ᐅ%{$reset_color%} "
 RPROMPT="${vim_mode} %D{%d %b %Y} %T" # See man page strftime(3) for more details.
