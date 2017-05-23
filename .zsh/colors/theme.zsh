@@ -61,6 +61,11 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+function zle-line-finish {
+        vim_mode=$vim_ins_mode
+}
+zle -N zle-line-finish
+
 PROMPT="%{$PROMPT_SUCCESS_COLOR%}%n@%m%{$reset_color%}:%{$PROMPT_SUCCESS_COLOR%}%c%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}ᐅ%{$reset_color%} "
 RPROMPT="${vim_mode} %D{%d %b %Y} %T" # See man page strftime(3) for more details.
 
