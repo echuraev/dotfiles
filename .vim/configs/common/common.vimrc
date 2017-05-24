@@ -92,6 +92,7 @@ autocmd FileType conque_term setlocal nospell
 autocmd FileType gitv setlocal nospell
 autocmd FileType git setlocal nospell
 autocmd FileType gitrebase setlocal nospell
+autocmd FileType qf setlocal nospell               " Removed QuickFix window from spell checking
 " Run :set spell to download dictionaries
 " }}} Spell checking "
 " Other {{{ "
