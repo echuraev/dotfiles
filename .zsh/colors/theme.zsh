@@ -55,17 +55,17 @@ vim_cmd_mode="%{$fg[cyan]%}[CMD]%{$reset_color%}"
 vim_mode=$vim_ins_mode
 
 function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}} %D{%d %b %Y} %T"
+    vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
     zle reset-prompt
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
 
 function zle-line-finish {
-        vim_mode=$vim_ins_mode
+    vim_mode=$vim_ins_mode
+    zle reset-prompt
 }
 zle -N zle-line-finish
 
-PROMPT="%{$PROMPT_SUCCESS_COLOR%}%n@%m%{$reset_color%}:%{$PROMPT_SUCCESS_COLOR%}%c%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_super_status) %{$reset_color%}%{$PROMPT_PROMPT%}ᐅ%{$reset_color%} "
-RPROMPT="${vim_mode} %D{%d %b %Y} %T" # See man page strftime(3) for more details.
-
+PROMPT='%{$PROMPT_SUCCESS_COLOR%}%n@%m%{$reset_color%}:%{$PROMPT_SUCCESS_COLOR%}%c%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}ᐅ%{$reset_color%} '
+RPROMPT='$(git_super_status) ${vim_mode} %D{%d %b %Y} %T' # See man page strftime(3) for more details.

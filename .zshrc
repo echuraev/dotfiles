@@ -33,28 +33,13 @@ bindkey -v
 KEYTIMEOUT=1
 bindkey -a '^[[3~' delete-char
 setopt +o nomatch # Allow * commands i.g.: rm -f *
-vim_ins_mode="%{$fg[yellow]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg[cyan]%}[CMD]%{$reset_color%}"
-vim_mode=$vim_ins_mode
-
-function zle-keymap-select {
-          vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-              zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-        vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
-
-PROMPT='%{$PROMPT_SUCCESS_COLOR%}%n@%m%{$reset_color%}:%{$PROMPT_SUCCESS_COLOR%}%c%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}ᐅ%{$reset_color%} '
-RPROMPT='$(git_super_status) ${vim_mode} %D{%d %b %Y} %T' # See man page strftime(3) for more details.
 
 # Load theme
 [ -f $HOME/.zsh/colors/theme.zsh ] && source $HOME/.zsh/colors/theme.zsh
 
+# Load configuration
 [ -f $HOME/.bashrc.global ] && source $HOME/.bashrc.global
 [ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
 
+# Load FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
