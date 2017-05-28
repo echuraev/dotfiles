@@ -1,5 +1,10 @@
-if [[ ! -d ~/.zplug ]];then
+if [[ ! -d ~/.zplug ]]; then
     git clone https://github.com/b4b4r07/zplug ~/.zplug
+fi
+
+if [ -f ~/.zplug/log/job.lock ]; then
+    echo "Remove lock file!"
+    rm -f ~/.zplug/log/job.lock
 fi
 
 source ~/.zplug/init.zsh
