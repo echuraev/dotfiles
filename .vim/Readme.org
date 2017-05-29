@@ -35,14 +35,24 @@ Information about colors I found [[http://vim.wikia.com/wiki/Xterm256_color_name
 
 [[https://github.com/junegunn/vader.vim]]
 
-[[https://github.com/lyokha/vim-xkbswitch]]
-
-[[https://github.com/stobenski/dotfiles/blob/master/.vimrc]]
-
 [[https://github.com/rking/ag.vim]]
 
 [[https://github.com/jaxbot/semantic-highlight.vim]]
 
-[[https://github.com/cohama/agit.vim]]
-
 [[https://github.com/python-mode/python-mode]]
+
+[[https://github.com/junegunn/limelight.vim]]
+
+[[https://github.com/junegunn/vim-easy-align]] or [[https://github.com/godlygeek/tabular]]
+
+** Spell checking
+[[https://opensource.com/article/17/2/vim-plugins-writers]]
+
+[[https://github.com/rhysd/vim-grammarous]]
+
+[[https://github.com/reedes/vim-wordy]]
+
+[[https://github.com/dbmrq/vim-ditto]]
+
+[[https://github.com/dpelle/vim-LanguageTool]]
+
