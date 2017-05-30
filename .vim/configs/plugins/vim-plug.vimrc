@@ -19,10 +19,13 @@ Plug 'tpope/vim-fugitive'                " Git plugin
 Plug 'airblade/vim-gitgutter'            " Extencion for git
 Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 " }}} Git "
-" Project {{{ "
-Plug 'tpope/vim-dispatch'             " Project compiling
+" Search {{{ "
 Plug 'osyo-manga/vim-over'            " Replace highlighter
 Plug 'dkprice/vim-easygrep'           " Easy grep
+Plug 'mileszs/ack.vim'                " Run ack in vim
+" }}} Search "
+" Project {{{ "
+Plug 'tpope/vim-dispatch'             " Project compiling
 if !g:isWindows
     Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
 endif

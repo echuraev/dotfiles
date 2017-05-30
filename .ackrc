@@ -1,0 +1,7 @@
+# If it is a lot of results when open results in less. Get from here: https://www.8host.com/blog/ustanovka-i-ispolzovanie-ack-na-servere-ubuntu-14-04/
+--pager=less -RFX
+#  Ack knows some filetypes {{{ #
+--type-set=json=.json
+--type-set=markdown=.md,.mkd,.markdown
+#  }}} Ack knows some filetypes #
+

@@ -12,6 +12,7 @@
 *.DS_Store
 
 # Except the following files
+!.ackrc
 !.gitconfig
 !.gitignore
 !.gitmodules
