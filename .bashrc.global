@@ -31,6 +31,19 @@ if type "screenfetch" > /dev/null ; then
     screenfetch -E # -E option will suppress errors
 fi
 
+# Setup environment {{{ #
+LOCAL_BIN=${HOME}/.bin/
+mkdir -p $LOCAL_BIN
+export PATH=$LOCAL_BIN:$PATH
+
+export ACK_BIN=$LOCAL_BIN/ack
+if [ ! -f $ACK_BIN ]; then
+    # Install ack
+    echo "Install ack"
+    curl https://beyondgrep.com/ack-2.18-single-file > $ACK_BIN && chmod 0755 $ACK_BIN
+fi
+# }}} Setup environment #
+# FZF configurations {{{ #
 ##########################################################################
 ### FZF CONFIGS
 ##########################################################################
@@ -147,3 +160,4 @@ gshow() {
                 {}
 FZF-EOF"
 }
+# }}} FZF configurations #

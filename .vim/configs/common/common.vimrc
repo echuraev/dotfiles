@@ -72,9 +72,8 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
-autocmd FileType vim set foldmethod=marker
-autocmd FileType vim set foldenable
-autocmd FileType vim set foldlevel=0
+autocmd FileType vim set foldmethod=marker foldenable foldlevel=0
+autocmd FileType sh set foldmethod=marker foldenable foldlevel=0
 " }}} Folding settings "
 " Mouse settings {{{ "
 set mouse=a

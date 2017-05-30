@@ -43,8 +43,8 @@ setopt +o nomatch # Allow * commands i.g.: rm -f *
 [ -f $HOME/.zsh/colors/theme.zsh ] && source $HOME/.zsh/colors/theme.zsh
 
 # Load configuration
-[ -f $HOME/.bashrc.global ] && source $HOME/.bashrc.global
 [ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
+[ -f $HOME/.bashrc.global ] && source $HOME/.bashrc.global
 
 # Load FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
