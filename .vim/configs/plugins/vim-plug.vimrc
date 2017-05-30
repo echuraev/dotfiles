@@ -32,13 +32,14 @@ endif
 " }}} Project "
 " File Tree {{{ "
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
-Plug 'Shougo/unite.vim' | Plug 'shougo/vimfiler.vim'
+"Plug 'Shougo/unite.vim' | Plug 'shougo/vimfiler.vim'
 " }}} File Tree "
 " Common {{{ "
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'vim-syntastic/syntastic'        " Syntax checking plugin
 Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
+Plug 'will133/vim-dirdiff'            " Dir diff viewer
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 Plug 'tmhedberg/matchit'              " Extend behavior of %
 Plug 'tpope/vim-surround'

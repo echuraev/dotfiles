@@ -17,6 +17,11 @@ export SVN_EDITOR=/usr/bin/vim
 
 export TERM=xterm-256color
 
+#if type "screenfetch" > /dev/null ; then
+#    screenfetch -E # -E option will suppress errors
+#fi
+
+# Aliases {{{ #
 if [[ `uname` != 'Darwin' ]]; then
     alias ls='ls --color=always'
 else
@@ -26,11 +31,7 @@ alias grep='grep --color'
 alias emacs='emacs -nw'
 alias gitv='vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv" -c "tabonly"'
 #alias vim='vim --startuptime vim.log'
-
-if type "screenfetch" > /dev/null ; then
-    screenfetch -E # -E option will suppress errors
-fi
-
+# }}} Aliases #
 # Setup environment {{{ #
 LOCAL_BIN=${HOME}/.bin/
 mkdir -p $LOCAL_BIN
