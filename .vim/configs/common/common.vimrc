@@ -21,15 +21,10 @@ xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 " }}} Search
 " Tab size {{{
-set ts=4
+set tabstop=4
 set expandtab
 set shiftwidth=4
 set cindent
-" Python shiftwidth, tabstop, softtabstop {{{
-autocmd FileType python set sw=4
-autocmd FileType python set ts=4
-autocmd FileType python set sts=4
-" }}} Python shiftwidth, tabstop, softtabstop
 " }}} Tab size
 " View settings {{{ "
 set rnu                      " Relative numbers

@@ -93,6 +93,7 @@ if g:personalConfig == 1 || g:extendedConfig == 1
 endif
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'vimwiki/vimwiki'                " Organize notes
+Plug 'tbabej/taskwiki'                " Taskwarior for vimwiki
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
 " }}} Other "
 
