@@ -6,6 +6,9 @@ if !g:isWindows
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
     Plug 'wellle/tmux-complete.vim'                       " Add completion for text from tmux panel
+else
+    " For enable msbuild add to path variable path to .NET framework. E.g.: C:\Windows\Microsoft.NET\Framework\v4.0.30319
+    Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && msbuild' }         " C# completion
 endif
 " For working it is necessary to have python3 installed
 " On Windows you have to have the same architecture (32 or 64 bits) versions of vim and python
