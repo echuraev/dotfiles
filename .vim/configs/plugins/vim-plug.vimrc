@@ -16,6 +16,8 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'   " Snippets.
 " On windows download binaries from the github
 if !g:isWindows
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+else
+    Plug 'junegunn/fzf'
 endif
 Plug 'junegunn/fzf.vim'
 " }}} Fuzzy Finder "
