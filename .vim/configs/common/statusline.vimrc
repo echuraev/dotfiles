@@ -153,6 +153,9 @@ function! ReadOnly()
 endfunction
 
 function! GitInfo()
+    if !exists('*fugitive#head')
+        return ''
+    endif
     let git = fugitive#head()
     if git != ''
         if g:isWindows
@@ -161,6 +164,7 @@ function! GitInfo()
         return ' '.fugitive#head()
     else
         return ''
+    endif
 endfunction
 
 function! StatusLine(winnum)
@@ -175,7 +179,9 @@ function! StatusLine(winnum)
     let statLine .= "%#statusModified#%m"                                       " modified
     let statLine .= "%#statusBackground#%{ReadOnly()}%h%w "                     " File+path
     let statLine .= "%#warningmsg#"
-    let statLine .= "%{SyntasticStatuslineFlag()}"                              " Syntastic errors
+    if exists('*SyntasticStatuslineFlag')
+        let statLine .= "%{SyntasticStatuslineFlag()}"                              " Syntastic errors
+    endif
     let statLine .= "%#statusBackground#"
     let statLine .= "%#statusBackground# %="                                    " Space
     let statLine .= "%#statusBackground# %y "                                   " FileType

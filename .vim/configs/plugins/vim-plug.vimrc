@@ -6,12 +6,17 @@ if !g:isWindows
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
     Plug 'wellle/tmux-complete.vim'                       " Add completion for text from tmux panel
-    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'   " Snippets.
 endif
+" For working it is necessary to have python3 installed
+" On Windows you have to have the same architecture (32 or 64 bits) versions of vim and python
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'   " Snippets.
 " }}} Code Completion "
 " Fuzzy Finder {{{ "
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" On windows download binaries from the github
+if !g:isWindows
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+endif
 Plug 'junegunn/fzf.vim'
 " }}} Fuzzy Finder "
 " Git {{{ "

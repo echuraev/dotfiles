@@ -36,7 +36,7 @@ set linebreak
 set autoread
 set synmaxcol=300            " Don't try to highlight long lines"
 syntax enable
-colorscheme xoria256 " jellybeans
+silent! colorscheme xoria256 " jellybeans
 set colorcolumn=80     " Set Color Column
 "hi ColorColumn ctermbg=1 guibg='#800000'
 if !g:isWindows
