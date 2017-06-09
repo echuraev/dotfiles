@@ -18,18 +18,23 @@ Configuration files are in the ***configs/*** directory. I splitted all my confi
 
 ### Common configurations
 * *common.vimrc*
+
   This file included common settings of VIM such as:
   * Enabling filetype detection
   * Configuration of files encryption
   * Search settings
   * and etc.
 * *common-functions.vimrc*
+
   This file included some VimScript functions that can be useful for VIM configuring.
 * *file-association.vimrc*
+
   Here is determined settings for associating different  filename extensions with special filetype.
 * *key-bindings.vimrc*
+
   In this file are VIM key bindings. I remapped leader key to `,`.
 * *statusline.vimrc*
+
   This file included my configuration for status line. I don't like to use something like *powerline* or *airline* because it increases launch time of VIM.
 
 ### Plugins configurations
@@ -58,21 +63,35 @@ Information about colors I found [here](http://vim.wikia.com/wiki/Xterm256_color
 
 ## Try the following plugins
 https://github.com/severin-lemaignan/vim-minimap
+
 https://github.com/amoffat/snake
+
 https://github.com/tbabej/taskwiki
+
 https://github.com/paradigm/TextObjectify or https://github.com/wellle/targets.vim
+
 https://github.com/justinmk/vim-gtfo
+
 https://github.com/junegunn/vader.vim
+
 https://github.com/rking/ag.vim
+
 https://github.com/jaxbot/semantic-highlight.vim
+
 https://github.com/python-mode/python-mode
+
 https://github.com/junegunn/limelight.vim
+
 https://github.com/junegunn/vim-easy-align or https://github.com/godlygeek/tabular
 
 ### Spell checking
 https://opensource.com/article/17/2/vim-plugins-writers
+
 https://github.com/rhysd/vim-grammarous
+
 https://github.com/reedes/vim-wordy
+
 https://github.com/dbmrq/vim-ditto
+
 https://github.com/dpelle/vim-LanguageTool
 
