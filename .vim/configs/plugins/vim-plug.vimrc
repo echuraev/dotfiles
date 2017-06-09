@@ -1,9 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
 " Code Completion {{{ "
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': [] }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
 if !g:isWindows
-    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': [] }
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
     Plug 'wellle/tmux-complete.vim'                       " Add completion for text from tmux panel
 else
@@ -89,10 +89,8 @@ Plug 'pearance/vim-tmux', { 'for': 'tmux' }                 " Tmux configuration
 "Plug 'Superbil/llvm.vim', { 'for': ['llvm', 'tablegen'] }   " llvm and opencl syntax highlight
 " }}} Syntax highlight "
 " LaTeX {{{ "
-if !g:isWindows
-    Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
-    Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
-endif
+Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
+Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
 " }}} LaTeX "
 " Markdown {{{ "
 Plug 'plasticboy/vim-markdown'
@@ -103,7 +101,9 @@ if g:personalConfig == 1 || g:extendedConfig == 1
 endif
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'vimwiki/vimwiki'                " Organize notes
-Plug 'tbabej/taskwiki'                " Taskwarior for vimwiki
+if !g:isWindows
+    Plug 'tbabej/taskwiki'                " Taskwarior for vimwiki
+endif
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
 " }}} Other "
 
