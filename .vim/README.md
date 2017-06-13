@@ -58,7 +58,9 @@ The solution is: remove this binary file and install `xz`
 
 ### Misc.:
 Found fix for vim background [here](https://sunaku.github.io/vim-256color-bce.html)
+
 Status line configuration I found [here](https://gabri.me/blog/diy-vim-statusline) and [here](http://vim.wikia.com/wiki/Change_statusline_color_to_show_insert_or_normal_mode).
+
 Information about colors I found [here](http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim) and [here](https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg).
 
 ## Try the following plugins
@@ -66,15 +68,11 @@ https://github.com/severin-lemaignan/vim-minimap
 
 https://github.com/amoffat/snake
 
-https://github.com/tbabej/taskwiki
-
 https://github.com/paradigm/TextObjectify or https://github.com/wellle/targets.vim
 
 https://github.com/justinmk/vim-gtfo
 
 https://github.com/junegunn/vader.vim
-
-https://github.com/rking/ag.vim
 
 https://github.com/jaxbot/semantic-highlight.vim
 
@@ -83,6 +81,14 @@ https://github.com/python-mode/python-mode
 https://github.com/junegunn/limelight.vim
 
 https://github.com/junegunn/vim-easy-align or https://github.com/godlygeek/tabular
+
+https://github.com/metakirby5/codi.vim
+
+https://github.com/mhinz/vim-grepper
+
+https://github.com/w0rp/ale
+
+https://github.com/devjoe/vim-codequery
 
 ### Spell checking
 https://opensource.com/article/17/2/vim-plugins-writers
