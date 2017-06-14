@@ -33,6 +33,7 @@ Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 Plug 'osyo-manga/vim-over'            " Replace highlighter
 Plug 'dkprice/vim-easygrep'           " Easy grep
 Plug 'mileszs/ack.vim'                " Run ack in vim
+Plug 'mhinz/vim-grepper'              " Asynchronous search
 " }}} Search "
 " Project {{{ "
 Plug 'tpope/vim-dispatch'             " Project compiling

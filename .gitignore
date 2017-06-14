@@ -9,6 +9,7 @@
 \#*\#
 .\#*
 /.vim/.netrwhist
+/.vim/view
 *.DS_Store
 
 # Except the following files
