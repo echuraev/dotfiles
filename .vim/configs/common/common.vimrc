@@ -3,7 +3,9 @@ filetype plugin indent on
 filetype plugin on
 " }}} Filetype detection "
 " Files Encryption {{{ "
-set cm=blowfish2
+if v:version > 704 || (v:version == 704 && has('patch399'))
+    set cm=blowfish2
+endif
 " }}} Files Encryption "
 " Search {{{
 set ignorecase                  " ignore register for search

@@ -1,8 +1,10 @@
 call plug#begin('~/.vim/plugged')
 
 " Code Completion {{{ "
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': [] }
-Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
+if v:version > 704 || (v:version == 704 && has('patch1578'))     " This is a limitation of YCM
+    Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': [] }
+endif
 if !g:isWindows
     Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
     Plug 'wellle/tmux-complete.vim'                       " Add completion for text from tmux panel
@@ -56,9 +58,11 @@ Plug 'tpope/vim-surround'             " Work with surroundings in pairs.
 Plug 'junegunn/vim-easy-align'        " Vim alignment plugin
 " }}} Text manipulation "
 " Common {{{ "
+if v:version > 704 || (v:version == 704 && has('patch248'))     " systemlist function was added in patch 248
+    Plug 'chrisbra/vim-diff-enhanced' " Diff viewer
+endif
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'vim-syntastic/syntastic'        " Syntax checking plugin
-Plug 'chrisbra/vim-diff-enhanced'     " Diff viewer
 Plug 'will133/vim-dirdiff'            " Dir diff viewer
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 Plug 'tpope/vim-unimpaired'           " Fast navigation
