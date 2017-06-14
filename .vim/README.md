@@ -71,11 +71,6 @@ https://github.com/jaxbot/semantic-highlight.vim
 
 https://github.com/junegunn/limelight.vim
 
-### Text manipulation
-https://github.com/paradigm/TextObjectify or https://github.com/wellle/targets.vim
-
-https://github.com/junegunn/vim-easy-align or https://github.com/godlygeek/tabular
-
 ### Programming
 https://github.com/python-mode/python-mode
 
