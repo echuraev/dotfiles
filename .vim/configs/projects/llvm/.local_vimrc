@@ -1,0 +1,2 @@
+let s:root = expand('<sfile>:h').'/'
+let &makeprg="python ".s:root."automation/Build_LLVM.py -t Ubuntu64 -b Debug --llvm-src=".s:root."llvm --llvm-install ".s:root."tmp_llvm_install"

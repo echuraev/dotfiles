@@ -29,6 +29,6 @@ nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
 " }}} Copy and paste mapping "
 " Compile key mapping {{{ "
-nnoremap <F5> :make<CR>
+nnoremap <F5> :Dispatch<CR>
 " }}} Compile key mapping "
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%' " Get directory of current file

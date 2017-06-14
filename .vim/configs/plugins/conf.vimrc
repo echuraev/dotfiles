@@ -14,6 +14,7 @@ let s:vim_configuration_files = [
 \ 'easygrep.vimrc',
 \ 'vim-xkbswitch.vimrc',
 \ 'vimwiki.vimrc',
+\ 'local_vimrc.vimrc',
 \]
 
 for file in s:vim_configuration_files

@@ -37,6 +37,8 @@ Plug 'mhinz/vim-grepper'              " Asynchronous search
 " }}} Search "
 " Project {{{ "
 Plug 'tpope/vim-dispatch'             " Project compiling
+Plug 'LucHermitte/lh-vim-lib'         " Dependency of local_vimrc
+Plug 'LucHermitte/local_vimrc'        " Local vimrc files for projects
 if !g:isWindows
     Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
 endif
