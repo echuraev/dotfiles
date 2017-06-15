@@ -16,6 +16,7 @@ let s:vim_configuration_files = [
 \ 'vimwiki.vimrc',
 \ 'local_vimrc.vimrc',
 \ 'fzf.vimrc',
+\ 'startify.vimrc',
 \]
 
 for file in s:vim_configuration_files
