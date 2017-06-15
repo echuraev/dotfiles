@@ -161,4 +161,12 @@ gshow() {
                 {}
 FZF-EOF"
 }
+
+# tm - connect to tmux session
+tm() {
+  local session
+  session=$(tmux list-sessions -F "#{session_name}" | \
+    fzf --query="$1" --select-1 --exit-0) &&
+    tmux attach-session -t "$session" || echo "No tmux sessions"
+}
 # }}} FZF configurations #
