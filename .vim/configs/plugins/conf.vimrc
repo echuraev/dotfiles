@@ -17,6 +17,7 @@ let s:vim_configuration_files = [
 \ 'local_vimrc.vimrc',
 \ 'fzf.vimrc',
 \ 'startify.vimrc',
+\ 'vim-cpp-enhanced-highlight.vimrc',
 \]
 
 for file in s:vim_configuration_files
