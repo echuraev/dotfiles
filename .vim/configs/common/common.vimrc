@@ -27,11 +27,11 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 set cindent
+set smartindent
 " }}} Tab size
 " View settings {{{ "
 set rnu                      " Relative numbers
 set nu                       " Show numbers
-set ai                       " auto indent
 set cursorline               " Highlight current line
 set showcmd
 set linebreak

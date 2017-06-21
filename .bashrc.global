@@ -8,9 +8,6 @@
 #     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # fi
 
-# include it in your bash rc by this command:
-# [ -f ~/.bashrc.global ] && source ~/.bashrc.global
-
 export LANG="en_US.UTF-8"
 
 export SVN_EDITOR=/usr/bin/vim
@@ -42,6 +39,28 @@ if [ ! -f $ACK_BIN ]; then
     # Install ack
     echo "Install ack"
     curl https://beyondgrep.com/ack-2.18-single-file > $ACK_BIN && chmod 0755 $ACK_BIN
+fi
+
+export PT_BIN=$LOCAL_BIN/pt
+if [ ! -f $PT_BIN ]; then
+    # Install pt
+    echo "Install pt"
+    export pt_version='v2.1.5'
+    export pt_archive_name='pt_linux_amd64'
+    wget -O /tmp/$pt_archive_name.tar.gz https://github.com/monochromegane/the_platinum_searcher/releases/download/$pt_version/$pt_archive_name.tar.gz
+    tar xf /tmp/$pt_archive_name.tar.gz -C /tmp
+    cp -f /tmp/$pt_archive_name/pt $PT_BIN
+fi
+
+export RG_BIN=$LOCAL_BIN/rg
+if [ ! -f $RG_BIN ]; then
+    # Install rg
+    echo "Install rg"
+    export rg_version='0.5.2'
+    export rg_archive_name='ripgrep-0.5.2-x86_64-unknown-linux-musl'
+    wget -O /tmp/$rg_archive_name.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/$rg_version/$rg_archive_name.tar.gz
+    tar xf /tmp/$rg_archive_name.tar.gz -C /tmp
+    cp -f /tmp/$rg_archive_name/rg $RG_BIN
 fi
 # }}} Setup environment #
 # FZF configurations {{{ #
