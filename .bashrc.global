@@ -46,9 +46,15 @@ if [ ! -f $PT_BIN ]; then
     # Install pt
     echo "Install pt"
     export pt_version='v2.1.5'
-    export pt_archive_name='pt_linux_amd64'
-    wget -O /tmp/$pt_archive_name.tar.gz https://github.com/monochromegane/the_platinum_searcher/releases/download/$pt_version/$pt_archive_name.tar.gz
-    tar xf /tmp/$pt_archive_name.tar.gz -C /tmp
+    if [[ `uname` != 'Darwin' ]]; then
+        export pt_archive_name='pt_linux_amd64'
+        wget -O /tmp/$pt_archive_name.tar.gz https://github.com/monochromegane/the_platinum_searcher/releases/download/$pt_version/$pt_archive_name.tar.gz
+        tar xf /tmp/$pt_archive_name.tar.gz -C /tmp
+    else
+        export pt_archive_name='pt_darwin_amd64'
+        wget -O /tmp/$pt_archive_name.zip https://github.com/monochromegane/the_platinum_searcher/releases/download/$pt_version/$pt_archive_name.zip
+        unzip /tmp/$pt_archive_name.zip -d /tmp
+    fi
     cp -f /tmp/$pt_archive_name/pt $PT_BIN
 fi
 
@@ -57,7 +63,11 @@ if [ ! -f $RG_BIN ]; then
     # Install rg
     echo "Install rg"
     export rg_version='0.5.2'
-    export rg_archive_name='ripgrep-0.5.2-x86_64-unknown-linux-musl'
+    if [[ `uname` != 'Darwin' ]]; then
+        export rg_archive_name='ripgrep-0.5.2-x86_64-unknown-linux-musl'
+    else
+        export rg_archive_name='ripgrep-0.5.2-x86_64-apple-darwin'
+    fi
     wget -O /tmp/$rg_archive_name.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/$rg_version/$rg_archive_name.tar.gz
     tar xf /tmp/$rg_archive_name.tar.gz -C /tmp
     cp -f /tmp/$rg_archive_name/rg $RG_BIN
