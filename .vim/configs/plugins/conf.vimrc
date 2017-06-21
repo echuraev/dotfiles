@@ -18,6 +18,7 @@ let s:vim_configuration_files = [
 \ 'fzf.vimrc',
 \ 'startify.vimrc',
 \ 'vim-cpp-enhanced-highlight.vimrc',
+\ 'ack.vimrc',
 \]
 
 for file in s:vim_configuration_files
