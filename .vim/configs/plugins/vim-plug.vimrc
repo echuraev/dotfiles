@@ -1,21 +1,53 @@
 call plug#begin('~/.vim/plugged')
 
+" Programming {{{ "
+" C++ {{{ "
 " Code Completion {{{ "
 if v:version > 704 || (v:version == 704 && has('patch1578'))     " This is a limitation of YCM
     Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': [] }
 endif
+" }}} Code Completion "
+" Syntax highlighting {{{ "
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting
+" }}} Syntax highlighting "
+" }}} C++ "
+" C# {{{ "
+" Code Completion {{{ "
 if !g:isWindows
     Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
-    Plug 'wellle/tmux-complete.vim'                       " Add completion for text from tmux panel
 else
     " For enable msbuild add to path variable path to .NET framework. E.g.: C:\Windows\Microsoft.NET\Framework\v4.0.30319
     Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && msbuild' }         " C# completion
 endif
+" }}} Code Completion "
+" Syntax highlighting {{{ "
+Plug 'OrangeT/vim-csharp', { 'for': 'cs' }                  " C# highlighting
+" }}} Syntax highlighting "
+" }}} C# "
+" LaTeX {{{ "
+Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
+Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
+" }}} LaTeX "
+" Markdown {{{ "
+Plug 'plasticboy/vim-markdown'
+" }}} Markdown "
+" OpenCL {{{ "
+" Syntax highlighting {{{ "
+Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }            " OpenCL syntax highlight
+" }}} Syntax highlighting "
+" }}} OpenCL "
+" Debugging {{{ "
+if !g:isWindows
+    Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
+endif
+" }}} Debugging "
+" }}} Programming "
+" Snippets {{{ "
 " For working it is necessary to have python3 installed
 " On Windows you have to have the same architecture (32 or 64 bits) versions of vim and python
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'   " Snippets.
-" }}} Code Completion "
+" }}} Snippets "
 " Fuzzy Finder {{{ "
 " Plugin outside ~/.vim/plugged with post-update hook
 " On windows download binaries from the github
@@ -26,10 +58,21 @@ else
 endif
 Plug 'junegunn/fzf.vim'
 " }}} Fuzzy Finder "
+" Tmux {{{ "
+if !g:isWindows
+    " Text Completion {{{ "
+    Plug 'wellle/tmux-complete.vim'                       " Add completion for text from tmux panel
+    " }}} Text Completion "
+    " Syntax highlight {{{ "
+    Plug 'pearance/vim-tmux', { 'for': 'tmux' }                 " Tmux configuration highlight
+    " }}} Syntax highlight "
+endif
+" }}} Tmux "
 " Git {{{ "
 Plug 'tpope/vim-fugitive'                " Git plugin
 Plug 'airblade/vim-gitgutter'            " Extencion for git
 Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
+Plug 'tpope/vim-git'                     " git syntax highlight
 " }}} Git "
 " Search {{{ "
 Plug 'osyo-manga/vim-over'            " Replace highlighter
@@ -47,7 +90,6 @@ endif
 " }}} Project "
 " File Tree {{{ "
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
-"Plug 'Shougo/unite.vim' | Plug 'shougo/vimfiler.vim'
 " }}} File Tree "
 " Text manipulation {{{ "
 Plug 'wellle/targets.vim'             " Add various text objects to VIM
@@ -81,32 +123,13 @@ if g:isWindows
     Plug 'DeXP/xkb-switch-win'
 endif
 " }}} Dependency of vim-xkbswitch "
-if !g:isWindows
-    Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
-endif
 " }}} Common "
 " View {{{ "
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
 Plug 'ntpeters/vim-better-whitespace' " Highlight whitespaces
 Plug 'sjl/gundo.vim'                  " Visualize vim undo tree
 Plug 'vim-scripts/xoria256.vim'       " Color scheme
-"Plug 'nanotech/jellybeans.vim'
 " }}} View "
-" Syntax highlight {{{ "
-Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting
-Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }            " OpenCL syntax highlight
-Plug 'tpope/vim-git'                  " git syntax highlight
-Plug 'OrangeT/vim-csharp', { 'for': 'cs' }                  " C# highlighting
-Plug 'pearance/vim-tmux', { 'for': 'tmux' }                 " Tmux configuration highlight
-"Plug 'Superbil/llvm.vim', { 'for': ['llvm', 'tablegen'] }   " llvm and opencl syntax highlight
-" }}} Syntax highlight "
-" LaTeX {{{ "
-Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
-Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
-" }}} LaTeX "
-" Markdown {{{ "
-Plug 'plasticboy/vim-markdown'
-" }}} Markdown "
 " Other {{{ "
 if g:personalConfig == 1 || g:extendedConfig == 1
     Plug 'wakatime/vim-wakatime'          " Time tracking
