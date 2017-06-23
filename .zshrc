@@ -54,4 +54,6 @@ setopt +o nomatch # Allow * commands i.g.: rm -f *
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ZSH aliase
-alias ls='k -h'
+if type "k" > /dev/null ; then
+    alias ls='k -h'
+fi
