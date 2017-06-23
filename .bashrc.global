@@ -14,10 +14,6 @@ export SVN_EDITOR=/usr/bin/vim
 
 export TERM=xterm-256color
 
-#if type "screenfetch" > /dev/null ; then
-#    screenfetch -E # -E option will suppress errors
-#fi
-
 # Aliases {{{ #
 if [[ `uname` != 'Darwin' ]]; then
     alias ls='ls --color=always'
@@ -73,6 +69,24 @@ if [ ! -f $RG_BIN ]; then
     cp -f /tmp/$rg_archive_name/rg $RG_BIN
 fi
 # }}} Setup environment #
+# Common functions {{{ #
+weather() {
+    # See help here: http://wttr.in/:help
+    if [ -z "$1" ]; then
+        curl "wttr.in/nizhny_novgorod?m&M"
+    else
+        curl "wttr.in/$1?m&M"
+    fi
+}
+
+weather_today() {
+    if [ -z "$1" ]; then
+        curl "wttr.in/nizhny_novgorod?m&M&0"
+    else
+        curl "wttr.in/$1?m&M&0"
+    fi
+}
+# }}} Common functions #
 # FZF configurations {{{ #
 
 # FZF search program. Get config from here: https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
@@ -208,3 +222,10 @@ tm() {
     tmux attach-session -t "$session" || echo "No tmux sessions"
 }
 # }}} FZF configurations #
+# Autorun {{{ #
+#if type "screenfetch" > /dev/null ; then
+#    screenfetch -E # -E option will suppress errors
+#fi
+weather_today
+# }}} Autorun #
+

@@ -37,6 +37,11 @@ Plug 'plasticboy/vim-markdown'
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }            " OpenCL syntax highlight
 " }}} Syntax highlighting "
 " }}} OpenCL "
+" Python {{{ "
+" Code Completion {{{ "
+" It provides by YCM. See C++ code completion.
+" }}} Code Completion "
+" }}} Python "
 " Debugging {{{ "
 if !g:isWindows
     Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
