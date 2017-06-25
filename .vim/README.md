@@ -14,7 +14,7 @@ For enable msbuild add to path variable path to .NET framework. For example:
 Install all dependencies. See [here](https://github.com/Valloric/YouCompleteMe#windows).
 
 ## Configuration
-Configuration files are in the ***configs/*** directory. I divided all my configuration files on two groups: ***common/*** and ***plugins/***. In ***common/*** directory are the files that controls common behavior of VIM. In ***plugins/*** are configuration files for all installed plugins. Both of these directories are included file ***conf.vimrc***. This file determine which configurations should be loaded.
+Configuration files are in the ***configs/*** directory. I divided all my configuration files on two groups: ***common*** and ***plugins***. In ***common/*** directory are the files that controls common behavior of VIM. In ***plugins/*** are configuration files for all installed plugins. Both of these directories are included file ***conf.vimrc***. This file determine which configurations should be loaded.
 
 ### Common configurations
 * *common.vimrc*
