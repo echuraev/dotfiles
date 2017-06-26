@@ -11,6 +11,7 @@
 /.vim/.netrwhist
 /.vim/view
 *.DS_Store
+/.config/*
 
 # Except the following files
 !.ackrc
@@ -20,6 +21,8 @@
 !.tmux.conf
 !.tmux
 !.vim/
+!.config/
+!.config/awesome/
 !.vimrc
 !.zsh/
 !.zshrc
