@@ -8,12 +8,13 @@ awful.rules = require("awful.rules")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
-require("vicious")
+--require("vicious")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+local lain = require("lain")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -122,8 +123,17 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibox
+-- Widget buttons
+chrome_button = awful.widget.button({ image = beautiful.chrome_icon })
+chrome_button:buttons(awful.util.table.join(
+    awful.button({ }, 1, function () awful.util.spawn("google-chrome") end)
+))
+
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
+
+-- Calendar widget
+--lain.widget.calendar:attach(mytextclock)
 
 -- Keyboard map indicator and changer
 kbdcfg = {}
