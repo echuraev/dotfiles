@@ -36,3 +36,5 @@
 !.bashrc.global
 !.gdbinit
 !.gdb-dashboard/
+!.Xresources
+!.xinitrc

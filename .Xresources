@@ -1,0 +1,69 @@
+! Color scheme
+
+! Normal
+! color0    black
+! color1    red
+! color2    green
+! color3    yellow
+! color4    blue
+! color5    purple
+! color6    cyan
+! color7    white
+
+URxvt*color0:    #000000
+URxvt*color1:    #C00000
+URxvt*color2:    #00C000
+URxvt*color3:    #C0C000
+URxvt*color4:    #0C00C0
+URxvt*color5:    #AA00AA
+URxvt*color6:    #00AAAA
+URxvt*color7:    #FFFFFF
+
+! Light
+! color8     darkgray
+! color9     red
+! color10    green
+! color11    yellow
+! color12    blue
+! color13    purple
+! color14    cyan
+! color15    lightgray
+
+URxvt*color8:     #212121
+URxvt*color9:     #FF8080
+URxvt*color10:    #80FF80
+URxvt*color11:    #FFFF88
+URxvt*color12:    #99CCFF
+URxvt*color13:    #B14CC2
+URxvt*color14:    #9BFFFF
+URxvt*color15:    #D0D0D0
+
+! Set fount
+! URxvt.font: xft:Droid Sans Mono:pixelsize=11:antialias=true
+! URxvt.boldFont: xft:Droid Sans Mono:bold:pixelsize=11:antialias=true
+
+! Background color
+URxvt*background: black
+! Foreground color
+URxvt*foreground: #00FF00
+! Highlight underlined text (links)
+URxvt.underlineColor: blue
+
+! Cursor color
+URxvt.cursorColor: green
+! Cursor blinking
+URxvt.cursorBlink: true
+
+! Enable scrollbar
+URxvt*scrollBar: true
+
+! Load plugins
+ URxvt.perl-ext-common:  default,matcher,url-select
+
+! Transparent
+URxvt.transparent: true
+! Decreasing (-100 .. -1) or increasing (0 .. 100) highlight of transparent background
+URxvt.shading: 25
+
+! Window initial size
+URxvt.geometry: 80x25
