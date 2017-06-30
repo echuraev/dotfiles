@@ -55,7 +55,7 @@ URxvt.cursorColor: green
 URxvt.cursorBlink: true
 
 ! Enable scrollbar
-URxvt*scrollBar: true
+URxvt*scrollBar: false
 
 ! Load plugins
  URxvt.perl-ext-common:  default,matcher,url-select
