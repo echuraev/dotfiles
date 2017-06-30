@@ -38,32 +38,44 @@ URxvt*color13:    #B14CC2
 URxvt*color14:    #9BFFFF
 URxvt*color15:    #D0D0D0
 
-! Set fount
-! URxvt.font: xft:Droid Sans Mono:pixelsize=11:antialias=true
-! URxvt.boldFont: xft:Droid Sans Mono:bold:pixelsize=11:antialias=true
-
 ! Background color
-URxvt*background: black
+URxvt*background: #212121
 ! Foreground color
-URxvt*foreground: #00FF00
+URxvt*foreground: #C0C0C0
 ! Highlight underlined text (links)
 URxvt.underlineColor: blue
 
 ! Cursor color
-URxvt.cursorColor: green
+URxvt.cursorColor: #C0C0C0
 ! Cursor blinking
 URxvt.cursorBlink: true
 
+! Set fount
+URxvt.font-size: 24
+! URxvt.font: xft:Droid Sans Mono:pixelsize=11:antialias=true
+! URxvt.boldFont: xft:Droid Sans Mono:bold:pixelsize=11:antialias=true
+
 ! Enable scrollbar
-URxvt*scrollBar: false
+URxvt*scrollBar: true
+URxvt*scrollBar_right: true
+URxvt.scrollstyle: plain
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
 
 ! Load plugins
- URxvt.perl-ext-common:  default,matcher,url-select
+URxvt.perl-lib:         $HOME/.config/urxvt/perl/
+URxvt.perl-ext-common:  default,matcher,url-select,tabbed
+
+! Plugins
+! Links are clickable on left mouse button
+URxvt.matcher.button: 1
 
 ! Transparent
 URxvt.transparent: true
 ! Decreasing (-100 .. -1) or increasing (0 .. 100) highlight of transparent background
-URxvt.shading: 25
+URxvt.shading: 20
 
 ! Window initial size
 URxvt.geometry: 80x25
+! Terminal history size
+URxvt*saveLines: 7000
