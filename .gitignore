@@ -38,3 +38,4 @@
 !.gdb-dashboard/
 !.Xresources
 !.xinitrc
+!install.sh
