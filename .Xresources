@@ -51,9 +51,10 @@ URxvt.cursorColor: #C0C0C0
 URxvt.cursorBlink: true
 
 ! Set fount
-URxvt.font: -schumacher-*-medium-*-*-*-14-*-*-*-*-*-*-*
-! URxvt.font: xft:Droid Sans Mono:pixelsize=11:antialias=true
-! URxvt.boldFont: xft:Droid Sans Mono:bold:pixelsize=11:antialias=true
+! URxvt.font: -schumacher-*-medium-*-*-*-14-*-*-*-*-*-*-*
+! URxvt.boldFont: -schumacher-*-bold-*-*-*-14-*-*-*-*-*-*-*
+URxvt.font: xft:Ubuntu Mono:pixelsize=14:style=regular
+URxvt.boldFont: xft:Ubuntu Mono:bold:pixelsize=14:style=regular
 
 ! Enable scrollbar
 URxvt*scrollBar: true
