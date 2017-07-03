@@ -404,7 +404,9 @@ globalkeys = awful.util.table.join(globalkeys,
     -- Shift-Alt to change keyboard layout
     awful.key({"Shift"}, "Alt_L", function () kbdcfg.switch() end),
     -- Alt-Shift to change keyboard layout
-    awful.key({"Mod1"}, "Shift_L", function () kbdcfg.switch() end)
+    awful.key({"Mod1"}, "Shift_L", function () kbdcfg.switch() end),
+    -- Lock screen
+    awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end)
 )
 -- }}}
 
@@ -587,4 +589,7 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+-- {{{ Autorun
+awful.util.spawn_with_shell("xscreensaver -no-splash")
 -- }}}
