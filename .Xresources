@@ -51,7 +51,7 @@ URxvt.cursorColor: #C0C0C0
 URxvt.cursorBlink: true
 
 ! Set fount
-URxvt.font-size: 24
+URxvt.font: -schumacher-*-medium-*-*-*-14-*-*-*-*-*-*-*
 ! URxvt.font: xft:Droid Sans Mono:pixelsize=11:antialias=true
 ! URxvt.boldFont: xft:Droid Sans Mono:bold:pixelsize=11:antialias=true
 
