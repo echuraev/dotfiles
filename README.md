@@ -33,6 +33,18 @@ I use VIM as my primary text editor. My Vim configuration with description you c
 In zsh I use [zplug](https://github.com/zplug/zplug) as my plugins manager. Also I use vim mode for editing commands.
 
 ## Some tips
+### Linux
+<details>
+<summary><strong>Problem with headphones on Ubuntu 16.04</strong></summary>
+<br>
+
+It was no sound in headphones on Ubuntu 16.04. I found solution [here](https://bugs.launchpad.net/ubuntu/+source/alsa-driver/+bug/1606078). I added to the end of the `/etc/modprobe.d/alsa-base.conf` the following line:
+```
+options snd-hda-intel model=generic
+```
+If after reboot headphones are not working, try to kill pulseaudio: `pulseaudio -k`.
+</details>
+
 ### Mac OS
 <details>
 <summary><strong>Auto-mount NTFS volumes in read-write mode</strong></summary>
