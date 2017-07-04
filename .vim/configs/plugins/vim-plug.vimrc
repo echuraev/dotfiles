@@ -133,6 +133,7 @@ endif
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
 Plug 'ntpeters/vim-better-whitespace' " Highlight whitespaces
 Plug 'sjl/gundo.vim'                  " Visualize vim undo tree
+Plug 'chrisbra/Colorizer'             " A plugin to color colornames and codes
 Plug 'vim-scripts/xoria256.vim'       " Color scheme
 " }}} View "
 " Other {{{ "
@@ -142,7 +143,7 @@ endif
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'vimwiki/vimwiki'                " Organize notes
 if !g:isWindows
-    Plug 'tbabej/taskwiki'                " Taskwarior for vimwiki
+"    Plug 'tbabej/taskwiki'                " Taskwarior for vimwiki
 endif
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
 " }}} Other "
