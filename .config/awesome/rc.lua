@@ -592,4 +592,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 -- {{{ Autorun
 awful.util.spawn_with_shell("xscreensaver -no-splash")
+awful.util.spawn_with_shell("/usr/local/bin/dropbox.py start")
 -- }}}

@@ -74,3 +74,6 @@ URxvt.shading: 20
 URxvt.geometry: 80x25
 ! Terminal history size
 URxvt*saveLines: 7000
+
+! Use clipboard for copies
+URxvt.clipboard.autocopy: true
