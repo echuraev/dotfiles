@@ -58,12 +58,12 @@ URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 
 ! Load plugins
-URxvt.perl-lib:         $HOME/.config/urxvt/perl/
-URxvt.perl-ext-common:  default,matcher,url-select,tabbed
+URxvt.perl-ext-common:  default,matcher,url-select,tabbed,keyboard-select
 
 ! Plugins
 ! Links are clickable on left mouse button
 URxvt.matcher.button: 1
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
 
 ! Transparent
 URxvt.transparent: true

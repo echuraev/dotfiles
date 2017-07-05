@@ -11,3 +11,7 @@ done
 for f in $HFILES; do
     cp -rf $f $install_dir
 done
+
+cd $install_dir
+git submodule init
+git submodule update
