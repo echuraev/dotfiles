@@ -14,7 +14,6 @@
 /.config/*
 
 # Except the following files
-!.ackrc
 !.gitconfig
 !.gitignore
 !.gitmodules
@@ -27,11 +26,6 @@
 !.zsh/
 !.zshrc
 !.bash_profile
-!.emacs
-!.emacs.d/
-!.emacs.d/configs/
-!.emacs.d/gen_tags.sh
-!.emacs.d/README.org
 !.bashrc
 !.bashrc.global
 !.gdbinit
