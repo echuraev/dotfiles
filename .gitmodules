@@ -7,3 +7,6 @@
 [submodule ".urxvt/ext/urxvt-perls"]
 	path = .urxvt/ext/urxvt-perls
 	url = https://github.com/muennich/urxvt-perls
+[submodule ".urxvt/ext/urxvt-tabbedex"]
+	path = .urxvt/ext/urxvt-tabbedex
+	url = https://github.com/mina86/urxvt-tabbedex
