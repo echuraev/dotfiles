@@ -105,4 +105,5 @@ autocmd FileType qf setlocal nospell               " Removed QuickFix window fro
 " Other {{{ "
 set backspace=2 " Fix backspace behavior on mac os
 set hidden      " Can open new buffer even if current buffer has unsaved changes
+set undofile    " Save undo's after file closes"
 " }}} Other "
