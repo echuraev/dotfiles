@@ -254,6 +254,16 @@ awful.screen.connect_for_each_screen(function(s)
             s.mylayoutbox,
         },
     }
+
+    -- Create the bottom panel
+    s.bottom_panel = awful.wibar({ position = "bottom", screen = s })
+
+    -- Add widgets to the wibox
+    s.bottom_panel:setup {
+        layout = wibox.layout.align.horizontal,
+        --s.mytasklist, -- Middle widget
+        s.mylayoutbox,
+    }
 end)
 -- }}}
 
@@ -406,7 +416,9 @@ globalkeys = awful.util.table.join(globalkeys,
     -- Alt-Shift to change keyboard layout
     awful.key({"Mod1"}, "Shift_L", function () kbdcfg.switch() end),
     -- Lock screen
-    awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end)
+    awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
+    -- Take screenshot
+    awful.key({ }, "Print", function () awful.util.spawn("screengrab") end)
 )
 -- }}}
 
