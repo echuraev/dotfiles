@@ -119,16 +119,13 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-chrome_button = awful.widget.button({ image = beautiful.chrome_icon })
-chrome_button:buttons(awful.util.table.join(
-    awful.button({ }, 1, function () awful.util.spawn("google-chrome") end)
-))
-
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+
+-- Keyboard map indicator and switcher
+mykeyboardlayout = awful.widget.keyboardlayout()
+
 -- Calendar widget
 --lain.widget.calendar:attach(mytextclock)
 
@@ -602,6 +599,7 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
 -- {{{ Autorun
 awful.util.spawn_with_shell("xscreensaver -no-splash")
 awful.util.spawn_with_shell("/usr/local/bin/dropbox.py start")

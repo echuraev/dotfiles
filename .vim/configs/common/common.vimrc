@@ -71,6 +71,7 @@ set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 autocmd FileType vim set foldmethod=marker foldenable foldlevel=0
 autocmd FileType sh set foldmethod=marker foldenable foldlevel=0
+autocmd FileType lua set foldmethod=marker foldenable foldlevel=0
 " }}} Folding settings "
 " Mouse settings {{{ "
 set mouse=a
