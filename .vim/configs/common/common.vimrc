@@ -106,4 +106,8 @@ autocmd FileType qf setlocal nospell               " Removed QuickFix window fro
 set backspace=2 " Fix backspace behavior on mac os
 set hidden      " Can open new buffer even if current buffer has unsaved changes
 set undofile    " Save undo's after file closes"
+if !g:isWindows
+    silent !mkdir ~/.vim/undodir > /dev/null 2>&1
+    set undodir=~/.vim/undodir     " Directory for saving undo files
+endif
 " }}} Other "

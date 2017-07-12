@@ -9,6 +9,7 @@
 \#*\#
 .\#*
 /.vim/.netrwhist
+/.vim/undodir
 /.vim/view
 *.DS_Store
 /.config/*
