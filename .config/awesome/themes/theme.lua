@@ -51,54 +51,23 @@ theme.menu_width  = 100
 --theme.bg_widget = "#cc0000"
 
 -- Define the image to load
-theme.titlebar_close_button_normal = "/usr/share/awesome/themes/default/titlebar/close_normal.png"
-theme.titlebar_close_button_focus  = "/usr/share/awesome/themes/default/titlebar/close_focus.png"
-
-theme.titlebar_ontop_button_normal_inactive = "/usr/share/awesome/themes/default/titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive  = "/usr/share/awesome/themes/default/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active = "/usr/share/awesome/themes/default/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/ontop_focus_active.png"
-
-theme.titlebar_sticky_button_normal_inactive = "/usr/share/awesome/themes/default/titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive  = "/usr/share/awesome/themes/default/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active = "/usr/share/awesome/themes/default/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/sticky_focus_active.png"
-
-theme.titlebar_floating_button_normal_inactive = "/usr/share/awesome/themes/default/titlebar/floating_normal_inactive.png"
-theme.titlebar_floating_button_focus_inactive  = "/usr/share/awesome/themes/default/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_active = "/usr/share/awesome/themes/default/titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/floating_focus_active.png"
-
-theme.titlebar_maximized_button_normal_inactive = "/usr/share/awesome/themes/default/titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
-
---function file_exists(name)
---   local f=io.open(name,"r")
---   if f~=nil then io.close(f) return true else return false end
---end
-
 local background_img = "~/Pictures/awesome/background.jpg"
---if file_exists(background_img) == true then
 theme.wallpaper = background_img
---else
---    theme.wallpaper = "/usr/share/awesome/themes/default/background.png"
 --end
 
 -- You can use your own layout icons like this:
-theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairh.png"
-theme.layout_fairv = "/usr/share/awesome/themes/default/layouts/fairv.png"
-theme.layout_floating  = "/usr/share/awesome/themes/default/layouts/floating.png"
-theme.layout_magnifier = "/usr/share/awesome/themes/default/layouts/magnifier.png"
-theme.layout_max = "/usr/share/awesome/themes/default/layouts/max.png"
-theme.layout_fullscreen = "/usr/share/awesome/themes/default/layouts/fullscreen.png"
-theme.layout_tilebottom = "/usr/share/awesome/themes/default/layouts/tilebottom.png"
-theme.layout_tileleft   = "/usr/share/awesome/themes/default/layouts/tileleft.png"
-theme.layout_tile = "/usr/share/awesome/themes/default/layouts/tile.png"
-theme.layout_tiletop = "/usr/share/awesome/themes/default/layouts/tiletop.png"
-theme.layout_spiral  = "/usr/share/awesome/themes/default/layouts/spiral.png"
-theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindle.png"
+theme.layout_fairh = "~/.config/awesome/themes/layouts/fairh.png"
+theme.layout_fairv = "~/.config/awesome/themes/layouts/fairv.png"
+theme.layout_floating  = "~/.config/awesome/themes/layouts/floating.png"
+theme.layout_magnifier = "~/.config/awesome/themes/layouts/magnifier.png"
+theme.layout_max = "~/.config/awesome/themes/layouts/max.png"
+theme.layout_fullscreen = "~/.config/awesome/themes/layouts/fullscreen.png"
+theme.layout_tilebottom = "~/.config/awesome/themes/layouts/tilebottom.png"
+theme.layout_tileleft   = "~/.config/awesome/themes/layouts/tileleft.png"
+theme.layout_tile = "~/.config/awesome/themes/layouts/tile.png"
+theme.layout_tiletop = "~/.config/awesome/themes/layouts/tiletop.png"
+theme.layout_spiral  = "~/.config/awesome/themes/layouts/spiral.png"
+theme.layout_dwindle = "~/.config/awesome/themes/layouts/dwindle.png"
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 theme.tux_icon = "~/.config/awesome/themes/icons/tux.png"
