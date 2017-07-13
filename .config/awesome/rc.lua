@@ -120,14 +120,17 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibar
+-- Spacer/Separator
+spacer = wibox.widget.textbox()
+spacer:set_text(" ")
+separator = wibox.widget.textbox()
+separator:set_markup("<tt>|</tt>")
+
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
-
--- Calendar widget
---lain.widget.calendar:attach(mytextclock)
 
 -- Keyboard map indicator and changer
 kbdcfg = {}
@@ -238,6 +241,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
+            spacer,
             s.mytaglist,
             s.mypromptbox,
         },
