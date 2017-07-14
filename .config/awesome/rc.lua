@@ -13,6 +13,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local lain = require("lain")
+local vicious = require("vicious")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 -- Load Debian menu entries
@@ -119,20 +120,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.tux_icon,
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- {{{ Wibar
--- Spacer/Separator
-spacer = wibox.widget.textbox()
-spacer:set_text(" ")
-separator = wibox.widget.textbox()
-separator:set_markup("<tt>|</tt>")
-
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
-
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
--- Keyboard map indicator and changer
+-- Widgets {{{ --
+-- Keyboard map indicator and changer {{{ --
 kbdcfg = {}
 kbdcfg.cmd = "setxkbmap"
 kbdcfg.layout = { { "us", "" }, { "ru", "" } }
@@ -150,6 +139,38 @@ end
 kbdcfg.widget:buttons(
  awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end))
 )
+-- }}} Keyboard map indicator and changer --
+-- Create a textclock widget {{{ --
+mytextclock = wibox.widget.textclock()
+-- }}} Create a textclock widget --
+-- CPU usage widget {{{ --
+cpuwidget = awful.widget.graph()
+cpuwidget:set_width(50)
+cpuwidget:set_background_color("#494B4F")
+cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 50, 0 },
+  stops = { { 0, "#FF5656" }, { 0.5, "#88A175" }, { 1, "#AECF96" }}})
+vicious.register(cpuwidget, vicious.widgets.cpu, "$1", 3)
+cpuwidget2 = wibox.widget.textbox()
+vicious.register(cpuwidget2, vicious.widgets.cpu, 'CPU: <span color="#CC9933">$1%</span>', 1)
+-- }}} CPU usage widget --
+-- Memory widget {{{ --
+memwidget = wibox.widget.textbox()
+vicious.cache(vicious.widgets.mem)
+vicious.register(memwidget, vicious.widgets.mem, "RAM: $1% ($2MB/$3MB)", 1) -- Update every 1 seconds
+-- }}} Memory widget --
+-- Weather {{{ --
+weather = wibox.widget.textbox()
+vicious.register(weather, vicious.widgets.weather, "Weather: ${city} | Temp: ${tempc}⁰C | Humid: ${humid}%", 1200, "KPVD")
+---vicious.register(weather, vicious.widgets.weather, "Weather: ${city}.  Sky: ${sky}. Temp: ${tempc}c Humid: ${humid}%. Wind: ${windkmh} KM/h", 1200, "LFBO")
+-- }}} Weather --
+-- }}} Widgets --
+
+-- {{{ Wibar
+-- Spacer/Separator
+spacer = wibox.widget.textbox()
+spacer:set_text(" ")
+separator = wibox.widget.textbox()
+separator:set_markup("<tt>|</tt>")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = awful.util.table.join(
@@ -247,11 +268,11 @@ awful.screen.connect_for_each_screen(function(s)
             spacer,
             s.mytaglist,
             s.mypromptbox,
+            spacer,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
             wibox.widget.systray(),
             kbdcfg.widget,
             mytextclock,
@@ -270,7 +291,16 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             nil
         },
-        s.mylayoutbox,
+        {
+            layout = wibox.layout.fixed.horizontal,
+            memwidget,
+            separator,
+            cpuwidget,
+            separator,
+            cpuwidget2,
+            separator,
+            weather,
+        },
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             nil
