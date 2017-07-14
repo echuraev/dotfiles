@@ -233,7 +233,9 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    -- Using height variable is a bug. https://github.com/awesomeWM/awesome/issues/1824
+    -- Will be fixed in v4.2
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = beautiful.wibar_height })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -258,13 +260,21 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the bottom panel
-    s.bottom_panel = awful.wibar({ position = "bottom", screen = s })
+    s.bottom_panel = awful.wibar({ position = "bottom", screen = s, height = beautiful.wibar_height })
 
     -- Add widgets to the wibox
     s.bottom_panel:setup {
         layout = wibox.layout.align.horizontal,
-        --s.mytasklist, -- Middle widget
+        expand = "outside",
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            nil
+        },
         s.mylayoutbox,
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            nil
+        },
     }
 end)
 -- }}}

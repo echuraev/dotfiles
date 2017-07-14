@@ -42,8 +42,11 @@ theme.taglist_squares_unsel = "~/.config/awesome/themes/taglist/inactive2.png"
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = "/usr/share/awesome/themes/default/submenu.png"
-theme.menu_height = 15
-theme.menu_width  = 100
+theme.menu_height = 20
+theme.menu_width  = 150
+
+-- Variables set for theming the menu:
+theme.wibar_height = 25
 
 -- You can add as many variables as
 -- you wish and access them by using
