@@ -6,14 +6,6 @@ This repository included almost all my configurations for different programs on 
 Just clone this repository to your home directory
 
 ## Configurations
-### Ack
-I used to use ack for search and have a small [config file](.ackrc) for it.
-
-But now I prefer to use ***ripgrep*** because it is really faster.
-
-### Emacs
-I tried to use Emacs as my primary text editor but I returned to use Vim. Here is just some of my old configurations for Emacs.
-
 ### Environment configurations
 By default my .bashrc will check if zsh is installed then zsh will be started in oposit case you will work in bash.
 Your personal config you should write to .bashrc.global or .bashrc.local. In _global_ file all settings will be in all your configurations.
@@ -43,6 +35,15 @@ It was no sound in headphones on Ubuntu 16.04. I found solution [here](https://b
 options snd-hda-intel model=generic
 ```
 If after reboot headphones are not working, try to kill pulseaudio: `pulseaudio -k`.
+</details>
+<details>
+<summary><strong>Setup working with several monitors</strong></summary>
+<br>
+
+For configuring my displays I use xrandr utility. Below is example of configuration. Put this command line to `~/.xprofile`.
+```
+xrandr --output HDMI-1 --mode 1920x1200 --pos 0x0 --output HDMI-2 --mode 1920x1200 --pos 1921x0 --output VGA-1 --mode 1280x1024 --pos 3842x0
+```
 </details>
 
 ### Mac OS
