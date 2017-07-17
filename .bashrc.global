@@ -204,6 +204,23 @@ gcoc() {
   git checkout $(echo "$commit" | sed "s/ .*//")
 }
 
+# gdlb - delete local branch
+gdlb() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git branch -D $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# gdrb - delete remote branch
+gdrb() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git push origin --delete $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
 # gshow - git commit browser
 gshow() {
   git log --graph --color=always \
