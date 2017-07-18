@@ -125,17 +125,17 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 kbdcfg = {}
 kbdcfg.cmd = "setxkbmap"
 -- kbdcfg.layout = { { "us" }, { "ru" } }
-kbdcfg.layout = { { beautiful.en_layout }, { beautiful.ru_layout } }
+kbdcfg.layout = { { "us", beautiful.en_layout }, { "ru", beautiful.ru_layout } }
 kbdcfg.current = 1  -- en is our default layout
 -- kbdcfg.widget = wibox.widget.textbox()
 -- kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][1] .. " ")
-kbdcfg.widget = wibox.widget.imagebox(kbdcfg.layout[kbdcfg.current][1])
+kbdcfg.widget = wibox.widget.imagebox(kbdcfg.layout[kbdcfg.current][2])
 
 kbdcfg.switch = function ()
   kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
   local t = kbdcfg.layout[kbdcfg.current]
   -- kbdcfg.widget:set_text(" " .. t[1] .. " ")
-  kbdcfg.widget.image = t[1]
+  kbdcfg.widget.image = t[2]
   os.execute( kbdcfg.cmd .. " " .. t[1] .. " " )
 end
 
