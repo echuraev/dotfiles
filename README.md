@@ -76,3 +76,10 @@ May be it will not be possible due System Integrity Protection. So, you have to 
 
 I found very nice application that can help you to manage your Apps (e.g. total remove an application): https://nektony.com/mac-app-uninstaller
 </details>
+<details>
+<summary><strong>Manage windows</strong></summary>
+<br>
+
+For managing my windows I use the following tool: https://github.com/eczarny/spectacle
+It is really comfortable and useful.
+</details>

@@ -19,6 +19,7 @@ let s:vim_configuration_files = [
 \ 'startify.vimrc',
 \ 'vim-cpp-enhanced-highlight.vimrc',
 \ 'ack.vimrc',
+\ 'auto-pairs.vimrc',
 \]
 
 for file in s:vim_configuration_files
