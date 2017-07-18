@@ -31,8 +31,12 @@ theme.border_marked = "#91231c"
 -- Example:
 theme.taglist_bg_focus = "#1B4965"
 
--- Application icons
-theme.chrome_icon   = "~/.config/awesome/themes/icons/chrome.png"
+-- Keyboard layouts icons
+-- I take icons from here: https://habrahabr.ru/post/155271/
+-- https://www.gosquared.com/resources/flag-icons/
+theme.de_layout   = "~/.config/awesome/themes/icons/flags/de.png"
+theme.en_layout   = "~/.config/awesome/themes/icons/flags/en.png"
+theme.ru_layout   = "~/.config/awesome/themes/icons/flags/ru.png"
 
 -- Display the taglist squares
 theme.taglist_squares_sel   = "~/.config/awesome/themes/taglist/active2.png"
