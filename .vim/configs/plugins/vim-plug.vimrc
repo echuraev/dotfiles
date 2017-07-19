@@ -143,7 +143,7 @@ endif
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'vimwiki/vimwiki'                " Organize notes
 if !g:isWindows
-"    Plug 'tbabej/taskwiki'                " Taskwarior for vimwiki
+    Plug 'tbabej/taskwiki'                " Taskwarior for vimwiki
 endif
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
 " }}} Other "

@@ -58,9 +58,19 @@ URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 
 ! Load plugins
-URxvt.perl-ext-common:  default,matcher,url-select,tabbedex,keyboard-select
+URxvt.perl-ext-common:  default,matcher,tabbedex,keyboard-select,eval
 
 ! Plugins
+! Copy/Paste
+URxvt.keysym.S-Insert:   eval:paste_clipboard
+URxvt.keysym.C-Insert:   eval:section_to_clipboard
+URxvt.keysym.C-0xff63:   eval:section_to_clipboard
+URxvt.keysym.C-0xff9e:   eval:section_to_clipboard
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.iso14755 : false
+URxvt.iso14755_52: False
+
 ! Links are clickable on left mouse button
 URxvt.matcher.button: 1
 ! Activate keyboard-select mode
@@ -109,6 +119,3 @@ URxvt.shading: 20
 URxvt.geometry: 80x25
 ! Terminal history size
 URxvt*saveLines: 7000
-
-! Use clipboard for copies
-URxvt.clipboard.autocopy: true
