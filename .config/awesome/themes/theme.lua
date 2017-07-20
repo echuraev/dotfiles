@@ -2,7 +2,7 @@
 
 theme = {}
 
-theme.font          = "SauceCodePro Nerd Font 10"
+theme.font          = "LiterationMonoPowerline Nerd Font 9"
 
 theme.bg_normal     = "#F0F0F0"
 theme.bg_focus      = "#6D8B9D"

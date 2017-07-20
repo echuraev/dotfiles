@@ -47,8 +47,8 @@ URxvt.cursorBlink: true
 ! Set fount
 ! URxvt.font: -schumacher-*-medium-*-*-*-14-*-*-*-*-*-*-*
 ! URxvt.boldFont: -schumacher-*-bold-*-*-*-14-*-*-*-*-*-*-*
-URxvt*font: xft:SauceCodePro Nerd Font:pixelsize=14:style=regular
-URxvt*boldFont: xft:SauceCodePro Nerd Font:bold:pixelsize=14:style=regular
+URxvt*font: xft:LiterationMonoPowerline Nerd Font:pixelsize=14:style=regular
+URxvt*boldFont: xft:LiterationMonoPowerline Nerd Font:bold:pixelsize=14:style=regular
 
 ! Enable scrollbar
 URxvt*scrollBar: true
