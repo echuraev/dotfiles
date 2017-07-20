@@ -23,6 +23,7 @@
 !.vim/
 !.config/
 !.config/awesome/
+!.config/ranger/
 !.vimrc
 !.zsh/
 !.zshrc
