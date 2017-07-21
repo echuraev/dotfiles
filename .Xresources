@@ -39,14 +39,12 @@
 *.color15:      #c5c8c6
 
 ! Highlight underlined text (links)
-URxvt.underlineColor: blue
+!URxvt.underlineColor: blue
 
 ! Cursor blinking
 URxvt.cursorBlink: true
 
 ! Set fount
-! URxvt.font: -schumacher-*-medium-*-*-*-14-*-*-*-*-*-*-*
-! URxvt.boldFont: -schumacher-*-bold-*-*-*-14-*-*-*-*-*-*-*
 URxvt*font: xft:LiterationMonoPowerline Nerd Font:pixelsize=13:style=regular
 URxvt*boldFont: xft:LiterationMonoPowerline Nerd Font:bold:pixelsize=13:style=regular
 
