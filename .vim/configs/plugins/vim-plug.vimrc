@@ -3,9 +3,11 @@ call plug#begin('~/.vim/plugged')
 " Programming {{{ "
 " C++ {{{ "
 " Code Completion {{{ "
-if v:version > 704 || (v:version == 704 && has('patch1578'))     " This is a limitation of YCM
-    Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
-    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': [] }
+if !g:isAndroid
+    if v:version > 704 || (v:version == 704 && has('patch1578'))     " This is a limitation of YCM
+        Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
+        Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': [] }
+    endif
 endif
 " }}} Code Completion "
 " Syntax highlighting {{{ "
@@ -14,11 +16,13 @@ Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting
 " }}} C++ "
 " C# {{{ "
 " Code Completion {{{ "
-if !g:isWindows
-    Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
-else
-    " For enable msbuild add to path variable path to .NET framework. E.g.: C:\Windows\Microsoft.NET\Framework\v4.0.30319
-    Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && msbuild' }         " C# completion
+if !g:isAndroid
+    if !g:isWindows
+        Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }         " C# completion
+    else
+        " For enable msbuild add to path variable path to .NET framework. E.g.: C:\Windows\Microsoft.NET\Framework\v4.0.30319
+        Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && msbuild' }         " C# completion
+    endif
 endif
 " }}} Code Completion "
 " Syntax highlighting {{{ "
@@ -26,8 +30,10 @@ Plug 'OrangeT/vim-csharp', { 'for': 'cs' }                  " C# highlighting
 " }}} Syntax highlighting "
 " }}} C# "
 " LaTeX {{{ "
-Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
-Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
+if !g:isAndroid
+    Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
+    Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
+endif
 " }}} LaTeX "
 " Markdown {{{ "
 Plug 'plasticboy/vim-markdown'
@@ -43,7 +49,7 @@ Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }            " OpenCL syntax high
 " }}} Code Completion "
 " }}} Python "
 " Debugging {{{ "
-if !g:isWindows
+if !g:isWindows && !g:isAndroid
     Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 endif
 " }}} Debugging "
@@ -81,15 +87,13 @@ Plug 'tpope/vim-git'                     " git syntax highlight
 " }}} Git "
 " Search {{{ "
 Plug 'osyo-manga/vim-over'            " Replace highlighter
-Plug 'dkprice/vim-easygrep'           " Easy grep
 Plug 'mileszs/ack.vim'                " Run ack in vim
-Plug 'mhinz/vim-grepper'              " Asynchronous search
 " }}} Search "
 " Project {{{ "
 Plug 'tpope/vim-dispatch'             " Project compiling
+if !g:isWindows && !g:isAndroid
 Plug 'LucHermitte/lh-vim-lib'         " Dependency of local_vimrc
 Plug 'LucHermitte/local_vimrc'        " Local vimrc files for projects
-if !g:isWindows
     Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
 endif
 " }}} Project "
@@ -116,23 +120,24 @@ Plug 'tpope/vim-unimpaired'           " Fast navigation
 Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 Plug 'easymotion/vim-easymotion'      " Easy motion in files
-Plug 'lyokha/vim-xkbswitch'           " Automatically switch keyboard layout to English in normal mode
-" Dependency of vim-xkbswitch {{{ "
-if g:isLinux
-    Plug 'ierton/xkb-switch', { 'do': 'mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX:PATH=../install && make && make install' }
+if !g:isAndroid
+    Plug 'lyokha/vim-xkbswitch'           " Automatically switch keyboard layout to English in normal mode
+    " Dependency of vim-xkbswitch {{{ "
+    if g:isLinux
+        Plug 'ierton/xkb-switch', { 'do': 'mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX:PATH=../install && make && make install' }
+    endif
+    if g:isMac
+        Plug 'vovkasm/input-source-switcher', { 'do': 'mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX:PATH=../install && make && make install' }
+    endif
+    if g:isWindows
+        Plug 'DeXP/xkb-switch-win'
+    endif
+    " }}} Dependency of vim-xkbswitch "
 endif
-if g:isMac
-    Plug 'vovkasm/input-source-switcher', { 'do': 'mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX:PATH=../install && make && make install' }
-endif
-if g:isWindows
-    Plug 'DeXP/xkb-switch-win'
-endif
-" }}} Dependency of vim-xkbswitch "
 " }}} Common "
 " View {{{ "
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
 Plug 'ntpeters/vim-better-whitespace' " Highlight whitespaces
-Plug 'sjl/gundo.vim'                  " Visualize vim undo tree
 Plug 'chrisbra/Colorizer'             " A plugin to color colornames and codes
 Plug 'vim-scripts/xoria256.vim'       " Color scheme
 " }}} View "
@@ -142,7 +147,7 @@ if g:personalConfig == 1 || g:extendedConfig == 1
 endif
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'vimwiki/vimwiki'                " Organize notes
-if !g:isWindows
+if !g:isWindows && !g:isAndroid
     Plug 'tbabej/taskwiki'                " Taskwarior for vimwiki
 endif
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
