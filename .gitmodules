@@ -1,9 +1,6 @@
 [submodule ".gdb-dashboard"]
 	path = .gdb-dashboard
 	url = https://github.com/cyrus-and/gdb-dashboard
-[submodule ".config/awesome/lain"]
-	path = .config/awesome/lain
-	url = https://github.com/copycat-killer/lain.git
 [submodule ".urxvt/ext/urxvt-perls"]
 	path = .urxvt/ext/urxvt-perls
 	url = https://github.com/muennich/urxvt-perls
