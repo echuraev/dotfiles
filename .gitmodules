@@ -10,3 +10,6 @@
 [submodule ".config/ranger"]
 	path = .config/ranger
 	url = https://github.com/echuraev/Ranger-filemanager-configuration
+[submodule ".config/awesome"]
+	path = .config/awesome
+	url = https://github.com/echuraev/Awesome-WM-configuration
