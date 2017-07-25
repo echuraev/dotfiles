@@ -653,4 +653,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- {{{ Autorun
 awful.util.spawn_with_shell("xscreensaver -no-splash")
 awful.util.spawn_with_shell("/usr/local/bin/dropbox.py start")
+-- Got info from here: https://crunchbang.org/forums/viewtopic.php?pid=278167#p278167
+awful.util.spawn_with_shell("nm-applet") -- networkManager applet
+awful.util.spawn_with_shell("volumeicon") -- Volume icon
 -- }}}
