@@ -7,3 +7,6 @@
 [submodule ".urxvt/ext/urxvt-tabbedex"]
 	path = .urxvt/ext/urxvt-tabbedex
 	url = https://github.com/mina86/urxvt-tabbedex
+[submodule ".config/ranger"]
+	path = .config/ranger
+	url = https://github.com/echuraev/Ranger-filemanager-configuration
