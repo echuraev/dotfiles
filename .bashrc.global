@@ -98,6 +98,7 @@ weather_today() {
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_OPTS='--height 30% --border'
 
 ##########################################################################
 ### FZF CONFIGS
@@ -107,7 +108,12 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 #   - Exit if there's no match (--exit-0)
 fe() {
   local files
-  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  IFS=$'\n' files=($(fzf-tmux --preview '[[ $(file --mime {}) =~ binary ]] && \
+                 echo {} is a binary file || \
+                 (highlight -O ansi -l {} || \
+                  coderay {} || \
+                  rougify {} || \
+                  cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
@@ -155,74 +161,112 @@ fk() {
   fi
 }
 
+# Check if you in git repository
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
+# Show current git status with diff
+gdiff() {
+  is_in_git_repo || return
+  git -c color.status=always status --short |
+  fzf -m --ansi --nth 2..,.. \
+    --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
+  cut -c4- | sed 's/.* -> //'
+}
+
 # gcol - checkout git branch (locals)
 gcol() {
+  is_in_git_repo || return
   local branches branch
   branches=$(git branch -vv) &&
-  branch=$(echo "$branches" | fzf +m) &&
+  branch=$(echo "$branches" | grep -v '/HEAD\s' | fzf +m --ansi --multi --tac --preview-window right:50% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##') &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
 # gcor - checkout git branch (including remote branches)
 gcor() {
+  is_in_git_repo || return
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##') &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
 # gcort - checkout remote git branch with track option (including remote branches)
 gcort() {
+  is_in_git_repo || return
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##') &&
   git checkout --track $(echo "$branch" | sed "s/.* //")
 }
 
 # gcot - checkout git branch/tag
 gcot() {
+  is_in_git_repo || return
   local tags branches target
-  tags=$(
-    git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+  tags=$(git tag --sort -version:refname) || return
   branches=$(
     git branch --all | grep -v HEAD             |
     sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
     sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
   target=$(
     (echo "$tags"; echo "$branches") |
-    fzf-tmux -- --no-hscroll --ansi +m -d "\t" -n 2) || return
+    fzf-tmux -- --no-hscroll --ansi +m --multi --preview-window right:70% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {} | head -'$LINES -d "\t" -n 2) || return
   git checkout $(echo "$target" | awk '{print $2}')
 }
 
 # gcoc - checkout git commit
 gcoc() {
+  is_in_git_repo || return
   local commits commit
   commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
-  commit=$(echo "$commits" | fzf --tac +s +m -e) &&
+  commit=$(echo "$commits" | fzf --tac +s +m -e --multi --preview-window right:50% \
+    --preview 'git show --color=always $(sed "s/ .*//" <<< {}) | head -'$LINES) &&
   git checkout $(echo "$commit" | sed "s/ .*//")
 }
 
 # gdlb - delete local branch
 gdlb() {
+  is_in_git_repo || return
   local branches branch
   branches=$(git branch -vv) &&
-  branch=$(echo "$branches" | fzf +m) &&
+  branch=$(echo "$branches" | fzf +m --ansi --multi --tac --preview-window right:50% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##') &&
   git branch -D $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
 # gdrb - delete remote branch
 gdrb() {
+  is_in_git_repo || return
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##') &&
   git push origin --delete $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
 # gshow - git commit browser
 gshow() {
+  is_in_git_repo || return
   git log --graph --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
@@ -230,7 +274,8 @@ gshow() {
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
                 xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
                 {}
-FZF-EOF"
+FZF-EOF" \
+    --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -'$LINES
 }
 
 # tm - connect to tmux session
