@@ -120,6 +120,7 @@ Plug 'tpope/vim-unimpaired'           " Fast navigation
 Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 Plug 'easymotion/vim-easymotion'      " Easy motion in files
+Plug 'EinfachToll/DidYouMean'         " Make a suggestion which file did you want to open
 if !g:isAndroid
     Plug 'lyokha/vim-xkbswitch'           " Automatically switch keyboard layout to English in normal mode
     " Dependency of vim-xkbswitch {{{ "
