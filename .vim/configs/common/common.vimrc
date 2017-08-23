@@ -45,6 +45,7 @@ if !g:isWindows
     set term=screen-256color
     set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
 endif
+autocmd VIMResized * execute "normal! \<c-w>="
 " Transparent background {{{ "
 hi Normal ctermbg=none
 hi LineNr ctermbg=none
