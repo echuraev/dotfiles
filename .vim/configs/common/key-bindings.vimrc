@@ -31,6 +31,10 @@ nnoremap <C-y> "+y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
+if has("gui_running")
+    map  <silent>  <S-Insert>  "+p
+    imap <silent>  <S-Insert>  <Esc>"+pa
+endif
 " }}} Copy and paste mapping "
 " Compile key mapping {{{ "
 nnoremap <F5> :Dispatch<CR>
