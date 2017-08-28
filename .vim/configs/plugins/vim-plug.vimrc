@@ -98,7 +98,8 @@ Plug 'LucHermitte/local_vimrc'        " Local vimrc files for projects
 endif
 " }}} Project "
 " File Tree {{{ "
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeTabsToggle' } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTree' } | Plug 'Xuyuanp/nerdtree-git-plugin' " | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
+Plug 'tpope/vim-vinegar'              " vinegar.vim enhances netrw
 " }}} File Tree "
 " Text manipulation {{{ "
 Plug 'wellle/targets.vim'             " Add various text objects to VIM
