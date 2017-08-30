@@ -66,7 +66,8 @@ weather_today() {
 }
 
 vimgdb() {
-    vim -c "ConqueGdb --args $1" -c "only" .
+    cmd="vim -c \"ConqueGdb -d $(pwd) --args $@\" -c \"only\" ."
+    eval $cmd
 }
 # }}} Common functions #
 # FZF configurations {{{ #
