@@ -64,6 +64,10 @@ weather_today() {
         curl "wttr.in/$1?m&M&0"
     fi
 }
+
+vimgdb() {
+    vim -c "ConqueGdb --args $1" -c "only" .
+}
 # }}} Common functions #
 # FZF configurations {{{ #
 
