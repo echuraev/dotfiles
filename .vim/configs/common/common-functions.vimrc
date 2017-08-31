@@ -15,4 +15,11 @@ elseif has('unix')
     endif
 endif
 " }}} OS detection "
-
+" Set key function {{{ "
+function! SetKey()
+    let skey = inputsecret('Enter password: ')
+    echo skey
+    set key=skey
+endfunction
+command! SetKey execute 'call SetKey()'
+" }}} Set key function "
