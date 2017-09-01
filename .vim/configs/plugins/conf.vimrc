@@ -20,6 +20,7 @@ let s:vim_configuration_files = [
 \ 'vim-cpp-enhanced-highlight.vimrc',
 \ 'ack.vimrc',
 \ 'auto-pairs.vimrc',
+\ 'conquegdb.vimrc',
 \]
 
 for file in s:vim_configuration_files

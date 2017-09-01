@@ -50,7 +50,7 @@ Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }            " OpenCL syntax high
 " }}} Python "
 " Debugging {{{ "
 if !g:isWindows && !g:isAndroid
-    Plug 'vim-scripts/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
+    Plug 'echuraev/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 endif
 " }}} Debugging "
 " }}} Programming "
