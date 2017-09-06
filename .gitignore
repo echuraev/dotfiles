@@ -28,6 +28,7 @@
 !.zsh/
 !.zshrc
 !.bash_profile
+!.profile
 !.bashrc
 !.bashrc.global
 !.gdbinit

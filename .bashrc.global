@@ -271,6 +271,8 @@ tm() {
 #if type "screenfetch" > /dev/null ; then
 #    screenfetch -E # -E option will suppress errors
 #fi
-weather_today
+if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
+    weather_today
+fi
 # }}} Autorun #
 
