@@ -53,6 +53,9 @@ if !g:isWindows && !g:isAndroid
     Plug 'echuraev/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
 endif
 " }}} Debugging "
+" Json {{{ "
+Plug 'elzr/vim-json', { 'for': 'json' }                "
+" }}} Json "
 " }}} Programming "
 " Snippets {{{ "
 " For working it is necessary to have python3 installed
@@ -108,6 +111,7 @@ Plug 'tmhedberg/matchit'              " Extend behavior of %
 Plug 'tpope/vim-repeat'               " Extend behavior of .
 Plug 'tpope/vim-surround'             " Work with surroundings in pairs.
 Plug 'junegunn/vim-easy-align'        " Vim alignment plugin
+Plug 'godlygeek/tabular'              " Also alignment plugin
 " }}} Text manipulation "
 " Common {{{ "
 if v:version > 704 || (v:version == 704 && has('patch248'))     " systemlist function was added in patch 248
