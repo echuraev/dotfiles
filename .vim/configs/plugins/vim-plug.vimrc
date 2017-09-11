@@ -87,6 +87,7 @@ Plug 'tpope/vim-fugitive'                " Git plugin
 Plug 'airblade/vim-gitgutter'            " Extencion for git
 Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 Plug 'tpope/vim-git'                     " git syntax highlight
+Plug 'rhysd/committia.vim'               " extended commit message
 " }}} Git "
 " Search {{{ "
 Plug 'osyo-manga/vim-over'            " Replace highlighter
@@ -112,6 +113,7 @@ Plug 'tpope/vim-repeat'               " Extend behavior of .
 Plug 'tpope/vim-surround'             " Work with surroundings in pairs.
 Plug 'junegunn/vim-easy-align'        " Vim alignment plugin
 Plug 'godlygeek/tabular'              " Also alignment plugin
+Plug 'rhysd/clever-f.vim'             " Extends f, F, t and T
 " }}} Text manipulation "
 " Common {{{ "
 if v:version > 704 || (v:version == 704 && has('patch248'))     " systemlist function was added in patch 248
