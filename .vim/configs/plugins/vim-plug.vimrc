@@ -57,7 +57,7 @@ endif
 Plug 'elzr/vim-json', { 'for': 'json' }                   " Color highlighting for json
 " }}} Json "
 " Code formatting {{{ "
-Plug "rhysd/vim-clang-format"                             " Format code with specific coding style
+Plug 'rhysd/vim-clang-format'                             " Format code with specific coding style
 " }}} Code formatting "
 " }}} Programming "
 " Snippets {{{ "
