@@ -54,8 +54,11 @@ if !g:isWindows && !g:isAndroid
 endif
 " }}} Debugging "
 " Json {{{ "
-Plug 'elzr/vim-json', { 'for': 'json' }                "
+Plug 'elzr/vim-json', { 'for': 'json' }                   " Color highlighting for json
 " }}} Json "
+" Code formatting {{{ "
+Plug "rhysd/vim-clang-format"                             " Format code with specific coding style
+" }}} Code formatting "
 " }}} Programming "
 " Snippets {{{ "
 " For working it is necessary to have python3 installed
