@@ -8,7 +8,10 @@
 #     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # fi
 
-export LANG="en_US.UTF-8"
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_TYPE=en_US.UTF-8
 
 export SVN_EDITOR=/usr/bin/vim
 
