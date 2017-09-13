@@ -18,7 +18,6 @@ source ~/.zplug/repos/olivierverdier/zsh-git-prompt/zshrc.sh
 zplug "plugins/colored-man-pages", from:oh-my-zsh           # Add colors to man pages
 zplug "plugins/command-not-found", from:oh-my-zsh           # Suggests package name with relevant command
 zplug "plugins/extract", from:oh-my-zsh                     # 'x' alias - swiss knife for archive extracting
-zplug "supercrabtree/k"                                     # Directory listings for zsh with git features
 
 zplug load
 
@@ -53,7 +52,3 @@ setopt +o nomatch # Allow * commands i.g.: rm -f *
 # Load FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# ZSH aliase
-if type "k" > /dev/null ; then
-    alias ls='k -h'
-fi
