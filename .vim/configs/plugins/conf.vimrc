@@ -21,6 +21,7 @@ let s:vim_configuration_files = [
 \ 'ack.vimrc',
 \ 'auto-pairs.vimrc',
 \ 'conquegdb.vimrc',
+\ 'ranger.vimrc',
 \]
 
 for file in s:vim_configuration_files

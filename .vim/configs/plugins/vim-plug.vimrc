@@ -107,6 +107,7 @@ endif
 " File Tree {{{ "
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTree' } | Plug 'Xuyuanp/nerdtree-git-plugin' " | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 Plug 'tpope/vim-vinegar'              " vinegar.vim enhances netrw
+Plug 'francoiscabrol/ranger.vim'      " Integrate ranger file manager to vim
 " }}} File Tree "
 " Text manipulation {{{ "
 Plug 'wellle/targets.vim'             " Add various text objects to VIM
