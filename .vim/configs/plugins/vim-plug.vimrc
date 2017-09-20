@@ -132,6 +132,7 @@ Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 Plug 'easymotion/vim-easymotion'      " Easy motion in files
 Plug 'EinfachToll/DidYouMean'         " Make a suggestion which file did you want to open
+Plug 'farmergreg/vim-lastplace'       " Intelligently reopen files at your last edit position
 if !g:isAndroid
     Plug 'lyokha/vim-xkbswitch'           " Automatically switch keyboard layout to English in normal mode
     " Dependency of vim-xkbswitch {{{ "
