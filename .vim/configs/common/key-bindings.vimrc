@@ -44,4 +44,7 @@ nnoremap <F5> :Dispatch<CR>
 set wcm=<Tab>
 nmap <leader>n :emenu Projects.<Tab>
 " }}} Project menu "
+" Reload vim configuration {{{ "
+nnoremap <leader>rs :source ~/.vimrc<CR>
+" }}} Reload vim configuration "
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%' " Get directory of current file
