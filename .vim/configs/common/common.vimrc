@@ -41,6 +41,14 @@ set scrolloff=5              " Number of rows to show in window above and below 
 syntax enable
 silent! colorscheme xoria256 " jellybeans
 set colorcolumn=80     " Set Color Column
+" Disable color column for some ft {{{ "
+autocmd FileType conque_term setlocal colorcolumn=
+autocmd FileType gitv setlocal colorcolumn=
+autocmd FileType git setlocal colorcolumn=
+autocmd FileType gitrebase setlocal colorcolumn=
+autocmd FileType fugitiveblame setlocal colorcolumn=
+autocmd FileType qf setlocal colorcolumn=
+" }}} Disable color column for some ft "
 "hi ColorColumn ctermbg=1 guibg='#800000'
 if !g:isWindows
     set term=screen-256color
@@ -97,12 +105,15 @@ au VimEnter * if &diff | execute 'windo set wrap' | endif " Wrap words if diff
 " }}} Diff settings "
 " Spell checking {{{ "
 set spell spelllang=ru,en         " Enable spell checking
+" Disable spell checking for special ft {{{ "
 autocmd FileType conque_term setlocal nospell
 autocmd FileType gitv setlocal nospell
 autocmd FileType git setlocal nospell
 autocmd FileType gitrebase setlocal nospell
 autocmd FileType fugitiveblame setlocal nospell
+autocmd FileType qf setlocal nospell
 autocmd FileType diff setlocal nospell
+" }}} Disable spell checking for special ft "
 " Run :set spell to download dictionaries
 " }}} Spell checking "
 " Other {{{ "

@@ -1,29 +1,29 @@
 " Common
 set laststatus=2        " Always show statusline
 
-" Status line view
+" Status line modes {{{ "
 let g:currentmode={
-    \ 'n'  : 'N ',
-    \ 'no' : 'N·Operator Pending ',
-    \ 'v'  : 'V ',
-    \ 'V'  : 'V·Line ',
-    \ '' : 'V·Block',
-    \ 's'  : 'Select ',
-    \ 'S'  : 'S·Line ',
-    \ '' : 'S·Block ',
-    \ 'i'  : 'I ',
-    \ 'R'  : 'R ',
-    \ 'Rv' : 'V·Replace ',
-    \ 'c'  : 'Command ',
-    \ 'cv' : 'Vim Ex ',
-    \ 'ce' : 'Ex ',
-    \ 'r'  : 'Prompt ',
-    \ 'rm' : 'More ',
-    \ 'r?' : 'Confirm ',
-    \ '!'  : 'Shell ',
-    \ 't'  : 'Terminal ',
+    \ 'n'  : 'N',
+    \ 'no' : 'N·Operator Pending',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V·Line',
+    \ '' : 'V·Bloc',
+    \ 's'  : 'Select',
+    \ 'S'  : 'S·Line',
+    \ '' : 'S·Block',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'Rv' : 'V·Replace',
+    \ 'c'  : 'Command',
+    \ 'cv' : 'Vim Ex',
+    \ 'ce' : 'Ex',
+    \ 'r'  : 'Prompt',
+    \ 'rm' : 'More',
+    \ 'r?' : 'Confirm',
+    \ '!'  : 'Shell',
+    \ 't'  : 'Terminal',
 \}
-
+" }}} Status line modes "
 " Default active colors {{{ "
 let defaultAccentColor=161
 let colorsAndModes= {
@@ -76,7 +76,7 @@ let inactiveColorsAndModesGui= {
     \ 'statModifFg' : '#870000',
 \}
 " }}} Default inactive colors "
-
+" Status line color function {{{ "
 function! ChangeAccentColor(active)
     let accentColor=get(g:colorsAndModes, mode(), g:defaultAccentColor)
     let accentColorGui=get(g:colorsAndModesGui, mode(), g:defaultAccentColorGui)
@@ -111,7 +111,8 @@ function! ChangeAccentColor(active)
     execute 'hi StatusLineNC ctermfg='.statBgFg.' ctermbg='.accentColor.' cterm=NONE guifg='.statBgFgGui.' guibg='.accentColorGui.' gui=NONE'
     return ''
 endfunction
-
+" }}} Status line color function "
+" Common functions {{{ "
 " Find out current buffer's size and output it.
 function! FileSize()
     let bytes = getfsize(expand('%:p'))
@@ -127,11 +128,11 @@ function! FileSize()
     endif
 
     if (exists('mbytes'))
-        return mbytes . 'MB '
+        return mbytes . 'MB'
     elseif (exists('kbytes'))
-        return kbytes . 'KB '
+        return kbytes . 'KB'
     else
-        return bytes . 'B '
+        return bytes . 'B'
     endif
 endfunction
 
@@ -166,28 +167,72 @@ function! GitInfo()
         return ''
     endif
 endfunction
+" }}} Common functions "
 
 function! StatusLine(winnum)
     let active = a:winnum == winnr()
     let statLine  = ""
+    " Left {{{ "
     let statLine .= "%{ChangeAccentColor(".active.")}"                          " Changing the statusline color
-    let statLine .= "%#statusModeBackground# %{toupper(g:currentmode[mode()])}" " Current mode
-    let statLine .= "%{PasteMode()}"
-    let statLine .= "%#statusBackground# [%n]"                                  " buffernr
-    let statLine .= "%#statusBackground# %{GitInfo()}"                          " Git Branch name
-    let statLine .= "%#statusBackground# %<%f"                                  " File name
-    let statLine .= "%#statusModified#%m"                                       " modified
-    let statLine .= "%#statusBackground#%{ReadOnly()}%h%w "                     " File+path
-    let statLine .= "%#warningmsg#"
-    if exists('*SyntasticStatuslineFlag')
-        let statLine .= "%{SyntasticStatuslineFlag()}"                              " Syntastic errors
+    let statLine .= "%#statusModeBackground#"                                   " Switch to statusModeBackground hi group
+    let statLine .= " "                                                         " Space
+    let statLine .= "%{toupper(g:currentmode[mode()])}"                         " Current mode
+    let statLine .= " "                                                         " Space
+    if active
+        let statLine .= "%{PasteMode()}"                                        " Show paste mode if enabled
     endif
-    let statLine .= "%#statusBackground#"
-    let statLine .= "%#statusBackground# %="                                    " Space
-    let statLine .= "%#statusBackground# %y "                                   " FileType
-    let statLine .= "%#statusBackground# %{(&fenc!=''?&fenc:&enc)} [%{&ff}]"    " Encoding & Fileformat
-    let statLine .= "%#statusBackground# %-3(%{FileSize()}%)"                   " File size
-    let statLine .= "%#statusModeBackground# %3p%% line: %2l/%L, col: %3c "     " Rownumber/total (%)
+    let statLine .= "%#statusBackground#"                                       " Switch to statusBackground hi group
+    let statLine .= " "                                                         " Space
+    let statLine .= "[%n]"                                                      " buffernr
+    let statLine .= " "                                                         " Space
+    if winwidth(a:winnum) > 80
+        let statLine .= "%<%{GitInfo()}"                                        " Git Branch name
+        let statLine .= " "                                                     " Space
+    endif
+    if !active
+        let statLine .= "%<%t"                                                  " File name (only name)
+    else
+        let statLine .= "%<%f"                                                  " File name
+    endif
+    let statLine .= "%#statusModified#"                                         " Switch to statusModifien hi group
+    let statLine .= "%m"                                                        " modified
+    let statLine .= "%#statusBackground#"                                       " Switch to statusBackground hi group
+    let statLine .= "%{ReadOnly()}%w"                                           " Is it read only file and preview windows flag [Preview]
+    let statLine .= " "                                                         " Space
+    if active && winwidth(a:winnum) > 80
+        if exists('*SyntasticStatuslineFlag')
+            let statLine .= "%#warningmsg#"                                     " Switch to warning hi group
+            let statLine .= "%{SyntasticStatuslineFlag()}"                      " Syntastic errors
+        endif
+        let statLine .= "%#statusBackground#"                                   " Switch to statusBackground hi group
+        let statLine .= " "                                                     " Space
+    endif
+    " }}} Left "
+    let statLine .= "%="                                                        " Long space
+    " Right {{{ "
+    if winwidth(a:winnum) > 60
+        let statLine .= "%y"                                                    " FileType
+        let statLine .= " "                                                     " Space
+    endif
+    if active && winwidth(a:winnum) > 80
+        let statLine .= "%{(&fenc!=''?&fenc:&enc)}"                             " Encoding
+        let statLine .= " "                                                     " Space
+        let statLine .= "[%{&ff}]"                                              " File format
+        let statLine .= " "                                                     " Space
+    endif
+    let statLine .= "%(%{FileSize()}%)"                                         " File size
+    let statLine .= " "                                                         " Space
+    let statLine .= "%#statusModeBackground#"                                   " Switch to statusModeBackground hi group
+    let statLine .= " "                                                         " Space
+    if !active
+        let statLine .= " "
+    else
+        let statLine .= "%3p%%"                                                 " Total (%)
+        let statLine .= " "                                                     " Space
+        let statLine .= "l: %2l/%L, c: %c"                                      " Line and column
+        let statLine .= " "                                                     " Space
+    endif
+    " }}} Right "
     return statLine
 endfunction
 
@@ -201,10 +246,3 @@ augroup status
     autocmd!
     autocmd VimEnter,WinEnter,BufWinEnter * call <SID>RefreshStatusLine()
 augroup END
-
-" Speed up the redraw
-"au InsertEnter * call ChangeAccentColor()
-"au InsertChange * call ChangeAccentColor()
-"au InsertLeave * call ChangeAccentColor()
-"au CursorHold * let &ro = &ro
-

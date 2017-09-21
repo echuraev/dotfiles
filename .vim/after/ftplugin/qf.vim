@@ -1,3 +1,0 @@
-setlocal nospell
-setlocal colorcolumn=
-
