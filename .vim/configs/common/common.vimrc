@@ -102,7 +102,6 @@ autocmd FileType gitv setlocal nospell
 autocmd FileType git setlocal nospell
 autocmd FileType gitrebase setlocal nospell
 autocmd FileType fugitiveblame setlocal nospell
-autocmd FileType qf setlocal nospell               " Removed QuickFix window from spell checking
 autocmd FileType diff setlocal nospell
 " Run :set spell to download dictionaries
 " }}} Spell checking "
