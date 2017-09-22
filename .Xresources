@@ -48,6 +48,8 @@ URxvt.cursorBlink: true
 URxvt*font: xft:LiterationMonoPowerline Nerd Font:pixelsize=13:style=regular
 URxvt*boldFont: xft:LiterationMonoPowerline Nerd Font:bold:pixelsize=13:style=regular
 
+URxvt.iconFile: .config/awesome/themes/icons/terminal.png
+
 ! Enable scrollbar
 URxvt*scrollBar: true
 URxvt*scrollBar_right: true
@@ -82,6 +84,7 @@ URxvt.keysym.Meta-p: perl:tabbedex:prev_tab
 URxvt.keysym.Meta-n: perl:tabbedex:next_tab
 URxvt.keysym.Meta-t: perl:tabbedex:new_tab
 URxvt.keysym.Meta-r: perl:tabbedex:rename_tab
+URxvt.keysym.Meta-c: perl:tabbedex:kill_tab
 URxvt.keysym.Meta-h: perl:tabbedex:move_tab_left
 URxvt.keysym.Meta-l: perl:tabbedex:move_tab_right
 URxvt.keysym.Meta-1: perl:tabbedex:goto_tab_1
@@ -96,16 +99,16 @@ URxvt.keysym.Meta-9: perl:tabbedex:goto_tab_9
 URxvt.keysym.Meta-0: perl:tabbedex:goto_tab_10
 
 URxvt.tabbed.tabbar-fg: 15
-URxvt.tabbed.tabbar-bg: 8
-URxvt.tabbed.tab-fg:    8
+URxvt.tabbed.tabbar-bg: 237
+URxvt.tabbed.tab-fg:    237
 URxvt.tabbed.tab-bg:    14
 ! Tabbedex colors
-URxvt.tabbed.bell-tab-fg: 8
+URxvt.tabbed.bell-tab-fg: 237
 URxvt.tabbed.bell-tab-bg: 11
-URxvt.tabbed.bell-fg:     8
+URxvt.tabbed.bell-fg:     237
 URxvt.tabbed.bell-bg:     11
 URxvt.tabbed.title-fg:    10
-URxvt.tabbed.title-bg:    8
+URxvt.tabbed.title-bg:    237
 URxvt.tabbed.tabbar-timeouts: '0:*'
 
 ! Transparent
