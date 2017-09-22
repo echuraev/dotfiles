@@ -53,6 +53,7 @@ autocmd FileType qf setlocal colorcolumn=
 if !g:isWindows
     set term=screen-256color
     set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
+    let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
 endif
 autocmd VIMResized * execute "normal! \<c-w>="
 " Transparent background {{{ "
