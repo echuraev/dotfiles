@@ -8,7 +8,7 @@
 
 ! black
 *.color0:       #282a2e
-*.color8:       #373b41
+*.color8:       #5c6168
 
 ! red
 *.color1:       #a54242

@@ -33,6 +33,7 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt noincappendhistory
 setopt nosharehistory
+setopt interactivecomments # bash style comments
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
