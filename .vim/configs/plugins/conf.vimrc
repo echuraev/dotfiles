@@ -22,6 +22,7 @@ let s:vim_configuration_files = [
 \ 'auto-pairs.vimrc',
 \ 'conquegdb.vimrc',
 \ 'ranger.vimrc',
+\ 'python-mode.vimrc',
 \]
 
 for file in s:vim_configuration_files

@@ -47,6 +47,7 @@ Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }            " OpenCL syntax high
 " Code Completion {{{ "
 " It provides by YCM. See C++ code completion.
 " }}} Code Completion "
+Plug 'python-mode/python-mode', { 'for': 'python' }
 " }}} Python "
 " Debugging {{{ "
 if !g:isWindows && !g:isAndroid
