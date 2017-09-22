@@ -62,6 +62,7 @@ hi LineNr ctermbg=none
 hi SignColumn ctermbg=none
 hi VertSplit ctermbg=none
 hi NonText ctermbg=none
+hi FoldColumn ctermbg=none
 " }}} Transparent background "
 " Diff Colors {{{ "
 " DiffAdd     diff mode: Added line
