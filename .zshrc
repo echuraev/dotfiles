@@ -34,6 +34,7 @@ setopt hist_reduce_blanks
 setopt noincappendhistory
 setopt nosharehistory
 setopt interactivecomments # bash style comments
+setopt autocd
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
