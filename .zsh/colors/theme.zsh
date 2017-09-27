@@ -28,9 +28,7 @@ function spectrum_bls() {
   done
 }
 
-PROMPT_SUCCESS_COLOR=$FG[117]
-PROMPT_FAILURE_COLOR=$FG[124]
-PROMPT_VCS_INFO_COLOR=$FG[242]
+PROMPT_COMMON_COLOR=$FG[117]
 PROMPT_PROMPT=$FG[077]
 GIT_DIRTY_COLOR=$FG[133]
 GIT_CLEAN_COLOR=$FG[118]
@@ -67,5 +65,7 @@ function zle-line-finish {
 }
 zle -N zle-line-finish
 
-PROMPT='%(?..%F{red}%U${(l:COLUMNS-1:: :)?} %u)%{$PROMPT_SUCCESS_COLOR%}%n@%m%{$reset_color%}:%{$PROMPT_SUCCESS_COLOR%}%c%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}ᐅ%{$reset_color%} '
+PROMPT='%(?..%F{red}%U${(l:COLUMNS-1:: :)?} %u)' # Error status
+PROMPT+='%{$PROMPT_COMMON_COLOR%}%n@%m%{$reset_color%}:%{$PROMPT_COMMON_COLOR%}%c%{$reset_color%}' # name@hostname:path
+PROMPT+='%{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}ᐅ%{$reset_color%} ' # git status
 RPROMPT='$(git_super_status) ${vim_mode} %D{%d %b %Y} %T' # See man page strftime(3) for more details.
