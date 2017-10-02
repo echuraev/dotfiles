@@ -87,6 +87,7 @@ autocmd FocusLost,WinLeave * execute "set foldcolumn=0"
 
 autocmd FileType vim set foldmethod=marker foldenable foldlevel=0
 autocmd FileType sh set foldmethod=marker foldenable foldlevel=0
+autocmd FileType zsh set foldmethod=marker foldenable foldlevel=0
 autocmd FileType lua set foldmethod=marker foldenable foldlevel=0
 " }}} Folding settings "
 " Mouse settings {{{ "

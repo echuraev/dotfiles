@@ -10,7 +10,6 @@ fi
 
 source ~/.zplug/init.zsh
 
-#zplug "plugins/git", from:oh-my-zsh                        # Git plugin from oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2          # Syntax highlighting for commands
 zplug "lib/completion", from:oh-my-zsh                      # Load completion library for those sweet [tab] squares
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'       # Manage zplug as other plugins

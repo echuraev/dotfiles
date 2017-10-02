@@ -28,26 +28,24 @@ function spectrum_bls() {
   done
 }
 
+#  COLORS & CUSTOMIZATION {{{ #
 PROMPT_COMMON_COLOR=$FG[117]
 PROMPT_PROMPT=$FG[077]
-GIT_DIRTY_COLOR=$FG[133]
-GIT_CLEAN_COLOR=$FG[118]
+#  Git {{{ #
 GIT_PROMPT_INFO=$FG[012]
-ZSH_THEME_GIT_PROMPT_PREFIX=" ("
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$GIT_PROMPT_INFO%}("
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$GIT_PROMPT_INFO%})"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$GIT_DIRTY_COLOR%}✘"
-ZSH_THEME_GIT_PROMPT_CLEAN=" %{$GIT_CLEAN_COLOR%}✔"
-
-ZSH_THEME_GIT_PROMPT_ADDED="%{$FG[082]%}✚%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_MODIFIED="%{$FG[166]%}✹%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DELETED="%{$FG[160]%}✖%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_RENAMED="%{$FG[220]%}➜%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$FG[082]%}═%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$FG[190]%}✭%{$reset_color%}"
-
-ZSH_THEME_VIRTUALENV_PREFIX=" ["
-ZSH_THEME_VIRTUALENV_SUFFIX="]"
-
+ZSH_THEME_GIT_PROMPT_SEPARATOR=" %{$GIT_PROMPT_INFO%}| "
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$FG[075]%}%{$GIT_PROMPT_INFO%}"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$FG[076]%}%{+%G%}"
+ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$FG[160]%}%{✖%G%}"
+ZSH_THEME_GIT_PROMPT_CHANGED="%{$FG[166]%}%{●%G%}"
+ZSH_THEME_GIT_PROMPT_BEHIND="%{$FG[088]%}%{↓%G%}"
+ZSH_THEME_GIT_PROMPT_AHEAD="%{$FG[077]%}%{↑%G%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{✔%G%}"
+#  }}} Git #
+#  VIM mode {{{ #
 vim_ins_mode="%{$fg[yellow]%}[INS]%{$reset_color%}"
 vim_cmd_mode="%{$fg[cyan]%}[CMD]%{$reset_color%}"
 vim_mode=$vim_ins_mode
@@ -64,8 +62,10 @@ function zle-line-finish {
     zle reset-prompt
 }
 zle -N zle-line-finish
+#  }}} VIM mode #
+#  }}} COLORS & CUSTOMIZATION #
 
 PROMPT='%(?..%F{red}%U${(l:COLUMNS-1:: :)?} %u)' # Error status
 PROMPT+='%{$PROMPT_COMMON_COLOR%}%n@%m%{$reset_color%}:%{$PROMPT_COMMON_COLOR%}%c%{$reset_color%}' # name@hostname:path
-PROMPT+='%{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}ᐅ%{$reset_color%} ' # git status
-RPROMPT='$(git_super_status) ${vim_mode} %D{%d %b %Y} %T' # See man page strftime(3) for more details.
+PROMPT+='$(git_super_status) %{$PROMPT_PROMPT%}ᐅ%{$reset_color%} ' # git status
+RPROMPT='${vim_mode} %D{%d %b %Y} %T' # See man page strftime(3) for more details.
