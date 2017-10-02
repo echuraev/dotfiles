@@ -32,7 +32,6 @@
 !.profile
 !.bashrc
 !.bashrc.global
-!.gdb-dashboard/
 !.Xresources
 !.xinitrc
 !install.sh
