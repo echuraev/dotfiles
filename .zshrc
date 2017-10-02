@@ -34,6 +34,7 @@ setopt noincappendhistory
 setopt nosharehistory
 setopt interactivecomments # bash style comments
 setopt autocd
+setopt +o nomatch # Allow * commands i.g.: rm -f *
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -42,7 +43,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 bindkey -v
 KEYTIMEOUT=1
 bindkey -a '^[[3~' delete-char
-setopt +o nomatch # Allow * commands i.g.: rm -f *
+# allow ctrl-p, ctrl-n for navigate history (standard behaviour)
+bindkey '^P' up-history
+bindkey '^N' down-history
 
 # Load theme
 [ -f $HOME/.zsh/colors/theme.zsh ] && source $HOME/.zsh/colors/theme.zsh
