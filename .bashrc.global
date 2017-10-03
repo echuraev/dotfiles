@@ -69,7 +69,11 @@ weather_today() {
 }
 
 vimgdb() {
-    cmd="vim -c \"ConqueGdb -d $(pwd) --args $@\" -c \"only\" ."
+    args=""
+    for arg in $@; do
+        args=$args""$arg" "
+    done
+    cmd="vim -c \"ConqueGdb -d $(pwd) --args $args\" -c \"only\" ."
     eval $cmd
 }
 # }}} Common functions #
