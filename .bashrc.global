@@ -273,6 +273,14 @@ tm() {
     fzf --query="$1" --select-1 --exit-0) &&
     tmux attach-session -t "$session" || echo "No tmux sessions"
 }
+
+# tk - kill tmux session
+tk() {
+  local session
+  session=$(tmux list-sessions -F "#{session_name}" | \
+    fzf --query="$1" --exit-0) &&
+    tmux kill-session -t "$session" || echo "No tmux sessions"
+}
 # }}} FZF configurations #
 # Autorun {{{ #
 #if type "screenfetch" > /dev/null ; then
