@@ -1,5 +1,6 @@
 # Ignore everythong
 /*
+/.vim/.*
 /.vim/spell/*
 /.vim/bundle/*
 /.vim/plugged/*

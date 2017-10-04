@@ -27,14 +27,19 @@ nmap <C-k> <c-w>+
 " }}} Hot keys to change window size "
 " Copy and paste mapping {{{ "
 " Copy and paste to system buffer
-nnoremap <C-y> "+y
+nnoremap <C-y> "+Y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
-vnoremap <C-p> "+gP
+
 if has("gui_running")
     map  <silent>  <S-Insert>  "+p
     imap <silent>  <S-Insert>  <Esc>"+pa
 endif
+
+" 'global' buffer from file
+vmap <leader>y :w! ~/.vim/.glob_buf<CR>
+nmap <leader>y :.w! ~/.vim/.glob_buf<CR>
+nmap <leader>p :r ~/.vim/.glob_buf<CR>
 " }}} Copy and paste mapping "
 " Compile key mapping {{{ "
 nnoremap <F5> :Dispatch<CR>
