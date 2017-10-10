@@ -281,6 +281,31 @@ tk() {
     fzf --query="$1" --exit-0) &&
     tmux kill-session -t "$session" || echo "No tmux sessions"
 }
+
+# gitvl - Show local branch in gitv
+gitvl() {
+  is_in_git_repo || return
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | grep -v '/HEAD\s' | fzf +m --ansi --multi --tac --preview-window right:50% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##') &&
+  vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv "$(echo "$branch" | awk '{print $1}' | sed "s/.* //") -c "tabonly"
+}
+
+# gitvr - Show remote branch in gitv
+gitvr() {
+  is_in_git_repo || return
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##') &&
+  vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##") -c "tabonly"
+}
 # }}} FZF configurations #
 # Autorun {{{ #
 #if type "screenfetch" > /dev/null ; then
