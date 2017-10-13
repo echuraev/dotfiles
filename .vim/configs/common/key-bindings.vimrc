@@ -40,6 +40,7 @@ endif
 vmap <leader>y :w! ~/.vim/.glob_buf<CR>
 nmap <leader>y :.w! ~/.vim/.glob_buf<CR>
 nmap <leader>p :r ~/.vim/.glob_buf<CR>
+nmap <leader>P k:r ~/.vim/.glob_buf<CR>
 " }}} Copy and paste mapping "
 " Compile key mapping {{{ "
 nnoremap <F5> :Dispatch<CR>
