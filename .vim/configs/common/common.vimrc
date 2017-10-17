@@ -54,6 +54,9 @@ if !g:isWindows
     set term=screen-256color
     set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
     let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
+    highlight Comment cterm=italic gui=italic     " Italic comments in terminal
+    set t_ZH=[3m
+    set t_ZR=[23m
 endif
 autocmd VIMResized * execute "normal! \<c-w>="
 " Transparent background {{{ "
