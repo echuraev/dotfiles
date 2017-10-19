@@ -6,7 +6,11 @@ noremap \ ,
 " }}} Leader key mapping "
 " Movement {{{ "
 inoremap <C-h> <LEFT>
-imap <C-l> <RIGHT>
+inoremap <C-l> <RIGHT>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+cnoremap <C-h> <LEFT>
+cnoremap <C-l> <RIGHT>
 " }}} Movement "
 " History key mapping {{{ "
 " Trick from 'Practical VIM' filtering for history
