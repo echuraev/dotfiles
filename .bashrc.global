@@ -23,7 +23,11 @@ if [[ `uname` != 'Darwin' ]]; then
 else
     alias ls='ls -G'
 fi
-alias grep='grep --color'
+if [[ `uname -o` == 'Android' ]]; then
+    alias grep='grep'
+else
+    alias grep='grep --color'
+fi
 alias emacs='emacs -nw'
 alias gitv='vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv" -c "tabonly"'
 alias google-chrome='google-chrome --proxy-auto-detect'
