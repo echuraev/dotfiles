@@ -17,43 +17,6 @@ export SVN_EDITOR=/usr/bin/vim
 
 export TERM=xterm-256color
 
-# Aliases {{{ #
-if [[ `uname` != 'Darwin' ]]; then
-    alias ls='ls --color=always'
-else
-    alias ls='ls -G'
-fi
-if [[ `uname -o` == 'Android' ]]; then
-    alias grep='grep'
-else
-    alias grep='grep --color'
-fi
-alias emacs='emacs -nw'
-alias gitv='vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv" -c "tabonly"'
-alias google-chrome='google-chrome --proxy-auto-detect'
-alias whatsapp='google-chrome --app=https://web.whatsapp.com/' #'/opt/google/chrome/google-chrome --app=https://web.whatsapp.com/'
-#alias vim='vim --startuptime vim.log'
-# }}} Aliases #
-# Setup environment {{{ #
-LOCAL_BIN=${HOME}/.bin/
-mkdir -p $LOCAL_BIN
-export PATH=$LOCAL_BIN:$PATH
-
-export RG_BIN=$LOCAL_BIN/rg
-if [ ! -f $RG_BIN ]; then
-    # Install rg
-    echo "Install rg"
-    export rg_version='0.5.2'
-    if [[ `uname` != 'Darwin' ]]; then
-        export rg_archive_name='ripgrep-0.5.2-x86_64-unknown-linux-musl'
-    else
-        export rg_archive_name='ripgrep-0.5.2-x86_64-apple-darwin'
-    fi
-    wget -O /tmp/$rg_archive_name.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/$rg_version/$rg_archive_name.tar.gz
-    tar xf /tmp/$rg_archive_name.tar.gz -C /tmp
-    cp -f /tmp/$rg_archive_name/rg $RG_BIN
-fi
-# }}} Setup environment #
 # Common functions {{{ #
 weather() {
     # See help here: http://wttr.in/:help
@@ -80,7 +43,63 @@ vimgdb() {
     cmd="vim -c \"ConqueGdb -d $(pwd) --args $args\" -c \"only\" ."
     eval $cmd
 }
+
+isAndroidOS() {
+    if [[ `uname` != 'Darwin' ]]; then
+        if [[ `uname -o` == 'Android' ]]; then
+            true
+        else
+            false
+        fi
+    else
+        false
+    fi
+}
+
+isMacOS() {
+    if [[ `uname` != 'Darwin' ]]; then
+        false
+    else
+        true
+    fi
+}
 # }}} Common functions #
+# Aliases {{{ #
+if ! isMacOS; then
+    alias ls='ls --color=always'
+else
+    alias ls='ls -G'
+fi
+if isAndroidOS; then
+    alias grep='grep'
+else
+    alias grep='grep --color'
+fi
+alias gitv='vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv" -c "tabonly"'
+alias google-chrome='google-chrome --proxy-auto-detect'
+alias whatsapp='google-chrome --app=https://web.whatsapp.com/' #'/opt/google/chrome/google-chrome --app=https://web.whatsapp.com/'
+#alias vim='vim --startuptime vim.log'
+# }}} Aliases #
+# Setup environment {{{ #
+LOCAL_BIN=${HOME}/.bin/
+mkdir -p $LOCAL_BIN
+export PATH=$LOCAL_BIN:$PATH
+
+export RG_BIN=$LOCAL_BIN/rg
+if [ ! -f $RG_BIN ]; then
+    # Install rg
+    echo "Install rg"
+    export rg_version='0.5.2'
+    if [[ `uname` != 'Darwin' ]]; then
+        export rg_archive_name='ripgrep-0.5.2-x86_64-unknown-linux-musl'
+    else
+        export rg_archive_name='ripgrep-0.5.2-x86_64-apple-darwin'
+    fi
+    wget -O /tmp/$rg_archive_name.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/$rg_version/$rg_archive_name.tar.gz
+    tar xf /tmp/$rg_archive_name.tar.gz -C /tmp
+    cp -f /tmp/$rg_archive_name/rg $RG_BIN
+fi
+# }}} Setup environment #
 # FZF configurations {{{ #
 
 # FZF search program. Get config from here: https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
