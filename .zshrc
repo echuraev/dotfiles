@@ -13,8 +13,6 @@ source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2          # Syntax highlighting for commands
 zplug "lib/completion", from:oh-my-zsh                      # Load completion library for those sweet [tab] squares
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'       # Manage zplug as other plugins
-zplug 'olivierverdier/zsh-git-prompt' #, hook-load:' source ~/.zplug/repos/olivierverdier/zsh-git-prompt/zshrc.sh'  # Super git prompt
-source ~/.zplug/repos/olivierverdier/zsh-git-prompt/zshrc.sh
 zplug "plugins/colored-man-pages", from:oh-my-zsh           # Add colors to man pages
 zplug "plugins/command-not-found", from:oh-my-zsh           # Suggests package name with relevant command
 zplug "plugins/extract", from:oh-my-zsh                     # 'x' alias - swiss knife for archive extracting
