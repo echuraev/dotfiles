@@ -89,11 +89,11 @@ export RG_BIN=$LOCAL_BIN/rg
 if [ ! -f $RG_BIN ]; then
     # Install rg
     echo "Install rg"
-    export rg_version='0.5.2'
+    export rg_version='0.7.1'
     if [[ `uname` != 'Darwin' ]]; then
-        export rg_archive_name='ripgrep-0.5.2-x86_64-unknown-linux-musl'
+        export rg_archive_name='ripgrep-'$rg_version'-x86_64-unknown-linux-musl'
     else
-        export rg_archive_name='ripgrep-0.5.2-x86_64-apple-darwin'
+        export rg_archive_name='ripgrep-'$rg_version'-x86_64-apple-darwin'
     fi
     wget -O /tmp/$rg_archive_name.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/$rg_version/$rg_archive_name.tar.gz
     tar xf /tmp/$rg_archive_name.tar.gz -C /tmp
