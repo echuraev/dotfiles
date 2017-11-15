@@ -7,5 +7,10 @@ let g:tex_flavor='latex'
 " no symbol conversion
 let g:tex_conceal = ""
 
-"autocmd Filetype tex setl updatetime=1
-let g:livepreview_previewer = 'okular'
+autocmd Filetype tex setl updatetime=1
+"if g:isLinux
+"    let g:livepreview_previewer = 'evince'
+"endif
+if g:isMac
+    let g:livepreview_previewer = 'open -a Preview'
+endif

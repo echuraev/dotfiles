@@ -32,7 +32,9 @@ Plug 'OrangeT/vim-csharp', { 'for': 'cs' }                  " C# highlighting
 " LaTeX {{{ "
 if !g:isAndroid
     Plug 'vim-latex/vim-latex'            " Plugin for editing LaTeX files
-    Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
+    if !g:isWindows
+        Plug 'xuhdev/vim-latex-live-preview'  " Plugin preview for LaTeX
+    endif
 endif
 " }}} LaTeX "
 " Markdown {{{ "
