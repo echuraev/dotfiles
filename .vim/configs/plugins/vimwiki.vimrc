@@ -5,3 +5,5 @@ let g:vimwiki_hl_cb_checked = 2                                                 
 au BufEnter *.wiki :syntax sync fromstart                                               " Work around from help for highlight tasks
 let g:vimwiki_list_ignore_newline = 0                                                   " Conversion to HTML: Newlines in a list item are converted to <br />s.
 let g:vimwiki_text_ignore_newline = 0                                                   " Conversion to HTML: Newlines in a list item are converted to <br />s.
+let g:vimwiki_folding = 'syntax'
+autocmd FileType vimwiki set foldmethod=syntax foldenable foldlevel=1
