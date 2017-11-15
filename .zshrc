@@ -32,6 +32,8 @@ setopt noincappendhistory
 setopt nosharehistory
 setopt interactivecomments # bash style comments
 setopt autocd
+# Correction
+setopt correct
 setopt +o nomatch # Allow * commands i.g.: rm -f *
 
 # User configuration
