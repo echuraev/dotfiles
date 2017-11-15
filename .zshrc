@@ -10,15 +10,34 @@ fi
 
 source ~/.zplug/init.zsh
 
-zplug "zsh-users/zsh-syntax-highlighting", defer:2          # Syntax highlighting for commands
+zplug "zdharma/fast-syntax-highlighting", defer:2           # Syntax highlighting for commands better in compare with zsh-syntax-highlighting
 zplug "lib/completion", from:oh-my-zsh                      # Load completion library for those sweet [tab] squares
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'       # Manage zplug as other plugins
 zplug "plugins/colored-man-pages", from:oh-my-zsh           # Add colors to man pages
 zplug "plugins/command-not-found", from:oh-my-zsh           # Suggests package name with relevant command
 zplug "plugins/extract", from:oh-my-zsh                     # 'x' alias - swiss knife for archive extracting
+zplug "nviennot/zsh-vim-plugin"                             # Allows you to do vim filename:123 to open a file with the cursor at a specific line.
+zplug "popstas/zsh-command-time"                            # Print time after long command
 
 zplug load
 
+#  zsh-command-time configs {{{ #
+ZSH_COMMAND_TIME_ECHO=1           # Show time
+ZSH_COMMAND_TIME_MIN_SECONDS=3    # if command executes more than 3 seconds, time will shown
+zsh_command_time() {
+    if [ -n "$ZSH_COMMAND_TIME" ]; then
+        min=$(($ZSH_COMMAND_TIME/60))
+        sec=$(($ZSH_COMMAND_TIME%60))
+        if [ "$ZSH_COMMAND_TIME" -le 60 ]; then
+            echo "Execution time: $fg[green]$ZSH_COMMAND_TIME s."
+        elif [ "$ZSH_COMMAND_TIME" -gt 60 ] && [ "$ZSH_COMMAND_TIME" -le 180 ]; then
+            echo "Execution time: $fg[yellow]$min min. $sec s."
+        else
+            echo "Execution time: $fg[red]$min min. $sec s."
+        fi
+    fi
+}
+#  }}} zsh-command-time configs #
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=9999
 SAVEHIST=9999
