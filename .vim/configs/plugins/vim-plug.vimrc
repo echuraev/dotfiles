@@ -120,7 +120,6 @@ Plug 'tpope/vim-repeat'               " Extend behavior of .
 Plug 'tpope/vim-surround'             " Work with surroundings in pairs.
 Plug 'junegunn/vim-easy-align'        " Vim alignment plugin
 Plug 'godlygeek/tabular'              " Also alignment plugin
-Plug 'rhysd/clever-f.vim'             " Extends f, F, t and T
 " }}} Text manipulation "
 " Common {{{ "
 if v:version > 704 || (v:version == 704 && has('patch248'))     " systemlist function was added in patch 248
