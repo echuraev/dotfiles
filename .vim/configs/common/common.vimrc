@@ -52,8 +52,10 @@ autocmd FileType qf setlocal colorcolumn=
 "hi ColorColumn ctermbg=1 guibg='#800000'
 if !g:isWindows
     set term=screen-256color
-    set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
-    let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
+    if !g:isAndroid
+        set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
+        let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
+    endif
     highlight Comment cterm=italic gui=italic     " Italic comments in terminal
     set t_ZH=[3m
     set t_ZR=[23m
@@ -114,7 +116,9 @@ set history=5000
 au VimEnter * if &diff | execute 'windo set wrap' | endif " Wrap words if diff
 " }}} Diff settings "
 " Spell checking {{{ "
-set spell spelllang=ru,en         " Enable spell checking
+if !g:isAndroid
+    set spell spelllang=ru,en         " Enable spell checking
+endif
 " Disable spell checking for special ft {{{ "
 autocmd FileType conque_term setlocal nospell
 autocmd FileType gitv setlocal nospell
