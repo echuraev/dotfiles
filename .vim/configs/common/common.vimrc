@@ -80,7 +80,7 @@ au VimEnter * if &diff | execute 'windo hi CursorLine ctermbg=none guibg=NONE ct
 " }}} Diff Colors "
 " }}} View settings "
 " Folding settings {{{ "
-set foldmethod=indent   "fold based on indent
+set foldmethod=syntax   "fold based on syntax
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
