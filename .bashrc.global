@@ -64,8 +64,15 @@ isMacOS() {
     fi
 }
 
+# go to the git root directory
 cdgit() {
     cd $(git rev-parse --show-toplevel)
+}
+
+# cp with status bar
+cpv()
+{
+    rsync -pogh --partial --inplace --append --progress -- "$@"
 }
 # }}} Common functions #
 # Aliases {{{ #

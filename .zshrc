@@ -75,3 +75,5 @@ bindkey '^N' down-history
 # Load FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+compdef _cp cpv
+
