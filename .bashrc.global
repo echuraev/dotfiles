@@ -63,6 +63,10 @@ isMacOS() {
         true
     fi
 }
+
+cdgit() {
+    cd $(git rev-parse --show-toplevel)
+}
 # }}} Common functions #
 # Aliases {{{ #
 if ! isMacOS; then
