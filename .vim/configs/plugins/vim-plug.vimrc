@@ -139,20 +139,6 @@ Plug 'EinfachToll/DidYouMean'         " Make a suggestion which file did you wan
 Plug 'farmergreg/vim-lastplace'       " Intelligently reopen files at your last edit position
 Plug 'qpkorr/vim-renamer'             " Rename list of files
 Plug 'mbbill/undotree'                " Visualize undo tree
-if !g:isAndroid
-    Plug 'lyokha/vim-xkbswitch'           " Automatically switch keyboard layout to English in normal mode
-    " Dependency of vim-xkbswitch {{{ "
-    if g:isLinux
-        Plug 'ierton/xkb-switch', { 'do': 'mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX:PATH=../install && make && make install' }
-    endif
-    if g:isMac
-        Plug 'vovkasm/input-source-switcher', { 'do': 'mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX:PATH=../install && make && make install' }
-    endif
-    if g:isWindows
-        Plug 'DeXP/xkb-switch-win'
-    endif
-    " }}} Dependency of vim-xkbswitch "
-endif
 " }}} Common "
 " View {{{ "
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
