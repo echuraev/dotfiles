@@ -26,6 +26,7 @@ ZSH_COMMAND_TIME_ECHO=1           # Show time
 ZSH_COMMAND_TIME_MIN_SECONDS=3    # if command executes more than 3 seconds, time will shown
 zsh_command_time() {
     if [ -n "$ZSH_COMMAND_TIME" ]; then
+        hours=$(($ZSH_COMMAND_TIME/3600))
         min=$(($ZSH_COMMAND_TIME/60))
         sec=$(($ZSH_COMMAND_TIME%60))
         if [ "$ZSH_COMMAND_TIME" -le 60 ]; then
@@ -33,7 +34,12 @@ zsh_command_time() {
         elif [ "$ZSH_COMMAND_TIME" -gt 60 ] && [ "$ZSH_COMMAND_TIME" -le 180 ]; then
             echo "Execution time: $fg[yellow]$min min. $sec s."
         else
-            echo "Execution time: $fg[red]$min min. $sec s."
+            if [ "$hours" -gt 0 ]; then
+                min=$(($min%60))
+                echo "Execution time: $fg[red]$hours h. $min min. $sec s."
+            else
+                echo "Execution time: $fg[red]$min min. $sec s."
+            fi
         fi
     fi
 }
