@@ -18,6 +18,7 @@ zplug "plugins/command-not-found", from:oh-my-zsh           # Suggests package n
 zplug "plugins/extract", from:oh-my-zsh                     # 'x' alias - swiss knife for archive extracting
 zplug "nviennot/zsh-vim-plugin"                             # Allows you to do vim filename:123 to open a file with the cursor at a specific line.
 zplug "popstas/zsh-command-time"                            # Print time after long command
+zplug "urbainvaes/fzf-marks"                                # Create and navigate in bookmarks in Bash and Zsh
 
 zplug load
 
@@ -81,5 +82,6 @@ bindkey '^N' down-history
 # Load FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+bindkey '^G' jump           # key binding for run fzf-marks
 compdef _cp cpv
 
