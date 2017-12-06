@@ -69,9 +69,12 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 bindkey -v
 KEYTIMEOUT=1
 bindkey -a '^[[3~' delete-char
+# Enabled history filtering
 # allow ctrl-p, ctrl-n for navigate history (standard behaviour)
-bindkey '^P' up-history
-bindkey '^N' down-history
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
+bindkey 'OA' history-beginning-search-backward
+bindkey 'OB' history-beginning-search-forward
 
 # Load theme
 [ -f $HOME/.zsh/colors/theme.zsh ] && source $HOME/.zsh/colors/theme.zsh
