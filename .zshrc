@@ -20,6 +20,16 @@ zplug "nviennot/zsh-vim-plugin"                             # Allows you to do v
 zplug "popstas/zsh-command-time"                            # Print time after long command
 zplug "urbainvaes/fzf-marks"                                # Create and navigate in bookmarks in Bash and Zsh
 
+# Install packages that have not been installed yet
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
+
 zplug load
 
 #  zsh-command-time configs {{{ #
