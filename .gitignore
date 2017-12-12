@@ -14,6 +14,7 @@
 /.vim/view
 *.DS_Store
 /.config/*
+/.tmux/plugins
 
 # Except the following files
 !*.itermcolors
