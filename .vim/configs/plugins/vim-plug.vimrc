@@ -93,6 +93,7 @@ Plug 'tpope/vim-fugitive'                " Git plugin
 Plug 'airblade/vim-gitgutter'            " Extencion for git
 Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 Plug 'tpope/vim-git'                     " git syntax highlight
+Plug 'junegunn/gv.vim'                   " light git commits browser
 Plug 'rhysd/committia.vim'               " extended commit message
 " }}} Git "
 " Search {{{ "
