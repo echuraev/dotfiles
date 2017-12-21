@@ -163,7 +163,7 @@ frm() {
                   coderay {} || \
                   rougify {} || \
                   cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && rm -if "${files[@]}"
+  [[ -n "$files" ]] && rm -i "${files[@]}"
 }
 
 # fcd - including hidden directories
