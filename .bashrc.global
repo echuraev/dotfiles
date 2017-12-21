@@ -152,6 +152,20 @@ fe() {
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
+# frm [FUZZY PATTERN] - Remove the selected file
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+frm() {
+  local files
+  IFS=$'\n' files=($(fzf-tmux --preview '[[ $(file --mime {}) =~ binary ]] && \
+                 echo {} is a binary file || \
+                 (highlight -O ansi -l {} || \
+                  coderay {} || \
+                  rougify {} || \
+                  cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && rm -if "${files[@]}"
+}
+
 # fcd - including hidden directories
 fcd() {
   local dir
