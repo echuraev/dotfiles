@@ -71,6 +71,15 @@ setopt autocd
 # Correction
 setopt correct
 setopt +o nomatch # Allow * commands i.g.: rm -f *
+#  fg workaround {{{ #
+fg() {
+    if [[ $# -eq 1 && $1 = - ]]; then
+        builtin fg %-
+    else
+        builtin fg %"$@"
+    fi
+}
+#  }}} fg workaround #
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
