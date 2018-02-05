@@ -1,4 +1,4 @@
-if type "zsh" > /dev/null; then
+if type "zsh" > /dev/null 2>&1; then
     exec zsh
 else
     [ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
