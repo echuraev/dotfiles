@@ -5,6 +5,7 @@
 /.vim/bundle/*
 /.vim/plugged/*
 /.vim/swapfiles/*
+/.config/kitty/*
 /.emacs.d/*
 *~
 \#*\#
@@ -28,6 +29,8 @@
 !.config/
 !.config/awesome/
 !.config/ranger/
+!.config/kitty/
+!.config/kitty/kitty.conf
 !.vimrc
 !.zsh/
 !.zshrc
