@@ -97,6 +97,8 @@ bindkey 'OB' history-beginning-search-forward
 
 # Load theme
 [ -f $HOME/.zsh/colors/theme.zsh ] && source $HOME/.zsh/colors/theme.zsh
+# Load local zsh configuration
+[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
 # Load configuration
 [ -f $HOME/.bashrc.global ] && source $HOME/.bashrc.global
