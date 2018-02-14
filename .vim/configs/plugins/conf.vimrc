@@ -2,7 +2,7 @@ let s:CONF_DIRECTORY = expand('<sfile>:p:h')
 let s:vim_configuration_files = [
 \ 'vim-plug.vimrc',
 \ 'youcompleteme.vimrc',
-\ 'syntastic.vimrc',
+\ 'ale.vimrc',
 \ 'nerdtree.vimrc',
 \ 'diff.vimrc',
 \ 'latex.vimrc',

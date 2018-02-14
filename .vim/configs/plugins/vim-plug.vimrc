@@ -128,7 +128,7 @@ if v:version > 704 || (v:version == 704 && has('patch248'))     " systemlist fun
 endif
 Plug 'mhinz/vim-startify'             " Nice start screen
 if !g:isAndroid
-    Plug 'vim-syntastic/syntastic'        " Syntax checking plugin
+    Plug 'w0rp/ale'                   " Syntax checking plugin
 endif
 Plug 'will133/vim-dirdiff'            " Dir diff viewer
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs

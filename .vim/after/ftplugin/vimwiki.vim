@@ -1,3 +1,4 @@
+set textwidth=80
 " C-Tab key doesn't work in terminal. So I remapped these function to <C-Space>
 if g:vimwiki_table_mappings
     iunmap <buffer> <Tab>

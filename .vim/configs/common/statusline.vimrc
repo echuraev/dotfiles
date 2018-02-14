@@ -200,10 +200,8 @@ function! StatusLine(winnum)
     let statLine .= "%{ReadOnly()}%w"                                           " Is it read only file and preview windows flag [Preview]
     let statLine .= " "                                                         " Space
     if active && winwidth(a:winnum) > 80
-        if exists('*SyntasticStatuslineFlag')
-            let statLine .= "%#warningmsg#"                                     " Switch to warning hi group
-            let statLine .= "%{SyntasticStatuslineFlag()}"                      " Syntastic errors
-        endif
+        let statLine .= "%#ALEError#"                                           " Switch another hi group
+        let statLine .= "%{LinterStatus()}"                                     " ALE errors
         let statLine .= "%#statusBackground#"                                   " Switch to statusBackground hi group
         let statLine .= " "                                                     " Space
     endif

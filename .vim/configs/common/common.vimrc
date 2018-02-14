@@ -122,6 +122,7 @@ endif
 " Disable spell checking for special ft {{{ "
 autocmd FileType conque_term setlocal nospell
 autocmd FileType gitv setlocal nospell
+autocmd FileType GV setlocal nospell
 autocmd FileType git setlocal nospell
 autocmd FileType gitrebase setlocal nospell
 autocmd FileType fugitiveblame setlocal nospell
