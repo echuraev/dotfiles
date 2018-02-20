@@ -62,6 +62,9 @@ Plug 'elzr/vim-json', { 'for': 'json' }                   " Color highlighting f
 " Code formatting {{{ "
 Plug 'rhysd/vim-clang-format'                             " Format code with specific coding style
 " }}} Code formatting "
+" Folding {{{ "
+Plug 'pseewald/vim-anyfold'                               " Fold code
+" }}} Folding "
 " }}} Programming "
 " Snippets {{{ "
 " For working it is necessary to have python3 installed

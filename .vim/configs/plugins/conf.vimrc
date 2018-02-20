@@ -3,6 +3,7 @@ let s:vim_configuration_files = [
 \ 'vim-plug.vimrc',
 \ 'youcompleteme.vimrc',
 \ 'ale.vimrc',
+\ 'anyfold.vimrc',
 \ 'nerdtree.vimrc',
 \ 'diff.vimrc',
 \ 'latex.vimrc',
