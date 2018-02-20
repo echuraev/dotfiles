@@ -101,7 +101,7 @@ export RG_BIN=$LOCAL_BIN/rg
 if [ ! -f $RG_BIN ]; then
     # Install rg
     echo "Install rg"
-    export rg_version='0.7.1'
+    export rg_version='0.8.0'
     if [[ `uname` != 'Darwin' ]]; then
         export rg_archive_name='ripgrep-'$rg_version'-x86_64-unknown-linux-musl'
     else
