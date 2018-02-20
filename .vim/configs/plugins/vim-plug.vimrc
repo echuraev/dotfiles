@@ -140,6 +140,7 @@ Plug 'EinfachToll/DidYouMean'         " Make a suggestion which file did you wan
 Plug 'farmergreg/vim-lastplace'       " Intelligently reopen files at your last edit position
 Plug 'qpkorr/vim-renamer'             " Rename list of files
 Plug 'mbbill/undotree'                " Visualize undo tree
+Plug 'bogado/file-line'               " For open file:line
 " }}} Common "
 " View {{{ "
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level

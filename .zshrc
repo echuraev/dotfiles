@@ -16,7 +16,6 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'       # Manage zplug as ot
 zplug "plugins/colored-man-pages", from:oh-my-zsh           # Add colors to man pages
 zplug "plugins/command-not-found", from:oh-my-zsh           # Suggests package name with relevant command
 zplug "plugins/extract", from:oh-my-zsh                     # 'x' alias - swiss knife for archive extracting
-zplug "nviennot/zsh-vim-plugin"                             # Allows you to do vim filename:123 to open a file with the cursor at a specific line.
 zplug "popstas/zsh-command-time"                            # Print time after long command
 zplug "urbainvaes/fzf-marks"                                # Create and navigate in bookmarks in Bash and Zsh
 
