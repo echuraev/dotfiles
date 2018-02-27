@@ -119,6 +119,7 @@ Plug 'francoiscabrol/ranger.vim'      " Integrate ranger file manager to vim
 " Text manipulation {{{ "
 Plug 'wellle/targets.vim'             " Add various text objects to VIM
 Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
+Plug 'machakann/vim-multiselect'      " A library plugin to handle multiple visual selections
 Plug 'tmhedberg/matchit'              " Extend behavior of %
 Plug 'tpope/vim-repeat'               " Extend behavior of .
 Plug 'tpope/vim-surround'             " Work with surroundings in pairs.
@@ -137,32 +138,25 @@ Plug 'will133/vim-dirdiff'            " Dir diff viewer
 Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 Plug 'tpope/vim-unimpaired'           " Fast navigation
 Plug 'majutsushi/tagbar'              " Tagbar
-"Plug 'zefei/vim-wintabs'              " Separate tabs for windows
 Plug 'easymotion/vim-easymotion'      " Easy motion in files
 Plug 'EinfachToll/DidYouMean'         " Make a suggestion which file did you want to open
 Plug 'farmergreg/vim-lastplace'       " Intelligently reopen files at your last edit position
 Plug 'qpkorr/vim-renamer'             " Rename list of files
 Plug 'mbbill/undotree'                " Visualize undo tree
 Plug 'bogado/file-line'               " For open file:line
+Plug 'romainl/vim-qf', { 'for': 'qf' } " Tame the quickfix window
 " }}} Common "
 " View {{{ "
 Plug 'yggdroot/indentline'            " Displaying thin vertical lines at each indentation level
 Plug 'ntpeters/vim-better-whitespace' " Highlight whitespaces
 Plug 'chrisbra/Colorizer'             " A plugin to color colornames and codes
+Plug 'sunaku/vim-hicterm'             " Highlights terminal color code numbers
 Plug 'powerman/vim-plugin-AnsiEsc'    " Enable highlighting AnsiEsc in vim
 Plug 'vim-scripts/xoria256.vim'       " Color scheme
 " }}} View "
 " Other {{{ "
-if g:personalConfig == 1 || g:extendedConfig == 1
-    Plug 'wakatime/vim-wakatime'          " Time tracking
-endif
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'vimwiki/vimwiki'                " Organize notes
-"if !g:isWindows && !g:isAndroid
-"    Plug 'tbabej/taskwiki'                " Taskwarior for vimwiki
-"    Plug 'blindFS/vim-taskwarrior'        " TaskWarrior interface for vim
-"endif
-"Plug 'Shougo/vimproc.vim', {'do' : 'make'} | Plug 'shougo/vimshell.vim'       " Vim shell
 " }}} Other "
 
 call plug#end()
