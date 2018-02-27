@@ -376,4 +376,68 @@ if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
     weather_today
 fi
 # }}} Autorun #
+# Bash Prompt {{{ #
+if [ -n "$BASH_VERSION" ]; then
+    # get current branch in git repo
+    function parse_git_branch() {
+        BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+        if [ ! "${BRANCH}" == "" ]
+        then
+            STAT=`parse_git_dirty`
+            echo "(${BRANCH}${STAT})"
+        else
+            echo ""
+        fi
+    }
+
+    # get current status of git repo
+    function parse_git_dirty {
+        status=`git status 2>&1 | tee`
+        dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
+        untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
+        ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+        newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
+        renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
+        deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+        bits=''
+        if [ "${renamed}" == "0" ]; then
+            bits=">${bits}"
+        fi
+        if [ "${ahead}" == "0" ]; then
+            bits="*${bits}"
+        fi
+        if [ "${newfile}" == "0" ]; then
+            bits="+${bits}"
+        fi
+        if [ "${untracked}" == "0" ]; then
+            bits="?${bits}"
+        fi
+        if [ "${deleted}" == "0" ]; then
+            bits="x${bits}"
+        fi
+        if [ "${dirty}" == "0" ]; then
+            bits="!${bits}"
+        fi
+        if [ ! "${bits}" == "" ]; then
+            echo " ${bits}"
+        else
+            echo ""
+        fi
+    }
+
+    PS1="\[\033[01;37m\]\$? \$(if [[ \$? == 0 ]]; then echo \"\[\033[01;32m\]✓\"; else echo \"\[\033[01;31m\]✗\"; fi) $(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]\h'; else echo '\[\033[01;32m\]\u@\h'; fi)\[\033[01;34m\]:\W \`parse_git_branch\`\$\[\033[00m\] "
+fi
+# }}} Bash Prompt #
+# Colors to man {{{ #
+export MANROFFOPT='-c'
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 5)
+export LESS_TERMCAP_md=$(tput bold; tput setaf 1)
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput setaf 0; tput setab 15)
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 2)
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+# }}} Colors to man #
 
