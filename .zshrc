@@ -1,4 +1,5 @@
 [ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
+#  zplug configuration {{{ #
 if [[ ! -d ~/.zplug ]]; then
     git clone https://github.com/b4b4r07/zplug ~/.zplug
 fi
@@ -29,7 +30,7 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
-
+#  }}} zplug configuration #
 #  zsh-command-time configs {{{ #
 ZSH_COMMAND_TIME_ECHO=1           # Show time
 ZSH_COMMAND_TIME_MIN_SECONDS=3    # if command executes more than 3 seconds, time will shown
@@ -82,17 +83,18 @@ fg() {
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export fpath=( $HOME/.zsh/completion "${fpath[@]}" )
-
-# Vim Mode
+#  vim mode {{{ #
 bindkey -v
 KEYTIMEOUT=1
 bindkey -a '^[[3~' delete-char
+bindkey -v '^?' backward-delete-char
 # Enabled history filtering
 # allow ctrl-p, ctrl-n for navigate history (standard behaviour)
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 bindkey 'OA' history-beginning-search-backward
 bindkey 'OB' history-beginning-search-forward
+#  }}} vim mode #
 
 # Load theme
 [ -f $HOME/.zsh/colors/theme.zsh ] && source $HOME/.zsh/colors/theme.zsh
