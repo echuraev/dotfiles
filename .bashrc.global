@@ -8,15 +8,6 @@
 #     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # fi
 
-export LANGUAGE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_TYPE=en_US.UTF-8
-
-export SVN_EDITOR=/usr/bin/vim
-
-export TERM=xterm-256color
-
 # Common functions {{{ #
 weather() {
     # See help here: http://wttr.in/:help
@@ -92,8 +83,23 @@ alias whatsapp='google-chrome --app=https://web.whatsapp.com/' #'/opt/google/chr
 #alias vim='vim --startuptime vim.log'
 # }}} Aliases #
 # Setup environment {{{ #
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_TYPE=en_US.UTF-8
+
+export SVN_EDITOR=/usr/bin/vim
+
+export TERM=xterm-256color
+
+export XDG_CONFIG_HOME="$HOME/.xdg_config"
+export BASH_COMPL_DIR=$XDG_CONFIG_HOME"/bash_completion"
+export ZSH_COMPL_DIR="$HOME/.zsh/completion"
 LOCAL_BIN=${HOME}/.bin/
 mkdir -p $LOCAL_BIN
+mkdir -p $XDG_CONFIG_HOME
+mkdir -p $BASH_COMPL_DIR
+mkdir -p $ZSH_COMPL_DIR
 export PATH=$LOCAL_BIN:$PATH
 
 # Install ripgrep {{{ #
@@ -115,6 +121,10 @@ if [ ! -f $RG_BIN ]; then
     wget -O $tmp_dir/$rg_archive_name.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/$rg_version/$rg_archive_name.tar.gz
     tar xf $tmp_dir/$rg_archive_name.tar.gz -C $tmp_dir
     cp -f $tmp_dir/$rg_archive_name/rg $RG_BIN
+
+    # Enable autocompletion
+    cp -f $tmp_dir/$rg_archive_name/complete/rg.bash $BASH_COMPL_DIR
+    cp -f $tmp_dir/$rg_archive_name/complete/_rg $ZSH_COMPL_DIR
 fi
 # }}} Install ripgrep #
 # Instal Tmux Plugin Manager {{{ #

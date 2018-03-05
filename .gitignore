@@ -16,6 +16,7 @@
 *.DS_Store
 /.config/*
 /.tmux/plugins
+.zsh/completion
 
 # Except the following files
 !*.itermcolors

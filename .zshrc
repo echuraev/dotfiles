@@ -81,6 +81,7 @@ fg() {
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export fpath=( $HOME/.zsh/completion "${fpath[@]}" )
 
 # Vim Mode
 bindkey -v
