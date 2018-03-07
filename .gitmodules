@@ -10,3 +10,6 @@
 [submodule ".config/awesome"]
 	path = .config/awesome
 	url = https://github.com/echuraev/Awesome-WM-configuration
+[submodule ".vifm/colors"]
+	path = .vifm/colors
+	url = https://github.com/vifm/vifm-colors
