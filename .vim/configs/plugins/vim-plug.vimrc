@@ -38,8 +38,9 @@ if !g:isAndroid
 endif
 " }}} LaTeX "
 " Markdown {{{ "
-Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.vim'
+Plug 'plasticboy/vim-markdown'             " Common plugin for markdown
+Plug 'iamcco/markdown-preview.vim'         " Markdown preview plugin
+Plug 'mzlogin/vim-markdown-toc'            " Generate TOC in markdown
 " }}} Markdown "
 " OpenCL {{{ "
 " Syntax highlighting {{{ "
