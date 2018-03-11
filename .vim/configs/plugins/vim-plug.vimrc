@@ -39,6 +39,7 @@ endif
 " }}} LaTeX "
 " Markdown {{{ "
 Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.vim'
 " }}} Markdown "
 " OpenCL {{{ "
 " Syntax highlighting {{{ "

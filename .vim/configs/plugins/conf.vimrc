@@ -6,6 +6,7 @@ let s:vim_configuration_files = [
 \ 'anyfold.vimrc',
 \ 'nerdtree.vimrc',
 \ 'diff.vimrc',
+\ 'markdown.vimrc',
 \ 'latex.vimrc',
 \ 'wintabs.vimrc',
 \ 'ultisnips.vimrc',
