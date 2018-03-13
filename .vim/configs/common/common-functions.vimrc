@@ -23,3 +23,14 @@ function! SetKey()
 endfunction
 command! SetKey execute 'call SetKey()'
 " }}} Set key function "
+" Get selected text {{{ "
+function! GetVisualSelection() abort
+  try
+    let a_save = @a
+    silent! normal! gv"ay
+    return @a
+  finally
+    let @a = a_save
+  endtry
+endfunction
+" }}} Get selected text "

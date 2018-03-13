@@ -25,6 +25,7 @@ let s:vim_configuration_files = [
 \ 'conquegdb.vimrc',
 \ 'ranger.vimrc',
 \ 'python-mode.vimrc',
+\ 'trans.vimrc',
 \]
 
 for file in s:vim_configuration_files

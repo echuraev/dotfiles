@@ -133,6 +133,10 @@ if [ ! -d $TPM_DIR ]; then
     git clone https://github.com/tmux-plugins/tpm $TPM_DIR
 fi
 # }}} Instal Tmux Plugin Manager #
+# Install translate-shell {{{ #
+wget -O $LOCAL_BIN/trans git.io/trans
+chmod +x $LOCAL_BIN/trans
+# }}} Install translate-shell #
 # }}} Setup environment #
 # FZF configurations {{{ #
 
