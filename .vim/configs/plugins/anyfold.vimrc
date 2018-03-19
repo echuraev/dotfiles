@@ -1,4 +1,5 @@
 autocmd Filetype cpp let b:anyfold_activate=1
+autocmd Filetype lua let b:anyfold_activate=1
 autocmd Filetype java let b:anyfold_activate=1
 autocmd Filetype py let b:anyfold_activate=1
 autocmd Filetype cmake let b:anyfold_activate=1
