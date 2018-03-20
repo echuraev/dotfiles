@@ -23,6 +23,7 @@
 !.gitconfig
 !.gitignore
 !.gitmodules
+!.gdbinit
 !.tmux.conf
 !.tmux
 !.vim/
