@@ -101,6 +101,7 @@ Plug 'rhysd/committia.vim'               " extended commit message
 " Search {{{ "
 Plug 'osyo-manga/vim-over'            " Replace highlighter
 Plug 'mileszs/ack.vim'                " Run ack in vim
+Plug 'google/vim-searchindex'         " Show number of found matches
 " }}} Search "
 " Project {{{ "
 Plug 'tpope/vim-dispatch'             " Project compiling
