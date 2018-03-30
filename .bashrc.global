@@ -92,7 +92,7 @@ export SVN_EDITOR=/usr/bin/vim
 
 export TERM=xterm-256color
 
-export XDG_CONFIG_HOME="$HOME/.xdg_config"
+export XDG_CONFIG_HOME="$HOME/.config"
 export BASH_COMPL_DIR=$XDG_CONFIG_HOME"/bash_completion"
 export ZSH_COMPL_DIR="$HOME/.zsh/completion"
 LOCAL_BIN=${HOME}/.bin/

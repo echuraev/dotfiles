@@ -120,3 +120,23 @@ URxvt.shading: 20
 URxvt.geometry: 80x25
 ! Terminal history size
 URxvt*saveLines: 7000
+
+! Rofi
+! "Enabled modi" Set from: Default
+rofi.modi:                           combi,window,ssh
+! "Set the modi to combine in combi mode" Set from: Default
+rofi.combi-modi:                     drun,run
+! "Font to use" Set from: Default
+rofi.font:                           LiterationMonoPowerline Nerd Font 12
+! "Terminal to use" Set from: Default
+rofi.terminal:                       rxvt-unicode
+! "Enable sidebar-mode" Set from: Default
+rofi.sidebar-mode:                   true
+! "Set the matching algorithm. (normal, regex, glob, fuzzy)" Set from: Default
+rofi.matching:                       fuzzy
+! "Background to use for fake transparency. (background or screenshot)" Set from: Default
+rofi.fake-background:                background
+! "Whether to load and show icons" Set from: Default
+rofi.show-icons:                     true
+! "New style theme file" Set from: Default
+rofi.theme:                          Paper
