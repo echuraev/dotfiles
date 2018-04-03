@@ -1,16 +1,3 @@
-" Fix for using ctrl+j key
-"imap <C-space> <Plug>IMAP_JumpForward
-nnoremap <SID>I_won’t_ever_type_this <Plug>IMAP_JumpForward
-
-" vim-latex configuration
-let g:tex_flavor='latex'
-" no symbol conversion
-let g:tex_conceal = ""
-
-autocmd Filetype tex setl updatetime=1
-"if g:isLinux
-"    let g:livepreview_previewer = 'evince'
-"endif
-if g:isMac
-    let g:livepreview_previewer = 'open -a Preview'
-endif
+let g:vimtex_fold_enabled=1
+set conceallevel=0
+let g:tex_conceal = ''
