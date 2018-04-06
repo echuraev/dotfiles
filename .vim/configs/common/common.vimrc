@@ -38,8 +38,6 @@ set linebreak
 set autoread
 set synmaxcol=300            " Don't try to highlight long lines"
 set scrolloff=5              " Number of rows to show in window above and below cursor
-syntax enable
-silent! colorscheme xoria256 " jellybeans
 set colorcolumn=80     " Set Color Column
 " Disable color column for some ft {{{ "
 autocmd FileType conque_term setlocal colorcolumn=
@@ -49,7 +47,6 @@ autocmd FileType gitrebase setlocal colorcolumn=
 autocmd FileType fugitiveblame setlocal colorcolumn=
 autocmd FileType qf setlocal colorcolumn=
 " }}} Disable color column for some ft "
-"hi ColorColumn ctermbg=1 guibg='#800000'
 if !g:isWindows
     set term=screen-256color
     if !g:isAndroid
@@ -61,25 +58,6 @@ if !g:isWindows
     set t_ZR=[23m
 endif
 autocmd VIMResized * execute "normal! \<c-w>="
-" Transparent background {{{ "
-hi Normal ctermbg=none
-hi LineNr ctermbg=none
-hi SignColumn ctermbg=none
-hi VertSplit ctermbg=none
-hi NonText ctermbg=none
-hi FoldColumn ctermbg=none
-" }}} Transparent background "
-" Diff Colors {{{ "
-" DiffAdd     diff mode: Added line
-" DiffChange  diff mode: Changed line
-" DiffDelete  diff mode: Deleted line
-" DiffText    diff mode: Changed text within a changed line
-highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=22 gui=BOLD guifg=NONE guibg='#005f00'
-highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52 gui=BOLD guifg=NONE guibg='#5f0000'
-highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23 gui=BOLD guifg=NONE guibg='#005f5f'
-highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=53 gui=BOLD guifg=NONE guibg='#5f005f'
-au VimEnter * if &diff | execute 'windo hi CursorLine ctermbg=none guibg=NONE cterm=none gui=none' | endif " No highlight for cursor line
-" }}} Diff Colors "
 " }}} View settings "
 " Folding settings {{{ "
 set foldmethod=syntax   "fold based on syntax

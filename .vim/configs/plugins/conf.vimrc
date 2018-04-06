@@ -1,6 +1,7 @@
 let s:CONF_DIRECTORY = expand('<sfile>:p:h')
 let s:vim_configuration_files = [
 \ 'vim-plug.vimrc',
+\ 'colorscheme.vimrc',
 \ 'youcompleteme.vimrc',
 \ 'ale.vimrc',
 \ 'anyfold.vimrc',
