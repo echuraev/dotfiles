@@ -1,0 +1,9 @@
+set history=100                  " Size of history
+set dotfiles                     " Show hidden files
+set incsearch                    " Incremental search
+set laststatus                   " Show status bar
+" Information for status bar
+set statusline="%-35f%10E%20d%15A | Free space: %8a"
+" Columns format
+set viewcolumns=-60%{name},20%{size},{mtime}
+colorscheme near-default

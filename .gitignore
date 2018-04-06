@@ -33,6 +33,7 @@
 !.config/ranger/
 !.config/kitty/
 !.config/kitty/kitty.conf
+!.config/vifm/
 !.vimrc
 !.zsh/
 !.zshrc
