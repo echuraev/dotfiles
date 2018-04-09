@@ -2,13 +2,12 @@ syntax enable
 " for vim 7
 set t_Co=256
 
-" for vim 8"
-"/if (has("termguicolors"))
-"/    set termguicolors
-"/endif
 silent! colorscheme tender
 hi ColorColumn ctermbg=1 guibg='#800000'
 hi Underlined term=underline cterm=underline gui=underline ctermfg=81 guifg=#73cef4
+hi Visual  term=reverse ctermbg=240 guibg=#585858
+hi VisualNOS term=bold,underline ctermbg=60 guibg=#5f5f87
+"hi VisualNOS term=bold,underline ctermbg=0 guibg=#040404
 " Transparent background {{{ "
 """hi Normal ctermbg=none
 """hi LineNr ctermbg=none
