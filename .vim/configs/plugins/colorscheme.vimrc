@@ -24,10 +24,10 @@ hi Search       term=reverse cterm=bold,underline gui=bold,underline ctermfg=0 g
 " DiffChange  diff mode: Changed line
 " DiffDelete  diff mode: Deleted line
 " DiffText    diff mode: Changed text within a changed line
-"""highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=22 gui=BOLD guifg=NONE guibg='#005f00'
-"""highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52 gui=BOLD guifg=NONE guibg='#5f0000'
-"""highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23 gui=BOLD guifg=NONE guibg='#005f5f'
-"""highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=53 gui=BOLD guifg=NONE guibg='#5f005f'
+highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=65 gui=BOLD guifg=NONE guibg=#5f875f
+highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=131 gui=BOLD guifg=NONE guibg=#af5f5f
+highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=66 gui=BOLD guifg=NONE guibg=#5f8787
+highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=53 gui=BOLD guifg=NONE guibg=#5f005f
 """au VimEnter * if &diff | execute 'windo hi CursorLine ctermbg=none guibg=NONE cterm=none gui=none' | endif " No highlight for cursor line
 " }}} Diff Colors "
 
