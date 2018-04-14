@@ -13,6 +13,5 @@ for f in $HFILES; do
 done
 
 cd $install_dir
-git submodule init
-git submodule update
-git submodule foreach git pull origin master
+git submodule init --recursive
+git submodule update --recursive
