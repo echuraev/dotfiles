@@ -16,7 +16,8 @@ zplug "lib/completion", from:oh-my-zsh                      # Load completion li
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'       # Manage zplug as other plugins
 zplug "plugins/command-not-found", from:oh-my-zsh           # Suggests package name with relevant command
 zplug "plugins/extract", from:oh-my-zsh                     # 'x' alias - swiss knife for archive extracting
-zplug "popstas/zsh-command-time"                            # Print time after long command
+#zplug "popstas/zsh-command-time"                            # Print time after long command
+zplug "echuraev/zsh-command-time"                            # Print time after long command
 zplug "urbainvaes/fzf-marks"                                # Create and navigate in bookmarks in Bash and Zsh
 
 # Install packages that have not been installed yet
@@ -34,23 +35,25 @@ zplug load
 #  zsh-command-time configs {{{ #
 ZSH_COMMAND_TIME_ECHO=1           # Show time
 ZSH_COMMAND_TIME_MIN_SECONDS=3    # if command executes more than 3 seconds, time will shown
+ZSH_COMMAND_TIME_MSG="Execution time: %s"
 zsh_command_time() {
     if [ -n "$ZSH_COMMAND_TIME" ]; then
         hours=$(($ZSH_COMMAND_TIME/3600))
         min=$(($ZSH_COMMAND_TIME/60))
         sec=$(($ZSH_COMMAND_TIME%60))
         if [ "$ZSH_COMMAND_TIME" -le 60 ]; then
-            echo "Execution time: $fg[green]$ZSH_COMMAND_TIME s."
+            timer_show="$fg[green]$ZSH_COMMAND_TIME s."
         elif [ "$ZSH_COMMAND_TIME" -gt 60 ] && [ "$ZSH_COMMAND_TIME" -le 180 ]; then
-            echo "Execution time: $fg[yellow]$min min. $sec s."
+            timer_show="$fg[yellow]$min min. $sec s."
         else
             if [ "$hours" -gt 0 ]; then
                 min=$(($min%60))
-                echo "Execution time: $fg[red]$hours h. $min min. $sec s."
+                timer_show="$fg[red]$hours h. $min min. $sec s."
             else
-                echo "Execution time: $fg[red]$min min. $sec s."
+                timer_show="$fg[red]$min min. $sec s."
             fi
         fi
+        printf "${ZSH_COMMAND_TIME_MSG}\n" "$timer_show"
     fi
 }
 #  }}} zsh-command-time configs #
