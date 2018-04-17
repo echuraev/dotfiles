@@ -90,6 +90,7 @@ alias gitv='vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv" -c "tabo
 alias google-chrome='google-chrome --proxy-auto-detect'
 alias whatsapp='google-chrome --app=https://web.whatsapp.com/' #'/opt/google/chrome/google-chrome --app=https://web.whatsapp.com/'
 #alias vim='vim --startuptime vim.log'
+alias duhd='du -ha -d 1'
 # }}} Aliases #
 # Setup environment {{{ #
 export LANGUAGE=en_US.UTF-8
