@@ -16,8 +16,7 @@ zplug "lib/completion", from:oh-my-zsh                      # Load completion li
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'       # Manage zplug as other plugins
 zplug "plugins/command-not-found", from:oh-my-zsh           # Suggests package name with relevant command
 zplug "plugins/extract", from:oh-my-zsh                     # 'x' alias - swiss knife for archive extracting
-#zplug "popstas/zsh-command-time"                            # Print time after long command
-zplug "echuraev/zsh-command-time"                            # Print time after long command
+zplug "popstas/zsh-command-time"                            # Print time after long command
 zplug "urbainvaes/fzf-marks"                                # Create and navigate in bookmarks in Bash and Zsh
 
 # Install packages that have not been installed yet
