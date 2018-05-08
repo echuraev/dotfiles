@@ -46,10 +46,13 @@ Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }            " OpenCL syntax high
 " }}} OpenCL "
 " Python {{{ "
 " Code Completion {{{ "
-" It provides by YCM. See C++ code completion.
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 " }}} Code Completion "
 Plug 'python-mode/python-mode', { 'for': 'python' }
 " }}} Python "
+" VimL {{{ "
+Plug 'junegunn/vader.vim'                  " Testing framework for vimscript
+" }}} VimL "
 " Debugging {{{ "
 if !g:isWindows && !g:isAndroid
     Plug 'echuraev/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
