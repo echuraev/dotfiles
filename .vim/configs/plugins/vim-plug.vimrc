@@ -161,6 +161,8 @@ Plug 'jacoborus/tender.vim'       " Color scheme "diff, links in vimwiki, select
 " Other {{{ "
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'vimwiki/vimwiki'                " Organize notes
+" Translate plugin
+Plug 'echuraev/translate-shell.vim'
 " }}} Other "
 
 call plug#end()
