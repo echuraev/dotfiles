@@ -142,7 +142,7 @@ Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
 Plug 'tpope/vim-unimpaired'           " Fast navigation
 Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'easymotion/vim-easymotion'      " Easy motion in files
-Plug 'EinfachToll/DidYouMean'         " Make a suggestion which file did you want to open
+Plug 'dhruvasagar/vim-zoom'           " Zoom vim window like in tmux
 Plug 'farmergreg/vim-lastplace'       " Intelligently reopen files at your last edit position
 Plug 'qpkorr/vim-renamer'             " Rename list of files
 Plug 'mbbill/undotree'                " Visualize undo tree
