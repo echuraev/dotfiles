@@ -2,13 +2,12 @@ let g:trans_default_direction = ":ru"
 let g:trans_directions_list = [
     \['en', 'ru'],
     \['ru', 'en'],
-    \['en', 'de'],
     \['de', 'ru'],
+    \['ru', 'de'],
     \['en', 'ru', 'de'],
     \['', 'ru'],
-    \['', ''],
 \]
-" TODO: Add tests cases on the last two items
+let g:trans_join_lines = 1
 
 inoremap <silent> <leader>t <ESC>:Trans<CR>
 nnoremap <silent> <leader>t :Trans<CR>
