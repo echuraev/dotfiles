@@ -60,6 +60,7 @@ endif
 " }}} Debugging "
 " Json {{{ "
 Plug 'elzr/vim-json', { 'for': 'json' }                   " Color highlighting for json
+Plug 'tpope/vim-jdaddy', { 'for': 'json' }
 " }}} Json "
 " Code formatting {{{ "
 Plug 'rhysd/vim-clang-format'                             " Format code with specific coding style
