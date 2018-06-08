@@ -96,7 +96,8 @@ endif
 " }}} Tmux "
 " Git {{{ "
 Plug 'tpope/vim-fugitive'                " Git plugin
-Plug 'airblade/vim-gitgutter'            " Extencion for git
+Plug 'lambdalisue/gina.vim'              " New git plugin
+Plug 'airblade/vim-gitgutter'            " Extension for git
 Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 Plug 'tpope/vim-git'                     " git syntax highlight
 Plug 'junegunn/gv.vim'                   " light git commits browser
