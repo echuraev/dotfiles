@@ -58,6 +58,9 @@ if !g:isWindows
     set t_ZR=[23m
 endif
 autocmd VIMResized * execute "normal! \<c-w>="
+
+set re=1                " force the old regex engine on any version newer (it helped to resolve performance with syntax highlighting)
+set lazyredraw          " Don’t update screen during macro and script execution.
 " }}} View settings "
 " Folding settings {{{ "
 set foldmethod=syntax   "fold based on syntax
