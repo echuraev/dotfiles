@@ -83,3 +83,12 @@ I found very nice application that can help you to manage your Apps (e.g. total 
 For managing my windows I use the following tool: https://github.com/eczarny/spectacle
 It is really comfortable and useful.
 </details>
+<details>
+<summary><strong>Configure gdb</strong></summary>
+<br>
+
+I found instruction on this gist:
+https://gist.github.com/danisfermi/17d6c0078a2fd4c6ee818c954d2de13c
+And from this answer:
+https://stackoverflow.com/questions/49001329/gdb-doesnt-work-on-macos-high-sierra-10-13-3/49104154#49104154
+</details>

@@ -13,6 +13,9 @@ endif
 " Syntax highlighting {{{ "
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting
 " }}} Syntax highlighting "
+" CMake support {{{ "
+"Plug 'ilyachur/cmake4vim'
+" }}} CMake support "
 " }}} C++ "
 " C# {{{ "
 " Code Completion {{{ "
@@ -43,6 +46,11 @@ Plug 'mzlogin/vim-markdown-toc'            " Generate TOC in markdown
 " Syntax highlighting {{{ "
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }            " OpenCL syntax highlight
 " }}} Syntax highlighting "
+" Proto {{{ "
+" Syntax highlighting {{{ "
+Plug 'uarun/vim-protobuf', { 'for': 'proto' }               " Proto syntax highlight
+" }}} Syntax highlighting "
+" }}} Proto "
 " }}} OpenCL "
 " Python {{{ "
 " Code Completion {{{ "
@@ -56,6 +64,8 @@ Plug 'junegunn/vader.vim'                  " Testing framework for vimscript
 " Debugging {{{ "
 if !g:isWindows && !g:isAndroid
     Plug 'echuraev/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
+    Plug 'Shougo/vimproc.vim', { 'do' : 'make' }              " vim-vebugger is dependent on it
+    Plug 'idanarye/vim-vebugger', { 'branch': 'develop' }     " lldb debugger
 endif
 " }}} Debugging "
 " Json {{{ "
@@ -111,8 +121,8 @@ Plug 'google/vim-searchindex'         " Show number of found matches
 " Project {{{ "
 Plug 'tpope/vim-dispatch'             " Project compiling
 if !g:isWindows && !g:isAndroid
-Plug 'LucHermitte/lh-vim-lib'         " Dependency of local_vimrc
-Plug 'LucHermitte/local_vimrc'        " Local vimrc files for projects
+    Plug 'LucHermitte/lh-vim-lib'         " Dependency of local_vimrc
+    Plug 'LucHermitte/local_vimrc'        " Local vimrc files for projects
     Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
 endif
 " }}} Project "

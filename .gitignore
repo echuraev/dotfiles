@@ -19,7 +19,6 @@
 .zsh/completion
 
 # Except the following files
-!*.itermcolors
 !.gitconfig
 !.gitignore
 !.gitmodules

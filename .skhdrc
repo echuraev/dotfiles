@@ -70,22 +70,24 @@
 # default, test < cmd - return : open -na /Applications/Terminal.app
 
 # open terminal, blazingly fast compared to iTerm/Hyper
-cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance
+#cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance
+alt - return : /Applications/iTerm.app/Contents/MacOS/iTerm2
 
 # open qutebrowser
 cmd + shift - return : ~/Scripts/qtb.sh
 
 # close focused window
-alt - w : chunkc tiling::window --close
+#alt - w : chunkc tiling::window --close
+alt + shift - c : chunkc tiling::window --close
 
 # focus window
-alt - h : chunkc tiling::window --focus west
-alt - j : chunkc tiling::window --focus south
-alt - k : chunkc tiling::window --focus north
-alt - l : chunkc tiling::window --focus east
+cmd - h : chunkc tiling::window --focus west
+cmd - j : chunkc tiling::window --focus south
+cmd - k : chunkc tiling::window --focus north
+cmd - l : chunkc tiling::window --focus east
 
-cmd - j : chunkc tiling::window --focus prev
-cmd - k : chunkc tiling::window --focus next
+alt - j : chunkc tiling::window --focus prev
+alt - k : chunkc tiling::window --focus next
 
 # equalize size of windows
 shift + alt - 0 : chunkc tiling::desktop --equalize
@@ -113,8 +115,8 @@ shift + alt - right  : chunkc tiling::window --grid-layout 1:2:1:0:1:1
 
 # fast focus desktop
 cmd + alt - x : chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
-cmd + alt - z : chunkc tiling::desktop --focus prev
-cmd + alt - c : chunkc tiling::desktop --focus next
+cmd + alt - k : chunkc tiling::desktop --focus prev
+cmd + alt - j : chunkc tiling::desktop --focus next
 cmd + alt - 1 : chunkc tiling::desktop --focus 1
 cmd + alt - 2 : chunkc tiling::desktop --focus 2
 cmd + alt - 3 : chunkc tiling::desktop --focus 3
@@ -125,8 +127,8 @@ cmd + alt - 6 : chunkc tiling::desktop --focus 6
 
 # send window to desktop
 shift + alt - x : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
-shift + alt - z : chunkc tiling::window --send-to-desktop prev
-shift + alt - c : chunkc tiling::window --send-to-desktop next
+shift + alt - k : chunkc tiling::window --send-to-desktop prev
+shift + alt - j : chunkc tiling::window --send-to-desktop next
 shift + alt - 1 : chunkc tiling::window --send-to-desktop 1
 shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
 shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
@@ -137,8 +139,8 @@ shift + alt - 6 : chunkc tiling::window --send-to-desktop 6
 
 # send window to desktop and follow focus
 shift + cmd - x : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop); chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
-shift + cmd - z : chunkc tiling::window --send-to-desktop prev; chunkc tiling::desktop --focus prev
-shift + cmd - c : chunkc tiling::window --send-to-desktop next; chunkc tiling::desktop --focus next
+shift + cmd - k : chunkc tiling::window --send-to-desktop prev; chunkc tiling::desktop --focus prev
+shift + cmd - j : chunkc tiling::window --send-to-desktop next; chunkc tiling::desktop --focus next
 shift + cmd - 1 : chunkc tiling::window --send-to-desktop 1; chunkc tiling::desktop --focus 1
 shift + cmd - 2 : chunkc tiling::window --send-to-desktop 2; chunkc tiling::desktop --focus 2
 shift + cmd - 3 : chunkc tiling::window --send-to-desktop 3; chunkc tiling::desktop --focus 3
@@ -148,15 +150,15 @@ shift + cmd - 6 : chunkc tiling::window --send-to-desktop 6; chunkc tiling::desk
 # shift + cmd - 7 : chunkc tiling::window --send-to-desktop 7; chunkc tiling::desktop --focus 7
 
 # focus monitor
-ctrl + alt - z  : chunkc tiling::monitor -f prev
-ctrl + alt - c  : chunkc tiling::monitor -f next
+ctrl + alt - k  : chunkc tiling::monitor -f prev
+ctrl + alt - j  : chunkc tiling::monitor -f next
 ctrl + alt - 1  : chunkc tiling::monitor -f 1
 ctrl + alt - 2  : chunkc tiling::monitor -f 2
 ctrl + alt - 3  : chunkc tiling::monitor -f 3
 
 # send window to monitor and follow focus
-ctrl + cmd - z  : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f prev
-ctrl + cmd - c  : chunkc tiling::window --send-to-monitor next; chunkc tiling::monitor -f next
+ctrl + cmd - k  : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f prev
+ctrl + cmd - j  : chunkc tiling::window --send-to-monitor next; chunkc tiling::monitor -f next
 ctrl + cmd - 1  : chunkc tiling::window --send-to-monitor 1; chunkc tiling::monitor -f 1
 ctrl + cmd - 2  : chunkc tiling::window --send-to-monitor 2; chunkc tiling::monitor -f 2
 ctrl + cmd - 3  : chunkc tiling::window --send-to-monitor 3; chunkc tiling::monitor -f 3
