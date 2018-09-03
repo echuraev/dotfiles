@@ -6,4 +6,5 @@ au BufEnter *.wiki :syntax sync fromstart                                       
 let g:vimwiki_list_ignore_newline = 0                                                   " Conversion to HTML: Newlines in a list item are converted to <br />s.
 let g:vimwiki_text_ignore_newline = 0                                                   " Conversion to HTML: Newlines in a list item are converted to <br />s.
 let g:vimwiki_folding = 'syntax'
+let g:vimwiki_table_mappings = 1
 autocmd FileType vimwiki set foldmethod=syntax foldenable foldlevel=1
