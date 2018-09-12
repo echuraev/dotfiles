@@ -98,7 +98,7 @@ au VimEnter * if &diff | execute 'windo set wrap' | endif " Wrap words if diff
 " }}} Diff settings "
 " Spell checking {{{ "
 if !g:isAndroid
-    set spell spelllang=ru,en         " Enable spell checking
+    set spell spelllang=ru,en,de         " Enable spell checking
 endif
 " Disable spell checking for special ft {{{ "
 autocmd FileType conque_term setlocal nospell
