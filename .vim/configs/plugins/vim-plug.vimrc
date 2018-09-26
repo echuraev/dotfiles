@@ -14,7 +14,7 @@ endif
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting
 " }}} Syntax highlighting "
 " CMake support {{{ "
-"Plug 'ilyachur/cmake4vim'
+Plug 'ilyachur/cmake4vim'
 " }}} CMake support "
 " }}} C++ "
 " C# {{{ "

@@ -1,6 +1,7 @@
 let s:projectLocations={
-    \ 'llvm'   : '~/.vim/configs/projects/llvm/',
-    \ 'opencl' : '~/.vim/configs/projects/opencl/',
+    \ 'llvm'   :     '~/.vim/configs/projects/llvm/',
+    \ 'opencl' :     '~/.vim/configs/projects/opencl/',
+    \ 'providence' : '~/.vim/configs/projects/providence/',
 \}
 
 function! InitProject(type, init_function)
@@ -30,3 +31,4 @@ endfunction
 
 menu Projects.llvm              :call InitProject('llvm', 'CopyLocalVimrc')<CR>
 menu Projects.opencl            :call InitProject('opencl', 'CopyLocalVimrc')<CR>
+menu Projects.providence        :call InitProject('providence', 'CopyLocalVimrc')<CR>
