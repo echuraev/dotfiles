@@ -150,7 +150,7 @@ if !g:isAndroid
     Plug 'w0rp/ale'                   " Syntax checking plugin
 endif
 Plug 'will133/vim-dirdiff'            " Dir diff viewer
-Plug 'jiangmiao/auto-pairs'           " Add auto-pairs
+Plug 'cohama/lexima.vim'              " Add auto-pairs
 Plug 'tpope/vim-unimpaired'           " Fast navigation
 Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'easymotion/vim-easymotion'      " Easy motion in files
@@ -173,8 +173,8 @@ Plug 'jacoborus/tender.vim'       " Color scheme "diff, links in vimwiki, select
 " Other {{{ "
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'vimwiki/vimwiki'                " Organize notes
-" Translate plugin
-Plug 'echuraev/translate-shell.vim'
+Plug 'echuraev/translate-shell.vim'   " Translate plugin
+Plug 'ledger/vim-ledger'              " Finance management
 " }}} Other "
 
 call plug#end()

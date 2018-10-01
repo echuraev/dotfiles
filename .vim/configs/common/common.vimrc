@@ -28,6 +28,7 @@ set expandtab
 set shiftwidth=4
 set cindent
 set smartindent
+set cino=N-s,g0,:0,l1 " Fix for private and public indent in C++ classes
 " }}} Tab size
 " View settings {{{ "
 set rnu                      " Relative numbers
