@@ -2,7 +2,7 @@ let s:root = expand('<sfile>:h').'/'
 
 " Cmake
 let g:cmake_build_type = "Debug"
-let g:cmake_arguments = "-j8"
+let g:make_arguments = "-j8"
 let g:cmake_compile_commands = 1
 let g:cmake_compile_commands_link = s:root
 
