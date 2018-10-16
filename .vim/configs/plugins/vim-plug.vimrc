@@ -52,12 +52,6 @@ Plug 'uarun/vim-protobuf', { 'for': 'proto' }               " Proto syntax highl
 " }}} Syntax highlighting "
 " }}} Proto "
 " }}} OpenCL "
-" Python {{{ "
-" Code Completion {{{ "
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-" }}} Code Completion "
-Plug 'python-mode/python-mode', { 'for': 'python' }
-" }}} Python "
 " VimL {{{ "
 Plug 'junegunn/vader.vim'                  " Testing framework for vimscript
 " }}} VimL "
