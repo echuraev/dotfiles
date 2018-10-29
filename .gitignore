@@ -16,6 +16,7 @@
 *.DS_Store
 /.config/*
 /.tmux/plugins
+/.tmux/resurrect
 .zsh/completion
 
 # Except the following files
@@ -47,3 +48,5 @@
 !.urxvt
 !.skhdrc
 !.chunkwmrc
+!.qutebrowser
+!.config/qutebrowser/
