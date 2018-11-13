@@ -19,5 +19,7 @@ let g:trans_ignore_audio_for_langs = ['ru']
 
 inoremap <silent> <leader>t <ESC>:Trans<CR>
 nnoremap <silent> <leader>t :Trans<CR>
-vnoremap <silent> <leader>t :TransVisual<CR>
+vnoremap <silent> <leader>t :Trans<CR>
+nnoremap <silent> <leader>td :TransSelectDirection<CR>
+vnoremap <silent> <leader>td :TransSelectDirection<CR>
 
