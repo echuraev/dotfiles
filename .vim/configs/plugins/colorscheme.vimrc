@@ -10,6 +10,7 @@ hi VisualNOS term=bold,underline ctermbg=60 guibg=#5f5f87
 "IncSearch      xxx term=reverse ctermfg=235 ctermbg=15 guifg=#282828 guibg=#ffffff
 "Search         xxx term=reverse cterm=bold,underline ctermfg=15 gui=bold,underline guifg=#ffffff
 hi Search       term=reverse cterm=bold,underline gui=bold,underline ctermfg=0 guifg=#000000 ctermbg=149 guibg=#afdf5f
+hi TagbarSignature  cterm=bold ctermfg=185 gui=bold guifg=#c9d05c
 "hi VisualNOS term=bold,underline ctermbg=0 guibg=#040404
 " Transparent background {{{ "
 """hi Normal ctermbg=none
