@@ -1,3 +1,8 @@
+" vim-altr {{{ "
+command! A  call altr#forward()
+nmap <F2>  <Plug>(altr-forward)
+nmap <S-F2>  <Plug>(altr-back)
+" }}} vim-altr "
 " Ack {{{ "
 if executable('rg')
     let g:ackprg = 'rg --vimgrep --smart-case --no-heading'

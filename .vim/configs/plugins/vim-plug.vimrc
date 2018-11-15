@@ -16,6 +16,12 @@ Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting
 " CMake support {{{ "
 Plug 'ilyachur/cmake4vim'
 " }}} CMake support "
+" GTests {{{ "
+Plug 'alepez/vim-gtest'             " Google tests
+" }}} GTests "
+" Common {{{ "
+Plug 'kana/vim-altr'
+" }}} Common "
 " }}} C++ "
 " C# {{{ "
 " Code Completion {{{ "

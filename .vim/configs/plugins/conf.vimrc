@@ -14,6 +14,7 @@ let s:vim_configuration_files = [
 \ 'vim-cpp-enhanced-highlight.vimrc',
 \ 'vimwiki.vimrc',
 \ 'youcompleteme.vimrc',
+\ 'gtest.vimrc',
 \]
 
 for file in s:vim_configuration_files
