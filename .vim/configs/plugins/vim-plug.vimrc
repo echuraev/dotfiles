@@ -121,8 +121,7 @@ Plug 'google/vim-searchindex'         " Show number of found matches
 " Project {{{ "
 Plug 'tpope/vim-dispatch'             " Project compiling
 if !g:isWindows && !g:isAndroid
-    Plug 'LucHermitte/lh-vim-lib'         " Dependency of local_vimrc
-    Plug 'LucHermitte/local_vimrc'        " Local vimrc files for projects
+    Plug 'embear/vim-localvimrc'          " Local vimrc files for projects
     Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
 endif
 " }}} Project "

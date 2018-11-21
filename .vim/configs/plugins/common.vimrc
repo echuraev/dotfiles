@@ -40,9 +40,11 @@ let g:vimtex_fold_enabled=1
 set conceallevel=0
 let g:tex_conceal = ''
 " }}} Latex "
-" local_vimrc {{{ "
-let g:local_vimrc = '.local_vimrc'
-" }}} local_vimrc "
+" vim-localvimrc {{{ "
+let g:localvimrc_name = ['.local_vimrc', '.lvimrc']
+let g:localvimrc_sandbox = 0
+let g:localvimrc_whitelist=[$HOME]
+" }}} vim-localvimrc "
 " Markdown {{{ "
 nmap <silent> <F8> <Plug>MarkdownPreview        " for normal mode
 imap <silent> <F8> <Plug>MarkdownPreview        " for insert mode

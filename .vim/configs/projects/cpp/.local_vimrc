@@ -6,6 +6,3 @@ let g:make_arguments = "-j8"
 let g:cmake_compile_commands = 1
 let g:cmake_compile_commands_link = s:root
 
-" find alternatives ???
-let g:alternateSearchPath = 'sfr:./include'
-

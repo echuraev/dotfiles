@@ -1,6 +1,5 @@
 let s:projectLocations={
-    \ 'llvm'   :     '~/.vim/configs/projects/llvm/',
-    \ 'opencl' :     '~/.vim/configs/projects/opencl/',
+    \ 'cpp' :        '~/.vim/configs/projects/cpp/',
     \ 'providence' : '~/.vim/configs/projects/providence/',
 \}
 
@@ -29,6 +28,5 @@ function! CopyAllFiles(src, dest)
     redraw!
 endfunction
 
-menu Projects.llvm              :call InitProject('llvm', 'CopyLocalVimrc')<CR>
-menu Projects.opencl            :call InitProject('opencl', 'CopyLocalVimrc')<CR>
+menu Projects.cpp               :call InitProject('cpp', 'CopyLocalVimrc')<CR>
 menu Projects.providence        :call InitProject('providence', 'CopyLocalVimrc')<CR>
