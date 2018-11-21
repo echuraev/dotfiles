@@ -8,6 +8,7 @@ if has('win32')
     set runtimepath+=~/.vim
 endif
 
+scriptencoding utf-8
 set nocompatible
 syntax enable
 filetype plugin on

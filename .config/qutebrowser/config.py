@@ -4,6 +4,10 @@
 
 # Also looked at the following config file: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/qutebrowser/config.py
 
+import os
+
+os.environ["PATH"] = os.environ["HOME"] + "/.bin:/usr/local/bin:" + os.environ["PATH"]
+
 # Uncomment this to still load settings configured via autoconfig.yml
 config.load_autoconfig()
 
@@ -215,6 +219,18 @@ c.tabs.show_switching_delay = 800
 # it's vertical.
 # Type: PercOrInt
 c.tabs.width = '10%'
+
+# Which tab to select when the focused tab is removed
+# Type: String
+# Valid values:
+#   - last-used: Select the previously selected tab
+#   - next: Select the tab which came after the closed one (right in horizontal, below in vertical)
+#   - prev: Select the tab which came before the closed one (left in horizontal, above in vertical)
+c.tabs.select_on_remove = 'prev'
+
+# Open new tabs (middleclick/ctrl+click) in the background
+# Type: Bool
+c.tabs.background = True
 
 ## Definitions of search engines which can be used via the address bar.
 ## Maps a searchengine name (such as `DEFAULT`, or `ddg`) to a URL with a

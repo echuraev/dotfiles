@@ -31,6 +31,9 @@ let g:Gitv_DoNotMapCtrlKey = 1
 " IndentLine {{{ "
 let g:indentLine_fileTypeExclude=['calendar', 'startify']
 let g:indentLine_bufNameExclude=['calendar', 'startify']
+let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_leadingSpaceEnabled = 1
+let g:vim_json_syntax_conceal = 0
 " }}} IndentLine "
 " Latex {{{ "
 let g:vimtex_fold_enabled=1
