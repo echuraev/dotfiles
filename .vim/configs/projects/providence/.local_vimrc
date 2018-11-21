@@ -9,3 +9,7 @@ let g:cmake_compile_commands_link = s:root
 " find alternatives ???
 let g:alternateSearchPath = 'sfr:./include'
 
+setlocal shiftwidth=2
+setlocal tabstop=2
+setlocal softtabstop=2
+
