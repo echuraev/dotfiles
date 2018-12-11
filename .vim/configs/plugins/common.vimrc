@@ -3,11 +3,6 @@ command! A  call altr#forward()
 nmap <F2>  <Plug>(altr-forward)
 nmap <S-F2>  <Plug>(altr-back)
 " }}} vim-altr "
-" Ack {{{ "
-if executable('rg')
-    let g:ackprg = 'rg --vimgrep --smart-case --no-heading'
-endif
-" }}} Ack "
 " auto-pairs {{{ "
 let g:AutoPairsMapCh=0
 " }}} auto-pairs "
@@ -62,3 +57,12 @@ let g:startify_change_to_dir = 0
 " zoom.vim {{{ "
 nmap <C-W>z <Plug>(zoom-toggle)
 " }}} zoom.vim "
+" ferret {{{ "
+let g:ferret_search_options = ''
+if executable('rg')
+    let g:ferret_search_options = '--vimgrep --smart-case --hidden'
+endif
+
+nnoremap <silent> <leader>ff :exe "Ack ".input("Search: ", "", "shellcmd")." ".g:ferret_search_options<CR>
+nnoremap <silent> <leader>fw :exe "Ack ".input("Search: ", expand("<cword>"), "shellcmd")." ".g:ferret_search_options<CR>
+" }}} ferret "
