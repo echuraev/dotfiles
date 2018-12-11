@@ -98,6 +98,7 @@ set history=5000
 au VimEnter * if &diff | execute 'windo set wrap' | endif " Wrap words if diff
 " }}} Diff settings "
 " Spell checking {{{ "
+set complete+=kspell                     " Added word completion
 if !g:isAndroid
     set spell spelllang=ru,en,de         " Enable spell checking
 endif

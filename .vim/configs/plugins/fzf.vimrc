@@ -19,3 +19,17 @@ command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-hea
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
+" FZF spelling suggestions {{{ "
+" Take it from here:
+" https://coreyja.com/blog/2018/11/10/vim-spelling-suggestions-fzf.html
+function! FzfSpellSink(word)
+    exe 'normal! "_ciw'.a:word
+endfunction
+
+function! FzfSpell()
+    let suggestions = spellsuggest(expand("<cword>"))
+    return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10 })
+endfunction
+
+nnoremap zf= :call FzfSpell()<CR>
+" }}} FZF spelling suggestions "
