@@ -122,4 +122,5 @@ if !g:isWindows
     silent !mkdir ~/.vim/undodir > /dev/null 2>&1
     set undodir=~/.vim/undodir     " Directory for saving undo files
 endif
+set splitbelow splitright        " Splits open at the botom and right
 " }}} Other "
