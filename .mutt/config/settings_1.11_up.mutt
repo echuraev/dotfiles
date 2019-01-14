@@ -1,0 +1,13 @@
+# Default is: {{ '"%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"' }}
+#
+# Changes:
+# - Use index-format-hook to set date/time dynamically (see below).
+# - Show local date/time.
+#
+# Requires mutt v1.11.
+
+set index_format = "%4C %Z %-10.10@reldate@ %-15.15L (%?l?%4l&%4c?) %s"
+
+index-format-hook reldate "~d<24H" "%[%R]"       # Show time.
+index-format-hook reldate "~d>11m" "%[%d/%m/%Y]" # Show long date (with year).
+index-format-hook reldate "~A"     "%[%d %b]"    # Show short date.

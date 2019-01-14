@@ -1,0 +1,6 @@
+# This is example file. Rename it to settings.mutt.local and add your personal configurations.
+
+set from = "example@example.com"
+set realname = "James Bond"
+
+# vim: ft=muttrc

@@ -1,0 +1,3 @@
+# Default is: {{ '"%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"' }}
+set index_format = "%4C %Z %{%d-%b-%Y %H:%M:%S} %-15.15L (%?l?%4l&%4c?) %s"
+

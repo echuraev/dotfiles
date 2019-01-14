@@ -1,0 +1,17 @@
+bind pager gg top
+bind pager G bottom
+bind pager k previous-line
+bind pager j next-line
+
+bind attach <Esc>e noop # Normally <resend-message>.
+bind attach <enter> view-mailcap # Normally <view-attach>.
+bind attach <return> view-mailcap
+bind attach <tab> collapse-parts # Normally "v".
+bind attach v noop # Normally <collapse-parts>, we use <tab> instead.
+bind index V noop # Normally bound to "show-version".
+bind pager V noop # Normally <show-version>.
+bind browser,index G last-entry
+bind browser,index gg first-entry
+bind index,pager \Cd next-page
+bind index,pager \Cu previous-page
+
