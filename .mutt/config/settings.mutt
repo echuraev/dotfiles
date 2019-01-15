@@ -39,9 +39,7 @@ set mailcap_path = "~/.mutt/config/mailcap"
 # Note the "hyphens" here are actually emdashes (\u2014):
 set status_format = "%f%r—[%?M?%M/?%m messages, %?n?%n new, ?%?d?%d deleted, ?%?F?%F important, ?%?t?%t selected, ?%?p?%p drafts, ?%l]———(%s/%S)—%>—(%P)———"
 
-set folder = "~/.mail/Home"
 #set folder_format = '%4C %t %f'
-set spoolfile = "~/.mail/Home/Home"
 set record = ""
 
 set ts_enabled = yes

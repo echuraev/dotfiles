@@ -13,7 +13,12 @@ I use the following workflow for working with mutt:
 TODO: Describe about settings.mutt.local.
 
 ## isync/mbsync configuration
-This configuration is in `~/.mbsyncrc`. For keeping passwords it is possible to use encrypted file and `gpg`.
+You can copy file `~/.mbsyncrc.example` to `~/.mbsyncrc` and replace there all
+settings to you personal configuration. You can search `TODO` word in this file
+and read comments for understanding what should you do.
+
+### Keeping encrypted password
+For keeping passwords it is possible to use encrypted file and `gpg`.
 
 First generate a GnuPG key, and then [create the encrypted password 
 file](http://f-koehler.github.io/posts/2015-03-17-offlineimap-msmtp-gnupg.html).

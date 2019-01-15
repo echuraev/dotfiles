@@ -1,0 +1,92 @@
+# THIS IS AN EXAMPLE FILE. RENAME THIS FILE TO .mbsyncrc AND SET YOUR PERSONAL
+# SETTINGS. YOU CAN TRY TO FIND WORD TODO IN THIS DOCUMENT AND REPLACE OR ADD
+# ALL NECESSARY VALUES.
+
+# Settings for isync, a program to syncronise IMAP mailboxes
+# This file defines the syncronisation for several accounts
+# The remote for each account is a server somewhere, and the local is a folder
+# in ~/.mail
+# Syncronise everything with `mbsync -a`
+
+########################################
+# Default settings
+# Applied to all channels
+########################################
+Create Both
+Expunge Both
+SyncState *
+
+########################################
+# Account 1
+########################################
+IMAPAccount Account1
+Host imap.gmail.com     # TODO: This is standart for gmail. Change it if you use ohter host
+User account1@mail.com  # TODO: Set your settings
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mutt/credentials/account1.gpg"
+SSLType IMAPS
+AuthMechs LOGIN
+# Maximum number of IMAP commands which can be simultaneously in flight.
+# Setting this to 1 disables pipelining.This is mostly a debugging option, but
+# may also be used to limit average bandwidth consumption (GMail may require
+# this if you have a very fast connection), or to spare flaky servers like M$
+# Exchange. (Default: unlimited)
+#PipelineDepth 1
+
+# Remote storage (where the mail is retrieved from)
+IMAPStore Account1-remote
+Account Account1
+
+# Local storage (where the mail is retrieved to)
+MaildirStore Account1-local
+Path ~/.mail/Account1/
+Inbox ~/.mail/Account1/Inbox
+
+Channel Account1-Account1
+Master :Account1-remote:INBOX
+Slave :Account1-local:Inbox
+
+Channel Account1-Sent
+Master :Account1-remote:"[Gmail]/Sent Mail"
+Slave :Account1-local:Sent
+
+# Сохранённые: &BCEEPgRFBEAEMAQ9BDUEPQQ9BEsENQ-
+Channel Account1-Saved
+Master :Account1-remote:"&BCEEPgRFBEAEMAQ9BDUEPQQ9BEsENQ-"
+Slave :Account1-local:Saved
+
+Channel Account1-OtherFolder
+Master :Account1-remote:"Other Folder"
+Slave :Account1-local:Folder
+
+# TODO: ADD OTHER FOLDERS
+# YOU CAN GET LIST OF ALL REMOTE FOLDERS BY USING THE FOLLOWING COMMAND:
+# mbsync -VDmn Account1-Default
+
+# Catch-all for everything else: note that the `Patterns` have to exclude both
+# the remote and local names for all the folders we want to exclude (except
+# "INBOX", which is special-cased, it would seem).
+Channel Account1-Default
+Master :Account1-remote:
+Slave :Account1-local:
+# All folders except those defined above
+Patterns *
+Patterns !INBOX
+Patterns !&BCEEPgRFBEAEMAQ9BDUEPQQ9BEsENQ-
+Patterns !"Other Folder"
+Patterns !Folder
+Patterns ![Gmail]*
+Patterns !Sent
+# TODO: ADD OTHER PATTERNS
+
+# Group the channels, so that all channels can be sync'd with `mbsync Account1`
+Group Account1
+Channel Account1-Account1
+Channel Account1-Sent
+Channel Account1-Saved
+Channel Account1-OtherFolder
+# TODO: ADD OTHER CHANNELS
+
+########################################
+# TODO: Add other accounts
+########################################
+

@@ -51,3 +51,4 @@
 !.qutebrowser
 !.config/qutebrowser/
 !.mutt/
+!.mbsyncrc.example
