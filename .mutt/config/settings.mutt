@@ -2,49 +2,73 @@
 source `$HOME/.mutt/scripts/safesource.sh $HOME/.mutt/config/settings.mutt.local`
 source `$HOME/.mutt/scripts/check_version.sh`
 
+#  Common settings {{{ #
 set abort_unmodified = ask-no
-
-# Default is: "%u%D%I %t%4n %T%.40d%> [%.7m/%.10M, %.6e%?C?, %C?, %s] "
-set attach_format = '%u%D%I %t%4n %T%.40d%> [%.12m/%.12M, %.6e%?C?, %C?, %s] '
-
-set attribution="On %[!%e %b at %H:%M ], %n <%a> wrote:"
-set certificate_file =~/.mutt/certificates
-set header_cache =~/.mutt/cache/headers
-
+unset mark_old # Don't mark unread messages as 'old' when leaving a mailbox
 # Don't keep a local copy of sent messages (Gmail's SMTP server will do that).
 unset record
 set copy = no
+#  }}} Common settings #
+#  Paths {{{ #
+set header_cache     = "~/.mutt/cache/headers"     # where to store headers
+set message_cachedir = "~/.mutt/cache/bodies"      # where to store bodies
+set certificate_file = "~/.mutt/certificates"      # where to store certs
+set mailcap_path     = "~/.mutt/config/mailcap"    # entries for filetypes
+set tmpdir           = "~/.mutt/tmp"               # where to keep temporary files
+set signature        = "~/.mutt/config/signature"  # signature file
+#  }}} Paths #
+#  Sidebar {{{ #
+set sidebar_width=25
+set sidebar_divider_char = '│'
+set sidebar_folder_indent = yes
+#set sidebar_format = "%B%?n?*?"
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_indent_string = ' ▸ '
+set sidebar_short_path = yes
+set sidebar_visible = yes
+#  }}} Sidebar #
+#  Terminal status line (in tab) {{{ #
+set ts_enabled = yes
+# Default is: Mutt with %?m?%m messages&no messages?%?n? [%n NEW]?
+set ts_status_format = 'mutt %m messages%?n?, %n new?'
+#  }}} Terminal status line (in tab) #
+#  Status line {{{ #
+# Default is: -%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---
+# Note the "hyphens" here are actually emdashes (\u2014):
+set status_format = "%f%r—[%?M?%M/?%m messages, %?n?%n new, ?%?d?%d deleted, ?%?F?%F important, ?%?t?%t selected, ?%?p?%p drafts, ?%l]———(%s/%S)—%>—(%P)———"
+#  }}} Status line #
+#  Reply settings {{{ #
+set attribution="On %[!%e %b at %H:%M ], %n <%a> wrote:"
 
 set edit_headers = yes
 set editor = 'vim +/^$ +nohlsearch' # Move past headers.
 set fast_reply = yes
 set forward_quote = yes
 
-set sidebar_width=25
-set sidebar_divider_char = '│'
-set sidebar_folder_indent = yes
-#set sidebar_format = "%B%?n?*?"
-set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
-set sidebar_indent_string = ' '
-set sidebar_short_path = yes
-set sidebar_visible = yes
+set sig_on_top # Insert the signature above any previous message body
+
+# Default is: "%u%D%I %t%4n %T%.40d%> [%.7m/%.10M, %.6e%?C?, %C?, %s] "
+set attach_format = '%u%D%I %t%4n %T%.40d%> [%.12m/%.12M, %.6e%?C?, %C?, %s] '
+
+# Format forwarded subjects as "Fwd: <subject>"
+set forward_format = "Fwd: %s"
+# Display lists of folders with a numeric index and the folder name
+#set folder_format = "%2C %N %f %n %m %> (%n/%m) "
+#  }}} Reply settings #
+#  Threading settings {{{ #
 set sort = reverse-threads
 set sort_aux = last-date-received
+#set strict_threads="yes"
+#set sort_browser="reverse-date"
+#bind index - collapse-thread
+#bind index _ collapse-all
+#  }}} Threading settings #
 
-set mail_check = 60
-set mail_check_recent = no
-set mailcap_path = "~/.mutt/config/mailcap"
+# Don't check for mail (we use isync for that)
+set mail_check = 0
 
-# Default is: -%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---
-# Note the "hyphens" here are actually emdashes (\u2014):
-set status_format = "%f%r—[%?M?%M/?%m messages, %?n?%n new, ?%?d?%d deleted, ?%?F?%F important, ?%?t?%t selected, ?%?p?%p drafts, ?%l]———(%s/%S)—%>—(%P)———"
+set mail_check_stats
+set mail_check_stats_interval = 10
 
-#set folder_format = '%4C %t %f'
 set record = ""
-
-set ts_enabled = yes
-
-# Default is: Mutt with %?m?%m messages&no messages?%?n? [%n NEW]?
-set ts_status_format = 'mutt %m messages%?n?, %n new?'
-
 
