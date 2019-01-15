@@ -40,12 +40,6 @@ let g:localvimrc_name = ['.local_vimrc', '.lvimrc']
 let g:localvimrc_sandbox = 0
 let g:localvimrc_whitelist=[$HOME]
 " }}} vim-localvimrc "
-" Markdown {{{ "
-nmap <silent> <F8> <Plug>MarkdownPreview        " for normal mode
-imap <silent> <F8> <Plug>MarkdownPreview        " for insert mode
-nmap <silent> <F9> <Plug>StopMarkdownPreview    " for normal mode
-imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
-" }}} Markdown "
 " Ranger {{{ "
 let g:ranger_map_keys = 0
 map <leader>r :Ranger<CR>
