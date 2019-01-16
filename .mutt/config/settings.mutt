@@ -4,7 +4,10 @@ source `$HOME/.mutt/scripts/check_version.sh`
 
 #  Common settings {{{ #
 set abort_unmodified = ask-no
-unset mark_old # Don't mark unread messages as 'old' when leaving a mailbox
+unset mark_old              # Don't mark unread messages as 'old' when leaving a mailbox
+set mail_check = 0          # Don't check for mail (we use isync for that)
+set pager_index_lines = 6   # Always show N number of mails in teh index
+
 # Don't keep a local copy of sent messages (Gmail's SMTP server will do that).
 unset record
 set copy = no
@@ -18,11 +21,13 @@ set tmpdir           = "~/.mutt/tmp"               # where to keep temporary fil
 set signature        = "~/.mutt/config/signature"  # signature file
 #  }}} Paths #
 #  Sidebar {{{ #
+set mail_check_stats=yes # Check mails on start
+set mail_check_stats_interval = 10
+
 set sidebar_width=25
 set sidebar_divider_char = '│'
 set sidebar_folder_indent = yes
-#set sidebar_format = "%B%?n?*?"
-set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_format = "%B%?N? (%N)?" # Folder Name (Unread messages)
 set sidebar_indent_string = ' ▸ '
 set sidebar_short_path = yes
 set sidebar_visible = yes
@@ -63,12 +68,4 @@ set sort_aux = last-date-received
 #bind index - collapse-thread
 #bind index _ collapse-all
 #  }}} Threading settings #
-
-# Don't check for mail (we use isync for that)
-set mail_check = 0
-
-set mail_check_stats
-set mail_check_stats_interval = 10
-
-set record = ""
 
