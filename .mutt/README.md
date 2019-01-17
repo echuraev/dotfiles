@@ -46,3 +46,20 @@ command:
 echo "hello there username." | msmtp -a default account@example.com
 ```
 
+For working with mutt without asking password from `gpg` every time (in this
+case msmtp won't work) it is better to use `gpg-agent`.
+
+### gpg-agent configuration
+`gpg-agent` is mostly used as daemon to request and cache the password for the
+keychain.
+TODO: Write more about gpg-agent configuration.
+
+## Inspired
+Inspired by awesome vim screencasts by Greg Hurrell (@wincent):
+* [Vim screencast #49: Sending email with vim](https://www.youtube.com/watch?v=VBLh56J89do)
+* [Vim screencast #50: Email demo](https://www.youtube.com/watch?v=19h34aP-fN4)
+* [Vim screencast #51: Composing email](https://www.youtube.com/watch?v=9zffUQsbxgE)
+* [Vim screencast #52: Viewing email with Vim](https://www.youtube.com/watch?v=YH3MnY52e9c)
+* [Vim screencast #53: Email architecture](https://www.youtube.com/watch?v=obY1um6ehDM)
+* [Vim screencast #56: HTML email](https://www.youtube.com/watch?v=blqvk-eth3E)
+

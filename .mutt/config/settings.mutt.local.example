@@ -1,8 +1,27 @@
 # This is example file. Rename it to settings.mutt.local and add your personal configurations.
 
-set from = "example@example.com"
-set realname = "James Bond"
-set folder = "~/.mail/"                   # the default location of mailboxes
-set spoolfile = "~/.mail/account/Inbox"
+#  Default values {{{ #
+set from      = "example@account1.com"
+set realname  = "James Bond"
+set sendmail  = '/usr/local/bin/msmtp -a account1'
+set spoolfile = "+Account1/Inbox"
+set mbox      = "+Account1/Inbox"
+#  }}} Default values #
+#  Account 1 {{{ #
+folder-hook +Account1/ set spoolfile = '+Account1/Inbox'
+folder-hook +Account1/ set mbox      = '+Account1/Inbox' # Archive
+folder-hook +Account1/ set postponed = '+Account1/Drafts'
+folder-hook +Account1/ set trash     = '+Account1/Trash'
+folder-hook +Account1/ set sendmail  = '/usr/local/bin/msmtp\ -a\ account1'
+folder-hook +Account1/ set from      = 'example@account1.com'
+#  }}} Account 1 #
+#  Account 2 {{{ #
+folder-hook +Account2/ set spoolfile = '+Account2/Inbox'
+folder-hook +Account2/ set mbox      = '+Account2/Inbox' # Archive
+folder-hook +Account2/ set postponed = '+Account2/Drafts'
+folder-hook +Account2/ set trash     = '+Account2/Trash'
+folder-hook +Account2/ set sendmail  = '/usr/local/bin/msmtp\ -a\ account2'
+folder-hook +Account2/ set from      = 'example@account2.net'
+#  }}} Account 2 #
 
 # vim: ft=muttrc

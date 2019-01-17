@@ -1,7 +1,3 @@
-# File with private settings. You can see example in $HOME/.mutt/config/settings.mutt.local.example
-source `$HOME/.mutt/scripts/safesource.sh $HOME/.mutt/config/settings.mutt.local`
-source `$HOME/.mutt/scripts/check_version.sh`
-
 #  Common settings {{{ #
 set abort_unmodified = ask-no
 unset mark_old              # Don't mark unread messages as 'old' when leaving a mailbox
@@ -18,6 +14,7 @@ set certificate_file = "~/.mutt/certificates"      # where to store certs
 set mailcap_path     = "~/.mutt/config/mailcap"    # entries for filetypes
 set tmpdir           = "~/.mutt/tmp"               # where to keep temporary files
 set signature        = "~/.mutt/config/signature"  # signature file
+set folder           = "~/.mail/"                  # default location of mailboxes
 #  }}} Paths #
 #  Sidebar {{{ #
 set mail_check_stats=yes # Check mails on start
@@ -81,4 +78,9 @@ set pager_index_lines = 6   # Always show N number of mails in teh index
 set tilde                   # show tildes like in vim
 unset markers               # no ugly plus signs on wrapping
 #  }}} Fold description #
-
+#  Include section {{{ #
+# File with private settings. You can see example in $HOME/.mutt/config/settings.mutt.local.example
+source `$HOME/.mutt/scripts/safesource.sh $HOME/.mutt/config/settings.mutt.local`
+# Different settings which depends on the mutt version
+source `$HOME/.mutt/scripts/check_version.sh`
+#  }}} Include section #
