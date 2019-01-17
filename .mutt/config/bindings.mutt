@@ -21,4 +21,7 @@ bind index,pager \Cu previous-page
 bind index,pager \Cp sidebar-prev
 bind index,pager \Cn sidebar-next
 bind index,pager gb sidebar-open       # as Go Box
+bind index,pager <down>   sidebar-next
+bind index,pager <up>     sidebar-prev
+bind index,pager <right>  sidebar-open
 #  }}} Sidebar #

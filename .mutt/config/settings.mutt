@@ -6,7 +6,6 @@ source `$HOME/.mutt/scripts/check_version.sh`
 set abort_unmodified = ask-no
 unset mark_old              # Don't mark unread messages as 'old' when leaving a mailbox
 set mail_check = 0          # Don't check for mail (we use isync for that)
-set pager_index_lines = 6   # Always show N number of mails in teh index
 
 # Don't keep a local copy of sent messages (Gmail's SMTP server will do that).
 unset record
@@ -60,12 +59,26 @@ set forward_format = "Fwd: %s"
 # Display lists of folders with a numeric index and the folder name
 #set folder_format = "%2C %N %f %n %m %> (%n/%m) "
 #  }}} Reply settings #
-#  Threading settings {{{ #
-set sort = reverse-threads
-set sort_aux = last-date-received
+#  Index view options {{{ #
+#set sort = reverse-threads
+#set sort_aux = last-date-received
+set sort = threads                         # like gmail
+set sort_aux = reverse-last-date-received  # like gmail
+set uncollapse_jump                        # don't collapse on an unread message TODO: Fix it
 #set strict_threads="yes"
 #set sort_browser="reverse-date"
 #bind index - collapse-thread
 #bind index _ collapse-all
-#  }}} Threading settings #
+#  }}} Index view options #
+#  Header options {{{ #
+ignore *                                     # ignore all headers
+unignore from: to: cc: bcc: date: subject:   # show only these
+unhdr_order *                                # some distros order things by default
+hdr_order from: to: cc: bcc: date: subject:  # and in this order
+#  }}} Header options #
+#  Fold description {{{ #
+set pager_index_lines = 6   # Always show N number of mails in teh index
+set tilde                   # show tildes like in vim
+unset markers               # no ugly plus signs on wrapping
+#  }}} Fold description #
 
