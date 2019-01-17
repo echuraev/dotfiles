@@ -2,7 +2,7 @@
 
 set from = "example@example.com"
 set realname = "James Bond"
-set folder = "~/.mail/account"
+set folder = "~/.mail/"                   # the default location of mailboxes
 set spoolfile = "~/.mail/account/Inbox"
 
 # vim: ft=muttrc
