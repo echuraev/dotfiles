@@ -5,8 +5,9 @@ For [Mutt](http://www.mutt.org/) installing I wrote Ansible script. You can find
 I use the following workflow for working with mutt:
 * **mutt** - text-based mail client for Unix operating systems.
 * **isync/mbsync** -  is a command line application which synchronizes mailboxes.
+* **msmtp** - is a very simple and easy to use SMTP client with fairly complete
+  `sendmail` compatibility.
 * **imapfilter** - 
-* **msmtp** - 
 * **notmuch** - 
 
 ## Mutt settings
@@ -34,5 +35,14 @@ Then set the `PassCmd` in the `mbsyncrc` to use `gpg2`:
 
 ```
 PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-ACCOUNT.gpg"
+```
+
+## msmtp configuration
+You can copy file `~/.msmtprc.example` to `~/.msmtprc` and replace all settings
+to your personal configuration.
+After configuration you can check that `msmtp` is working by using the following
+command:
+```bash
+echo "hello there username." | msmtp -a default account@example.com
 ```
 

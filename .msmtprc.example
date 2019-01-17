@@ -1,0 +1,26 @@
+# Set default values for all following accounts
+defaults
+auth              on
+tls               on
+tls_trust_file    /usr/local/etc/openssl/cert.pem
+#tls_trust_file    /etc/ssl/certs/ca-certificates.crt
+logfile           ~/.msmtp.log
+port              587
+host              smtp.gmail.com
+
+# Account 1
+account           account1
+from              account1@expamle.com
+user              account1@expamle.com
+passwordeval      "gpg -d --quiet --for-your-eyes-only --no-tty ~/.mutt/credentials/account1.gpg"
+
+# Account 2
+account           account2
+from              account2@expamle.com
+user              account2@expamle.com
+passwordeval      "gpg -d --quiet --for-your-eyes-only --no-tty ~/.mutt/credentials/account2.gpg"
+
+# Set a default account
+account default : account1
+
+

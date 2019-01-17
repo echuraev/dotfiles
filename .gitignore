@@ -52,3 +52,4 @@
 !.config/qutebrowser/
 !.mutt/
 !.mbsyncrc.example
+!.msmtprc.example
