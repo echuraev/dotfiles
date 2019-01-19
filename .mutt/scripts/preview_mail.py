@@ -4,6 +4,7 @@ from subprocess import Popen, PIPE
 import os
 import re
 import sys
+import email
 import tempfile
 import mail2html
 
@@ -21,8 +22,15 @@ def trim_not_html(input):
             trimmed_lines.append(line)
     return '\n'.join(trimmed_lines)
 
+def plain_to_html(input):
+    msg = email.message_from_string(message)
+    body = msg.get_payload()
+    return body.replace("\n", "<br>")
+
 def preview(message):
     trimmed = trim_not_html(message)
+    if len(trimmed) == 0:
+        trimmed = plain_to_html(message)
     fd, path = tempfile.mkstemp(suffix=".html")
     try:
         with os.fdopen(fd, 'w') as tmp:
@@ -36,5 +44,12 @@ def preview(message):
 
 if __name__ == '__main__':
     message = sys.stdin.read()
-    preview(mail2html.process_message(message))
+    msg = email.message_from_string(message)
+    if len(msg.keys()) == 0:
+        trimmed = mail2html.trim_markdown_markers(message)
+        if trimmed != message:
+            trimmed = mail2html.markdown(trimmed)
+        preview(trimmed)
+    else:
+        preview(mail2html.process_message(message))
 

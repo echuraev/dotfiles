@@ -6,6 +6,7 @@ set mail_check = 0          # Don't check for mail (we use isync for that)
 # Don't keep a local copy of sent messages (Gmail's SMTP server will do that).
 unset record
 set copy = no
+set wait_key = no           # Suppresses Mutt's "Press any key to continue..." prompt when external commands are run
 #  }}} Common settings #
 #  Paths {{{ #
 set header_cache     = "~/.mutt/cache/headers"     # where to store headers
@@ -84,3 +85,6 @@ source `$HOME/.mutt/scripts/safesource.sh $HOME/.mutt/config/settings.mutt.local
 # Different settings which depends on the mutt version
 source `$HOME/.mutt/scripts/check_version.sh`
 #  }}} Include section #
+#  Macros {{{ #
+macro compose <f5> "<pipe-entry>~/.mutt/scripts/preview_mail.py<enter>" "show preview of email"
+#  }}} Macros #
