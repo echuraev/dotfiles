@@ -7,3 +7,5 @@
 " ("$VIMRUNTIME/ftplugin/mail.vim"), which sets it back to 72, but only if it
 " was previously set to 0.
 set textwidth=0
+
+nnoremap <silent> <buffer> <F5> :w \| !cat % \| ~/.mutt/scripts/preview_mail.py<CR><CR>

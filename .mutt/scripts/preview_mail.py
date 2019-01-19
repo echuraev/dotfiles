@@ -45,7 +45,9 @@ def preview(message):
 if __name__ == '__main__':
     message = sys.stdin.read()
     msg = email.message_from_string(message)
-    if len(msg.keys()) == 0:
+    if 'Content-Type' not in msg or 'Content-Disposition' not in msg:
+        if len(msg.keys()) > 0:
+            message = msg.get_payload()
         trimmed = mail2html.trim_markdown_markers(message)
         if trimmed != message:
             trimmed = mail2html.markdown(trimmed)
