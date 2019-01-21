@@ -130,29 +130,46 @@ mkdir -p $BASH_COMPL_DIR
 mkdir -p $ZSH_COMPL_DIR
 export PATH=$LOCAL_BIN:$PATH
 
+# Install function {{{ #
+function install_tool() {
+    github_repo=$1
+    tool_name=$2
+    tool_version=$3
+    full_name=${4:-$tool_name}
+    TOOL_BIN=$LOCAL_BIN/$tool_name
+    if [ ! -f $TOOL_BIN ]; then
+        if [[ `uname` != 'Darwin' ]]; then
+            export archive_name=$full_name'-'$tool_version'-x86_64-unknown-linux-musl'
+        else
+            export archive_name=$full_name'-'$tool_version'-x86_64-apple-darwin'
+        fi
+        tmp_dir='/tmp/'
+        if isAndroidOS; then
+            tmp_dir='~/tmp/'
+            mkdir -p $tmp_dir
+        fi
+        wget -O $tmp_dir/$archive_name.tar.gz $github_repo/releases/download/$tool_version/$archive_name.tar.gz
+        tar xf $tmp_dir/$archive_name.tar.gz -C $tmp_dir
+        cp -f $tmp_dir/$archive_name/$tool_name $TOOL_BIN
+        echo "$tmp_dir/$archive_name"
+    fi
+}
+# }}} Install function #
+# Install bat {{{ #
+TOOL_BIN=$LOCAL_BIN/bat
+if [ ! -f $TOOL_BIN ]; then
+    echo "Installing bat"
+    install_tool 'https://github.com/sharkdp/bat' 'bat' 'v0.9.0'
+fi
+# }}} Install bat #
 # Install ripgrep {{{ #
-export RG_BIN=$LOCAL_BIN/rg
-if [ ! -f $RG_BIN ]; then
-    # Install rg
-    echo "Install rg"
-    export rg_version='0.10.0'
-    if [[ `uname` != 'Darwin' ]]; then
-        export rg_archive_name='ripgrep-'$rg_version'-x86_64-unknown-linux-musl'
-    else
-        export rg_archive_name='ripgrep-'$rg_version'-x86_64-apple-darwin'
-    fi
-    tmp_dir='/tmp/'
-    if isAndroidOS; then
-        tmp_dir='~/tmp/'
-        mkdir -p $tmp_dir
-    fi
-    wget -O $tmp_dir/$rg_archive_name.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/$rg_version/$rg_archive_name.tar.gz
-    tar xf $tmp_dir/$rg_archive_name.tar.gz -C $tmp_dir
-    cp -f $tmp_dir/$rg_archive_name/rg $RG_BIN
-
+TOOL_BIN=$LOCAL_BIN/rg
+if [ ! -f $TOOL_BIN ]; then
+    echo "Installing ripgrep"
+    res=$(install_tool 'https://github.com/BurntSushi/ripgrep' 'rg' '0.10.0' 'ripgrep')
     # Enable autocompletion
-    cp -f $tmp_dir/$rg_archive_name/complete/rg.bash $BASH_COMPL_DIR
-    cp -f $tmp_dir/$rg_archive_name/complete/_rg $ZSH_COMPL_DIR
+    cp -f $res/complete/rg.bash $BASH_COMPL_DIR
+    cp -f $res/complete/_rg $ZSH_COMPL_DIR
 fi
 # }}} Install ripgrep #
 # Instal Tmux Plugin Manager {{{ #
