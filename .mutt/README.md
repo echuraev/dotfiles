@@ -53,7 +53,20 @@ case msmtp won't work) it is better to use `gpg-agent`.
 #### gpg-agent configuration
 `gpg-agent` is mostly used as daemon to request and cache the password for the
 keychain.
-TODO: Write more about gpg-agent configuration.
+
+You have to increase stash time for passwords. It helps to avoid password
+entering for every 10 minutes. You have to add the following lines to
+`~/.gnupg/gpg-agent.conf`:
+```
+default-cache-ttl 34560000
+max-cache-ttl 34560000
+```
+Now password will be cached for 34560000 seconds (400 days). Get it from
+[here](https://superuser.com/questions/624343/keep-gnupg-credentials-cached-for-entire-user-session).
+
+* [ ] Write about configuring password GUI prompt by using `pinentry-program`.
+    Find more
+    [here](http://code.lexarcana.com/posts/text-based-email-setup-with-mbsync-and-mu.html).
 
 ## Running mutt
 You can use `email` function from `~/.bashrc.global` it will run mutt in tmux
