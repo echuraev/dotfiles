@@ -1,4 +1,4 @@
-# Mutt configuration
+# Mutt
 
 For [Mutt](http://www.mutt.org/) installing I wrote Ansible script. You can find it [here](https://github.com/echuraev/Ansible/blob/master/roles/mutt/tasks/main.yml). When you run it it will install all necessary programs.
 
@@ -10,15 +10,16 @@ I use the following workflow for working with mutt:
 * **imapfilter** - 
 * **notmuch** - 
 
-## Mutt settings
+## Configuration
+### Mutt settings
 TODO: Describe about settings.mutt.local.
 
-## isync/mbsync configuration
+### isync/mbsync configuration
 You can copy file `~/.mbsyncrc.example` to `~/.mbsyncrc` and replace there all
 settings to you personal configuration. You can search `TODO` word in this file
 and read comments for understanding what should you do.
 
-### Keeping encrypted password
+#### Keeping encrypted password
 For keeping passwords it is possible to use encrypted file and `gpg`.
 
 First generate a GnuPG key, and then [create the encrypted password 
@@ -37,7 +38,7 @@ Then set the `PassCmd` in the `mbsyncrc` to use `gpg2`:
 PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-ACCOUNT.gpg"
 ```
 
-## msmtp configuration
+### msmtp configuration
 You can copy file `~/.msmtprc.example` to `~/.msmtprc` and replace all settings
 to your personal configuration.
 After configuration you can check that `msmtp` is working by using the following
@@ -49,10 +50,14 @@ echo "hello there username." | msmtp -a default account@example.com
 For working with mutt without asking password from `gpg` every time (in this
 case msmtp won't work) it is better to use `gpg-agent`.
 
-### gpg-agent configuration
+#### gpg-agent configuration
 `gpg-agent` is mostly used as daemon to request and cache the password for the
 keychain.
 TODO: Write more about gpg-agent configuration.
+
+## Running mutt
+You can use `email` function from `~/.bashrc.global` it will run mutt in tmux
+session with sync script in another window.
 
 ## Inspired
 Inspired by awesome vim screencasts by Greg Hurrell (@wincent):
