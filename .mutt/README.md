@@ -3,12 +3,15 @@
 For [Mutt](http://www.mutt.org/) installing I wrote Ansible script. You can find it [here](https://github.com/echuraev/Ansible/blob/master/roles/mutt/tasks/main.yml). When you run it it will install all necessary programs.
 
 I use the following workflow for working with mutt:
-* **mutt** - text-based mail client for Unix operating systems.
-* **isync/mbsync** -  is a command line application which synchronizes mailboxes.
-* **msmtp** - is a very simple and easy to use SMTP client with fairly complete
-  `sendmail` compatibility.
-* **imapfilter** - 
-* **notmuch** - 
+* **[mutt](http://www.mutt.org/)** - text-based mail client for Unix operating systems.
+* **[isync/mbsync](http://isync.sourceforge.net/)** -  is a command line application which synchronizes mailboxes.
+* **[msmtp](http://msmtp.sourceforge.net/)** - is a very simple and easy to use SMTP client with fairly complete `sendmail` compatibility.
+* **[imapfilter](https://github.com/lefcha/imapfilter/)** - is a mail filtering utility.
+* **[notmuch](https://notmuchmail.org/)** - 
+
+Some OS specific dependencies:
+* Mac OS:
+    * [terminal-notifier](https://github.com/julienXX/terminal-notifier): For notifications.
 
 ## Configuration
 ### Mutt settings
@@ -67,6 +70,15 @@ Now password will be cached for 34560000 seconds (400 days). Get it from
 * [ ] Write about configuring password GUI prompt by using `pinentry-program`.
     Find more
     [here](http://code.lexarcana.com/posts/text-based-email-setup-with-mbsync-and-mu.html).
+
+### imapfilter configuration
+**imapfilter** uses the Lua programming language as a configuration and
+extension language.  Lua is a simple language and you can use
+[Learn Lua in Y minutes](https://learnxinyminutes.com/docs/lua/) such as quick
+guide.
+
+I implemented `login()` function that produce automatic login to the imap server
+by the credentials from `~/.mbsyncrc`.
 
 ## Running mutt
 You can use `email` function from `~/.bashrc.global` it will run mutt in tmux
