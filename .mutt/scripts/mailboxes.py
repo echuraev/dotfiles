@@ -23,7 +23,7 @@ def getKey(item):
             break;
     return curr_value
 
-accounts = [f for f in os.listdir(MAIL_DIR) if os.path.isdir(os.path.join(MAIL_DIR, f))]
+accounts = [f for f in os.listdir(MAIL_DIR) if os.path.isdir(os.path.join(MAIL_DIR, f)) and f[0] != '.' and f != 'Search']
 mailboxes = []
 for acc in accounts:
     mailboxes.append(acc)

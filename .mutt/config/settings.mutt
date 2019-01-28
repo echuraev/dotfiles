@@ -87,4 +87,5 @@ source `$HOME/.mutt/scripts/check_version.sh`
 #  }}} Include section #
 #  Macros {{{ #
 macro compose <f5> "<pipe-entry>~/.mutt/scripts/preview_mail.py<enter>" "show preview of email"
+macro index,pager S "<enter-command>unset wait_key<enter><shell-escape>~/.mutt/mutt-notmuch-py/mutt-notmuch-py --history-path=~/.mutt/tmp/notmuch.history ~/.mail/Search<enter><enter-command>mailboxes '+Search'<enter><change-folder-readonly>+Search<enter>" "search mail (using notmuch)"
 #  }}} Macros #

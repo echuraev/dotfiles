@@ -16,3 +16,6 @@
 [submodule ".config/vifm/colors"]
 	path = .config/vifm/colors
 	url = https://github.com/vifm/vifm-colors
+[submodule ".mutt/mutt-notmuch-py"]
+	path = .mutt/mutt-notmuch-py
+	url = https://github.com/honza/mutt-notmuch-py

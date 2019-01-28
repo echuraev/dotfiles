@@ -7,11 +7,11 @@ I use the following workflow for working with mutt:
 * **[isync/mbsync](http://isync.sourceforge.net/)** -  is a command line application which synchronizes mailboxes.
 * **[msmtp](http://msmtp.sourceforge.net/)** - is a very simple and easy to use SMTP client with fairly complete `sendmail` compatibility.
 * **[imapfilter](https://github.com/lefcha/imapfilter/)** - is a mail filtering utility.
-* **[notmuch](https://notmuchmail.org/)** - 
+* **[notmuch](https://notmuchmail.org/)** - is a fast, global-search and tag-based email system.
 
 Some OS specific dependencies:
 * Mac OS:
-    * [terminal-notifier](https://github.com/julienXX/terminal-notifier): For notifications.
+    * **[terminal-notifier](https://github.com/julienXX/terminal-notifier)** - For notifications.
 
 ## Configuration
 ### Mutt settings
@@ -67,7 +67,7 @@ max-cache-ttl 34560000
 Now password will be cached for 34560000 seconds (400 days). Get it from
 [here](https://superuser.com/questions/624343/keep-gnupg-credentials-cached-for-entire-user-session).
 
-* [ ] Write about configuring password GUI prompt by using `pinentry-program`.
+**TODO:** Write about configuring password GUI prompt by using `pinentry-program`.
     Find more
     [here](http://code.lexarcana.com/posts/text-based-email-setup-with-mbsync-and-mu.html).
 
@@ -79,6 +79,13 @@ guide.
 
 I implemented `login()` function that produce automatic login to the imap server
 by the credentials from `~/.mbsyncrc`.
+
+### notmuch configuration
+For configuring notmuch do the following steps:
+1. Run in terminal command `notmuch` and follow the steps on the screen. Add
+   name `Search` to ignore field. In `Search` directory will be saved results of
+   search with notmuch.
+2. Run in terminal command `notmuch new` and it will index all your emails.
 
 ## Running mutt
 You can use `email` function from `~/.bashrc.global` it will run mutt in tmux

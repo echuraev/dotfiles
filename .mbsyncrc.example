@@ -76,6 +76,7 @@ Patterns !"Other Folder"
 Patterns !Folder
 Patterns ![Gmail]*
 Patterns !Sent
+Patterns !Search
 # TODO: ADD OTHER PATTERNS
 
 # Group the channels, so that all channels can be sync'd with `mbsync Account1`
