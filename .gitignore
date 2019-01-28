@@ -48,8 +48,7 @@
 !.urxvt
 !.skhdrc
 !.chunkwmrc
-!.qutebrowser
-!.config/qutebrowser/
 !.mutt/
 !.mbsyncrc.example
 !.msmtprc.example
+!.imapfilter
