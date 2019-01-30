@@ -45,22 +45,14 @@ while true; do
 
   delay
 
-  #echo "Running imapfilter ($ACCOUNT):"
-  #echo
+  echo "Running imapfilter:"
+  echo
 
-  #ONCE=1 time imapfilter -vc "${HOME}/.imapfilter/${ACCOUNT}.lua" || {
-  #  terminal-notifier -title imapfilter -message "imapfilter ($ACCOUNT) exited"
-  #  backoff
-  #  continue
-  #}
-  #echo "Running imapfilter:"
-  #echo
-
-  #ONCE=1 time imapfilter -v || {
-  #  terminal-notifier -title imapfilter -message "imapfilter exited"
-  #  backoff
-  #  continue
-  #}
+  time imapfilter -v || {
+    terminal-notifier -title imapfilter -message "imapfilter exited"
+    backoff
+    continue
+  }
 
   echo
   echo "Running mbsync ($ACCOUNT):"
@@ -92,6 +84,15 @@ while true; do
 
   rm -f $MBSYNC_OUT_FILE
 
+  echo "Running notmuch:"
+  echo
+
+  time notmuch new || {
+    terminal-notifier -title notmuch -message "notmuch exited"
+    backoff
+    continue
+  }
+
   #echo
   #echo "Running postsync hooks ($ACCOUNT):"
   #echo
@@ -109,9 +110,9 @@ while true; do
   ~/.mutt/scripts/mailboxes.py
 
   echo "Finished at $(date)."
-  echo "Sleeping for 1m..."
+  echo "Sleeping for 30s..."
   echo
 
   BACKOFF=0
-  sleep 60
+  sleep 30
 done
