@@ -101,4 +101,7 @@ macro index I "<tag-prefix><clear-flag>N" "mark as read"
 # Sidebar
 macro index ,s '<enter-command>toggle sidebar_visible<enter><refresh>'
 macro pager ,s '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+
+# Urlview
+macro pager ,u "<enter-command>set pipe_decode = yes<enter><pipe-message>urlview<enter><enter-command>set pipe_decode = no<enter>" "view URLs"
 #  }}} Macros #
