@@ -1,12 +1,13 @@
 #  Common settings {{{ #
 set abort_unmodified = ask-no
+push <show-version>         # Show version at startup
 unset mark_old              # Don't mark unread messages as 'old' when leaving a mailbox
 set mail_check = 0          # Don't check for mail (we use isync for that)
 
 # Don't keep a local copy of sent messages (Gmail's SMTP server will do that).
 unset record
 set copy = no
-set wait_key = no           # Suppresses Mutt's "Press any key to continue..." prompt when external commands are run
+unset wait_key              # Suppresses Mutt's "Press any key to continue..." prompt when external commands are run
 #  }}} Common settings #
 #  Paths {{{ #
 set header_cache     = "~/.mutt/cache/headers"     # where to store headers
@@ -25,7 +26,7 @@ set sidebar_width=25
 set sidebar_divider_char = '│'
 set sidebar_folder_indent = yes
 set sidebar_format = "%B%?N? (%N)?" # Folder Name (Unread messages)
-set sidebar_indent_string = ' ▸ '
+set sidebar_indent_string = '  '
 set sidebar_short_path = yes
 set sidebar_visible = yes
 #  }}} Sidebar #
@@ -88,4 +89,16 @@ source `$HOME/.mutt/scripts/check_version.sh`
 #  Macros {{{ #
 macro compose <f5> "<pipe-entry>~/.mutt/scripts/preview_mail.py<enter>" "show preview of email"
 macro index,pager S "<enter-command>unset wait_key<enter><shell-escape>~/.mutt/mutt-notmuch-py/mutt-notmuch-py --history-path=~/.mutt/tmp/notmuch.history ~/.mail/Search<enter><enter-command>mailboxes '+Search'<enter><change-folder-readonly>+Search<enter>" "search mail (using notmuch)"
+
+macro index x "<tag-message>" "select message"
+macro pager x "<tag-message><exit>" "select message"
+
+macro pager U <set-flag>N "mark as unread"
+macro index U "<tag-prefix><set-flag>N" "mark as unread"
+macro pager I <clear-flag>N "mark as read"
+macro index I "<tag-prefix><clear-flag>N" "mark as read"
+
+# Sidebar
+macro index ,s '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager ,s '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
 #  }}} Macros #
