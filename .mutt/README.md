@@ -77,8 +77,30 @@ extension language.  Lua is a simple language and you can use
 [Learn Lua in Y minutes](https://learnxinyminutes.com/docs/lua/) such as quick
 guide.
 
-I implemented `login()` function that produce automatic login to the imap server
-by the credentials from `~/.mbsyncrc`.
+I implemented `login(creds)` function that produce automatic login to the imap
+server by the credentials from `~/.mbsyncrc`.
+
+Credentials will be parsed by using function `get_from_mbsyncrc()`.
+
+Also, if you have mailboxes that named in different languages, it is possible
+that their names will be encoded in imap4-utf-7. For correct parsing this
+directories you have to add comments before line:
+```
+Master :Account-remote:DirName
+```
+Comment should be in the following format:
+```
+#trans: Master :Account-remote:DirNameHowItIs
+```
+For more details you can look at `.mbsyncrc.example`.
+
+Common rules are specified in `~/.imapfilter/config.lua` in function
+`common_filters(account, creds, dir_map)`.
+
+Also, you can create some personal rules for every your account. You have to
+copy file `~/.imapfilter/accounts/account.lua` and name it like account name in
+`~/.mbsyncrc` in field `IMAPAccount` e.g. `Account1.lua`. More details you can
+find in `~/.imapfilter/accounts/account.lua`.
 
 ### notmuch configuration
 For configuring notmuch do the following steps:

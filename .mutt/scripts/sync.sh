@@ -78,6 +78,14 @@ while true; do
     else
         MSG=$MSG" new messages"
     fi
+    echo "Running imapfilter:"
+    echo
+
+    time imapfilter -v || {
+      terminal-notifier -title imapfilter -message "imapfilter exited"
+      backoff
+      continue
+    }
     terminal-notifier -title mbsync -message "${MSG}"
     echo "${MSG}"
   }

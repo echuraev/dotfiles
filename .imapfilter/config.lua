@@ -1,62 +1,25 @@
-function trim_quotes(msg)
-    msg = msg:gsub("^\"*(.-)\"*$", "%1")
-    return msg
-end
+dofile(os.getenv('HOME') .. '/.imapfilter/common.lua')
 
-function get_from_mbsyncrc()
-    dict_tmp = {
-        account = '',
-        server = '',
-        username = '',
-        password = '',
-        ssl = ''
-    }
-    accounts_array = {}
-    mbsyncrc = io.open(os.getenv('HOME') .. '/.mbsyncrc', "r")
-    counter = 0
-    if mbsyncrc then
-        for line in mbsyncrc:lines() do
-            s, e = string.find(line, "IMAPAccount ")
-            if s == 1 then
-                counter = counter + 1
-                accounts_array[counter] = {}
-                accounts_array[counter].account = trim_quotes(string.sub(line, e+1, -1))
-            end
-            s, e = string.find(line, "Host ")
-            if s == 1 then
-                accounts_array[counter].server = trim_quotes(string.sub(line, e+1, -1))
-            end
-            s, e = string.find(line, "User ")
-            if s == 1 then
-                accounts_array[counter].username = trim_quotes(string.sub(line, e+1, -1))
-            end
-            s, e = string.find(line, "PassCmd ")
-            if s == 1 then
-                passcmd = trim_quotes(string.sub(line, e+1, -1))
-                _, accounts_array[counter].password = pipe_from(passcmd)
-            end
-            s, e = string.find(line, "SSLType ")
-            if s == 1 then
-                accounts_array[counter].ssl = trim_quotes(string.sub(line, e+1, -1))
-            end
-        end
-    end
+function common_filters(account, creds, dir_map)
+    print(">>> Before filters Common " .. creds.username)
 
-    return accounts_array
-end
+    -- Github rule
+    mailbox_name = 'Github'
+    --account:create_mailbox(mailbox_name)
+    messages = account[get(dir_map, 'Inbox')]:contain_from("github.com")
+    print_status(messages, 'Inbox -> ' .. mailbox_name)
+    messages:move_messages(account[get(dir_map, mailbox_name)])
 
-function login()
-    accounts = {}
-    creds = get_from_mbsyncrc()
-    for i = 1, #creds do
-        accounts[creds[i].account] = IMAP {
-            server   = creds[i].server,
-            username = creds[i].username,
-            password = creds[i].password,
-            ssl      = creds[i].ssl
-        }
-    end
-    return accounts
+
+    -- Travis CI builds rule
+    mailbox_name = 'Travis CI Builds'
+    --account:create_mailbox(mailbox_name)
+    messages = account[get(dir_map, 'Inbox')]:contain_from("builds@travis-ci.com") +
+                account[get(dir_map, 'Inbox')]:contain_from("builds@travis-ci.org")
+    print_status(messages, 'Inbox -> ' .. mailbox_name)
+    messages:move_messages(account[get(dir_map, mailbox_name)])
+
+    print(">>> After filters Common " .. creds.username)
 end
 
 -- Will specify a timeout for imapfilter to wait for the IMAP server response,
@@ -78,5 +41,19 @@ options.create = true
 -- them
 options.subscribe = true
 
-login()
+creds = get_from_mbsyncrc()
+accounts = login(creds)
+dir_map = get_dir_map_from_mbsyncrc()
+
+-- get directory name implement function
+for key, acc in pairs(accounts) do
+    common_filters(acc, creds[key], dir_map[key])
+
+    ---- Load account specific settings
+    file_name = os.getenv('HOME') .. '/.imapfilter/accounts/' .. key .. '.lua'
+    if file_exists(file_name) then
+        dofile(file_name)
+        filters(acc, creds[key], dir_map[key])
+    end
+end
 

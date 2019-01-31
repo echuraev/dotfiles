@@ -40,6 +40,7 @@ Account Account1
 MaildirStore Account1-local
 Path ~/.mail/Account1/
 Inbox ~/.mail/Account1/Inbox
+SubFolders Verbatim
 
 Channel Account1-Account1
 Master :Account1-remote:INBOX
@@ -49,8 +50,11 @@ Channel Account1-Sent
 Master :Account1-remote:"[Gmail]/Sent Mail"
 Slave :Account1-local:Sent
 
-# Сохранённые: &BCEEPgRFBEAEMAQ9BDUEPQQ9BEsENQ-
+# PAY ATTENTION. IF YOUR DIRECTORY ON THE SERVER IS IN IMAP4-UTF-7 ENCODING
+# THEN YOU HAVE TO ADD A COMMENT BEFORE REMOTE STORE IN THE FORMAT LIKE IT
+# BELLOW. IT HELPS TO imapfilter AUTOMATICALLY DETECT YOUR DIRECTORIES.
 Channel Account1-Saved
+#trans: Master :Account1-remote:"Сохраненные"
 Master :Account1-remote:"&BCEEPgRFBEAEMAQ9BDUEPQQ9BEsENQ-"
 Slave :Account1-local:Saved
 

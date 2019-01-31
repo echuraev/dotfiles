@@ -1,1 +1,3 @@
 certificates
+accounts/*
+!accounts/account.lua
