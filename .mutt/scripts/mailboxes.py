@@ -12,6 +12,16 @@ PRIORITY = {
     "Spam":    6,
 }
 
+EXCLUDE_ACCOUNTS = [
+    'Search',   # Here we keep results of search
+]
+
+EXCLUDE_MAIL_DIRS = [
+    'cur',
+    'new',
+    'tmp',
+]
+
 MAIL_DIR = os.getenv('HOME') + '/.mail'
 MUTT_FILE = os.getenv('HOME') + '/.mutt/config/mailboxes.mutt'
 
@@ -23,12 +33,13 @@ def getKey(item):
             break;
     return curr_value
 
-accounts = [f for f in os.listdir(MAIL_DIR) if os.path.isdir(os.path.join(MAIL_DIR, f)) and f[0] != '.' and f != 'Search']
+# Generate accounts exclude hidden directories and directories from EXCLUDE_ACCOUNTS
+accounts = [f for f in os.listdir(MAIL_DIR) if os.path.isdir(os.path.join(MAIL_DIR, f)) and f[0] != '.' and f not in EXCLUDE_ACCOUNTS]
 mailboxes = []
 for acc in accounts:
     mailboxes.append(acc)
     account_dir = os.path.join(MAIL_DIR, acc)
-    m = [acc + "/" + f for f in os.listdir(account_dir) if os.path.isdir(os.path.join(account_dir, f))]
+    m = [dp.replace(MAIL_DIR + '/', '') for dp, _, _ in os.walk(account_dir) if dp.split('/')[-1] not in EXCLUDE_MAIL_DIRS and dp.split('/')[-1] != acc]
     m = sorted(m, key=getKey)
     mailboxes.extend(m)
 
