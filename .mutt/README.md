@@ -114,8 +114,19 @@ For configuring notmuch do the following steps:
 **lbdb** is tool for autocompletion contacts. Configuration file of lbdb is in
 `~/.lbdb/lbdbrc`.
 For generating autocompletion database you have to run command: 
-
-TODO: Add more details
+```bash
+time find ~/.mail/ -type f -exec sh -c 'cat "{}" | lbdb-fetchaddr' \;
+```
+Files with db will be generated in `~/.lbdb/`. In `~/.mutt/scripts/sync.sh` I
+did automatic running of `lbdb-fetchaddr`. Due to running command for the whole
+letters in my mailbox takes a lot of time for executing. I run command for
+generating whole database only if database files doesn't exist. If files exists
+then I run the following command:
+```bash
+    time find ~/.mail/ -type f -mtime -1h -exec sh -c 'cat "{}" | lbdb-fetchaddr' \;
+```
+By passing parameter `-mtime -1h` I tell to find that I'd like to index files
+that were modified only the last one hour. It is very fast.
 
 Vim function for autocompletion implemented in `~/.vim/after/ftplugin/mail.vim`.
 

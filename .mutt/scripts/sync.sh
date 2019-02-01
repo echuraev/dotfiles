@@ -26,23 +26,6 @@ function backoff() {
 }
 
 while true; do
-  #if [ -x "${HOME}/.mutt/hooks/presync/${ACCOUNT}.sh" ]; then
-  #  "${HOME}/.mutt/hooks/presync/${ACCOUNT}.sh" || {
-  #    echo "Presync hook exited with status $?; skipping sync."
-  #    sleep 60
-  #    BACKOFF=0
-  #    continue
-  #  }
-  #fi
-  #if [ -x "${HOME}/.mutt/hooks/presync.sh" ]; then
-  #  "${HOME}/.mutt/hooks/presync.sh" || {
-  #    echo "Presync hook exited with status $?; skipping sync."
-  #    sleep 60
-  #    BACKOFF=0
-  #    continue
-  #  }
-  #fi
-
   delay
 
   echo "Running imapfilter:"
@@ -101,19 +84,20 @@ while true; do
     continue
   }
 
-  #echo
-  #echo "Running postsync hooks ($ACCOUNT):"
-  #echo
-
-  #time ~/.mutt/hooks/postsync/$ACCOUNT.sh # Runs notmuch, lbdb-fetchaddr etc
-  #echo
-  #echo "Running postsync hooks:"
-  #echo
-
-  #time ~/.mutt/hooks/postsync.sh # Runs notmuch, lbdb-fetchaddr etc
+  echo
+  echo "Running lbdb-fetchaddr:"
+  echo
+  BD_EXISTS=`ls -1 ~/.lbdb | grep -c -v "lbdbrc"`
+  if [ "$BD_EXISTS" -eq 0 ]
+  then
+      time find ~/.mail/ -type f -exec sh -c 'cat "{}" | lbdb-fetchaddr' \;
+  fi
+  # files that were modified the last hour
+  time find ~/.mail/ -type f -mtime -1h -exec sh -c 'cat "{}" | lbdb-fetchaddr' \;
 
   echo
   echo "Updating mailboxes listing:"
+  echo
 
   ~/.mutt/scripts/mailboxes.py
 
@@ -124,3 +108,4 @@ while true; do
   BACKOFF=0
   sleep 30
 done
+
