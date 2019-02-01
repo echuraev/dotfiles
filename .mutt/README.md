@@ -8,6 +8,7 @@ I use the following workflow for working with mutt:
 * **[msmtp](http://msmtp.sourceforge.net/)** - is a very simple and easy to use SMTP client with fairly complete `sendmail` compatibility.
 * **[imapfilter](https://github.com/lefcha/imapfilter/)** - is a mail filtering utility.
 * **[notmuch](https://notmuchmail.org/)** - is a fast, global-search and tag-based email system.
+* **[lbdb](https://www.spinnaker.de/lbdb/)** - is a contact autocompletion drawing from a number of sources, such as previous messages, aliases and etc.
 
 Some OS specific dependencies:
 * Mac OS:
@@ -108,6 +109,15 @@ For configuring notmuch do the following steps:
    name `Search` to ignore field. In `Search` directory will be saved results of
    search with notmuch.
 2. Run in terminal command `notmuch new` and it will index all your emails.
+
+### lbdb configuration
+**lbdb** is tool for autocompletion contacts. Configuration file of lbdb is in
+`~/.lbdb/lbdbrc`.
+For generating autocompletion database you have to run command: 
+
+TODO: Add more details
+
+Vim function for autocompletion implemented in `~/.vim/after/ftplugin/mail.vim`.
 
 ## Running mutt
 You can use `email` function from `~/.bashrc.global` it will run mutt in tmux

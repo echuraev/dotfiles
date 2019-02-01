@@ -1,5 +1,5 @@
 #  Common settings {{{ #
-set abort_unmodified = ask-no
+set abort_unmodified = ask-yes
 push <show-version>         # Show version at startup
 unset mark_old              # Don't mark unread messages as 'old' when leaving a mailbox
 set mail_check = 0          # Don't check for mail (we use isync for that)
@@ -8,6 +8,7 @@ set mail_check = 0          # Don't check for mail (we use isync for that)
 unset record
 set copy = no
 unset wait_key              # Suppresses Mutt's "Press any key to continue..." prompt when external commands are run
+set query_command = "lbdbq %s 2> /dev/null"
 #  }}} Common settings #
 #  Paths {{{ #
 set header_cache     = "~/.mutt/cache/headers"     # where to store headers
