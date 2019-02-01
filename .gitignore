@@ -18,6 +18,7 @@
 /.tmux/plugins
 /.tmux/resurrect
 .zsh/completion
+.lbdb/*
 
 # Except the following files
 !.gitconfig
@@ -52,3 +53,5 @@
 !.mbsyncrc.example
 !.msmtprc.example
 !.imapfilter
+!.lbdb/
+!.lbdb/lbdbrc
