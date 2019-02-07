@@ -29,6 +29,7 @@ let g:indentLine_bufNameExclude=['calendar', 'startify']
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_leadingSpaceEnabled = 1
 let g:vim_json_syntax_conceal = 0
+let g:indentLine_concealcursor=""
 " }}} IndentLine "
 " Latex {{{ "
 let g:vimtex_fold_enabled=1

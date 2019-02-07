@@ -3,7 +3,7 @@ filetype plugin indent on
 filetype plugin on
 " }}} Filetype detection "
 " Files Encryption {{{ "
-if v:version > 704 || (v:version == 704 && has('patch399'))
+if !has("nvim") && (v:version > 704 || (v:version == 704 && has('patch399')))
     set cm=blowfish2
 endif
 " }}} Files Encryption "
@@ -49,7 +49,9 @@ autocmd FileType fugitiveblame setlocal colorcolumn=
 autocmd FileType qf setlocal colorcolumn=
 " }}} Disable color column for some ft "
 if !g:isWindows
-    set term=screen-256color
+    if !has("nvim")
+        set term=screen-256color
+    endif
     if !g:isAndroid
         set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
         let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
