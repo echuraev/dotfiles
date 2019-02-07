@@ -13,5 +13,4 @@ for f in $HFILES; do
 done
 
 cd $install_dir
-git submodule init --recursive
-git submodule update --recursive
+git submodule update --init --recursive
