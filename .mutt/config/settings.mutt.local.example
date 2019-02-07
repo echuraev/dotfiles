@@ -1,5 +1,8 @@
 # This is example file. Rename it to settings.mutt.local and add your personal configurations.
 
+macro index ,sh "<shell-escape>mbsync Account1<enter>" "run mbsync to sync Account1"
+macro index ,sw "<shell-escape>mbsync Account2<enter>" "run mbsync to sync Account2"
+
 #  Default values {{{ #
 set from      = "example@account1.com"
 set realname  = "James Bond"
