@@ -13,7 +13,7 @@ let s:vim_configuration_files = [
 \ 'ultisnips.vimrc',
 \ 'vim-cpp-enhanced-highlight.vimrc',
 \ 'vimwiki.vimrc',
-\ 'youcompleteme.vimrc',
+\ 'lsp.vimrc',
 \ 'gtest.vimrc',
 \]
 

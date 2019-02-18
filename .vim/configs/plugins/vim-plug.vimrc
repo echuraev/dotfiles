@@ -4,10 +4,11 @@ call plug#begin('~/.vim/plugged')
 " C++ {{{ "
 " Code Completion {{{ "
 if !g:isAndroid
-    if v:version > 704 || (v:version == 704 && has('patch1578'))     " This is a limitation of YCM
-        Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
-        Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'on': [] }
-    endif
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/async.vim'
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    Plug 'prabirshrestha/asyncomplete-file.vim'
 endif
 " }}} Code Completion "
 " Syntax highlighting {{{ "
@@ -83,6 +84,7 @@ Plug 'pseewald/vim-anyfold'                               " Fold code
 " For working it is necessary to have python3 installed
 " On Windows you have to have the same architecture (32 or 64 bits) versions of vim and python
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'   " Snippets.
+Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
 " }}} Snippets "
 " Fuzzy Finder {{{ "
 " Plugin outside ~/.vim/plugged with post-update hook
