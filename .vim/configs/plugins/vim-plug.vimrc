@@ -170,7 +170,6 @@ Plug 'sunaku/vim-hicterm'             " Highlights terminal color code numbers
 Plug 'powerman/vim-plugin-AnsiEsc'    " Enable highlighting AnsiEsc in vim
 Plug 'vim-scripts/xoria256.vim'       " Color scheme
 Plug 'jacoborus/tender.vim'           " Color scheme "diff, links in vimwiki, selection
-Plug 'TaDaa/vimade'                   " Fade colorscheme for inactive window
 " }}} View "
 " Other {{{ "
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
