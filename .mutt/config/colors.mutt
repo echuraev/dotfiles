@@ -1,7 +1,4 @@
-###############################################################################
-# Dracula Theme for Mutt: https://draculatheme.com/
-#
-# @author Paul Townsend <paul@caprica.org>
+# Based on: Dracula Theme for Mutt: https://draculatheme.com/
 
 # general ------------ foreground ---- background -----------------------------
 color error        color231    color212
@@ -19,6 +16,7 @@ color tree         color141    default
 color index    color210    default    ~D # deleted messages
 color index    color84     default    ~F # flagged messages
 color index    color117    default    ~N # new messages
+color index    color117    default    ~O # old messages
 color index    color212    default    ~Q # messages which have been replied to
 color index    color215    default    ~T # tagged messages
 color index    color141    default    ~v # messages part of a collapsed thread
@@ -41,5 +39,6 @@ color quoted3       color215    default
 color quoted4       color212    default
 color signature     color212    default
 
-# sidebar ------- foreground ---- background -----------------------------
-color sidebar_new   color117    default
+# sidebar ------------- foreground ---- background ----------------------------
+color sidebar_new       color117    default # Mailbox containing new mail
+color sidebar_divider   color141    default # The dividing line between the Sidebar and the Index/Pager panels
