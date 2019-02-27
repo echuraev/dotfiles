@@ -73,6 +73,52 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "PrintScreen to capture scrinshot",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "print_screen"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "3",
+                                        "modifiers": [
+                                            "command",
+                                            "shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Cmd+PrintScreen to capture of area to Clipboard",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "print_screen",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "4",
+                                        "modifiers": [
+                                            "command",
+                                            "control",
+                                            "shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
