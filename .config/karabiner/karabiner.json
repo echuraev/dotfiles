@@ -20,15 +20,14 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "input_source_if",
                                         "input_sources": [
-                                             {
-                                                 "language": "ru"
-                                             }
-                                        ]
+                                            {
+                                                "language": "ru"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
                                     }
                                 ],
-                                "type": "basic",
                                 "from": {
                                     "key_code": "grave_accent_and_tilde",
                                     "modifiers": {
@@ -41,7 +40,37 @@
                                     {
                                         "key_code": "non_us_backslash"
                                     }
-                                ]
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+Cmd+l to lock screen",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control",
+                                            "command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "q",
+                                        "modifiers": [
+                                            "control",
+                                            "command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
                             }
                         ]
                     }
