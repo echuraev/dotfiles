@@ -47,7 +47,7 @@ nmap <leader>p :r ~/.vim/.glob_buf<CR>
 nmap <leader>P k:r ~/.vim/.glob_buf<CR>
 " }}} Copy and paste mapping "
 " Compile key mapping {{{ "
-nnoremap <F5> :Dispatch<CR>
+nnoremap <F5> :Make<CR>
 " }}} Compile key mapping "
 " Project menu {{{ "
 " For more information see: ~/.vim/configs/projects/projects_menu.vimrc
