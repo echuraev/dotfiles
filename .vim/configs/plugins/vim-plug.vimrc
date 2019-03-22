@@ -176,6 +176,7 @@ Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'vimwiki/vimwiki'                " Organize notes
 Plug 'echuraev/translate-shell.vim'   " Translate plugin
 Plug 'ledger/vim-ledger'              " Finance management
+Plug 'rhysd/vim-grammarous'           " Spell checker
 " }}} Other "
 
 call plug#end()
