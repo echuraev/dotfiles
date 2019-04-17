@@ -366,14 +366,17 @@ gdlb() {
 # gdrb - delete remote branch
 gdrb() {
   is_in_git_repo || return
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
+  local branches branch remote_name branch_name
+  remote_name=""
+  branches=$(git branch --remotes | grep -v HEAD) &&
   branch=$(echo "$branches" |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-  sed 's/^..//' | cut -d' ' -f1 |
-  sed 's#^remotes/##') &&
-  git push origin --delete $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+           --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+           sed 's/^..//' | cut -d' ' -f1 |
+           sed 's#^remotes/##') &&
+  IFS='/' read remote_name branch_name <<< "$branch"
+  echo "git push ${remote_name} --delete ${branch_name}"
+  git push ${remote_name} --delete ${branch_name}
 }
 
 # gshow - git commit browser
