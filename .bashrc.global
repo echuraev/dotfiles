@@ -129,6 +129,7 @@ mkdir -p $LOCAL_BIN
 mkdir -p $XDG_CONFIG_HOME
 mkdir -p $BASH_COMPL_DIR
 mkdir -p $ZSH_COMPL_DIR
+export PATH=$HOME/.local/bin:$PATH
 export PATH=$LOCAL_BIN:$PATH
 
 # Install function {{{ #
