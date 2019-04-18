@@ -61,6 +61,17 @@ if !g:isWindows
     set t_ZR=[23m
 endif
 autocmd VIMResized * execute "normal! \<c-w>="
+" GUI font {{{ "
+if has("gui_running")
+    "if has("gui_gtk2")
+    "    set guifont=Inconsolata\ 12
+    "elseif has("gui_macvim")
+        set guifont=LiterationMonoNerdFontCompleteM-:h13
+    "elseif has("gui_win32")
+    "    set guifont=Consolas:h11:cANSI
+    "endif
+endif
+" }}} GUI font "
 
 set re=1                " force the old regex engine on any version newer (it helped to resolve performance with syntax highlighting)
 set lazyredraw          " Don’t update screen during macro and script execution.
