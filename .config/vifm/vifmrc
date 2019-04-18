@@ -1,13 +1,59 @@
+" Check OS {{{ "
+if has('win')
+    let $VIFM_IS_WIN = 1
+elseif has('unix')
+    if system('uname -s') == 'Darwin'
+        let $VIFM_IS_MAC = 1
+    elseif system('uname -o') == 'Android'
+        let $VIFM_IS_AND = 1
+    else
+        let $VIFM_IS_LIN = 1
+    endif
+endif
+" }}} Check OS "
+
 set history=100                  " Size of history
 set dotfiles                     " Show hidden files
 set incsearch                    " Incremental search
 set laststatus                   " Show status bar
-source ~/.config/vifm/vifm_devicons/SETUP
 "" Information for status bar
 "set statusline="%-35f%10E%20d%15A | Free space: %8a"
 "" Columns format
 "set viewcolumns=-60%{name},20%{size},{mtime}
 "colorscheme near-default
+
+" Maximum number of changes that can be undone.
+set undolevels=100
+
+" Show list of matches on tab completion in command-line mode
+set wildmenu
+
+" Display completions in a form of popup with descriptions of the matches
+set wildstyle=popup
+
+" Ignore case in search patterns unless it contains at least one uppercase
+" letter
+set ignorecase
+set smartcase
+
+" Use increment searching (search while typing)
+set incsearch
+
+" Try to leave some space from cursor to upper/lower border in lists
+set scrolloff=5
+
+
+nnoremap - gh
+
+if $VIFM_IS_WIN
+    filetype * start, explorer
+endif
+if $VIFM_IS_MAC
+    filetype * open
+endif
+if $VIFM_IS_LIN
+    filetype * xdg-open
+endif
 
 " DevIcons {{{ "
 " Filetypes/directories
