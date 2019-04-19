@@ -12,11 +12,6 @@ elseif has('unix')
 endif
 " }}} Check OS "
 " Common settings {{{ "
-" This is the actual command used to start vi.  The default is vim.
-" If you would like to use another vi clone such as Elvis or Vile
-" you will need to change this setting.
-
-set vicmd=vim
 
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
@@ -36,11 +31,7 @@ set trash
 set history=100
 
 " Automatically resolve symbolic links on l or Enter.
-set nofollowlinks
-
-" With this option turned on you can run partially entered commands with
-" unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
-" set fastrun
+set followlinks
 
 " Natural sort of (version) numbers within text.
 set sortnumbers
@@ -50,7 +41,7 @@ set undolevels=100
 
 " If you installed the vim.txt help file set vimhelp.
 " If would rather use a plain text help file set novimhelp.
-set novimhelp
+set vimhelp
 
 " If you would like to run an executable file when you
 " press return on the file name set this.
@@ -59,15 +50,10 @@ set norunexec
 " Selected color scheme
 colorscheme Default
 
-" Format for displaying time in file list. For example:
-" TIME_STAMP_FORMAT=%m/%d-%H:%M
-" See man date or man strftime for details.
-set timefmt=%m/%d\ %H:%M
-
 " Show list of matches on tab completion in command-line mode
 set wildmenu
 
-" Display completions in a form of popup with descriptions of the matches
+" Display completions in a form of bar/popup with descriptions of the matches
 set wildstyle=popup
 
 " Display suggestions in normal, visual and view modes for keys, marks and
@@ -93,9 +79,31 @@ if !has('win')
     set slowfs=curlftpfs
 endif
 
-" Set custom status line look
-set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 " }}} Common settings "
+" View settings {{{ "
+" Fill files list by columns (not lines). Added in vifm 0.9.1.
+set lsoptions=transposed
+
+" Format for displaying time in file list. For example:
+" TIME_STAMP_FORMAT=%m/%d-%H:%M
+" See man date or man strftime for details.
+set timefmt=%m/%d\ %H:%M
+
+" Show status bar
+set laststatus
+
+" Show the dot files
+set dotfiles
+
+" Columns format
+set viewcolumns=-60%{name},20%{size},{mtime}
+
+" Set custom status line look
+"set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
+
+" Information for status bar
+"set statusline="%-35f%10E%20d%15A | Осталось места: %8a"
+" }}} View settings "
 " Marks {{{ "
 " :mark mark /full/directory/path [filename]
 mark h ~/
@@ -135,29 +143,14 @@ if $VIFM_IS_LIN
     source ~/.config/vifm/os_specific/linux_settings.vifmrc
 endif
 " }}} OS Specific settings "
-" ------------------------------------------------------------------------------
-
+" Auto saving settings {{{ "
 " What should be saved automatically between vifm runs
 " Like in previous versions of vifm
 " set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
 " Like in vi
-set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
+set vifminfo=dhistory,chistory,state,tui,shistory,
     \phistory,fhistory,dirstack,registers,bookmarks,bmarks
-
-" ------------------------------------------------------------------------------
-
-" Examples of configuring both panels
-
-" Customize view columns a bit (enable ellipsis for truncated file names)
-"
-" set viewcolumns=-{name}..,6{}.
-
-" Filter-out build and temporary files
-"
-" filter! /^.*\.(lo|o|d|class|py[co])$|.*~$/
-
-" ------------------------------------------------------------------------------
-
+" }}} Auto saving settings "
 " Mapping {{{ "
 " Go to up directory
 nnoremap - gh
@@ -191,31 +184,6 @@ nnoremap <f6> :move<cr>
 nnoremap <f7> :mkdir<space>
 nnoremap <f8> :delete<cr>
 " }}} Mapping "
-
-" ------------------------------------------------------------------------------
-
-" Various customization examples
-
-" Use ag (the silver searcher) instead of grep
-"
-" set grepprg='ag --line-numbers %i %a %s'
-
-" Add additional place to look for executables
-"
-" let $PATH = $HOME.'/bin/fuse:'.$PATH
-
-" Block particular shortcut
-"
-" nnoremap <left> <nop>
-
-" Export IPC name of current instance as environment variable and use it to
-" communicate with the instance later.
-"
-" It can be used in some shell script that gets run from inside vifm, for
-" example, like this:
-"     vifm --server-name "$VIFM_SERVER_NAME" --remote +"cd '$PWD'"
-"
-" let $VIFM_SERVER_NAME = v:servername
 " DevIcons {{{ "
 " Filetypes/directories
 set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
@@ -293,5 +261,30 @@ set classify+=' ::*.doc,,*.docx,,*.adoc::'
 set classify+=' ::*.xls,,*.xls,,*.xlsmx::'
 set classify+=' ::*.pptx,,*.ppt::'
 " }}} DevIcons "
+
+" ------------------------------------------------------------------------------
+
+" Various customization examples
+
+" Use ag (the silver searcher) instead of grep
+"
+" set grepprg='ag --line-numbers %i %a %s'
+
+" Add additional place to look for executables
+"
+" let $PATH = $HOME.'/bin/fuse:'.$PATH
+
+" Block particular shortcut
+"
+" nnoremap <left> <nop>
+
+" Export IPC name of current instance as environment variable and use it to
+" communicate with the instance later.
+"
+" It can be used in some shell script that gets run from inside vifm, for
+" example, like this:
+"     vifm --server-name "$VIFM_SERVER_NAME" --remote +"cd '$PWD'"
+"
+" let $VIFM_SERVER_NAME = v:servername
 
 " vim: ft=vim:foldmethod=marker:foldlevel=0

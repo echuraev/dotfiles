@@ -66,7 +66,8 @@ highlight Border cterm=none ctermfg=236 ctermbg=247
 highlight JobLine cterm=bold,reverse ctermfg=black ctermbg=white
 highlight SuggestBox cterm=bold ctermfg=default ctermbg=default
 highlight CmpMismatch cterm=bold ctermfg=white ctermbg=red
-highlight AuxWin cterm=bold,underline,reverse,standout ctermfg=default ctermbg=default
+" You can see AuxWin if run the following command: set millerview
+highlight AuxWin cterm=bold ctermfg=default ctermbg=default
 highlight TabLine cterm=none ctermfg=247 ctermbg=236
 highlight TabLineSel cterm=bold,reverse ctermfg=default ctermbg=default
 highlight User1 cterm=bold,underline,reverse,standout ctermfg=default ctermbg=default
