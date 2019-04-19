@@ -135,6 +135,9 @@ filetype *.dmg open
 " Mount disk .img
 filetype *.img open
 
+" SshMount
+filetype *.ssh FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR %FOREGROUND
+
 " Open .pkg binaries
 filetype *.pkg open
 

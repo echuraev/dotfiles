@@ -129,6 +129,14 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
+
+" Add simple support for ssh remote
+" :ssh user@remote:/path/to/remote/folder
+command ssh
+    \ : let $SSH_FILE = system('mktemp /tmp/XXXX.ssh')
+    \ | execute '!echo ''%a'' > $SSH_FILE; ls $SSH_FILE %%U'
+    \ | execute 'normal l'
+    \ | execute '!rm $SSH_FILE'
 " }}} Commands "
 " OS Specific settings {{{ "
 if $VIFM_IS_WIN
@@ -258,7 +266,7 @@ set classify+=' ::*.7z,,*.apk,,*.bz2,,*.cab,,*.cpio,,*.deb,,*.gem,,*.gz,,*.gz
 set classify+=' ::*.cbr,,*.cbz::'
 set classify+=' ::*.log::'
 set classify+=' ::*.doc,,*.docx,,*.adoc::'
-set classify+=' ::*.xlsx,,*.xls,,*.xlsmx::'
+set classify+=' ::*.xlsx,,*.xls,,*.xlsmx,,*.csv::'
 set classify+=' ::*.pptx,,*.ppt::'
 " }}} DevIcons "
 
