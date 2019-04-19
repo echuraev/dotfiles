@@ -61,3 +61,7 @@ endif
 nnoremap <silent> <leader>ff :exe "Ack ".input("Search: ", "", "shellcmd")." ".g:ferret_search_options<CR>
 nnoremap <silent> <leader>fw :exe "Ack ".input("Search: ", expand("<cword>"), "shellcmd")." ".g:ferret_search_options<CR>
 " }}} ferret "
+" VIFM {{{ "
+let g:vifm_exec_args = '-c ":only"'
+map <leader>fm :EditVifm<CR>
+" }}} VIFM "
