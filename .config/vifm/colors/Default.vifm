@@ -70,6 +70,7 @@ highlight CmpMismatch cterm=bold ctermfg=white ctermbg=red
 highlight AuxWin cterm=bold ctermfg=default ctermbg=default
 highlight TabLine cterm=none ctermfg=247 ctermbg=236
 highlight TabLineSel cterm=bold,reverse ctermfg=default ctermbg=default
+
 highlight User1 cterm=bold,underline,reverse,standout ctermfg=default ctermbg=default
 highlight User2 cterm=bold,underline,reverse,standout ctermfg=default ctermbg=default
 highlight User3 cterm=bold,underline,reverse,standout ctermfg=default ctermbg=default
@@ -79,3 +80,15 @@ highlight User6 cterm=bold,underline,reverse,standout ctermfg=default ctermbg=de
 highlight User7 cterm=bold,underline,reverse,standout ctermfg=default ctermbg=default
 highlight User8 cterm=bold,underline,reverse,standout ctermfg=default ctermbg=default
 highlight User9 cterm=bold,underline,reverse,standout ctermfg=default ctermbg=default
+
+" Highlight archives
+highlight /^.*\.(7z|apk|bz2|cab|cpio|deb|gem|gz|gzip|lh|lzh|lzma|rar|rpm|tar|tb2|tbz|tbz2|tgz|tlz|trz|txz|tz|tz2|xz|zip|dmg)$/ ctermfg=178
+" Highlight music files
+highlight /^.*\.(aac|anx|asf|au|axa|flac|m2a|m4a|mid|midi|mp3|mpc|oga|ogg|ogx|ra|ram|rm|spx|wav|wma|ac3)$/ ctermfg=147
+" Highlight images
+highlight /^.*\.(bmp|gif|ico|jpeg|jpg|png|svg|svgz|tga|tiff|xmb|xcf|xpm|xspf|xwd|cr2|dng|3fr|ari|arw|bay|crw|cr3|cap|data|dcs|dcr|drf|eip|erf|fff|gpr|iiq|k25|kdc|mdc|mef|mos|mrw|obm|orf|pef|ptx|pxn|r3d|raf|raw|rwl|rw2|rwz|sr2|srf|srf|srw|tif|x3f)$/ ctermfg=180
+" Highlight video files
+highlight /^.*\.(avi|ts|axv|divx|m2v|m4p|m4v|mka|mkv|mov|mp4|flv|mp4v|mpeg|mpg|nuv|ogv|pbm|pgm|qt|vob|wmv|xvid)$/ ctermfg=149
+" Highlight pdf and djvu
+highlight /^.*\.(pdf|djvu)$/ ctermfg=175
+
