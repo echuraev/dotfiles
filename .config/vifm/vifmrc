@@ -129,6 +129,7 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
+command! sshsel ls -1 ~/tmp %m 2> /dev/null | normal l
 
 " Add simple support for ssh remote
 " :ssh user@remote:/path/to/remote/folder
@@ -151,6 +152,12 @@ if $VIFM_IS_LIN
     source ~/.config/vifm/os_specific/linux_settings.vifmrc
 endif
 " }}} OS Specific settings "
+" Filetypes {{{ "
+" SshMount
+filetype *.ssh
+       \ {Mount with sshfs}
+       \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR %FOREGROUND,
+" }}} Filetypes "
 " Auto saving settings {{{ "
 " What should be saved automatically between vifm runs
 " Like in previous versions of vifm
@@ -162,6 +169,9 @@ set vifminfo=dhistory,chistory,state,tui,shistory,
 " Mapping {{{ "
 " Go to up directory
 nnoremap - gh
+
+" Select current file and go to next
+nnoremap t tj
 
 " Start shell in current directory
 nnoremap s :shell<cr>
