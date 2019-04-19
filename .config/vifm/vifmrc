@@ -129,7 +129,7 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
-command! sshsel ls -1 ~/tmp %m 2> /dev/null | normal l
+command! sshsel ls -d ~/.config/vifm/ssh_hosts/*.ssh %M
 
 " Add simple support for ssh remote
 " :ssh user@remote:/path/to/remote/folder
