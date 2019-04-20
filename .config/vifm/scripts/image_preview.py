@@ -7,9 +7,15 @@ DEFAULT_LIMIT = 1000000       # 1Mb
 DEFAULT_TEXT_LIMIT = 3000000  # 3Mb
 
 def preview_image(args):
+    in_tmux = False
+    if "TMUX" in os.environ:
+        print("\nTMUX doesn't support image preview!\n")
+        in_tmux = True
+
     cmd = ""
     img_size = os.path.getsize(args.image)
-    if img_size <= args.max_size:
+
+    if img_size <= args.max_size and in_tmux is False:
         preview_bin = "/usr/local/bin/term-img"
         if args.width != None and args.height != None:
             cmd = '{0} --width {1} --height {2} "{3}" > /dev/tty'.format(preview_bin, args.width, args.height, args.image)
