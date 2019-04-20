@@ -93,7 +93,7 @@ fileviewer *.[1-8] man ./%c | col -b
 filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,
        \ open -a Preview.app,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-         \ convert -identify %f -verbose /dev/null
+         \ tput cup %py %px > /dev/tty && image_preview.py %c:p --width %pw --height %ph
 
 " MD5
 filetype *.md5
