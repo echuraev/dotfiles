@@ -6,6 +6,16 @@ import os
 DEFAULT_LIMIT = 1000000       # 1Mb
 DEFAULT_TEXT_LIMIT = 3000000  # 3Mb
 
+def _preview_grafical_image(args):
+    preview_bin = "/usr/local/bin/term-img"
+    size_params = ""
+    if args.width != None and args.height != None:
+        size_params = '--width {0} --height {1}'.format(args.width, args.height)
+    return '{0} {1} "{2}" > /dev/tty'.format(preview_bin, size_params, args.image)
+
+def _preview_text_image_info(args):
+    return 'cd "{0}" && convert -identify {1} -verbose /dev/null'.format(os.path.dirname(args.image), os.path.basename(args.image))
+
 def preview_image(args):
     in_tmux = False
     if "TMUX" in os.environ:
@@ -16,13 +26,9 @@ def preview_image(args):
     img_size = os.path.getsize(args.image)
 
     if img_size <= args.max_size and in_tmux is False:
-        preview_bin = "/usr/local/bin/term-img"
-        if args.width != None and args.height != None:
-            cmd = '{0} --width {1} --height {2} "{3}" > /dev/tty'.format(preview_bin, args.width, args.height, args.image)
-        else:
-            cmd = '{0} "{1}" > /dev/tty'.format(preview_bin, args.image)
+        cmd = _preview_grafical_image(args)
     elif img_size <= args.max_text_size:
-        cmd = 'cd "{0}" && convert -identify {1} -verbose /dev/null'.format(os.path.dirname(args.image), os.path.basename(args.image))
+        cmd = _preview_text_image_info(args)
 
     if len(cmd) > 0:
         os.system(cmd)
