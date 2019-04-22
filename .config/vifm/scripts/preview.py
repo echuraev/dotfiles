@@ -19,7 +19,8 @@ def _preview_text_image_info(args):
     return 'cd "{0}" && convert -identify {1} -verbose /dev/null'.format(os.path.dirname(args.file), os.path.basename(args.file))
 
 def _preview_grafical_pdf(args):
-    filename = args.file.replace(os.sep, "_")
+    abs_path = os.path.abspath(args.file)
+    filename = abs_path.replace(os.sep, "_")
     image_path = os.path.join(args.cache_dir, filename + '.png')
 
     if not os.path.exists(image_path):
