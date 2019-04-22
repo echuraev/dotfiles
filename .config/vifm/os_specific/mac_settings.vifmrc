@@ -32,7 +32,9 @@ filetype *.pdf
        \ open -a Preview.app,
        \ {Open in Zathura}
        \ zathura &,
-fileviewer *.pdf pdftotext -nopgbrk %c -
+"fileviewer *.pdf pdftotext -nopgbrk %c -
+fileviewer *.pdf
+         \ tput cup %py %px > /dev/tty && preview.py %c --width %pw --height %ph
 
 " PostScript
 filetype *.ps,*.eps open -a Preview.app
@@ -93,7 +95,7 @@ fileviewer *.[1-8] man ./%c | col -b
 filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,
        \ open -a Preview.app,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-         \ tput cup %py %px > /dev/tty && image_preview.py %c:p --width %pw --height %ph
+         \ tput cup %py %px > /dev/tty && preview.py %c:p --width %pw --height %ph
 
 " MD5
 filetype *.md5
