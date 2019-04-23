@@ -8,8 +8,20 @@ DEFAULT_TEXT_LIMIT = 3000000  # 3Mb
 CACHE_DIR = '/tmp/preview_cache'
 
 #  Private functions {{{ #
+# Based on this commend:
+# https://github.com/tmux/tmux/issues/1502#issuecomment-429710887
+# Tmux has some limitation in image preview. I created an issue in vifm:
+# https://github.com/vifm/vifm/issues/428
+# imgcat worked for me but only for small image and only one time. So I decided
+# to disable image preview in tmux. May be it could be fixed in the future.
+def _check_tmux():
+    if "TMUX" in os.environ:
+        print("\nTMUX doesn't support image preview!\n")
+        return True
+    return False
+
 def _preview_grafical_image(args):
-    preview_bin = "/usr/local/bin/term-img"
+    preview_bin = "term-img"
     size_params = ""
     if args.width != None and args.height != None:
         size_params = '--width {0} --height {1}'.format(args.width, args.height)
@@ -34,11 +46,7 @@ def _preview_text_pdf(args):
 #  }}} Private functions #
 #  Public functions {{{ #
 def preview_image(args):
-    in_tmux = False
-    if "TMUX" in os.environ:
-        print("\nTMUX doesn't support image preview!\n")
-        in_tmux = True
-
+    in_tmux = _check_tmux()
     cmd = ""
     img_size = os.path.getsize(args.file)
 
@@ -54,11 +62,7 @@ def preview_image(args):
 
 
 def preview_pdf(args):
-    in_tmux = False
-    if "TMUX" in os.environ:
-        print("\nTMUX doesn't support image preview!\n")
-        in_tmux = True
-
+    in_tmux = _check_tmux()
     cmd = ""
     if in_tmux is False:
         cmd = _preview_grafical_pdf(args)
