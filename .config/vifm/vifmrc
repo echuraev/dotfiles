@@ -158,6 +158,10 @@ filetype *.ssh
        \ {Mount with sshfs}
        \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR %FOREGROUND,
 " }}} Filetypes "
+" Fileviewer {{{ "
+" Epub
+fileviewer *.epub epub2txt ./%c
+" }}} Fileviewer "
 " Auto saving settings {{{ "
 " What should be saved automatically between vifm runs
 " Like in previous versions of vifm
