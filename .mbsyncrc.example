@@ -22,7 +22,8 @@ SyncState *
 IMAPAccount Account1
 Host imap.gmail.com     # TODO: This is standart for gmail. Change it if you use ohter host
 User account1@mail.com  # TODO: Set your settings
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mutt/credentials/account1.gpg"
+#PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mutt/credentials/account1.gpg"
+PassCmd "pass mbsync/account1"
 SSLType IMAPS
 AuthMechs LOGIN
 # Maximum number of IMAP commands which can be simultaneously in flight.

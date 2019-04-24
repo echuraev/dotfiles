@@ -12,13 +12,14 @@ host              smtp.gmail.com
 account           account1
 from              account1@expamle.com
 user              account1@expamle.com
-passwordeval      "gpg -d --quiet --for-your-eyes-only --no-tty ~/.mutt/credentials/account1.gpg"
+#passwordeval      "gpg -d --quiet --for-your-eyes-only --no-tty ~/.mutt/credentials/account1.gpg"
+passwordeval      "pass mbsync/account1"
 
 # Account 2
 account           account2
 from              account2@expamle.com
 user              account2@expamle.com
-passwordeval      "gpg -d --quiet --for-your-eyes-only --no-tty ~/.mutt/credentials/account2.gpg"
+passwordeval      "pass mbsync/account2"
 
 # Set a default account
 account default : account1
