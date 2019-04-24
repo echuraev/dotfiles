@@ -60,16 +60,17 @@ set forward_format = "Fwd: %s"
 # Display lists of folders with a numeric index and the folder name
 #set folder_format = "%2C %N %f %n %m %> (%n/%m) "
 #  }}} Reply settings #
+#  Hooks {{{ #
+folder-hook . 'push <collapse-all>'       # collapse all threads by default
+#  }}} Hooks #
 #  Index view options {{{ #
 #set sort = reverse-threads
 #set sort_aux = last-date-received
 set sort = threads                         # like gmail
 set sort_aux = reverse-last-date-received  # like gmail
-set uncollapse_jump                        # don't collapse on an unread message TODO: Fix it
+set uncollapse_jump                        # don't collapse on an unread message
 #set strict_threads="yes"
 #set sort_browser="reverse-date"
-#bind index - collapse-thread
-#bind index _ collapse-all
 #  }}} Index view options #
 #  Header options {{{ #
 ignore *                                     # ignore all headers
