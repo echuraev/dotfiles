@@ -20,6 +20,11 @@ def _check_tmux():
         return True
     return False
 
+def _get_preview_filename(f):
+    abs_path = os.path.abspath(f)
+    filename = abs_path.replace(os.sep, "_")
+    return os.path.join(args.cache_dir, filename + '.png')
+
 def _preview_grafical_image(args):
     preview_bin = "term-img"
     size_params = ""
@@ -31,9 +36,7 @@ def _preview_text_image_info(args):
     return 'cd "{0}" && convert -identify {1} -verbose /dev/null'.format(os.path.dirname(args.file), os.path.basename(args.file))
 
 def _preview_grafical_pdf(args):
-    abs_path = os.path.abspath(args.file)
-    filename = abs_path.replace(os.sep, "_")
-    image_path = os.path.join(args.cache_dir, filename + '.png')
+    image_path = _get_preview_filename(args.file)
 
     if not os.path.exists(image_path):
         cmd = 'pdftoppm -png -singlefile "{0}" "{1}"'.format(args.file, os.path.splitext(image_path)[0])
@@ -43,6 +46,18 @@ def _preview_grafical_pdf(args):
 
 def _preview_text_pdf(args):
     return 'pdftotext -nopgbrk "{0}" -'.format(args.file)
+
+def _preview_grafical_video(args):
+    image_path = _get_preview_filename(args.file)
+
+    if not os.path.exists(image_path):
+        cmd = 'ffmpegthumbnailer -i "{0}" -o "{1}" -s 0'.format(args.file, image_path)
+        os.system(cmd)
+    args.file = image_path
+    return _preview_grafical_image(args)
+
+def _preview_text_video(args):
+    return 'ffprobe -pretty "{0}" 2>&1'.format(args.file)
 #  }}} Private functions #
 #  Public functions {{{ #
 def preview_image(args):
@@ -69,6 +84,15 @@ def preview_pdf(args):
     else:
         cmd = _preview_text_pdf(args)
     os.system(cmd)
+
+def preview_video(args):
+    in_tmux = _check_tmux()
+    cmd = ""
+    if in_tmux is False:
+        cmd = _preview_grafical_video(args)
+    else:
+        cmd = _preview_text_video(args)
+    os.system(cmd)
 #  }}} Public functions #
 
 if __name__ == '__main__':
@@ -80,6 +104,8 @@ if __name__ == '__main__':
             help="Won't show preview for images more when this size (Default: {0} bytes)".format(DEFAULT_LIMIT))
     parser.add_argument('--max_text_size', type=int, default=DEFAULT_TEXT_LIMIT,
             help="Won't show text preview for images more when this size (Default: {0} bytes)".format(DEFAULT_TEXT_LIMIT))
+    parser.add_argument('--type', type=str, default="image",
+            help="Type of file to preview. Possible values: 'image' - for images, 'pdf' - for pdf docs, 'video' - for videos.")
     parser.add_argument('--cache_dir', type=str, default=CACHE_DIR,
             help="Path to cache dir (Default: {0})".format(CACHE_DIR))
 
@@ -88,10 +114,10 @@ if __name__ == '__main__':
     if not os.path.exists(args.cache_dir):
         os.makedirs(args.cache_dir)
 
-    ext = os.path.splitext(args.file)[1]
-    #print os.path.abspath(args.file)
-    if ext == '.pdf':
+    if args.type == 'pdf':
         preview_pdf(args)
+    elif args.type == 'video':
+        preview_video(args)
     else:
         preview_image(args)
 
