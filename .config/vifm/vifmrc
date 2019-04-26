@@ -120,16 +120,26 @@ mark h ~/
 " %d the current directory name.
 " %D the other window directory name.
 " %m run the command in a menu window
+" All macroses you can find here:
+" https://vifm.info/manual.shtml#Command%20macros
 
 command! df df -h %m 2> /dev/null
 command! diff vim -d %f %F
-command! zip zip -r %f.zip %f
+" Archive commands {{{ "
+" You can also create an archive with more when one file. Archive name will
+" be equal to file name under cursor.
+command! zip zip -r %c.zip %f
+command! tar tar cf %c.tar %f
+command! targz tar czf %c.tar.gz %f
+command! tarbz tar cjf %c.tar.bz2 %f
+" }}} Archive commands "
 command! run !! ./%f
 command! make !!make %a
 command! mkcd :mkdir %a | cd %a
-command! vgrep vim "+grep %a"
 command! reload :write | restart
 command! sshsel ls -d ~/.config/vifm/ssh_hosts/*.ssh %M
+command! fsize du -h -d 0 %c:p %m
+command! dsize du -h -d 1 %c:p | sort -h -r %m
 
 " Add simple support for ssh remote
 " :ssh user@remote:/path/to/remote/folder
