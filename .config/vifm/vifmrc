@@ -293,14 +293,10 @@ set classify+=' ::*.doc,,*.docx,,*.adoc::'
 set classify+=' ::*.xlsx,,*.xls,,*.xlsmx,,*.csv::'
 set classify+=' ::*.pptx,,*.ppt::'
 " }}} DevIcons "
-
-" ------------------------------------------------------------------------------
-
-" Various customization examples
-
-" Use ag (the silver searcher) instead of grep
-"
-" set grepprg='ag --line-numbers %i %a %s'
+" Grep settings {{{ "
+" Use ripgrep for grep command
+set grepprg='rg --line-number %i %a %s'
+" }}} Grep settings "
 
 " Add additional place to look for executables
 "
