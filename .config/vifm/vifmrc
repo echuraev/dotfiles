@@ -140,6 +140,7 @@ command! reload :write | restart
 command! sshsel ls -d ~/.config/vifm/ssh_hosts/*.ssh %M
 command! fsize du -h -d 0 %c:p %m
 command! dsize du -h -d 1 %c:p | sort -h -r %m
+command! ncdu ncdu %d
 
 " Add simple support for ssh remote
 " :ssh user@remote:/path/to/remote/folder
