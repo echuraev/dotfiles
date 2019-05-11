@@ -22,6 +22,7 @@ bind attach v noop                     # Normally <collapse-parts>, we use <tab>
 bind index V noop                      # Normally bound to "show-version".
 bind browser,index G last-entry
 bind browser,index gg first-entry
+bind index za collapse-thread
 bind index - collapse-thread
 bind index _ collapse-all
 #  }}} Index #
