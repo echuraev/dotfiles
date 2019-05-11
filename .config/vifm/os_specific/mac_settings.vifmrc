@@ -51,8 +51,6 @@ filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
        \ open -a MPlayerX.app,
        \ {Open in QuickTime Player}
        \ open -a QuickTime\ Player.app,
-fileviewer *.mp3 mp3info
-fileviewer *.flac soxi
 
 " Video
 filetype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
@@ -77,44 +75,16 @@ filetype *.html,*.htm
        \ vim,
 fileviewer *.html,*.htm w3m -dump -T text/html
 
-" Object
-filetype *.o nm %f | less
-
-" Man page
-filetype *.[1-8] man ./%c
-fileviewer *.[1-8] man ./%c | col -b
-
 " Image
 filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.nef,*.xpm,
        \ open -a Preview.app,
 
-" MD5
-filetype *.md5
-       \ {Check MD5 hash sum}
-       \ md5sum -c %f %S,
-
-" SHA1
-filetype *.sha1
-       \ {Check SHA1 hash sum}
-       \ sha1sum -c %f %S,
-
-" SHA256
-filetype *.sha256
-       \ {Check SHA256 hash sum}
-       \ sha256sum -c %f %S,
-
-" SHA512
-filetype *.sha512
-       \ {Check SHA512 hash sum}
-       \ sha512sum -c %f %S,
 
 " Torrent
 filetype *.torrent open -a Transmission.app
-fileviewer *.torrent dumptorrent -v %c
 
 " Extract zip files
 filetype *.zip unzip %f
-fileviewer *.zip,*.jar,*.war,*.ear zip -sf %c
 
 " Extract tar archives
 filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz tar -xf %f
@@ -140,7 +110,6 @@ filetype *.odt,*.doc,*.docx open -a Microsoft\ Word.app
 filetype *.xls,*.xlsx,*.csv open -a Microsoft\ Excel.app
 filetype *.odp,*.pptx,*.ppt open -a Microsoft\ PowerPoint.app
 fileviewer *.doc antiword -
-fileviewer *.docx docx2txt.pl %f -
 
 " Syntax highlighting in preview
 "

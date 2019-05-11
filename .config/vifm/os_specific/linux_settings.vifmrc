@@ -48,8 +48,6 @@ filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
        \ ffplay -nodisp -autoexit %c,
        \ {Play using MPlayer}
        \ mplayer %f,
-fileviewer *.mp3 mp3info
-fileviewer *.flac soxi
 
 " Video
 filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
@@ -72,13 +70,6 @@ filextype *.html,*.htm
         \ uzbl-browser %f %i &,
 filetype *.html,*.htm links, lynx
 
-" Object
-filetype *.o nm %f | less
-
-" Man page
-filetype *.[1-8] man ./%c
-fileviewer *.[1-8] man ./%c | col -b
-
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.nef,*.xpm
         \ {View in sxiv}
@@ -98,26 +89,6 @@ filextype *.vym
         \ {Open with VYM}
         \ vym %f &,
 
-" MD5
-filetype *.md5
-       \ {Check MD5 hash sum}
-       \ md5sum -c %f %S,
-
-" SHA1
-filetype *.sha1
-       \ {Check SHA1 hash sum}
-       \ sha1sum -c %f %S,
-
-" SHA256
-filetype *.sha256
-       \ {Check SHA256 hash sum}
-       \ sha256sum -c %f %S,
-
-" SHA512
-filetype *.sha512
-       \ {Check SHA512 hash sum}
-       \ sha512sum -c %f %S,
-
 " GPG signature
 filetype *.asc
        \ {Check signature}
@@ -125,7 +96,6 @@ filetype *.asc
 
 " Torrent
 filetype *.torrent ktorrent %f &
-fileviewer *.torrent dumptorrent -v %c
 
 " FuseZipMount
 filetype *.zip,*.jar,*.war,*.ear,*.oxt,*.apkg
@@ -135,7 +105,6 @@ filetype *.zip,*.jar,*.war,*.ear,*.oxt,*.apkg
        \ zip -sf %c | less,
        \ {Extract here}
        \ tar -xf %c,
-fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
 
 " ArchiveMount
 filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz
@@ -171,7 +140,6 @@ fileviewer *.7z 7z l %c
 " Office files
 filextype *.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx libreoffice %f &
 fileviewer *.doc catdoc %c
-fileviewer *.docx docx2txt.pl %f -
 
 " TuDu files
 filetype *.tudu tudu -f %c
