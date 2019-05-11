@@ -174,7 +174,7 @@ fi
 TOOL_BIN=$LOCAL_BIN/rg
 if [ ! -f $TOOL_BIN ]; then
     echo "Installing ripgrep"
-    res=$(install_tool 'https://github.com/BurntSushi/ripgrep' 'rg' '0.10.0' 'ripgrep')
+    res=$(install_tool 'https://github.com/BurntSushi/ripgrep' 'rg' '11.0.1' 'ripgrep')
     # Enable autocompletion
     cp -f $res/complete/rg.bash $BASH_COMPL_DIR
     cp -f $res/complete/_rg $ZSH_COMPL_DIR
