@@ -170,6 +170,17 @@ filetype *.ssh
        \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR %FOREGROUND,
 " }}} Filetypes "
 " Fileviewer {{{ "
+" Images
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.nef,*.xpm
+         \ tput cup %py %px > /dev/tty && preview.py %c:p --width %pw --height %ph
+" pdf
+fileviewer *.pdf
+         \ tput cup %py %px > /dev/tty && preview.py %c --width %pw --height %ph --type pdf
+" Video
+fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+          \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+          \*.as[fx]
+         \ tput cup %py %px > /dev/tty && preview.py %c --width %pw --height %ph --type video
 " Epub
 fileviewer *.epub epub2txt ./%c
 " }}} Fileviewer "
@@ -254,7 +265,7 @@ set classify+=' ::*.php::'
 set classify+=' ::*.markdown,,*.md::'
 set classify+=' ::*.json::'
 set classify+=' ::*.js::'
-set classify+=' ::*.bmp,,*.gif,,*.ico,,*.jpeg,,*.jpg,,*.png,,*.svg,,*.svgz,,*.tga,,*.tiff,,*.xmb,,*.xcf,,*.xpm,,*.xspf,,*.xwd,,*.cr2,,*.dng,,*.3fr,,*.ari,,*.arw,,*.bay,,*.crw,,*.cr3,,*.cap,,*.data,,*.dcs,,*.dcr,,*drf,,*.eip,,*.erf,,*.fff,,*.gpr,,*.iiq,,*.k25,,*.kdc,,*.mdc,,.*mef,,*.mos,,.*.mrw,,.*.obm,,*.orf,,*.pef,,*.ptx,,*.pxn,,*.r3d,,*.raf,,*.raw,,*.rwl,,*.rw2,,*.rwz,,*.sr2,,*.srf,,*.srf,,*.srw,,*.tif,,*.x3f::'
+set classify+=' ::*.bmp,,*.gif,,*.ico,,*.jpeg,,*.jpg,,*.png,,*.svg,,*.nef,,*.svgz,,*.tga,,*.tiff,,*.xmb,,*.xcf,,*.xpm,,*.xspf,,*.xwd,,*.cr2,,*.dng,,*.3fr,,*.ari,,*.arw,,*.bay,,*.crw,,*.cr3,,*.cap,,*.data,,*.dcs,,*.dcr,,*drf,,*.eip,,*.erf,,*.fff,,*.gpr,,*.iiq,,*.k25,,*.kdc,,*.mdc,,.*mef,,*.mos,,.*.mrw,,.*.obm,,*.orf,,*.pef,,*.ptx,,*.pxn,,*.r3d,,*.raf,,*.raw,,*.rwl,,*.rw2,,*.rwz,,*.sr2,,*.srf,,*.srf,,*.srw,,*.tif,,*.x3f::'
 set classify+=' ::*.ejs,,*.css,,*.htm,,*.html,,**.[sx]html,,*.slim,,*.xml::'
 set classify+=' ::*.less,,*.bat,,*.conf,,*.ini,,*.rc,,*.yml,,*.cfg::'
 set classify+=' ::*.rss::'
@@ -290,7 +301,7 @@ set classify+=' ::*.pdf::'
 set classify+=' ::*.7z,,*.apk,,*.bz2,,*.cab,,*.cpio,,*.deb,,*.gem,,*.gz,,*.gzip,,*.lh,,*.lzh,,*.lzma,,*.rar,,*.rpm,,*.tar,,*.tb2,,*.tbz,,*.tbz2,,*.tgz,,*.tlz,,*.trz,,*.txz,,*.tz,,*.tz2,,*.xz,,*.zip,,*.dmg::'
 set classify+=' ::*.cbr,,*.cbz::'
 set classify+=' ::*.log::'
-set classify+=' ::*.doc,,*.docx,,*.adoc::'
+set classify+=' ::*.doc,,*.docx,,*.adoc,,*.odt::'
 set classify+=' ::*.xlsx,,*.xls,,*.xlsmx,,*.csv::'
 set classify+=' ::*.pptx,,*.ppt::'
 " }}} DevIcons "

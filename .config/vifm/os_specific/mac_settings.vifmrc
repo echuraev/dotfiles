@@ -32,9 +32,6 @@ filetype *.pdf
        \ open -a Preview.app,
        \ {Open in Zathura}
        \ zathura &,
-"fileviewer *.pdf pdftotext -nopgbrk %c -
-fileviewer *.pdf
-         \ tput cup %py %px > /dev/tty && preview.py %c --width %pw --height %ph --type pdf
 
 " PostScript
 filetype *.ps,*.eps open -a Preview.app
@@ -67,10 +64,6 @@ filetype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
        \ open -a QuickTime\ Player.app,
        \ {Open in MPlayerX}
        \ open -a MPlayerX.app,
-fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-          \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-          \*.as[fx]
-         \ tput cup %py %px > /dev/tty && preview.py %c --width %pw --height %ph --type video
 
 " Web
 filetype *.html,*.htm
@@ -92,10 +85,8 @@ filetype *.[1-8] man ./%c
 fileviewer *.[1-8] man ./%c | col -b
 
 " Image
-filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,
+filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.nef,*.xpm,
        \ open -a Preview.app,
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-         \ tput cup %py %px > /dev/tty && preview.py %c:p --width %pw --height %ph
 
 " MD5
 filetype *.md5

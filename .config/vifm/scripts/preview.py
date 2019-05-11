@@ -4,7 +4,6 @@ import argparse
 import os
 
 DEFAULT_LIMIT = 1000000       # 1Mb
-DEFAULT_TEXT_LIMIT = 3000000  # 3Mb
 CACHE_DIR = '/tmp/preview_cache'
 
 #  Private functions {{{ #
@@ -33,7 +32,7 @@ def _preview_grafical_image(args):
     return '{0} {1} "{2}" > /dev/tty'.format(preview_bin, size_params, args.file)
 
 def _preview_text_image_info(args):
-    return 'cd "{0}" && convert -identify {1} -verbose /dev/null'.format(os.path.dirname(args.file), os.path.basename(args.file))
+    return 'exiv2 "{0}"'.format(args.file)
 
 def _preview_grafical_pdf(args):
     image_path = _get_preview_filename(args.file)
@@ -67,14 +66,9 @@ def preview_image(args):
 
     if img_size <= args.max_size and in_tmux is False:
         cmd = _preview_grafical_image(args)
-    elif img_size <= args.max_text_size:
-        cmd = _preview_text_image_info(args)
-
-    if len(cmd) > 0:
-        os.system(cmd)
     else:
-        print("Image is too large for preview")
-
+        cmd = _preview_text_image_info(args)
+    os.system(cmd)
 
 def preview_pdf(args):
     in_tmux = _check_tmux()
@@ -102,8 +96,6 @@ if __name__ == '__main__':
     parser.add_argument('--height', type=str, help="Height of preview image")
     parser.add_argument('--max_size', type=int, default=DEFAULT_LIMIT,
             help="Won't show preview for images more when this size (Default: {0} bytes)".format(DEFAULT_LIMIT))
-    parser.add_argument('--max_text_size', type=int, default=DEFAULT_TEXT_LIMIT,
-            help="Won't show text preview for images more when this size (Default: {0} bytes)".format(DEFAULT_TEXT_LIMIT))
     parser.add_argument('--type', type=str, default="image",
             help="Type of file to preview. Possible values: 'image' - for images, 'pdf' - for pdf docs, 'video' - for videos.")
     parser.add_argument('--cache_dir', type=str, default=CACHE_DIR,
