@@ -110,16 +110,11 @@ filetype *.zip,*.jar,*.war,*.ear,*.oxt,*.apkg
 filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz
        \ {Mount with archivemount}
        \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.tgz,*.tar.gz tar -tzf %c
-fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
-fileviewer *.tar.txz,*.txz xz --list %c
-fileviewer *.tar tar -tf %c
 
 " Rar2FsMount and rar archives
 filetype *.rar
        \ {Mount with rar2fs}
        \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.rar unrar v %c
 
 " IsoMount
 filetype *.iso
@@ -135,11 +130,9 @@ filetype *.ftp
 filetype *.7z
        \ {Mount with fuse-7z}
        \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.7z 7z l %c
 
 " Office files
 filextype *.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx libreoffice %f &
-fileviewer *.doc catdoc %c
 
 " TuDu files
 filetype *.tudu tudu -f %c
@@ -152,6 +145,19 @@ filextype */
         \ {View in thunar}
         \ Thunar %f &,
 " }}} Filetypes "
+" Fileviewer {{{ "
+" Tar archives
+fileviewer *.tgz,*.tar.gz tar -tzf %c
+fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
+fileviewer *.tar.txz,*.txz xz --list %c
+fileviewer *.tar tar -tf %c
+
+" 7z archive
+fileviewer *.7z 7z l %c
+
+" doc files
+fileviewer *.doc catdoc %c
+" }}} Fileviewer "
 " Mapping {{{ "
 " Open file in existing instance of gvim
 nnoremap o :!gvim --remote-tab-silent %f<cr>

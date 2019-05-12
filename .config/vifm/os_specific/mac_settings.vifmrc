@@ -73,7 +73,6 @@ filetype *.html,*.htm
        \ open -a Safari.app,
        \ {Open in vim}
        \ vim,
-fileviewer *.html,*.htm w3m -dump -T text/html
 
 " Image
 filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.nef,*.xpm,
@@ -88,7 +87,6 @@ filetype *.zip unzip %f
 
 " Extract tar archives
 filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz tar -xf %f
-fileviewer *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz tar -tf %f
 
 " Extract .bz2 archives
 filetype *.bz2 bzip2 -d %f
@@ -109,8 +107,17 @@ filetype *.pkg open
 filetype *.odt,*.doc,*.docx open -a Microsoft\ Word.app
 filetype *.xls,*.xlsx,*.csv open -a Microsoft\ Excel.app
 filetype *.odp,*.pptx,*.ppt open -a Microsoft\ PowerPoint.app
-fileviewer *.doc antiword -
 " }}} Filetypes "
+" Fileviewer {{{ "
+" Web
+fileviewer *.html,*.htm w3m -dump -T text/html
+
+" Tar archives
+fileviewer *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz tar -tf %f
+
+" doc files
+fileviewer *.doc antiword -
+" }}} Fileviewer "
 " Mapping {{{ "
 " Yank current directory path into the clipboard
 nnoremap yd :!printf %d | pbcopy<cr>
