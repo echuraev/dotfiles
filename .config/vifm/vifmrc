@@ -227,7 +227,7 @@ fileviewer *.torrent dumptorrent -v %c
 fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
 
 " Rar files
-fileviewer *.rar unrar v %c
+fileviewer *.rar unrar vb %c
 
 " Doc files
 fileviewer *.docx docx2txt.pl %f -
