@@ -31,9 +31,10 @@
 !.scripts/
 !.config/
 !.config/awesome/
-!.config/ranger/
+!.config/cmus/
 !.config/kitty/
 !.config/kitty/kitty.conf
+!.config/ranger/
 !.config/vifm/
 !.vimrc
 !.zsh/

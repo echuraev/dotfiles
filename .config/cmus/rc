@@ -1,0 +1,7 @@
+# Resume playback on startup
+set resume=true
+set mouse=true
+
+set show_remaining_time=false
+set show_hidden=false
+set start_view=tree
