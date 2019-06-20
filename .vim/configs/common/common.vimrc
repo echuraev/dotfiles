@@ -56,7 +56,7 @@ if !g:isWindows
         set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:× " WS highlighting
         let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
     endif
-    "highlight Comment cterm=italic gui=italic     " Italic comments in terminal
+    highlight Comment cterm=italic gui=italic     " Italic comments in terminal
     set t_ZH=[3m
     set t_ZR=[23m
 endif
