@@ -11,6 +11,8 @@ hi VisualNOS term=bold,underline ctermbg=60 guibg=#5f5f87
 "Search         xxx term=reverse cterm=bold,underline ctermfg=15 gui=bold,underline guifg=#ffffff
 hi Search       term=reverse cterm=bold,underline gui=bold,underline ctermfg=0 guifg=#000000 ctermbg=149 guibg=#afdf5f
 hi TagbarSignature  cterm=bold ctermfg=185 gui=bold guifg=#c9d05c
+hi SpellBad     term=reverse cterm=bold,underline ctermfg=255 ctermbg=131 gui=bold,underline guifg=#eeeeee guibg=#af5f5f
+hi Error        term=reverse cterm=bold,underline ctermfg=255 ctermbg=131 gui=bold,underline guifg=#eeeeee guibg=#af5f5f
 "hi VisualNOS term=bold,underline ctermbg=0 guibg=#040404
 " Transparent background {{{ "
 if exists('g:vimconf_transparent_bg') && g:vimconf_transparent_bg == 1
