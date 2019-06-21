@@ -2,17 +2,6 @@
 There is my vim configuration.
 ![VIM start screen](vim-start-screen.png)
 
-## Installation
-### Windows
-It is necessary to have the same architectures (32 or 64 bits) for python and vim. It is better to install python 2.7 and 3.5.
-#### FZF
-See installation guide [here](https://github.com/junegunn/fzf#windows). Download pre-built binaries and add path to it in `PATH` variable.
-#### Omnysharp
-For enable msbuild add to path variable path to .NET framework. For example: 
-`C:\Windows\Microsoft.NET\Framework\v4.0.30319`
-#### YouCompleteMe
-Install all dependencies. See [here](https://github.com/Valloric/YouCompleteMe#windows).
-
 ## Configuration
 Configuration files are in the ***configs/*** directory. I divided all my configuration files on two groups: ***common*** and ***plugins***. In ***common/*** directory are the files that controls common behavior of VIM. In ***plugins/*** are configuration files for all installed plugins. Both of these directories are included file ***conf.vimrc***. This file determine which configurations should be loaded.
 
@@ -43,6 +32,17 @@ This directory is included all plugin configurations. Below it is some links whe
 For configuration I used this article: https://coderwall.com/p/s1i5pw/latex-with-vim
 #### YouCompleteMe
 1. Global YCM Config: https://jonasdevlieghere.com/a-better-youcompleteme-config/
+
+### Local vimrc
+Sometimes it is necessary to add some changes to vim configuration without
+committing it to git. For example, I'd like that calendar will be synced with
+Google Calendar only on my personal machine. You can create `~/.vimrc.local` and
+add your local configuration to this file. Example is below:
+```
+let g:calendar_google_calendar = 1           " Use Google Calendar
+let g:calendar_google_task = 1               " Allow using Google task
+let g:vimconf_transparent_bg = 1             " Enable transparent background
+```
 
 ## Known issues:
 ### Mac OS:
@@ -95,15 +95,4 @@ https://github.com/dpelle/vim-LanguageTool
 
 ### Plugins for VIM development
 https://github.com/mhinz/vim-lookup
-
-https://github.com/tweekmonster/helpful.vim
-
-https://github.com/tpope/vim-scriptease
-
-https://github.com/amoffat/snake
-
-https://github.com/junegunn/vader.vim
-
-### Other
-https://github.com/justinmk/vim-gtfo
 

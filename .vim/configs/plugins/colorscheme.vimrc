@@ -13,12 +13,14 @@ hi Search       term=reverse cterm=bold,underline gui=bold,underline ctermfg=0 g
 hi TagbarSignature  cterm=bold ctermfg=185 gui=bold guifg=#c9d05c
 "hi VisualNOS term=bold,underline ctermbg=0 guibg=#040404
 " Transparent background {{{ "
-"""hi Normal ctermbg=none
-"""hi LineNr ctermbg=none
-"""hi SignColumn ctermbg=none
-"""hi VertSplit ctermbg=none
-"""hi NonText ctermbg=none
-"""hi FoldColumn ctermbg=none
+if exists('g:vimconf_transparent_bg') && g:vimconf_transparent_bg == 1
+    hi Normal ctermbg=none
+    hi LineNr ctermbg=none
+    hi SignColumn ctermbg=none
+    hi VertSplit ctermbg=none
+    hi NonText ctermbg=none
+    hi FoldColumn ctermbg=none
+endif
 " }}} Transparent background "
 " Diff Colors {{{ "
 " DiffAdd     diff mode: Added line
