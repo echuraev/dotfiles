@@ -119,6 +119,52 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "darktable: Enable left arrow",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.darktable$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+
+                                ],
+                                "from": {
+                                    "key_code": "left_arrow"
+                                },
+                                "to": {
+                                    "key_code": "delete_or_backspace"
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "darktable: Enable right arrow",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.darktable$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+
+                                ],
+                                "from": {
+                                    "key_code": "right_arrow"
+                                },
+                                "to": {
+                                    "key_code": "spacebar"
+                                },
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
