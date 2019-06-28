@@ -124,6 +124,8 @@ autocmd FileType gitrebase setlocal nospell
 autocmd FileType fugitiveblame setlocal nospell
 autocmd FileType qf setlocal nospell
 autocmd FileType diff setlocal nospell
+autocmd FileType sshconfig setlocal nospell
+autocmd FileType gitsendemail setlocal nospell
 " }}} Disable spell checking for special ft "
 " Run :set spell to download dictionaries
 " }}} Spell checking "

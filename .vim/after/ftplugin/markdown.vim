@@ -1,4 +1,4 @@
-set textwidth=80
+setlocal textwidth=80
 " Markdown {{{ "
 if exists('g:loaded_mkdp')
     nmap <silent> <buffer> <F8> <Plug>MarkdownPreview        " for normal mode
