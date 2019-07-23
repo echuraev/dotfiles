@@ -13,10 +13,8 @@ let g:ConqueGdb_BreakDisabledSymbol = '⭘'
 let g:ConqueGdb_SaveHistory = 1
 " }}} Conque-gdb "
 " diff mode {{{ "
-if exists("*systemlist")
-  if &diff
-    let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
-  endif
+if has("patch-8.1.0360")
+    set diffopt+=internal,algorithm:patience
 endif
 " }}} diff mode "
 " Gitv {{{ "

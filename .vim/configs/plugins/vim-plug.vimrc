@@ -25,16 +25,6 @@ Plug 'kana/vim-altr'
 " }}} Common "
 " }}} C++ "
 " C# {{{ "
-" Code Completion {{{ "
-if !g:isAndroid
-    if !g:isWindows
-        Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild  /p:TargetFrameworkVersion=v4.5' }         " C# completion
-    else
-        " For enable msbuild add to path variable path to .NET framework. E.g.: C:\Windows\Microsoft.NET\Framework\v4.0.30319
-        Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && msbuild' }         " C# completion
-    endif
-endif
-" }}} Code Completion "
 " Syntax highlighting {{{ "
 Plug 'OrangeT/vim-csharp', { 'for': 'cs' }                  " C# highlighting
 " }}} Syntax highlighting "
@@ -53,18 +43,19 @@ Plug 'mzlogin/vim-markdown-toc'            " Generate TOC in markdown
 " Syntax highlighting {{{ "
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }            " OpenCL syntax highlight
 " }}} Syntax highlighting "
+" }}} OpenCL "
 " Proto {{{ "
 " Syntax highlighting {{{ "
 Plug 'uarun/vim-protobuf', { 'for': 'proto' }               " Proto syntax highlight
 " }}} Syntax highlighting "
 " }}} Proto "
-" }}} OpenCL "
 " VimL {{{ "
 Plug 'junegunn/vader.vim'                  " Testing framework for vimscript
 " }}} VimL "
 " Debugging {{{ "
 if !g:isWindows && !g:isAndroid
     Plug 'echuraev/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
+    Plug 'puremourning/vimspector', { 'do': './install_gadget.py --all --disable-tcl'  }
     Plug 'Shougo/vimproc.vim', { 'do' : 'make' }              " vim-vebugger is dependent on it
     Plug 'idanarye/vim-vebugger', { 'branch': 'develop' }     " lldb debugger
 endif
@@ -108,7 +99,6 @@ endif
 " }}} Tmux "
 " Git {{{ "
 Plug 'tpope/vim-fugitive'                " Git plugin
-Plug 'lambdalisue/gina.vim'              " New git plugin
 Plug 'airblade/vim-gitgutter'            " Extension for git
 Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 Plug 'tpope/vim-git'                     " git syntax highlight
@@ -128,9 +118,7 @@ if !g:isWindows && !g:isAndroid
 endif
 " }}} Project "
 " File Tree {{{ "
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTree' } | Plug 'Xuyuanp/nerdtree-git-plugin' " | Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 Plug 'tpope/vim-vinegar'              " vinegar.vim enhances netrw
-Plug 'francoiscabrol/ranger.vim'      " Integrate ranger file manager to vim
 Plug 'vifm/vifm.vim'                  " Integrate vifm to vim
 " }}} File Tree "
 " Text manipulation {{{ "
@@ -144,9 +132,6 @@ Plug 'junegunn/vim-easy-align'        " Vim alignment plugin
 Plug 'godlygeek/tabular'              " Also alignment plugin
 " }}} Text manipulation "
 " Common {{{ "
-if v:version > 704 || (v:version == 704 && has('patch248'))     " systemlist function was added in patch 248
-    Plug 'chrisbra/vim-diff-enhanced' " Diff viewer
-endif
 Plug 'mhinz/vim-startify'             " Nice start screen
 if !g:isAndroid
     Plug 'w0rp/ale'                   " Syntax checking plugin
@@ -169,8 +154,7 @@ Plug 'ntpeters/vim-better-whitespace' " Highlight whitespaces
 Plug 'chrisbra/Colorizer'             " A plugin to color colornames and codes
 Plug 'sunaku/vim-hicterm'             " Highlights terminal color code numbers
 Plug 'powerman/vim-plugin-AnsiEsc'    " Enable highlighting AnsiEsc in vim
-Plug 'vim-scripts/xoria256.vim'       " Color scheme
-Plug 'jacoborus/tender.vim'           " Color scheme "diff, links in vimwiki, selection
+Plug 'jacoborus/tender.vim'           " Color scheme
 " }}} View "
 " Other {{{ "
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
