@@ -155,6 +155,7 @@ Plug 'chrisbra/Colorizer'             " A plugin to color colornames and codes
 Plug 'sunaku/vim-hicterm'             " Highlights terminal color code numbers
 Plug 'powerman/vim-plugin-AnsiEsc'    " Enable highlighting AnsiEsc in vim
 Plug 'jacoborus/tender.vim'           " Color scheme
+Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
 " }}} View "
 " Other {{{ "
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
