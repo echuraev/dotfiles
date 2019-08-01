@@ -163,6 +163,7 @@ Plug 'vimwiki/vimwiki'                " Organize notes
 Plug 'echuraev/translate-shell.vim'   " Translate plugin
 Plug 'ledger/vim-ledger'              " Finance management
 Plug 'rhysd/vim-grammarous'           " Spell checker
+Plug 'ianding1/leetcode.vim'          " Leetcode plugin
 " }}} Other "
 
 call plug#end()
