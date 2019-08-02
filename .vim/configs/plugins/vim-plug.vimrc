@@ -100,10 +100,10 @@ endif
 " Git {{{ "
 Plug 'tpope/vim-fugitive'                " Git plugin
 Plug 'airblade/vim-gitgutter'            " Extension for git
-Plug 'gregsexton/gitv', {'on': ['Gitv']} " Gitk for vim
 Plug 'tpope/vim-git'                     " git syntax highlight
 Plug 'junegunn/gv.vim'                   " light git commits browser
 Plug 'rhysd/committia.vim'               " extended commit message
+Plug 'hotwatermorning/auto-git-diff'     " git diff for rebase interactive
 " }}} Git "
 " Search {{{ "
 Plug 'osyo-manga/vim-over'            " Replace highlighter
