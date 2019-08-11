@@ -2,7 +2,7 @@
 
 import sys
 
-if sys.argv < 2:
+if len(sys.argv) < 2:
     print("One argument should be passed")
     exit(1)
 

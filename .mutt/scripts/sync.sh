@@ -43,7 +43,7 @@ while true; do
 
   MBSYNC_OUT_FILE="/tmp/mbsync_out_$ACCOUNT.log"
 
-  time gtimeout 3600 mbsync $ACCOUNT -Dm > $MBSYNC_OUT_FILE || {
+  time timeout 3600 mbsync $ACCOUNT -Dm > $MBSYNC_OUT_FILE || {
     terminal-notifier -title mbsync -message "mbsync ($ACCOUNT) exited"
     backoff
     continue
