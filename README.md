@@ -40,10 +40,17 @@ If after reboot headphones are not working, try to kill pulseaudio: `pulseaudio 
 <summary><strong>Setup working with several monitors</strong></summary>
 <br>
 
-For configuring my displays I use xrandr utility. Below is example of configuration. Put this command line to `~/.xprofile`.
+For configuring my displays I use xrandr utility. Below is example of
+configuration.  You can use tool named
+[ARandR](https://christian.amsuess.com/tools/arandr/) for automatic
+configuration. Save configs from this tool to `~/.screenlayout/default.sh` and
+put the following command line to `~/.xprofile`.
 ```
-xrandr --output HDMI-1 --mode 1920x1200 --pos 0x0 --output HDMI-2 --mode 1920x1200 --pos 1921x0 --output VGA-1 --mode 1280x1024 --pos 3842x0
+[ -f $HOME/.screenlayout/default.sh ] && $HOME/.screenlayout/default.sh
 ```
+Also for fixing problem with HiDPI display and display with small resolution,
+you can add parameter `--scale` to the small monitor e.g. (`xrandr --output DVI
+--auto --scale 1.5`).
 </details>
 
 ### Mac OS
