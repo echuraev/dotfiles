@@ -111,8 +111,6 @@ else
     alias grep='grep --color'
 fi
 alias gitv='vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv" -c "tabonly"'
-alias google-chrome='google-chrome --proxy-auto-detect'
-alias whatsapp='google-chrome --app=https://web.whatsapp.com/' #'/opt/google/chrome/google-chrome --app=https://web.whatsapp.com/'
 #alias vim='vim --startuptime vim.log'
 alias duhd='du -h -d 1'
 # }}} Aliases #
