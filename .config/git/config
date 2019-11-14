@@ -1,5 +1,5 @@
 [include]
-    path = ~/.gitconfig.local
+    path = ~/.config/git/config.local
 
 [color]
     ui = auto
@@ -38,3 +38,5 @@
     process = git-lfs filter-process
     required = true
     clean = git-lfs clean -- %f
+[commit]
+    template = ~/.config/git/gitmessage.txt

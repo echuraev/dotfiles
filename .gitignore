@@ -32,6 +32,7 @@
 !.config/
 !.config/awesome/
 !.config/cmus/rc
+!.config/git/
 !.config/kitty/
 !.config/kitty/kitty.conf
 !.config/ranger/
