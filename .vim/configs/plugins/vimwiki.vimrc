@@ -1,4 +1,4 @@
-let g:vimwiki_list = [{'path': '~/Dropbox/wiki', 'css_file': '~/.vim/configs/plugins/vimwiki/style.css'}, {'path': '~/Workspace/wiki', 'css_file': '~/.vim/configs/plugins/vimwiki/style.css'}]         " Default paths of wiki's
+let g:vimwiki_list = [{'path': '~/Nextcloud/wiki', 'css_file': '~/.vim/configs/plugins/vimwiki/style.css'}, {'path': '~/Workspace/wiki', 'css_file': '~/.vim/configs/plugins/vimwiki/style.css'}]         " Default paths of wiki's
 let g:vimwiki_menu = ''                                                                 " No menu in gVim
 let g:vimwiki_hl_headers = 1                                                            " Highlight headers in different colors
 let g:vimwiki_hl_cb_checked = 2                                                         " Highlight completed tasks

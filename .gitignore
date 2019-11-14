@@ -31,7 +31,7 @@
 !.scripts/
 !.config/
 !.config/awesome/
-!.config/cmus/
+!.config/cmus/rc
 !.config/kitty/
 !.config/kitty/kitty.conf
 !.config/ranger/
