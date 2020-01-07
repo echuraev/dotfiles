@@ -11,19 +11,28 @@
 # Common functions {{{ #
 weather() {
     # See help here: http://wttr.in/:help
-    if [ -z "$1" ]; then
-        curl "wttr.in/nizhny_novgorod?m&M"
-    else
-        curl "wttr.in/$1?m&M"
+    cmd="wttr.in/nizhny_novgorod?m&M"
+    if [ -n "$1" ]; then
+        cmd="wttr.in/$1?m&M"
     fi
+    curl "${cmd}"
 }
 
 weather_today() {
-    if [ -z "$1" ]; then
-        curl "wttr.in/nizhny_novgorod?m&M&0"
-    else
-        curl "wttr.in/$1?m&M&0"
+    cmd="wttr.in/nizhny_novgorod?m&M&0"
+    if [ -n "$1" ]; then
+        cmd="wttr.in/$1?m&M&0"
     fi
+    curl "${cmd}"
+}
+
+weather_today_timeout() {
+    cmd="wttr.in/nizhny_novgorod?m&M&0"
+    t=3
+    if [ -n "$1" ]; then
+        t=$1
+    fi
+    timeout $t curl "${cmd}"
 }
 
 vimgdb() {
@@ -444,7 +453,7 @@ gitvr() {
 #    screenfetch -E # -E option will suppress errors
 #fi
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
-    weather_today
+    weather_today_timeout
 fi
 # }}} Autorun #
 # Bash Prompt {{{ #
