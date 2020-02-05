@@ -53,7 +53,9 @@ function vi_mode_prompt_info() {
 #  }}} VIM mode #
 #  }}} COLORS & CUSTOMIZATION #
 #  PROMPT {{{ #
-PROMPT='%(?..%F{red}%U${(l:COLUMNS-1:: :)?} %u)' # Error status
+#NEWLINE=$'\n'
+#PROMPT='%(?..%F{red}%U${(l:COLUMNS-1:: :)?} %u)${NEWLINE}' # Error status
+PROMPT='$FX[bold]$FX[italic]%(?.%F{green}[%U✓%u].%F{red}[%U${?} ✗%u])$FX[no-bold]$FX[no-italic] ' # Error status
 PROMPT+='%{$PROMPT_COMMON_COLOR%}%n@%m%{$reset_color%}:%{$PROMPT_COMMON_COLOR%}%c%{$reset_color%} ' # name@hostname:path
 PROMPT+='$(git_info) ' # git status
 PROMPT+='%{$PROMPT_PROMPT%}ᐅ%{$reset_color%} ' # git status
