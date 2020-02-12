@@ -39,7 +39,7 @@ set linebreak
 set autoread
 set synmaxcol=300            " Don't try to highlight long lines"
 set scrolloff=5              " Number of rows to show in window above and below cursor
-set colorcolumn=80     " Set Color Column
+set colorcolumn=+1           " Set Color Column after 'textwidth'
 " Disable color column for some ft {{{ "
 autocmd FileType conque_term setlocal colorcolumn=
 autocmd FileType gitv setlocal colorcolumn=
