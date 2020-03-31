@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
 fi
 
 function create_commands() {
-    processes=$(ps ax | grep "$1" | grep -v "grep" | grep -v "tmux_gdb_attach_processes.sh")
+    processes=$(ps ax | grep "$1" | grep -v "grep" | grep -v "tmux_gdb_attach_processes.sh" | grep -v "defunct")
     IFS=$'\n'
     for line in $processes
     do

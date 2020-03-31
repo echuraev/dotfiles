@@ -90,6 +90,29 @@ mkcd() {
     cd "$1"
 }
 
+rmtail() {
+    if [ -f "$1" ]; then
+        echo "File exists. Should I remove it? (y/n): "
+        rm_file=0
+        read yn
+        case $yn in
+            [Yy]* ) rm_file=1;;
+            [Nn]* ) rm_file=0;;
+            * ) echo "Please answer y or n or press Ctrl+C for interrupt."; return 1;;
+        esac
+        if [ $rm_file -eq 1 ]; then
+            rm -f $1
+        fi
+    fi
+
+    while [ ! -f "$1" ]
+    do
+        sleep 1
+    done
+
+    tail -f $1
+}
+
 # creates tmux sessing with mutt
 function email() {
     if ! tmux has-session -t email 2> /dev/null; then
