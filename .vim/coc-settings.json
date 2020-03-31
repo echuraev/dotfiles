@@ -1,0 +1,11 @@
+{
+    "suggest.triggerAfterInsertEnter": true,
+    "suggest.timeout": 500,
+    "python.jediEnabled": false,
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "black",
+    "snippets.extends": {
+        "cpp": ["c"]
+    },
+    "snippets.loadFromExtensions": false
+}

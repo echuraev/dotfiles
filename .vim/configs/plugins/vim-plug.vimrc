@@ -4,11 +4,7 @@ call plug#begin('~/.vim/plugged')
 " C++ {{{ "
 " Code Completion {{{ "
 if !g:isAndroid
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    Plug 'prabirshrestha/asyncomplete-file.vim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 " }}} Code Completion "
 " Syntax highlighting {{{ "
@@ -17,9 +13,6 @@ Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting
 " CMake support {{{ "
 Plug 'ilyachur/cmake4vim'
 " }}} CMake support "
-" GTests {{{ "
-Plug 'alepez/vim-gtest'             " Google tests
-" }}} GTests "
 " Common {{{ "
 Plug 'kana/vim-altr'
 " }}} Common "
@@ -75,7 +68,6 @@ Plug 'pseewald/vim-anyfold'                               " Fold code
 " For working it is necessary to have python3 installed
 " On Windows you have to have the same architecture (32 or 64 bits) versions of vim and python
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'   " Snippets.
-Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
 " }}} Snippets "
 " Fuzzy Finder {{{ "
 " Plugin outside ~/.vim/plugged with post-update hook
@@ -161,7 +153,6 @@ Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
 Plug 'vimwiki/vimwiki'                " Organize notes
 Plug 'echuraev/translate-shell.vim'   " Translate plugin
-Plug 'ledger/vim-ledger'              " Finance management
 Plug 'rhysd/vim-grammarous'           " Spell checker
 Plug 'ianding1/leetcode.vim'          " Leetcode plugin
 " }}} Other "

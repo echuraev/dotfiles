@@ -5,10 +5,3 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 let g:UltiSnipsSnippetsDir = $HOME.'/.vim/UltiSnips'
 
-if exists("*asyncomplete#register_source")
-    call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-                \ 'name': 'ultisnips',
-                \ 'whitelist': ['*'],
-                \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
-                \ }))
-endif

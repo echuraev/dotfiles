@@ -7,14 +7,13 @@ let s:vim_configuration_files = [
 \ 'colorscheme.vimrc',
 \ 'common.vimrc',
 \ 'fzf.vimrc',
-\ 'nerdtree.vimrc',
 \ 'python-mode.vimrc',
 \ 'trans.vimrc',
 \ 'ultisnips.vimrc',
 \ 'vim-cpp-enhanced-highlight.vimrc',
 \ 'vimwiki.vimrc',
 \ 'lsp.vimrc',
-\ 'gtest.vimrc',
+\ 'multiple-cursors.vimrc',
 \]
 
 for file in s:vim_configuration_files

@@ -34,6 +34,7 @@ nmap <C-k> <c-w>+
 nnoremap <C-y> "+Y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
+vnoremap <C-p> "+gP
 
 if has("gui_running")
     map  <silent>  <S-Insert>  "+p
