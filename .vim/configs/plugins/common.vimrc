@@ -1,8 +1,6 @@
-" vim-altr {{{ "
-command! A  call altr#forward()
-nmap <F2>  <Plug>(altr-forward)
-nmap <S-F2>  <Plug>(altr-back)
-" }}} vim-altr "
+" vim swap header/source {{{ "
+nmap <F2>  :A<CR>
+" }}} vim swap header/source "
 " auto-pairs {{{ "
 let g:AutoPairsMapCh=0
 " }}} auto-pairs "

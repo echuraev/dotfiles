@@ -12,10 +12,90 @@ let g:gutentags_generate_on_write = 1
 let g:gutentags_generate_on_new = 1
 let g:gutentags_generate_on_empty_buffer = 0
 
+" Extra:  Specifies whether to include extra tag entries for certain kinds of information.
+"
+" q       Include an extra class-qualified tag entry for each tag which is a member of
+"         a class (for languages for which this information is extracted; currently
+"         C++, Eiffel, and Java). The actual form of the qualified tag depends upon
+"         the language from which the tag was derived (using a form that is most
+"         natural for how qualified calls are specified in the language). For C++, it
+"         is in the form "class::member"; for Eiffel and Java, it is in the form
+"         "class.member". This may allow easier location of a specific tags when
+"         multiple occurrences of a tag name occur in the tag file. Note, however,
+"         that this could potentially more than double the size of the tag file.
+"
+" f       Include an entry for the base file name of every source file (e.g.
+"         "example.c"), which addresses the first line of the file.
+"
+" Fields: Specifies the available extension fields which are to be included in
+"         the entries of the tag file
+"
+" a       Access (or export) of class members
+" i       Inheritance information
+" l       Language of source file containing tag
+" m       Implementation information
+" n       Line number of tag definition
+" S       Signature of routine (e.g. prototype or parameter list)
 let g:gutentags_ctags_extra_args = [
     \ '--tag-relative=yes',
     \ '--fields=+ailmnS',
+    \ '--extra=+qf',
+    \ '--c++-kinds=+p',
     \ ]
+
+" Find alternate
+" Use --extra=+f for ctags
+function! SwitchSource(splitType)
+    let extMap = {
+        \ 'cpp': ['hpp', 'h'],
+        \ 'cxx': ['hpp', 'h'],
+        \ 'c': ['hpp', 'h'],
+        \ 'hpp': ['cpp', 'cxx', 'c'],
+        \ 'h': ['cpp', 'cxx', 'c'],
+    \ }
+    let kinds = ['F']
+    let fileName = expand('%:t:r')
+    let fullFilePath = expand('%:p:r')
+    let ext = expand('%:e')
+
+    let openCommand = ':e'
+    if (a:splitType == "h")
+        let openCommand = ':split'
+    elseif (a:splitType == "v")
+        let openCommand = ':vsplit'
+    elseif (a:splitType == "t")
+        let openCommand = ':tabe'
+    endif
+
+    if has_key(extMap, ext)
+        " First of all check local files
+        for altExt in extMap[ext]
+            let altFile = fullFilePath.".".altExt
+            if filereadable(altFile)
+                silent! execute openCommand." ".altFile
+                return
+            endif
+        endfor
+        for altExt in extMap[ext]
+            let altFile = fileName.".".altExt
+            for entry in taglist(altFile)
+                if index(kinds, entry.kind) > -1
+                    silent! execute openCommand." ".entry.filename
+                    return
+                endif
+            endfor
+        endfor
+    endif
+    echohl ErrorMsg |
+                \ echomsg "Cannot find alternate file for: ".@% |
+                \ echohl None
+    return
+endfunction
+
+command! -nargs=0 A call SwitchSource("")
+command! -nargs=0 AV call SwitchSource("v")
+command! -nargs=0 AS call SwitchSource("h")
+command! -nargs=0 AT call SwitchSource("t")
 
 " let g:gutentags_ctags_exclude = [
 "     \ '*.git', '*.svn', '*.hg',

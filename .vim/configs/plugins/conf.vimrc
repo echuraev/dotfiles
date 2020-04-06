@@ -14,6 +14,7 @@ let s:vim_configuration_files = [
 \ 'vimwiki.vimrc',
 \ 'lsp.vimrc',
 \ 'multiple-cursors.vimrc',
+\ 'tags.vimrc',
 \]
 
 for file in s:vim_configuration_files
