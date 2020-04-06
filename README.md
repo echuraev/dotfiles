@@ -52,6 +52,17 @@ Also for fixing problem with HiDPI display and display with small resolution,
 you can add parameter `--scale` to the small monitor e.g. (`xrandr --output DVI
 --auto --scale 1.5`).
 </details>
+<details>
+<summary><strong>Problem with GL application and ssh access</strong></summary>
+<br>
+
+Some application with OpenGL can be crashed when you run it through ssh. For fix
+this problem it is possible to run the following command:
+```
+Xvfb :99 -screen 0 1024x960x24 -ac &
+export DISPLAY=:99
+```
+</details>
 
 ### Mac OS
 <details>
