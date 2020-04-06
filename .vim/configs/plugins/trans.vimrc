@@ -18,10 +18,3 @@ let g:trans_save_audio = 1
 let g:trans_ignore_audio_for_langs = ['ru']
 let g:trans_interactive_full_list = 1
 
-inoremap <silent> <leader>t <ESC>:Trans<CR>
-nnoremap <silent> <leader>t :Trans<CR>
-vnoremap <silent> <leader>t :Trans<CR>
-nnoremap <silent> <leader>td :FZFTransSelectDirection<CR>
-vnoremap <silent> <leader>td :FZFTransSelectDirection<CR>
-nnoremap <silent> <leader>ti :FZFTransInteractive<CR>
-

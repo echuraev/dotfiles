@@ -7,13 +7,9 @@ let s:vim_configuration_files = [
 \ 'colorscheme.vimrc',
 \ 'common.vimrc',
 \ 'fzf.vimrc',
-\ 'python-mode.vimrc',
 \ 'trans.vimrc',
-\ 'ultisnips.vimrc',
-\ 'vim-cpp-enhanced-highlight.vimrc',
 \ 'vimwiki.vimrc',
 \ 'lsp.vimrc',
-\ 'multiple-cursors.vimrc',
 \ 'tags.vimrc',
 \]
 

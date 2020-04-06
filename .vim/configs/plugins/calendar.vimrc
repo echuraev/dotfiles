@@ -22,6 +22,5 @@ function! CalendarToggle()
 endfunction
 
 command! CalendarToggle execute 'call CalendarToggle()'
-noremap <leader>c :CalendarToggle<CR>
 " }}} CalendarToggle function "
 

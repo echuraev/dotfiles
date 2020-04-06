@@ -1,6 +1,3 @@
-" vim swap header/source {{{ "
-nmap <F2>  :A<CR>
-" }}} vim swap header/source "
 " auto-pairs {{{ "
 let g:AutoPairsMapCh=0
 " }}} auto-pairs "
@@ -15,10 +12,6 @@ if has("patch-8.1.0360")
     set diffopt+=internal,algorithm:patience
 endif
 " }}} diff mode "
-" Gitv {{{ "
-let g:Gitv_OpenHorizontal = 1
-let g:Gitv_DoNotMapCtrlKey = 1
-" }}} Gitv "
 " IndentLine {{{ "
 let g:indentLine_fileTypeExclude=['calendar', 'startify']
 let g:indentLine_bufNameExclude=['calendar', 'startify']
@@ -37,17 +30,10 @@ let g:localvimrc_name = ['.local_vimrc', '.lvimrc']
 let g:localvimrc_sandbox = 0
 let g:localvimrc_whitelist=[$HOME]
 " }}} vim-localvimrc "
-" Ranger {{{ "
-let g:ranger_map_keys = 0
-map <leader>r :Ranger<CR>
-" }}} Ranger "
 " Startify {{{ "
 let g:startify_bookmarks = [ {'p': '~/.vim/configs/plugins/vim-plug.vimrc'} ]
 let g:startify_change_to_dir = 0
 " }}} Startify "
-" zoom.vim {{{ "
-nmap <C-W>z <Plug>(zoom-toggle)
-" }}} zoom.vim "
 " ferret {{{ "
 let g:ferret_search_options = ''
 if executable('rg')
@@ -57,12 +43,28 @@ endif
 let g:FerretExecutableArguments = {
             \ 'rg': '--vimgrep --no-heading --no-config --max-columns 4096 --hidden'
             \ }
-
-nmap <leader>ff <Plug>(FerretAck)
-nmap <leader>fr <Plug>(FerretAcks)
-nmap <silent> <leader>fw <Plug>(FerretAckWord)
 " }}} ferret "
 " VIFM {{{ "
 let g:vifm_exec_args = '-c ":only"'
-map <leader>fm :EditVifm<CR>
 " }}} VIFM "
+" Multiple-cursors {{{ "
+" Disable coc in order to avoid messages with timeout
+function! Multiple_cursors_before()
+    if exists('g:did_coc_loaded')
+        exe 'CocDisable'
+    endif
+endfunction
+
+function! Multiple_cursors_after()
+    if exists('g:did_coc_loaded')
+        exe 'CocEnable'
+    endif
+endfunction
+" }}} Multiple-cursors "
+" vim-cpp-enhanced-highlight {{{ "
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+"let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+" }}} vim-cpp-enhanced-highlight "

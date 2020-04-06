@@ -1,8 +1,3 @@
-nnoremap <silent> <leader>f :Files<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>h :History<CR>
-nnoremap <silent> <leader>: :History:<CR>
-
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
@@ -30,6 +25,4 @@ function! FzfSpell()
     let suggestions = spellsuggest(expand("<cword>"))
     return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10 })
 endfunction
-
-nnoremap zf= :call FzfSpell()<CR>
 " }}} FZF spelling suggestions "
