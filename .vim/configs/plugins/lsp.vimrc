@@ -37,9 +37,9 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Use `[d` and `]d` for navigate diagnostics
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> <leader>g <Plug>(coc-definition)

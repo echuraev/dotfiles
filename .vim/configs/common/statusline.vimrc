@@ -167,6 +167,13 @@ function! GitInfo()
         return ''
     endif
 endfunction
+
+function! CTagsInfo()
+    if !exists('gutentags#statusline()')
+        return ''
+    endif
+    return  gutentags#statusline('[', ']')
+endfunction
 " }}} Common functions "
 
 function! StatusLine(winnum)
@@ -186,6 +193,8 @@ function! StatusLine(winnum)
     let statLine .= "[%n]"                                                      " buffernr
     let statLine .= " "                                                         " Space
     if winwidth(a:winnum) > 80
+        let statLine .= "%<%{CTagsInfo()}"                                      " ctags type
+        let statLine .= " "                                                     " Space
         let statLine .= "%<%{GitInfo()}"                                        " Git Branch name
         let statLine .= " "                                                     " Space
     endif

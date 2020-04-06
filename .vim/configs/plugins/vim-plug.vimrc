@@ -13,9 +13,6 @@ Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting
 " CMake support {{{ "
 Plug 'ilyachur/cmake4vim'
 " }}} CMake support "
-" Common {{{ "
-Plug 'kana/vim-altr'
-" }}} Common "
 " }}} C++ "
 " C# {{{ "
 " Syntax highlighting {{{ "
@@ -63,6 +60,13 @@ Plug 'rhysd/vim-clang-format'                             " Format code with spe
 " Folding {{{ "
 Plug 'pseewald/vim-anyfold'                               " Fold code
 " }}} Folding "
+" Other {{{ "
+Plug 'scrooloose/nerdcommenter'                         " Enable commentaries
+
+if executable('ctags') || executable('cscope') || executable('gtags')
+	Plug 'ludovicchabant/vim-gutentags'                 " Ctags support
+endif
+" }}} Other "
 " }}} Programming "
 " Snippets {{{ "
 " For working it is necessary to have python3 installed
