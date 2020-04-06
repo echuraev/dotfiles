@@ -40,7 +40,7 @@ Plug 'uarun/vim-protobuf', { 'for': 'proto' }               " Proto syntax highl
 " }}} Syntax highlighting "
 " }}} Proto "
 " VimL {{{ "
-Plug 'junegunn/vader.vim'                  " Testing framework for vimscript
+Plug 'junegunn/vader.vim', { 'on': 'Vader' }                " Testing framework for vimscript
 " }}} VimL "
 " Debugging {{{ "
 if !g:isWindows && !g:isAndroid
@@ -68,11 +68,6 @@ if executable('ctags') || executable('cscope') || executable('gtags')
 endif
 " }}} Other "
 " }}} Programming "
-" Snippets {{{ "
-" For working it is necessary to have python3 installed
-" On Windows you have to have the same architecture (32 or 64 bits) versions of vim and python
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'   " Snippets.
-" }}} Snippets "
 " Fuzzy Finder {{{ "
 " Plugin outside ~/.vim/plugged with post-update hook
 " On windows download binaries from the github
@@ -94,20 +89,19 @@ if !g:isWindows
 endif
 " }}} Tmux "
 " Git {{{ "
-Plug 'tpope/vim-fugitive'                " Git plugin
-Plug 'airblade/vim-gitgutter'            " Extension for git
-Plug 'tpope/vim-git'                     " git syntax highlight
-Plug 'junegunn/gv.vim'                   " light git commits browser
-Plug 'rhysd/committia.vim'               " extended commit message
-Plug 'hotwatermorning/auto-git-diff'     " git diff for rebase interactive
+Plug 'tpope/vim-fugitive'                 " Git plugin
+Plug 'airblade/vim-gitgutter'             " Extension for git
+Plug 'tpope/vim-git'                      " git syntax highlight
+Plug 'junegunn/gv.vim'                    " light git commits browser
+Plug 'rhysd/committia.vim'                " extended commit message
+Plug 'hotwatermorning/auto-git-diff'      " git diff for rebase interactive
 " }}} Git "
 " Search {{{ "
-Plug 'osyo-manga/vim-over'            " Replace highlighter
-Plug 'wincent/ferret'                 " Fast search and replace
-Plug 'google/vim-searchindex'         " Show number of found matches
+Plug 'wincent/ferret'                     " Fast search and replace
+Plug 'google/vim-searchindex'             " Show number of found matches
 " }}} Search "
 " Project {{{ "
-Plug 'tpope/vim-dispatch'             " Project compiling
+Plug 'tpope/vim-dispatch'                 " Project compiling
 if !g:isWindows && !g:isAndroid
     Plug 'embear/vim-localvimrc'          " Local vimrc files for projects
     Plug 'editorconfig/editorconfig-vim'  " Editor configuration for a project
@@ -125,7 +119,6 @@ Plug 'tmhedberg/matchit'              " Extend behavior of %
 Plug 'tpope/vim-repeat'               " Extend behavior of .
 Plug 'tpope/vim-surround'             " Work with surroundings in pairs.
 Plug 'junegunn/vim-easy-align'        " Vim alignment plugin
-Plug 'godlygeek/tabular'              " Also alignment plugin
 " }}} Text manipulation "
 " Common {{{ "
 Plug 'mhinz/vim-startify'             " Nice start screen
@@ -137,7 +130,6 @@ Plug 'cohama/lexima.vim'              " Add auto-pairs
 Plug 'tpope/vim-unimpaired'           " Fast navigation
 Plug 'majutsushi/tagbar'              " Tagbar
 Plug 'easymotion/vim-easymotion'      " Easy motion in files
-Plug 'dhruvasagar/vim-zoom'           " Zoom vim window like in tmux
 Plug 'farmergreg/vim-lastplace'       " Intelligently reopen files at your last edit position
 Plug 'qpkorr/vim-renamer'             " Rename list of files
 Plug 'mbbill/undotree'                " Visualize undo tree
