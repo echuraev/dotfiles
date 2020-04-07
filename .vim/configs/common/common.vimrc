@@ -61,18 +61,6 @@ if !g:isWindows
     set t_ZR=[23m
 endif
 autocmd VIMResized * execute "normal! \<c-w>="
-" GUI font {{{ "
-if has("gui_running")
-    "if has("gui_gtk2")
-    "    set guifont=Inconsolata\ 12
-    "elseif has("gui_macvim")
-        set guifont=LiterationMonoNerdFontCompleteM-:h13
-    "elseif has("gui_win32")
-    "    set guifont=Consolas:h11:cANSI
-    "endif
-endif
-" }}} GUI font "
-
 set re=1                " force the old regex engine on any version newer (it helped to resolve performance with syntax highlighting)
 set lazyredraw          " Don’t update screen during macro and script execution.
 " }}} View settings "
@@ -98,8 +86,27 @@ set exrc
 set secure
 " }}} Find another vimrc "
 " Backup and temporary files {{{ "
-set nobackup                            " Don't create files with backup copy (filename.txt~)
-set noswapfile                          " Don't create swap files
+set swapfile
+if !isdirectory($HOME."/.vim/swap") && !g:isWindows
+    silent call mkdir($HOME."/.vim/swap", 'p')
+endif
+set directory^=$HOME/.vim/swap//
+
+" protect against crash-during-write
+set writebackup
+" but do not persist backup after successful write
+set nobackup
+" use rename-and-write-new method whenever safe
+set backupcopy=auto
+" patch required to honor double slash at end
+if has("patch-8.1.0251")
+    if !isdirectory($HOME."/.vim/backup") && !g:isWindows
+        silent call mkdir($HOME."/.vim/backup", 'p')
+    endif
+    " consolidate the writebackups -- not a big
+    " deal either way, since they usually get deleted
+    set backupdir^=$HOME/.vim/backup//
+end
 " }}} Backup and temporary files "
 " Command line options {{{ "
 set path+=**                            " Provides tab-completion for all file-related tasks
@@ -110,6 +117,12 @@ set history=5000
 " Diff settings {{{ "
 au VimEnter * if &diff | execute 'windo set wrap' | endif " Wrap words if diff
 " }}} Diff settings "
+" Enable Russian language support {{{
+set keymap=russian-jcukenwin            " Ctrl+^ to switch layouts
+set iminsert=0
+set imsearch=0
+highlight lCursor guifg=NONE guibg=Cyan
+" }}} Enable Russian language support
 " Spell checking {{{ "
 set complete+=kspell                     " Added word completion
 if !g:isAndroid
