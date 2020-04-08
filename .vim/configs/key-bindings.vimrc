@@ -123,6 +123,19 @@ nnoremap <silent> <leader>ce :<C-u>CocList extensions<cr>
 nnoremap <silent> <leader>cl :<C-u>CocList commands<cr>
 " Resume latest coc list
 nnoremap <silent> <leader>cr :<C-u>CocListResume<CR>
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 " }}} LSP "
 " trans {{{ "
 inoremap <silent> <leader>t <ESC>:Trans<CR>

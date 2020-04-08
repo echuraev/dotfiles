@@ -6,6 +6,7 @@ let g:coc_global_extensions = [
     \ 'coc-python',
     \ 'coc-snippets',
     \ 'coc-tag',
+    \ 'coc-vimlsp',
     \ 'coc-vimtex',
     \ 'coc-yaml',
     \ 'coc-yank',
