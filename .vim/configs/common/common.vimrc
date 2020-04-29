@@ -86,11 +86,12 @@ set exrc
 set secure
 " }}} Find another vimrc "
 " Backup and temporary files {{{ "
-set swapfile
-if !isdirectory($HOME."/.vim/swap") && !g:isWindows
-    silent call mkdir($HOME."/.vim/swap", 'p')
-endif
-set directory^=$HOME/.vim/swap//
+"set swapfile
+"if !isdirectory($HOME."/.vim/swap") && !g:isWindows
+"    silent call mkdir($HOME."/.vim/swap", 'p')
+"endif
+"set directory^=$HOME/.vim/swap//
+set noswapfile
 
 " protect against crash-during-write
 set writebackup

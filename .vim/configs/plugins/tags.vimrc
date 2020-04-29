@@ -41,6 +41,7 @@ let g:gutentags_ctags_extra_args = [
     \ '--fields=+ailmnS',
     \ '--extra=+qf',
     \ '--c++-kinds=+p',
+    \ '--exclude=*.pb',
     \ ]
 
 " Find alternate
