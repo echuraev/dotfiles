@@ -158,12 +158,10 @@ export SVN_EDITOR=vim
 export TERM=xterm-256color
 
 export XDG_CONFIG_HOME="$HOME/.config"
-export BASH_COMPL_DIR=$XDG_CONFIG_HOME"/bash_completion"
 export ZSH_COMPL_DIR="$HOME/.zsh/completion"
 LOCAL_BIN=${HOME}/.bin/
 mkdir -p $LOCAL_BIN
 mkdir -p $XDG_CONFIG_HOME
-mkdir -p $BASH_COMPL_DIR
 mkdir -p $ZSH_COMPL_DIR
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$LOCAL_BIN:$PATH
@@ -206,7 +204,6 @@ if [ ! -f $TOOL_BIN ]; then
     echo "Installing ripgrep"
     res=$(install_tool 'https://github.com/BurntSushi/ripgrep' 'rg' '11.0.1' 'ripgrep')
     # Enable autocompletion
-    cp -f $res/complete/rg.bash $BASH_COMPL_DIR
     cp -f $res/complete/_rg $ZSH_COMPL_DIR
 fi
 # }}} Install ripgrep #
