@@ -44,15 +44,6 @@ vimgdb() {
     eval $cmd
 }
 
-vim8gdb() {
-    args=""
-    for arg in ${@:2}; do
-        args=$args""$arg" "
-    done
-    cmd="vim -c \"packadd termdebug\" -c \"Termdebug $1\" -c \"Arguments $args\""
-    eval $cmd
-}
-
 isAndroidOS() {
     if [[ `uname` != 'Darwin' ]]; then
         if [[ `uname -o` == 'Android' ]]; then

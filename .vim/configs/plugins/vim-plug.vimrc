@@ -46,8 +46,6 @@ Plug 'junegunn/vader.vim', { 'on': 'Vader' }                " Testing framework 
 if !g:isWindows && !g:isAndroid
     Plug 'echuraev/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
     Plug 'puremourning/vimspector', { 'do': './install_gadget.py --all --disable-tcl'  }
-    Plug 'Shougo/vimproc.vim', { 'do' : 'make' }              " vim-vebugger is dependent on it
-    Plug 'idanarye/vim-vebugger', { 'branch': 'develop' }     " lldb debugger
 endif
 " }}} Debugging "
 " Json {{{ "

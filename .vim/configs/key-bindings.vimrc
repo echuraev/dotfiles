@@ -145,4 +145,16 @@ nnoremap <silent> <leader>td :FZFTransSelectDirection<CR>
 vnoremap <silent> <leader>td :FZFTransSelectDirection<CR>
 nnoremap <silent> <leader>ti :FZFTransInteractive<CR>
 " }}} trans "
+" Debugger {{{ "
+nnoremap <silent> <leader>ds   :call vimspector#Launch()<CR>
+nnoremap <silent> <leader>dc   :call vimspector#Continue()<CR>
+nnoremap <silent> <leader>dk   :call vimspector#Reset()<CR>
+nnoremap <silent> <leader>dr   :call vimspector#Restart()<CR>
+nnoremap <silent> <leader>dp   :call vimspector#Pause()<CR>
+nnoremap <silent> <leader>db   :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <silent> <leader>df   :call vimspector#AddFunctionBreakpoint( expand( '<cexpr>'  )  )<CR>
+nnoremap <silent> <F8>         :call vimspector#StepOver()<CR>
+nnoremap <silent> <F7>         :call vimspector#StepInto()<CR>
+nnoremap <silent> <F6>         :call vimspector#StepOut()<CR>
+" }}} Debugger "
 " }}} Plugins "
