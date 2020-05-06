@@ -13,12 +13,14 @@ let s:names = map(split(globpath(s:top_directory, "/[a-zA-Z0-9]*/"), "\n"), 'fna
 " If you need to change init_function_callback then you just need to change
 " this value for specific key.
 " Possible values: 'CopyLocalVimrc' and 'CopyAllFiles'
+" For example:
+" let s:projectLocations['cpp'][1] = 'CopyLocalVimrc'
 let s:projectLocations = {}
 let i = 0
 while i < len(s:directories)
     let key = s:names[i]
     let val = s:directories[i]
-    let callback = 'CopyLocalVimrc'
+    let callback = 'CopyAllFiles'
     let s:projectLocations[key] = [val, callback]
     let i = i + 1
 endwhile
@@ -55,12 +57,10 @@ function! GenerateProjectMenuFile()
     endif
     execute 'redir >> '.s:menu_file_path
     for name in s:names
-        silent echo 'menu Projects.'.name.'  :call InitProject('.name.')<CR>'
+        silent echo 'menu Projects.'.name.'  :call InitProject("'.name.'")<CR>'
     endfor
     silent! redir END
 endfunction
-"menu Projects.cpp               :call InitProject('cpp', 'CopyLocalVimrc')<CR>
-"menu Projects.providence        :call InitProject('providence', 'CopyLocalVimrc')<CR>
 
 call GenerateProjectMenuFile()
 

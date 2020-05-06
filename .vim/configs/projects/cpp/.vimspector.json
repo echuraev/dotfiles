@@ -1,0 +1,54 @@
+{
+    "configurations": {
+        "Test APP": {
+            "adapter": "vscode-cpptools",
+            "configuration": {
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceRoot}/test_app",
+                "args": ["-m", "-d"],
+                "cwd": "${workspaceRoot}",
+                "environment": [
+                    {"name": "LD_LIBRARY_PATH", "value": "${workspaceRoot}/temp/"}
+                ],
+                "externalConsole": false,
+                "stopAtEntry": true,
+                "MImode": "lldb"
+            }
+        },
+        "Unit tests": {
+            "adapter": "vscode-cpptools",
+            "configuration": {
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceRoot}/unitTests",
+                "args": ["--gtest_filter", "*"],
+                "cwd": "${workspaceRoot}",
+                "environment": [
+                    {"name": "LD_LIBRARY_PATH", "value": "${workspaceRoot}/temp/tbb/lib"}
+                ],
+                "externalConsole": false,
+                "stopAtEntry": true,
+                "MImode": "gdb"
+            }
+        },
+        "Python: Launch": {
+            "adapter": "vscode-python",
+            "configuration": {
+                "name": "Python: Launch",
+                "type": "python",
+                "pythonPath": "python3",
+                "request": "launch",
+                "cwd": "${workspaceRoot}",
+                "stopOnEntry": true,
+                "console": "externalTerminal",
+                "debugOptions": [],
+                "program": "./app.py",
+                "environment": [
+                    {"name": "PYTHONPATH", "value": "${workspaceRoot}"}
+                ]
+            }
+        }
+    }
+}
+
