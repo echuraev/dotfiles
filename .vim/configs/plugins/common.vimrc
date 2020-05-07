@@ -47,20 +47,6 @@ let g:FerretExecutableArguments = {
 " VIFM {{{ "
 let g:vifm_exec_args = '-c ":only"'
 " }}} VIFM "
-" Multiple-cursors {{{ "
-" Disable coc in order to avoid messages with timeout
-function! Multiple_cursors_before()
-    if exists('g:did_coc_loaded')
-        exe 'CocDisable'
-    endif
-endfunction
-
-function! Multiple_cursors_after()
-    if exists('g:did_coc_loaded')
-        exe 'CocEnable'
-    endif
-endfunction
-" }}} Multiple-cursors "
 " vim-cpp-enhanced-highlight {{{ "
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1

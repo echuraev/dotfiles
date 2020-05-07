@@ -111,7 +111,7 @@ Plug 'vifm/vifm.vim'                  " Integrate vifm to vim
 " }}} File Tree "
 " Text manipulation {{{ "
 Plug 'wellle/targets.vim'             " Add various text objects to VIM
-Plug 'terryma/vim-multiple-cursors'   " Plugin for multiple cursors
+Plug 'mg979/vim-visual-multi'         " Plugin for multiple cursors
 Plug 'machakann/vim-multiselect'      " A library plugin to handle multiple visual selections
 Plug 'tmhedberg/matchit'              " Extend behavior of %
 Plug 'tpope/vim-repeat'               " Extend behavior of .
