@@ -34,6 +34,11 @@ Plug 'mzlogin/vim-markdown-toc'            " Generate TOC in markdown
 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }            " OpenCL syntax highlight
 " }}} Syntax highlighting "
 " }}} OpenCL "
+" UML {{{ "
+" Syntax highlighting {{{ "
+Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
+" }}} Syntax highlighting "
+" }}} UML "
 " Proto {{{ "
 " Syntax highlighting {{{ "
 Plug 'uarun/vim-protobuf', { 'for': 'proto' }               " Proto syntax highlight
