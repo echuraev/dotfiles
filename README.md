@@ -110,3 +110,14 @@ https://gist.github.com/danisfermi/17d6c0078a2fd4c6ee818c954d2de13c
 And from this answer:
 https://stackoverflow.com/questions/49001329/gdb-doesnt-work-on-macos-high-sierra-10-13-3/49104154#49104154
 </details>
+<details>
+<summary><strong>Problem with zsh completion</strong></summary>
+<br>
+
+I had some problems with autocompletion and found solution
+[here](https://github.com/zsh-users/zsh-completions/issues/680).
+It is necessary to run this command:
+```
+$ compaudit | xargs chmod g-w
+```
+</details>
