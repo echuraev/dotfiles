@@ -35,7 +35,7 @@
 !.config/git/
 !.config/kitty/
 !.config/kitty/kitty.conf
-!.config/ranger/
+!.config/nvim/
 !.config/vifm/
 !.vimrc
 !.zsh/
