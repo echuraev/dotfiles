@@ -198,6 +198,15 @@ if [ ! -f $TOOL_BIN ]; then
     cp -f $res/complete/_rg $ZSH_COMPL_DIR
 fi
 # }}} Install ripgrep #
+# Install fd {{{ #
+TOOL_BIN=$LOCAL_BIN/fd
+if [ ! -f $TOOL_BIN ]; then
+    echo "Installing fd"
+    res=$(install_tool 'https://github.com/sharkdp/fd' 'fd' 'v8.1.1' 'fd')
+    # Enable autocompletion
+    cp -f $res/autocomplete/_fd $ZSH_COMPL_DIR
+fi
+# }}} Install fd #
 # Instal Tmux Plugin Manager {{{ #
 export TPM_DIR=$HOME/.tmux/plugins/tpm
 if [ ! -d $TPM_DIR ]; then
@@ -220,7 +229,7 @@ fi
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='fd --type file --hidden --follow --no-ignore --exclude .git'
 export FZF_DEFAULT_OPTS='--height 30% --border'
 
 ##########################################################################
