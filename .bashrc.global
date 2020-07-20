@@ -136,6 +136,7 @@ fi
 alias gitv='vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv" -c "tabonly"'
 #alias vim='vim --startuptime vim.log'
 alias duhd='du -h -d 1'
+alias free_del_space="kill -9 `lsof | grep '(deleted)' | awk '{print $2}'`"
 # }}} Aliases #
 # Setup environment {{{ #
 export LANGUAGE=en_US.UTF-8
