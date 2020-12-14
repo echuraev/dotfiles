@@ -1,4 +1,3 @@
-[ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
 #  zplug configuration {{{ #
 if [[ ! -d ~/.zplug ]]; then
     git clone https://github.com/b4b4r07/zplug ~/.zplug
@@ -99,6 +98,8 @@ bindkey 'OB' history-beginning-search-forward
 
 # Load theme
 [ -f $HOME/.zsh/colors/theme.zsh ] && source $HOME/.zsh/colors/theme.zsh
+# Load local bash configuration
+[ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
 # Load local zsh configuration
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 

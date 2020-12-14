@@ -31,6 +31,7 @@
 !.scripts/
 !.config/
 !.config/awesome/
+!.config/alacritty/
 !.config/cmus/rc
 !.config/git/
 !.config/kitty/

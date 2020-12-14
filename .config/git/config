@@ -41,3 +41,5 @@
     clean = git-lfs clean -- %f
 [commit]
     template = ~/.config/git/gitmessage.txt
+[pull]
+	rebase = true
