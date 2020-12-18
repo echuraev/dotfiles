@@ -44,6 +44,21 @@ vimgdb() {
     eval $cmd
 }
 
+vimlldb() {
+    args=""
+    val=0
+    for arg in $@; do
+        if [ "${val}" == "0" ]; then
+            args=$args""$arg" -- "
+            val=1
+        else
+            args=$args""$arg" "
+        fi
+    done
+    cmd="vim -c \"GdbStartLLDB lldb $args\" -c \"only\" ."
+    eval $cmd
+}
+
 isAndroidOS() {
     if [[ `uname` != 'Darwin' ]]; then
         if [[ `uname -o` == 'Android' ]]; then
