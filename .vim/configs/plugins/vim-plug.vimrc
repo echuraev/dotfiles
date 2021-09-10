@@ -151,7 +151,6 @@ Plug 'machakann/vim-highlightedyank'  " Highlight yanked region
 " }}} View "
 " Other {{{ "
 Plug 'itchyny/calendar.vim'           " Calendar in VIM
-Plug 'vimwiki/vimwiki'                " Organize notes
 Plug 'echuraev/translate-shell.vim'   " Translate plugin
 Plug 'rhysd/vim-grammarous'           " Spell checker
 Plug 'ianding1/leetcode.vim'          " Leetcode plugin

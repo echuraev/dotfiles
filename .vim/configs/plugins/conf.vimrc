@@ -8,7 +8,6 @@ let s:vim_configuration_files = [
 \ 'common.vimrc',
 \ 'fzf.vimrc',
 \ 'trans.vimrc',
-\ 'vimwiki.vimrc',
 \ 'lsp.vimrc',
 \ 'tags.vimrc',
 \]
