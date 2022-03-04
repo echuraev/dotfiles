@@ -332,6 +332,14 @@ is_in_git_repo() {
   git rev-parse HEAD > /dev/null 2>&1
 }
 
+# passc - Copy password of selected fine
+passc() {
+  local files
+  local PASS_STORE=${HOME}/.password-store
+  file=`find "$PASS_STORE" -name '*.gpg' | sed -e "s:$PASS_STORE/::gi" -e 's:.gpg$::gi' | fzf`
+  pass -c $file
+}
+
 # Show current git status with diff
 gdiff() {
   is_in_git_repo || return
