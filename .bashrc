@@ -1,3 +1,8 @@
+case $- in
+    *i*) ;;
+    *) return;; # don't do anything then non-interactive shell
+esac
+
 if [ -x "$(command -v zsh)"  ]; then
     exec zsh
 else
