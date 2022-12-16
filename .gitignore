@@ -38,6 +38,7 @@
 !.config/kitty/kitty.conf
 !.config/nvim/
 !.config/vifm/
+!.config/gdb/
 !.vimrc
 !.zsh/
 !.zshrc

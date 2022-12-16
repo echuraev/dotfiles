@@ -4,3 +4,6 @@
 [submodule ".mutt/mutt-notmuch-py"]
 	path = .mutt/mutt-notmuch-py
 	url = https://github.com/honza/mutt-notmuch-py
+[submodule ".config/gdb/tvm-gdb-extension"]
+	path = .config/gdb/tvm-gdb-extension
+	url = git@github.com:Lunderberg/tvm-gdb-extension.git

@@ -2,7 +2,9 @@
 set prompt \033[1;32m(gdb) \033[0m
 # Display instructions in Intel format
 set disassembly-flavor intel
-set history save
+set history save on
+set history size 10000
+set history filename ~/.gdb_history
 set print pretty on
 # }}} General #
 # Highlighting {{{ #
@@ -682,4 +684,8 @@ end
 # }}} std::wstring #
 # }}} CPP stl #
 # }}} Pretty-printer #
+# TVM GDB stack trace {{{ #
+source ~/.config/gdb/tvm-gdb-extension/tvm_packedfunc_filter.py
+#source ~/.config/gdb/tvm-gdb-extension/tvm_pretty_print.py
+# }}} TVM GDB stack trace #
 # vim: ts=8 sw=4 sts=4 et foldenable foldmethod=marker foldlevel=0
