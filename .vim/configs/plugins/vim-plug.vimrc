@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 " C++ {{{ "
 " Code Completion {{{ "
 if !g:isAndroid
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'pip install --user ffi-navigator'}
 endif
 " }}} Code Completion "
 " Syntax highlighting {{{ "
