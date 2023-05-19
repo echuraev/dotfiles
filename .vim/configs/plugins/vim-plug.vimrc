@@ -1,5 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
+" Search {{{ "
+Plug 'wincent/ferret'                     " Fast search and replace
+Plug 'google/vim-searchindex'             " Show number of found matches
+" }}} Search "
 " Programming {{{ "
 " C++ {{{ "
 " Code Completion {{{ "
@@ -14,6 +18,9 @@ Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting
 Plug 'ilyachur/cmake4vim'
 " }}} CMake support "
 " }}} C++ "
+" Python {{{ "
+Plug 'psf/black', { 'branch': 'stable' }
+" }}} Python "
 " C# {{{ "
 " Syntax highlighting {{{ "
 Plug 'OrangeT/vim-csharp', { 'for': 'cs' }                  " C# highlighting
@@ -100,10 +107,6 @@ Plug 'junegunn/gv.vim'                    " light git commits browser
 Plug 'rhysd/committia.vim'                " extended commit message
 Plug 'hotwatermorning/auto-git-diff'      " git diff for rebase interactive
 " }}} Git "
-" Search {{{ "
-Plug 'wincent/ferret'                     " Fast search and replace
-Plug 'google/vim-searchindex'             " Show number of found matches
-" }}} Search "
 " Project {{{ "
 Plug 'tpope/vim-dispatch'                 " Project compiling
 if !g:isWindows && !g:isAndroid
