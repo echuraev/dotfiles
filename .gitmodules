@@ -7,3 +7,6 @@
 [submodule ".config/gdb/tvm-gdb-extension"]
 	path = .config/gdb/tvm-gdb-extension
 	url = git@github.com:Lunderberg/tvm-gdb-extension.git
+[submodule ".config/gdb/tvm-gdb-commands"]
+	path = .config/gdb/tvm-gdb-commands
+	url = https://github.com/anirudhsundar/tvm-gdb-commands.git

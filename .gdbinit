@@ -685,7 +685,9 @@ end
 # }}} CPP stl #
 # }}} Pretty-printer #
 # TVM GDB stack trace {{{ #
-source ~/.config/gdb/tvm-gdb-extension/tvm_packedfunc_filter.py
-#source ~/.config/gdb/tvm-gdb-extension/tvm_pretty_print.py
+source ~/.config/gdb/tvm-gdb-extension/source-me.py
 # }}} TVM GDB stack trace #
+# TVM-gdb-commands {{{ #
+source ~/.config/gdb/tvm-gdb-commands/commands.py
+# }}} TVM-gdb-commands #
 # vim: ts=8 sw=4 sts=4 et foldenable foldmethod=marker foldlevel=0
