@@ -58,7 +58,7 @@ Plug 'junegunn/vader.vim', { 'on': 'Vader' }                " Testing framework 
 if !g:isWindows && !g:isAndroid
     Plug 'echuraev/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
     Plug 'puremourning/vimspector', { 'do': './install_gadget.py --all --disable-tcl'  }
-    Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }       " Gdb, lldb wrapper for neovim
+    "Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }       " Gdb, lldb wrapper for neovim
 endif
 " }}} Debugging "
 " Json {{{ "
@@ -82,12 +82,7 @@ endif
 " Fuzzy Finder {{{ "
 " Plugin outside ~/.vim/plugged with post-update hook
 " On windows download binaries from the github
-if !g:isWindows
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-else
-    Plug 'junegunn/fzf'
-endif
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
 " }}} Fuzzy Finder "
 " Tmux {{{ "
 if !g:isWindows
