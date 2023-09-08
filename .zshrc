@@ -1,35 +1,27 @@
-#  zplug configuration {{{ #
-if [[ ! -d ~/.zplug ]]; then
-    git clone https://github.com/b4b4r07/zplug ~/.zplug
-fi
+#  zinit configuration {{{ #
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
-if [ -f ~/.zplug/log/job.lock ]; then
-    echo "Remove lock file!"
-    rm -f ~/.zplug/log/job.lock
-fi
+# Syntax highlighting for commands better in compare with zsh-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
+# Load completion library for those sweet [tab] squares
+zinit snippet OMZ::lib/completion.zsh
+# Suggests package name with relevant command
+zinit snippet OMZ::plugins/command-not-found/command-not-found.plugin.zsh
+# 'x' alias - swiss knife for archive extracting
+zinit snippet OMZ::plugins/extract/extract.plugin.zsh
+# Print time after long command
+zinit light popstas/zsh-command-time
+# Create and navigate in bookmarks in Bash and Zsh
+zinit light urbainvaes/fzf-marks
 
-source ~/.zplug/init.zsh
+autoload compinit
+compinit
 
-zplug "zdharma/fast-syntax-highlighting", defer:2           # Syntax highlighting for commands better in compare with zsh-syntax-highlighting
-zplug "lib/completion", from:oh-my-zsh                      # Load completion library for those sweet [tab] squares
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'       # Manage zplug as other plugins
-zplug "plugins/command-not-found", from:oh-my-zsh           # Suggests package name with relevant command
-zplug "plugins/extract", from:oh-my-zsh                     # 'x' alias - swiss knife for archive extracting
-zplug "popstas/zsh-command-time"                            # Print time after long command
-zplug "urbainvaes/fzf-marks"                                # Create and navigate in bookmarks in Bash and Zsh
-
-# Install packages that have not been installed yet
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    else
-        echo
-    fi
-fi
-
-zplug load
-#  }}} zplug configuration #
+#zplug load
+#  }}} zinit configuration #
 #  zsh-command-time configs {{{ #
 ZSH_COMMAND_TIME_ECHO=1           # Show time
 ZSH_COMMAND_TIME_MIN_SECONDS=3    # if command executes more than 3 seconds, time will shown
