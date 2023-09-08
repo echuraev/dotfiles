@@ -16,11 +16,12 @@ zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 zinit light popstas/zsh-command-time
 # Create and navigate in bookmarks in Bash and Zsh
 zinit light urbainvaes/fzf-marks
+# FZF completion
+zinit light Aloxaf/fzf-tab
 
 autoload compinit
 compinit
 
-#zplug load
 #  }}} zinit configuration #
 #  zsh-command-time configs {{{ #
 ZSH_COMMAND_TIME_ECHO=1           # Show time
