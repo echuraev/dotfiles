@@ -1,0 +1,19 @@
+let s:root = expand('<sfile>:h').'/'
+
+" Cmake
+let g:cmake_build_type = "Debug"
+let g:make_arguments = "-j16"
+let g:cmake_compile_commands = 1
+let g:cmake_compile_commands_link = s:root
+let g:cmake_usr_args = "-DUSE_OPENCL=ON \
+                        -DUSE_METAL=ON \
+                        -DUSE_RPC=ON \
+                        -DUSE_GRAPH_RUNTIME=ON \
+                        -DUSE_GRAPH_RUNTIME_DEBUG=ON \
+                        -DUSE_LLVM=ON \
+                        -DUSE_RANDOM=ON \
+                        -DUSE_SORT=ON \
+                        -DUSE_ARM_COMPUTE_LIB=ON \
+                        -DUSE_RELAY_DEBUG=ON \
+                        -DUSE_BNNS=ON"
+

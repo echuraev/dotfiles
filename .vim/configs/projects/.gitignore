@@ -2,4 +2,5 @@
 
 !.gitignore
 !cpp/
+!tvm/
 !projects_menu.vimrc
