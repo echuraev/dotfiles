@@ -16,11 +16,9 @@ zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 zinit light popstas/zsh-command-time
 # Create and navigate in bookmarks in Bash and Zsh
 zinit light urbainvaes/fzf-marks
-# FZF completion
-zinit light Aloxaf/fzf-tab
-
-autoload compinit
-compinit
+## FZF completion
+#zinit light Aloxaf/fzf-tab
+#
 
 #  }}} zinit configuration #
 #  zsh-command-time configs {{{ #
@@ -103,5 +101,7 @@ bindkey 'OB' history-beginning-search-forward
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 bindkey '^G' jump           # key binding for run fzf-marks
+autoload compinit
+compinit
 compdef _cp cpv
 
