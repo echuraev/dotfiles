@@ -83,6 +83,7 @@ endif
 " Plugin outside ~/.vim/plugged with post-update hook
 " On windows download binaries from the github
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
+Plug 'junegunn/fzf.vim'
 " }}} Fuzzy Finder "
 " Tmux {{{ "
 if !g:isWindows
