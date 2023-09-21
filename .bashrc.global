@@ -222,7 +222,7 @@ fi
 TOOL_BIN=$LOCAL_BIN/fd
 if [ ! -f $TOOL_BIN ]; then
     echo "Installing fd"
-    res=$(install_tool 'https://github.com/sharkdp/fd' 'fd' 'v8.7.1' 'fd')
+    res=$(install_tool 'https://github.com/sharkdp/fd' 'fd' 'v8.7.0' 'fd')
     # Enable autocompletion
     cp -f $res/autocomplete/_fd $ZSH_COMPL_DIR
 fi
