@@ -379,6 +379,26 @@ gcort() {
   git checkout --track $(echo "$branch" | sed "s/.* //")
 }
 
+# gcsc - checkout current branch to specific commit
+gcsc() {
+  is_in_git_repo || return
+  local commits commit
+  secret_char="~~GRTC_BACKSLASH~~"
+  commits=$(git log --pretty='%C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s' --graph --date=human | sed -e "s/\//${secret_char}/g" -e "s/\\\\/\//g" -e "s/${secret_char}/\\\\/g")
+  commit=$(echo "$commits" | fzf --query="$1" --select-1 --exit-0 | sed -e "s/^[ *\|/]*//g" | cut -d" " -f1)
+  git checkout $commit
+}
+
+# grtc - hard reset git repository to specific commit
+grtc() {
+  is_in_git_repo || return
+  local commits commit
+  secret_char="~~GRTC_BACKSLASH~~"
+  commits=$(git log --pretty='%C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s' --graph --date=human | sed -e "s/\//${secret_char}/g" -e "s/\\\\/\//g" -e "s/${secret_char}/\\\\/g")
+  commit=$(echo "$commits" | fzf --query="$1" --select-1 --exit-0 | sed -e "s/^[ *\|/]*//g" | cut -d" " -f1)
+  git reset --hard $commit
+}
+
 # gcot - checkout git branch/tag
 gcot() {
   is_in_git_repo || return
@@ -498,6 +518,7 @@ cce() {
     local conda_env
     conda_env=$(conda info --envs | sed '/^#/d' | \
         fzf --query="$1" --select-1 --exit-0)
+    conda deactivate
     conda activate $(echo $conda_env | awk '{print $1}')
 }
 
