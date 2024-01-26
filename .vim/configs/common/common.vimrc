@@ -153,3 +153,6 @@ if !g:isWindows
 endif
 set splitbelow splitright        " Splits open at the botom and right
 " }}} Other "
+" Debugging {{{ "
+packadd termdebug
+" }}} Debugging "
