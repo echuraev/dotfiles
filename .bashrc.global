@@ -522,6 +522,26 @@ cce() {
     conda activate $(echo $conda_env | awk '{print $1}')
 }
 
+# dce - delete conda environment
+dce() {
+    if ! command -v conda &> /dev/null
+    then
+        return
+    fi
+
+    current_name=${CONDA_PREFIX##*/}
+
+    local conda_env
+    conda_env=$(conda info --envs | sed '/^#/d' | \
+        fzf --query="$1" --select-1 --exit-0)
+    selected_name=$(echo $conda_env | awk '{print $1}')
+    if [ "$current_name" = "$selected_name" ]; then
+        conda deactivate
+    fi
+
+    conda remove --name $selected_name --all
+}
+
 # ghco - GitHub checkout specific branch
 ghco() {
   local jq_template pr_number
