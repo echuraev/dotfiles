@@ -5,7 +5,7 @@ setlocal softtabstop=4
 
 
 augroup whitespace
-  au BufWinEnter *.py let w:m2=matchadd('WarningMsg', '\%>80v.\+', -1)
+  "au BufWinEnter *.py let w:m2=matchadd('WarningMsg', '\%>80v.\+', -1)
   au BufWinLeave *.py call clearmatches()
 augroup END
 
