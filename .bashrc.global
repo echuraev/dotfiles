@@ -656,4 +656,9 @@ export LESS_TERMCAP_mh=$(tput dim)
 # Enable core dump\
 ulimit -c unlimited
 # }}} Ulimit #
-
+#  PDF compress {{{ # 
+pdfcompress ()
+{
+   gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dPDFSETTINGS=/screen -dEmbedAllFonts=true -dSubsetFonts=true -dPrinted=false -dColorImageDownsampleType=/Bicubic -dColorImageResolution=720 -dGrayImageDownsampleType=/Bicubic -dGrayImageResolution=720 -dMonoImageDownsampleType=/Bicubic -dMonoImageResolution=720 -sOutputFile=$1.compressed.pdf $1; 
+}
+#  }}} PDF compress # 
