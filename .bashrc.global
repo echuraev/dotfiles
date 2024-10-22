@@ -184,11 +184,15 @@ function install_tool() {
     tool_version=$3
     full_name=${4:-$tool_name}
     TOOL_BIN=$LOCAL_BIN/$tool_name
+    # TODO: Rewrite next lines maybe with `gh release view` and python
+    LINUX_ENDING=${5:-'x86_64-unknown-linux-musl'}
+    MACOS_ENDING=${6:-'x86_64-apple-darwin'}
+    tool_version_archive=${7:-$tool_version}
     if [ ! -f $TOOL_BIN ]; then
         if [[ `uname` != 'Darwin' ]]; then
-            export archive_name=$full_name'-'$tool_version'-x86_64-unknown-linux-musl'
+            export archive_name=$full_name'-'$tool_version_archive'-'$LINUX_ENDING
         else
-            export archive_name=$full_name'-'$tool_version'-x86_64-apple-darwin'
+            export archive_name=$full_name'-'$tool_version_archive'-'$MACOS_ENDING
         fi
         tmp_dir='/tmp/'
         if isAndroidOS; then
@@ -197,8 +201,13 @@ function install_tool() {
         fi
         wget -O $tmp_dir/$archive_name.tar.gz $github_repo/releases/download/$tool_version/$archive_name.tar.gz
         tar xf $tmp_dir/$archive_name.tar.gz -C $tmp_dir
-        cp -f $tmp_dir/$archive_name/$tool_name $TOOL_BIN
-        echo "$tmp_dir/$archive_name"
+        if [ ! -f $tmp_dir/$archive_name/$tool_name ]; then
+            echo "$tmp_dir/$tool_name"
+            cp -f $tmp_dir/$tool_name $TOOL_BIN
+        else
+            echo "$tmp_dir/$archive_name"
+            cp -f $tmp_dir/$archive_name/$tool_name $TOOL_BIN
+        fi
     fi
 }
 # }}} Install function #
@@ -206,7 +215,7 @@ function install_tool() {
 TOOL_BIN=$LOCAL_BIN/bat
 if [ ! -f $TOOL_BIN ]; then
     echo "Installing bat"
-    install_tool 'https://github.com/sharkdp/bat' 'bat' 'v0.15.4'
+    install_tool 'https://github.com/sharkdp/bat' 'bat' 'v0.24.0'
 fi
 # }}} Install bat #
 # Install ripgrep {{{ #
@@ -222,11 +231,18 @@ fi
 TOOL_BIN=$LOCAL_BIN/fd
 if [ ! -f $TOOL_BIN ]; then
     echo "Installing fd"
-    res=$(install_tool 'https://github.com/sharkdp/fd' 'fd' 'v8.7.0' 'fd')
+    res=$(install_tool 'https://github.com/sharkdp/fd' 'fd' 'v8.7.0')
     # Enable autocompletion
     cp -f $res/autocomplete/_fd $ZSH_COMPL_DIR
 fi
 # }}} Install fd #
+# Install fzf {{{ #
+TOOL_BIN=$LOCAL_BIN/fzf
+if [ ! -f $TOOL_BIN ]; then
+    echo "Installing fzf"
+    res=$(install_tool 'https://github.com/junegunn/fzf' 'fzf' 'v0.55.0' 'fzf' 'linux_amd64' 'darwin_amd64' '0.55.0')
+fi
+# }}} Install fzf #
 # Instal Tmux Plugin Manager {{{ #
 export TPM_DIR=$HOME/.tmux/plugins/tpm
 if [ ! -d $TPM_DIR ]; then
@@ -662,3 +678,13 @@ pdfcompress ()
    gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dPDFSETTINGS=/screen -dEmbedAllFonts=true -dSubsetFonts=true -dPrinted=false -dColorImageDownsampleType=/Bicubic -dColorImageResolution=720 -dGrayImageDownsampleType=/Bicubic -dGrayImageResolution=720 -dMonoImageDownsampleType=/Bicubic -dMonoImageResolution=720 -sOutputFile=$1.compressed.pdf $1; 
 }
 #  }}} PDF compress # 
+#  Install NVM {{{ #
+install_nvm ()
+{
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+    source ~/.config/nvm/nvm.sh
+
+    nvm install v20.18.0
+}
+#  }}} Install NVM #
