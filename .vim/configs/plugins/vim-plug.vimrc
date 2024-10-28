@@ -56,8 +56,7 @@ Plug 'junegunn/vader.vim', { 'on': 'Vader' }                " Testing framework 
 " }}} VimL "
 " Debugging {{{ "
 if !g:isWindows && !g:isAndroid
-    Plug 'echuraev/Conque-GDB', { 'on': 'ConqueGdb' }         " Conque GDB
-    Plug 'puremourning/vimspector', { 'do': './install_gadget.py --all --disable-tcl'  }
+    Plug 'puremourning/vimspector', { 'do': './install_gadget.py --all --disable-tcl --disable-go'  }
     "Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }       " Gdb, lldb wrapper for neovim
 endif
 " }}} Debugging "
