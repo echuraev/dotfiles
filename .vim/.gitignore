@@ -1,0 +1,9 @@
+/spell/*
+/bundle/*
+/plugged/*
+/swapfiles/*
+/.netrwhist
+/undodir
+/view
+/autoload
+/sessions

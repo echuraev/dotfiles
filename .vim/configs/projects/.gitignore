@@ -3,4 +3,5 @@
 !.gitignore
 !cpp/
 !tvm/
+!axelera/
 !projects_menu.vimrc

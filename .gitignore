@@ -1,18 +1,10 @@
 # Ignore everythong
 /*
-/.vim/.*
-/.vim/spell/*
-/.vim/bundle/*
-/.vim/plugged/*
-/.vim/swapfiles/*
 /.config/kitty/*
 /.emacs.d/*
 *~
 \#*\#
 .\#*
-/.vim/.netrwhist
-/.vim/undodir
-/.vim/view
 *.DS_Store
 /.config/*
 /.tmux/plugins

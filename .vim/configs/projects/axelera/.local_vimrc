@@ -1,0 +1,3 @@
+" Generate file with environment
+let location = getcwd()
+execute "!bash -c \"source ".location."/build-Release/workspace/chroot/bin/axelera-activate.sh && env > ".location."/.chroot_venv\""

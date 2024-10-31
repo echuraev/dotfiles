@@ -18,8 +18,8 @@ nmap <buffer> gS :10 split term://ipython --simple-prompt<cr>:startinsert<cr>
 "nmap <buffer> gK :!nvim-keywordprg python <cword><cr>
 nmap <buffer> <leader>dd :term python3 -m pdb %:p
 nmap <buffer> <leader>r :term python3 %:p
-nmap <buffer> <leader>dr :TermdebugCommand python3 %:p
-nmap <buffer> <leader>db ^:startinsert<cr>__import__('pdb').set_trace()<cr>
+"nmap <buffer> <leader>dr :TermdebugCommand python3 %:p
+"nmap <buffer> <leader>db ^:startinsert<cr>__import__('pdb').set_trace()<cr>
 nmap <buffer> <silent><localleader>? :<C-u>Cheatdebug<cr>
 
 ia <buffer> pp print(f"DEBUG:")<Left><Left>

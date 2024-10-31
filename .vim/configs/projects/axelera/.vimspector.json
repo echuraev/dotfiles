@@ -1,0 +1,22 @@
+{
+    "configurations": {
+        "Python e2e test": {
+            "adapter": "debugpy",
+            "configuration": {
+                "name": "Python e2e test: Launch",
+                "type": "python",
+                "request": "launch",
+                "python": "${workspaceRoot}/build-Release/workspace/chroot/bin/python",
+                "module": "pytest",
+                "cwd": "${workspaceRoot}",
+                "stopOnEntry": true,
+                "console": "externalTerminal",
+                "debugOptions": [],
+                "args": ["-s", "--rootdir=host/tvm", "host/tvm/axelera_compiler/tests/integration/test_aicoresim_network_e2e.py::test_aicoresim_network_e2e[model_name=squeezenet1.0-generation=Omega-quantizer_version=AxeleraQuantizerVersion.V1]"],
+                "envFile": "${workspaceRoot}/.chroot_venv"
+            }
+        }
+    }
+}
+
+
