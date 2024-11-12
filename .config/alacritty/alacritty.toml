@@ -1,0 +1,18 @@
+[env]
+TERM = "xterm-256color"
+
+[scrolling]
+# Maximum number of lines in the scrollback buffer.
+# Specifying '0' will disable scrolling.
+history = 100000
+
+# Scrolling distance multiplier.
+multiplier = 3
+
+[font]
+# Font family
+normal = { family = "LiterationMono Nerd Font Mono", style = "Book" }
+size = 14.0
+
+[window]
+opacity = 0.9
