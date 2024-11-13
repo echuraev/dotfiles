@@ -98,7 +98,7 @@ bindkey 'OB' history-beginning-search-forward
 [ -f $HOME/.bashrc.global ] && source $HOME/.bashrc.global
 
 # Load FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 bindkey '^G' jump           # key binding for run fzf-marks
 autoload compinit
