@@ -35,6 +35,12 @@ weather_today_timeout() {
     timeout $t curl "${cmd}"
 }
 
+# Taken from here: https://unix.stackexchange.com/questions/285924/how-to-compare-a-programs-version-in-a-shell-script
+version_ge()
+{
+    printf '%s\n%s\n' "$2" "$1" | sort --check=quiet --version-sort
+}
+
 vimgdb() {
     args=""
     for arg in $@; do
@@ -162,6 +168,7 @@ export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_TYPE=en_US.UTF-8
+export FZF_TMUX_VERSION="3.3"
 
 export EDITOR=vim
 export SVN_EDITOR=vim
@@ -276,12 +283,22 @@ export FZF_DEFAULT_OPTS='--height 30% --border'
 #   - Exit if there's no match (--exit-0)
 fe() {
   local files
-  IFS=$'\n' files=($(fzf-tmux --preview '[[ $(file --mime {}) =~ binary ]] && \
-                 echo {} is a binary file || \
-                 (highlight -O ansi -l {} || \
-                  coderay {} || \
-                  rougify {} || \
-                  cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
+  tmux_v=$(tmux -V | sed 's/^tmux //')
+  if version_ge $tmux_v $FZF_TMUX_VERSION; then
+    IFS=$'\n' files=($(fzf --tmux bottom --preview '[[ $(file --mime {}) =~ binary ]] && \
+                   echo {} is a binary file || \
+                   (highlight -O ansi -l {} || \
+                    coderay {} || \
+                    rougify {} || \
+                    cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
+  else
+    IFS=$'\n' files=($(fzf-tmux --preview '[[ $(file --mime {}) =~ binary ]] && \
+                   echo {} is a binary file || \
+                   (highlight -O ansi -l {} || \
+                    coderay {} || \
+                    rougify {} || \
+                    cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
+  fi
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
@@ -290,12 +307,22 @@ fe() {
 #   - Exit if there's no match (--exit-0)
 frm() {
   local files
-  IFS=$'\n' files=($(fzf-tmux --preview '[[ $(file --mime {}) =~ binary ]] && \
-                 echo {} is a binary file || \
-                 (highlight -O ansi -l {} || \
-                  coderay {} || \
-                  rougify {} || \
-                  cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
+  tmux_v=$(tmux -V | sed 's/^tmux //')
+  if version_ge $tmux_v $FZF_TMUX_VERSION; then
+    IFS=$'\n' files=($(fzf --tmux bottom --preview '[[ $(file --mime {}) =~ binary ]] && \
+                   echo {} is a binary file || \
+                   (highlight -O ansi -l {} || \
+                    coderay {} || \
+                    rougify {} || \
+                    cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
+  else
+    IFS=$'\n' files=($(fzf-tmux --preview '[[ $(file --mime {}) =~ binary ]] && \
+                   echo {} is a binary file || \
+                   (highlight -O ansi -l {} || \
+                    coderay {} || \
+                    rougify {} || \
+                    cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
+  fi
   [[ -n "$files" ]] && rm -i "${files[@]}"
 }
 
@@ -374,11 +401,20 @@ gcor() {
   is_in_git_repo || return
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-  sed 's/^..//' | cut -d' ' -f1 |
-  sed 's#^remotes/##') &&
+  tmux_v=$(tmux -V | sed 's/^tmux //')
+  if version_ge $tmux_v $FZF_TMUX_VERSION; then
+    branch=$(echo "$branches" |
+             fzf --tmux bottom -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+    sed 's/^..//' | cut -d' ' -f1 |
+    sed 's#^remotes/##') || return
+  else
+    branch=$(echo "$branches" |
+             fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+    sed 's/^..//' | cut -d' ' -f1 |
+    sed 's#^remotes/##') || return
+  fi
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
@@ -387,11 +423,20 @@ gcort() {
   is_in_git_repo || return
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-  sed 's/^..//' | cut -d' ' -f1 |
-  sed 's#^remotes/##') &&
+  tmux_v=$(tmux -V | sed 's/^tmux //')
+  if version_ge $tmux_v $FZF_TMUX_VERSION; then
+    branch=$(echo "$branches" |
+             fzf --tmux bottom -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+    sed 's/^..//' | cut -d' ' -f1 |
+    sed 's#^remotes/##') || return
+  else
+    branch=$(echo "$branches" |
+             fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+    sed 's/^..//' | cut -d' ' -f1 |
+    sed 's#^remotes/##') || return
+  fi
   git checkout --track $(echo "$branch" | sed "s/.* //")
 }
 
@@ -424,10 +469,18 @@ gcot() {
     git branch --all | grep -v HEAD             |
     sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
     sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
-  target=$(
-    (echo "$tags"; echo "$branches") |
-    fzf-tmux -- --no-hscroll --ansi +m --multi --preview-window right:70% \
-    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {} | head -'$LINES -d "\t" -n 2) || return
+  tmux_v=$(tmux -V | sed 's/^tmux //')
+  if version_ge $tmux_v $FZF_TMUX_VERSION; then
+    target=$(
+      (echo "$tags"; echo "$branches") |
+      fzf --tmux bottom -- --no-hscroll --ansi +m --multi --preview-window right:70% \
+      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {} | head -'$LINES -d "\t" -n 2) || return
+  else
+    target=$(
+      (echo "$tags"; echo "$branches") |
+      fzf-tmux -- --no-hscroll --ansi +m --multi --preview-window right:70% \
+      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {} | head -'$LINES -d "\t" -n 2) || return
+  fi
   git checkout $(echo "$target" | awk '{print $2}')
 }
 
@@ -459,11 +512,20 @@ gdrb() {
   local branches branch remote_name branch_name
   remote_name=""
   branches=$(git branch --remotes | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-           --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-           sed 's/^..//' | cut -d' ' -f1 |
-           sed 's#^remotes/##') &&
+  tmux_v=$(tmux -V | sed 's/^tmux //')
+  if version_ge $tmux_v $FZF_TMUX_VERSION; then
+    branch=$(echo "$branches" |
+             fzf --tmux bottom -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+             --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+             sed 's/^..//' | cut -d' ' -f1 |
+             sed 's#^remotes/##') || return
+  else
+    branch=$(echo "$branches" |
+             fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+             --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+             sed 's/^..//' | cut -d' ' -f1 |
+             sed 's#^remotes/##') || return
+  fi
   IFS='/' read remote_name branch_name <<< "$branch"
   echo "git push ${remote_name} --delete ${branch_name}"
   git push ${remote_name} --delete ${branch_name}
@@ -516,11 +578,20 @@ gitvr() {
   is_in_git_repo || return
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-  sed 's/^..//' | cut -d' ' -f1 |
-  sed 's#^remotes/##') &&
+  tmux_v=$(tmux -V | sed 's/^tmux //')
+  if version_ge $tmux_v $FZF_TMUX_VERSION; then
+    branch=$(echo "$branches" |
+             fzf --tmux bottom -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+    sed 's/^..//' | cut -d' ' -f1 |
+    sed 's#^remotes/##') || return
+  else
+    branch=$(echo "$branches" |
+             fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+    sed 's/^..//' | cut -d' ' -f1 |
+    sed 's#^remotes/##') || return
+  fi
   vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##") -c "tabonly"
 }
 
