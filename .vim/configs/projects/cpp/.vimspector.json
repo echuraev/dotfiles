@@ -16,6 +16,31 @@
                 "MImode": "lldb"
             }
         },
+        "Run GTests (ONNX)": {
+            "adapter": "vscode-cpptools",
+            "breakpoints": {
+                "exception": {
+                    "caught": "",
+                    "uncaught": "Y",
+                    "cpp_throw": "Y",
+                    "cpp_catch": "Y"
+                }
+            },
+            "configuration": {
+                "name": "Run GTests (ONNX)",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceRoot}/cmake-build-Debug/bin/unit_tests",
+                "args": ["--gtest_filter=*Two*onnx*"],
+                "environment": [
+                    {"name": "EMOTIEFFLIB_ROOT", "value": "/Users/echuraev/Workspace/HSE/face-emotion-recognition"}
+                ],
+                "cwd": "${workspaceRoot}",
+                "stopAtEntry": false,
+                "externalConsole": false,
+                "MIMode": "lldb"
+            }
+        },
         "Unit tests": {
             "adapter": "vscode-cpptools",
             "configuration": {
@@ -51,4 +76,3 @@
         }
     }
 }
-
