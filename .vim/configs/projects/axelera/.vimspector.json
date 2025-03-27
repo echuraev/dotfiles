@@ -2,18 +2,39 @@
     "configurations": {
         "Python e2e test": {
             "adapter": "debugpy",
+            "variables": {
+                "BuildType": "RelWithDebInfo"
+            },
             "configuration": {
                 "name": "Python e2e test: Launch",
                 "type": "python",
                 "request": "launch",
-                "python": "${workspaceRoot}/build-Release/workspace/chroot/bin/python",
+                "python": "${workspaceRoot}/build-${BuildType}/workspace/chroot/bin/python",
                 "module": "pytest",
                 "cwd": "${workspaceRoot}",
                 "stopOnEntry": true,
                 "console": "externalTerminal",
                 "debugOptions": [],
-                "args": ["-s", "--rootdir=host/tvm", "host/tvm/axelera_compiler/tests/integration/test_aicoresim_network_e2e.py::test_aicoresim_network_e2e[model_name=squeezenet1.0-generation=Omega-quantizer_version=AxeleraQuantizerVersion.V1]"],
-                "envFile": "${workspaceRoot}/.chroot_venv"
+                "args": ["host/tvm/tvm-src/tests/python/relay/test_pass_partition_graph.py", "-s", "-k", "test_multiple_outputs"]
+            }
+        },
+        "Python e2e test cpp debug": {
+            "adapter": "vscode-cpptools",
+            "variables": {
+                "BuildType": "RelWithDebInfo",
+                "Debugger": "gdb"
+            },
+            "configuration": {
+                "name": "Python e2e test cpp debug: Launch",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceRoot}/build-${BuildType}/workspace/chroot/bin/python",
+                "args": ["-m", "pytest", "host/tvm/tvm-src/tests/python/relay/test_pass_partition_graph.py", "-s", "-k", "test_multiple_outputs"],
+                "cwd": "${workspaceRoot}",
+                "stopOnEntry": false,
+                "console": "externalTerminal",
+                "debugOptions": [],
+                "MIMode": "${Debugger}"
             }
         }
     }
