@@ -7,9 +7,10 @@ Plug 'google/vim-searchindex'             " Show number of found matches
 " Programming {{{ "
 " C++ {{{ "
 " Code Completion {{{ "
-if !g:isAndroid
-    Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'pip install --user ffi-navigator'}
-endif
+Plug 'prabirshrestha/vim-lsp', {'do': 'pip install --user ffi-navigator'}
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " }}} Code Completion "
 " Syntax highlighting {{{ "
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting

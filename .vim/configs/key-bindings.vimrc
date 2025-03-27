@@ -89,53 +89,17 @@ nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> <leader>g <Plug>(coc-definition)
-nmap <silent> <leader>gd <Plug>(coc-type-definition)
-nmap <silent> <leader>gi <Plug>(coc-implementation)
-nmap <silent> <leader>gr <Plug>(coc-references)
+nmap <silent> <leader>g <Plug>(lsp-definition)
+nmap <silent> <leader>gd <Plug>(lsp-type-definition)
+nmap <silent> <leader>gi <Plug>(lsp-implementation)
+nmap <silent> <leader>gr <Plug>(lsp-references)
 
 " Use D for show documentation in preview window
 nnoremap <silent> <leader>D :call <SID>show_documentation()<CR>
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-nmap <Leader>rf <Plug>(coc-refactor)
-
-" Remap for format selected region
-vmap <leader>cf  <Plug>(coc-format-selected)
-nmap <leader>cf  <Plug>(coc-format-selected)
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>cas  <Plug>(coc-codeaction-selected)
-nmap <leader>cas  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ca  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <leader>cd :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <leader>ce :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <leader>cl :<C-u>CocList commands<cr>
-" Resume latest coc list
-nnoremap <silent> <leader>cr :<C-u>CocListResume<CR>
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
+nmap <leader>rn <Plug>(lsp-rename)
+nmap <silent> <leader>qf <Plug>(lsp-code-action-float)
 " }}} LSP "
 " trans {{{ "
 inoremap <silent> <leader>t <ESC>:Trans<CR>
