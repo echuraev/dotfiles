@@ -170,7 +170,9 @@ export LANG=en_US.UTF-8
 export LC_TYPE=en_US.UTF-8
 export FZF_TMUX_VERSION="3.3"
 
-export EDITOR=vim
+export EDITOR=${EDITOR:-vim}
+export VISUAL=$EDITOR
+export GIT_EDITOR=$EDITOR
 export SVN_EDITOR=vim
 
 export TERM=xterm-256color
