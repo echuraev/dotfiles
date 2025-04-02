@@ -105,3 +105,5 @@ autoload compinit
 compinit
 compdef _cp cpv
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

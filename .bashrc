@@ -12,3 +12,5 @@ else
 
     set -o vi
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
