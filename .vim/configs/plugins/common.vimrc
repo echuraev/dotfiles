@@ -7,11 +7,6 @@ let g:ConqueGdb_BreakEnabledSymbol = ''
 let g:ConqueGdb_BreakDisabledSymbol = '⭘'
 let g:ConqueGdb_SaveHistory = 1
 " }}} Conque-gdb "
-" diff mode {{{ "
-if has("patch-8.1.0360")
-    set diffopt+=internal,algorithm:patience
-endif
-" }}} diff mode "
 " IndentLine {{{ "
 let g:indentLine_fileTypeExclude=['calendar', 'startify']
 let g:indentLine_bufNameExclude=['calendar', 'startify']

@@ -11,7 +11,7 @@ multiplier = 3
 
 [font]
 # Font family
-normal = { family = "LiterationMono Nerd Font Mono", style = "Book" }
+normal = { family = "LiterationMono Nerd Font Mono" }
 size = 14.0
 
 [window]

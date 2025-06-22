@@ -151,14 +151,14 @@ command ssh
     \ | execute '!rm $SSH_FILE'
 " }}} Commands "
 " OS Specific settings {{{ "
-if $VIFM_IS_WIN
+if $VIFM_IS_WIN == 1
     filetype * start, explorer
 endif
-if $VIFM_IS_MAC
+if $VIFM_IS_MAC == 1
     "filetype * open
     source ~/.config/vifm/os_specific/mac_settings.vifmrc
 endif
-if $VIFM_IS_LIN
+if $VIFM_IS_LIN == 1
     "filetype * xdg-open
     source ~/.config/vifm/os_specific/linux_settings.vifmrc
 endif
