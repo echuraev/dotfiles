@@ -4,6 +4,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'wincent/ferret'                     " Fast search and replace
 Plug 'google/vim-searchindex'             " Show number of found matches
 " }}} Search "
+" AI {{{ "
+if has('nvim')
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'greggh/claude-code.nvim'
+endif
+" }}} AI "
 " Programming {{{ "
 " C++ {{{ "
 " Code Completion {{{ "

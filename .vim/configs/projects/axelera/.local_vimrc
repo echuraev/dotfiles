@@ -1,7 +1,7 @@
 " Generate file with environment
 "let location = resolve(expand('%:h'))
 let location = getcwd()
-let build_type = "Release"
+let build_type = "RelWithDebInfo"
 let env_file = location."/.chroot_venv"
 if !filereadable(env_file)
     execute "!bash -c \"source ".location."/build-".build_type."/workspace/chroot/bin/axelera-activate.sh && env > ".env_file."\""
