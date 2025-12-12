@@ -11,6 +11,9 @@ else
     eval "$(fzf --bash)"
 
     set -o vi
+
+    # Press Ctrl+X Ctrl+E to edit command in text editor
+    bind '"\C-x\C-e": edit-and-execute-command'
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

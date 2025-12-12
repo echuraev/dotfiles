@@ -79,6 +79,11 @@ bindkey -v
 KEYTIMEOUT=1
 bindkey -a '^[[3~' delete-char
 bindkey -v '^?' backward-delete-char
+
+# Edit command in editor by pressing Ctrl+X Ctrl+E
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
 # Enabled history filtering
 # allow ctrl-p, ctrl-n for navigate history (standard behaviour)
 bindkey '^P' history-beginning-search-backward
