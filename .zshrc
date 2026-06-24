@@ -106,8 +106,20 @@ bindkey 'OB' history-beginning-search-forward
 source <(fzf --zsh)
 
 bindkey '^G' jump           # key binding for run fzf-marks
-autoload compinit
-compinit
+
+# Make custom completions installed by bootstrap.sh (e.g. _rg, _fd) available.
+[ -n "$ZSH_COMPL_DIR" ] && fpath=($ZSH_COMPL_DIR $fpath)
+
+# Speed up startup: only rebuild the completion dump once a day, otherwise load
+# the cached one with -C (skips the security check / recompile).
+autoload -Uz compinit
+_zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+if [ -n "$(find "$_zcompdump" -mtime +1 2>/dev/null)" ] || [ ! -s "$_zcompdump" ]; then
+    compinit -d "$_zcompdump"
+else
+    compinit -C -d "$_zcompdump"
+fi
+unset _zcompdump
 compdef _cp cpv
 
 

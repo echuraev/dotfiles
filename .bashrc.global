@@ -175,7 +175,9 @@ export VISUAL=$EDITOR
 export GIT_EDITOR=$EDITOR
 export SVN_EDITOR=vim
 
-export TERM=xterm-256color
+if [ -z "$TERM" ] || [ "$TERM" = "dumb" ]; then
+    export TERM=xterm-256color
+fi
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZSH_COMPL_DIR="$HOME/.zsh/completion"
@@ -186,85 +188,6 @@ mkdir -p $ZSH_COMPL_DIR
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$LOCAL_BIN:$PATH
 
-# Install function {{{ #
-function install_tool() {
-    github_repo=$1
-    tool_name=$2
-    tool_version=$3
-    full_name=${4:-$tool_name}
-    TOOL_BIN=$LOCAL_BIN/$tool_name
-    # TODO: Rewrite next lines maybe with `gh release view` and python
-    LINUX_ENDING=${5:-'x86_64-unknown-linux-musl'}
-    MACOS_ENDING=${6:-'x86_64-apple-darwin'}
-    tool_version_archive=${7:-$tool_version}
-    if [ ! -f $TOOL_BIN ]; then
-        if [[ `uname` != 'Darwin' ]]; then
-            export archive_name=$full_name'-'$tool_version_archive'-'$LINUX_ENDING
-        else
-            export archive_name=$full_name'-'$tool_version_archive'-'$MACOS_ENDING
-        fi
-        tmp_dir='/tmp/'
-        if isAndroidOS; then
-            tmp_dir='~/tmp/'
-            mkdir -p $tmp_dir
-        fi
-        wget -O $tmp_dir/$archive_name.tar.gz $github_repo/releases/download/$tool_version/$archive_name.tar.gz
-        tar xf $tmp_dir/$archive_name.tar.gz -C $tmp_dir
-        if [ ! -f $tmp_dir/$archive_name/$tool_name ]; then
-            echo "$tmp_dir/$tool_name"
-            cp -f $tmp_dir/$tool_name $TOOL_BIN
-        else
-            echo "$tmp_dir/$archive_name"
-            cp -f $tmp_dir/$archive_name/$tool_name $TOOL_BIN
-        fi
-    fi
-}
-# }}} Install function #
-# Install bat {{{ #
-TOOL_BIN=$LOCAL_BIN/bat
-if [ ! -f $TOOL_BIN ]; then
-    echo "Installing bat"
-    install_tool 'https://github.com/sharkdp/bat' 'bat' 'v0.24.0'
-fi
-# }}} Install bat #
-# Install ripgrep {{{ #
-TOOL_BIN=$LOCAL_BIN/rg
-if [ ! -f $TOOL_BIN ]; then
-    echo "Installing ripgrep"
-    res=$(install_tool 'https://github.com/BurntSushi/ripgrep' 'rg' '13.0.0' 'ripgrep')
-    # Enable autocompletion
-    cp -f $res/complete/_rg $ZSH_COMPL_DIR
-fi
-# }}} Install ripgrep #
-# Install fd {{{ #
-TOOL_BIN=$LOCAL_BIN/fd
-if [ ! -f $TOOL_BIN ]; then
-    echo "Installing fd"
-    res=$(install_tool 'https://github.com/sharkdp/fd' 'fd' 'v8.7.0')
-    # Enable autocompletion
-    cp -f $res/autocomplete/_fd $ZSH_COMPL_DIR
-fi
-# }}} Install fd #
-# Install fzf {{{ #
-TOOL_BIN=$LOCAL_BIN/fzf
-if [ ! -f $TOOL_BIN ]; then
-    echo "Installing fzf"
-    res=$(install_tool 'https://github.com/junegunn/fzf' 'fzf' 'v0.55.0' 'fzf' 'linux_amd64' 'darwin_amd64' '0.55.0')
-fi
-# }}} Install fzf #
-# Instal Tmux Plugin Manager {{{ #
-export TPM_DIR=$HOME/.tmux/plugins/tpm
-if [ ! -d $TPM_DIR ]; then
-    git clone https://github.com/tmux-plugins/tpm $TPM_DIR
-fi
-# }}} Instal Tmux Plugin Manager #
-# Install translate-shell {{{ #
-export TRANS_BIN=$LOCAL_BIN/trans
-if [ ! -f $TRANS_BIN ]; then
-    wget -O $TRANS_BIN git.io/trans
-    chmod +x $TRANS_BIN
-fi
-# }}} Install translate-shell #
 # }}} Setup environment #
 # FZF configurations {{{ #
 
@@ -280,27 +203,31 @@ export FZF_DEFAULT_OPTS='--height 30% --border'
 ##########################################################################
 ### FZF CONFIGS
 ##########################################################################
+# Run fzf, choosing the right invocation for the available tmux version.
+# Newer tmux/fzf use the built-in `fzf --tmux bottom`, older ones the
+# `fzf-tmux` wrapper. All other arguments are passed through unchanged, so the
+# callers stay free of the duplicated version-check branching.
+_fzf_tmux() {
+  local tmux_v
+  tmux_v=$(tmux -V | sed 's/^tmux //')
+  if version_ge "$tmux_v" "$FZF_TMUX_VERSION"; then
+    fzf --tmux bottom "$@"
+  else
+    fzf-tmux "$@"
+  fi
+}
+
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
 fe() {
   local files
-  tmux_v=$(tmux -V | sed 's/^tmux //')
-  if version_ge $tmux_v $FZF_TMUX_VERSION; then
-    IFS=$'\n' files=($(fzf --tmux bottom --preview '[[ $(file --mime {}) =~ binary ]] && \
-                   echo {} is a binary file || \
-                   (highlight -O ansi -l {} || \
-                    coderay {} || \
-                    rougify {} || \
-                    cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
-  else
-    IFS=$'\n' files=($(fzf-tmux --preview '[[ $(file --mime {}) =~ binary ]] && \
-                   echo {} is a binary file || \
-                   (highlight -O ansi -l {} || \
-                    coderay {} || \
-                    rougify {} || \
-                    cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
-  fi
+  IFS=$'\n' files=($(_fzf_tmux --preview '[[ $(file --mime {}) =~ binary ]] && \
+                 echo {} is a binary file || \
+                 (highlight -O ansi -l {} || \
+                  coderay {} || \
+                  rougify {} || \
+                  cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
@@ -309,22 +236,12 @@ fe() {
 #   - Exit if there's no match (--exit-0)
 frm() {
   local files
-  tmux_v=$(tmux -V | sed 's/^tmux //')
-  if version_ge $tmux_v $FZF_TMUX_VERSION; then
-    IFS=$'\n' files=($(fzf --tmux bottom --preview '[[ $(file --mime {}) =~ binary ]] && \
-                   echo {} is a binary file || \
-                   (highlight -O ansi -l {} || \
-                    coderay {} || \
-                    rougify {} || \
-                    cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
-  else
-    IFS=$'\n' files=($(fzf-tmux --preview '[[ $(file --mime {}) =~ binary ]] && \
-                   echo {} is a binary file || \
-                   (highlight -O ansi -l {} || \
-                    coderay {} || \
-                    rougify {} || \
-                    cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
-  fi
+  IFS=$'\n' files=($(_fzf_tmux --preview '[[ $(file --mime {}) =~ binary ]] && \
+                 echo {} is a binary file || \
+                 (highlight -O ansi -l {} || \
+                  coderay {} || \
+                  rougify {} || \
+                  cat {}) 2> /dev/null | head -500' --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && rm -i "${files[@]}"
 }
 
@@ -403,20 +320,11 @@ gcor() {
   is_in_git_repo || return
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
-  tmux_v=$(tmux -V | sed 's/^tmux //')
-  if version_ge $tmux_v $FZF_TMUX_VERSION; then
-    branch=$(echo "$branches" |
-             fzf --tmux bottom -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-    sed 's/^..//' | cut -d' ' -f1 |
-    sed 's#^remotes/##') || return
-  else
-    branch=$(echo "$branches" |
-             fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-    sed 's/^..//' | cut -d' ' -f1 |
-    sed 's#^remotes/##') || return
-  fi
+  branch=$(echo "$branches" |
+           _fzf_tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##') || return
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
@@ -425,20 +333,11 @@ gcort() {
   is_in_git_repo || return
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
-  tmux_v=$(tmux -V | sed 's/^tmux //')
-  if version_ge $tmux_v $FZF_TMUX_VERSION; then
-    branch=$(echo "$branches" |
-             fzf --tmux bottom -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-    sed 's/^..//' | cut -d' ' -f1 |
-    sed 's#^remotes/##') || return
-  else
-    branch=$(echo "$branches" |
-             fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-    sed 's/^..//' | cut -d' ' -f1 |
-    sed 's#^remotes/##') || return
-  fi
+  branch=$(echo "$branches" |
+           _fzf_tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##') || return
   git checkout --track $(echo "$branch" | sed "s/.* //")
 }
 
@@ -471,18 +370,10 @@ gcot() {
     git branch --all | grep -v HEAD             |
     sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
     sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
-  tmux_v=$(tmux -V | sed 's/^tmux //')
-  if version_ge $tmux_v $FZF_TMUX_VERSION; then
-    target=$(
-      (echo "$tags"; echo "$branches") |
-      fzf --tmux bottom -- --no-hscroll --ansi +m --multi --preview-window right:70% \
-      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {} | head -'$LINES -d "\t" -n 2) || return
-  else
-    target=$(
-      (echo "$tags"; echo "$branches") |
-      fzf-tmux -- --no-hscroll --ansi +m --multi --preview-window right:70% \
-      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {} | head -'$LINES -d "\t" -n 2) || return
-  fi
+  target=$(
+    (echo "$tags"; echo "$branches") |
+    _fzf_tmux -- --no-hscroll --ansi +m --multi --preview-window right:70% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {} | head -'$LINES -d "\t" -n 2) || return
   git checkout $(echo "$target" | awk '{print $2}')
 }
 
@@ -514,20 +405,11 @@ gdrb() {
   local branches branch remote_name branch_name
   remote_name=""
   branches=$(git branch --remotes | grep -v HEAD) &&
-  tmux_v=$(tmux -V | sed 's/^tmux //')
-  if version_ge $tmux_v $FZF_TMUX_VERSION; then
-    branch=$(echo "$branches" |
-             fzf --tmux bottom -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-             --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-             sed 's/^..//' | cut -d' ' -f1 |
-             sed 's#^remotes/##') || return
-  else
-    branch=$(echo "$branches" |
-             fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-             --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-             sed 's/^..//' | cut -d' ' -f1 |
-             sed 's#^remotes/##') || return
-  fi
+  branch=$(echo "$branches" |
+           _fzf_tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+           --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+           sed 's/^..//' | cut -d' ' -f1 |
+           sed 's#^remotes/##') || return
   IFS='/' read remote_name branch_name <<< "$branch"
   echo "git push ${remote_name} --delete ${branch_name}"
   git push ${remote_name} --delete ${branch_name}
@@ -580,20 +462,11 @@ gitvr() {
   is_in_git_repo || return
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
-  tmux_v=$(tmux -V | sed 's/^tmux //')
-  if version_ge $tmux_v $FZF_TMUX_VERSION; then
-    branch=$(echo "$branches" |
-             fzf --tmux bottom -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-    sed 's/^..//' | cut -d' ' -f1 |
-    sed 's#^remotes/##') || return
-  else
-    branch=$(echo "$branches" |
-             fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
-      --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-    sed 's/^..//' | cut -d' ' -f1 |
-    sed 's#^remotes/##') || return
-  fi
+  branch=$(echo "$branches" |
+           _fzf_tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m --ansi --multi --tac --preview-window right:50% \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##') || return
   vim "$(git rev-parse --show-toplevel)"/.git/index -c "Gitv "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##") -c "tabonly"
 }
 
