@@ -10,6 +10,7 @@ let s:vim_configuration_files = [
 \ 'trans.vimrc',
 \ 'lsp.vimrc',
 \ 'tags.vimrc',
+\ 'nvim-native.vimrc',
 \ 'ai.vimrc',
 \]
 

@@ -1,3 +1,8 @@
+" Neovim uses Treesitter folding (see nvim-native.vimrc).
+if has('nvim')
+    finish
+endif
+
 autocmd Filetype cpp AnyFoldActivate
 autocmd Filetype lua AnyFoldActivate
 autocmd Filetype java AnyFoldActivate

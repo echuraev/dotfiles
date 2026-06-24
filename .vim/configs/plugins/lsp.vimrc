@@ -1,3 +1,9 @@
+" Neovim uses the native LSP stack (see nvim-native.vimrc); this VimScript
+" vim-lsp configuration is for plain Vim only.
+if has('nvim')
+    finish
+endif
+
 if executable('pylsp')
     " pip install python-lsp-server
     au User lsp_setup call lsp#register_server({

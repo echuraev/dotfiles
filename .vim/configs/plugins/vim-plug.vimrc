@@ -7,16 +7,58 @@ Plug 'google/vim-searchindex'             " Show number of found matches
 " AI {{{ "
 if has('nvim')
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'greggh/claude-code.nvim'
+    Plug 'MunifTanjim/nui.nvim'
+    " Claude Code CLI integration (same MCP/WebSocket protocol as the official
+    " VS Code / JetBrains extensions: selection context, @-mentions, diffs)
+    Plug 'coder/claudecode.nvim'
+    " In-editor AI chat + inline assistant via the Anthropic API
+    Plug 'olimorris/codecompanion.nvim'
+    " Cursor-like AI sidebar with diff-apply. 'make' downloads a prebuilt
+    " binary (no cargo needed); set BUILD_FROM_SOURCE=true to build it.
+    Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
 endif
 " }}} AI "
+" Neovim native stack {{{ "
+" Modern Lua plugins, loaded only under Neovim and configured in
+" nvim-native.vimrc. The matching Vim plugins are gated behind !has('nvim')
+" so plain Vim keeps working exactly as before.
+if has('nvim')
+    Plug 'nvim-tree/nvim-web-devicons'
+    " Treesitter: syntax, indentation, folding and text objects
+    Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate' }
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects', { 'branch': 'master' }
+    " Native LSP + tool installer
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/mason.nvim'
+    " Completion (prebuilt fuzzy binary ships with the tagged release)
+    Plug 'saghen/blink.cmp', { 'tag': '*' }
+    " Fuzzy finder with LSP pickers / live grep (fits the existing fzf workflow)
+    Plug 'ibhagwan/fzf-lua'
+    " Diagnostics / quickfix / references list
+    Plug 'folke/trouble.nvim'
+    " Git signs (replaces vim-gitgutter)
+    Plug 'lewis6991/gitsigns.nvim'
+    " Formatting: clang-format, ruff, stylua, ...
+    Plug 'stevearc/conform.nvim'
+    " Symbol outline (replaces tagbar)
+    Plug 'stevearc/aerial.nvim'
+    " Keybinding discovery
+    Plug 'folke/which-key.nvim'
+    " Fast motions (modern easymotion)
+    Plug 'folke/flash.nvim'
+endif
+" }}} Neovim native stack "
 " Programming {{{ "
 " C++ {{{ "
 " Code Completion {{{ "
-Plug 'prabirshrestha/vim-lsp', {'do': 'pip install --user ffi-navigator'}
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Vim uses the VimScript LSP stack; Neovim uses native LSP + blink.cmp
+" (see the Neovim native stack block and nvim-native.vimrc).
+if !has('nvim')
+    Plug 'prabirshrestha/vim-lsp', {'do': 'pip install --user ffi-navigator'}
+    Plug 'mattn/vim-lsp-settings'
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+endif
 " }}} Code Completion "
 " Syntax highlighting {{{ "
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }   " C++ highlighting
@@ -75,7 +117,9 @@ Plug 'tpope/vim-jdaddy', { 'for': 'json' }
 Plug 'rhysd/vim-clang-format'                             " Format code with specific coding style
 " }}} Code formatting "
 " Folding {{{ "
-Plug 'pseewald/vim-anyfold'                               " Fold code
+if !has('nvim')
+    Plug 'pseewald/vim-anyfold'                           " Fold code (Neovim uses Treesitter folding)
+endif
 " }}} Folding "
 " Other {{{ "
 Plug 'scrooloose/nerdcommenter'                         " Enable commentaries
@@ -103,7 +147,9 @@ endif
 " }}} Tmux "
 " Git {{{ "
 Plug 'tpope/vim-fugitive'                 " Git plugin
-Plug 'airblade/vim-gitgutter'             " Extension for git
+if !has('nvim')
+    Plug 'airblade/vim-gitgutter'         " Git diff in sign column (Neovim uses gitsigns)
+endif
 Plug 'tpope/vim-git'                      " git syntax highlight
 Plug 'junegunn/gv.vim'                    " light git commits browser
 Plug 'rhysd/committia.vim'                " extended commit message
@@ -131,8 +177,8 @@ Plug 'junegunn/vim-easy-align'        " Vim alignment plugin
 " }}} Text manipulation "
 " Common {{{ "
 Plug 'mhinz/vim-startify'             " Nice start screen
-if !g:isAndroid
-    Plug 'w0rp/ale'                   " Syntax checking plugin
+if !g:isAndroid && !has('nvim')
+    Plug 'dense-analysis/ale'         " Syntax checking (Neovim uses native LSP diagnostics)
 endif
 Plug 'will133/vim-dirdiff'            " Dir diff viewer
 Plug 'cohama/lexima.vim'              " Add auto-pairs
