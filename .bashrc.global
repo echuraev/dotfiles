@@ -170,10 +170,16 @@ export LANG=en_US.UTF-8
 export LC_TYPE=en_US.UTF-8
 export FZF_TMUX_VERSION="3.3"
 
-export EDITOR=${EDITOR:-vim}
+if command -v nvim >/dev/null 2>&1; then
+    _default_editor=nvim
+else
+    _default_editor=vim
+fi
+export EDITOR=${EDITOR:-$_default_editor}
+unset _default_editor
 export VISUAL=$EDITOR
 export GIT_EDITOR=$EDITOR
-export SVN_EDITOR=vim
+export SVN_EDITOR=$EDITOR
 
 if [ -z "$TERM" ] || [ "$TERM" = "dumb" ]; then
     export TERM=xterm-256color

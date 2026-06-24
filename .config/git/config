@@ -42,3 +42,16 @@
     template = ~/.config/git/gitmessage.txt
 [pull]
     rebase = true
+[diff]
+    tool = nvimdiff_auto
+[difftool]
+    prompt = false
+[difftool "nvimdiff_auto"]
+    cmd = "_e=vim; command -v nvim >/dev/null 2>&1 && _e=nvim; \"$_e\" -d \"$LOCAL\" \"$REMOTE\""
+[merge]
+    tool = nvimdiff_auto
+[mergetool]
+    prompt = false
+    keepBackup = false
+[mergetool "nvimdiff_auto"]
+    cmd = "_e=vim; command -v nvim >/dev/null 2>&1 && _e=nvim; \"$_e\" -d \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\" -c \"wincmd J\""
