@@ -84,22 +84,29 @@ nnoremap zf= :call FzfSpell()<CR>
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[d` and `]d` for navigate diagnostics
-nmap <silent> [d <Plug>(coc-diagnostic-prev)
-nmap <silent> ]d <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> <leader>g <Plug>(lsp-definition)
-nmap <silent> <leader>gd <Plug>(lsp-type-definition)
-nmap <silent> <leader>gi <Plug>(lsp-implementation)
-nmap <silent> <leader>gr <Plug>(lsp-references)
-
-" Use D for show documentation in preview window
-nnoremap <silent> <leader>D :call <SID>show_documentation()<CR>
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(lsp-rename)
-nmap <silent> <leader>qf <Plug>(lsp-code-action-float)
+if has('nvim')
+    " Native LSP (Neovim). References go through fzf-lua.
+    nnoremap <silent> <leader>g  <cmd>lua vim.lsp.buf.definition()<cr>
+    nnoremap <silent> <leader>gd <cmd>lua vim.lsp.buf.type_definition()<cr>
+    nnoremap <silent> <leader>gi <cmd>lua vim.lsp.buf.implementation()<cr>
+    nnoremap <silent> <leader>gr <cmd>lua require('fzf-lua').lsp_references()<cr>
+    nnoremap <silent> <leader>D  <cmd>lua vim.lsp.buf.hover()<cr>
+    nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<cr>
+    nnoremap <silent> <leader>qf <cmd>lua vim.lsp.buf.code_action()<cr>
+    nnoremap <silent> [d <cmd>lua vim.diagnostic.jump({count=-1, float=true})<cr>
+    nnoremap <silent> ]d <cmd>lua vim.diagnostic.jump({count=1, float=true})<cr>
+else
+    " vim-lsp (Vim)
+    nmap <silent> [d <Plug>(lsp-previous-diagnostic)
+    nmap <silent> ]d <Plug>(lsp-next-diagnostic)
+    nmap <silent> <leader>g  <Plug>(lsp-definition)
+    nmap <silent> <leader>gd <Plug>(lsp-type-definition)
+    nmap <silent> <leader>gi <Plug>(lsp-implementation)
+    nmap <silent> <leader>gr <Plug>(lsp-references)
+    nnoremap <silent> <leader>D :call <SID>show_documentation()<CR>
+    nmap <leader>rn <Plug>(lsp-rename)
+    nmap <silent> <leader>qf <Plug>(lsp-code-action-float)
+endif
 " }}} LSP "
 " trans {{{ "
 inoremap <silent> <leader>t <ESC>:Trans<CR>
@@ -121,4 +128,64 @@ nnoremap <silent> <leader>dn   :call vimspector#StepOver()<CR>
 nnoremap <silent> <leader>ds   :call vimspector#StepInto()<CR>
 nnoremap <silent> <leader>df   :call vimspector#StepOut()<CR>
 " }}} Debugger "
+" Neovim plugins {{{ "
+" Keybindings for the Neovim native stack (configured in nvim-native.vimrc and
+" ai.vimrc). Avante's own keymaps are the exception: they are defined in its
+" setup table in ai.vimrc, under the <leader>v prefix.
+if has('nvim')
+    " fzf-lua: grep & LSP pickers (<leader>s* to avoid the <leader>f maps)
+    nnoremap <silent> <leader>sg <cmd>lua require('fzf-lua').live_grep()<cr>
+    nnoremap <silent> <leader>sw <cmd>lua require('fzf-lua').grep_cword()<cr>
+    nnoremap <silent> <leader>ss <cmd>lua require('fzf-lua').lsp_document_symbols()<cr>
+    nnoremap <silent> <leader>sS <cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<cr>
+    nnoremap <silent> <leader>sd <cmd>lua require('fzf-lua').diagnostics_document()<cr>
+    nnoremap <silent> <leader>sr <cmd>lua require('fzf-lua').resume()<cr>
+
+    " trouble.nvim
+    nnoremap <silent> <leader>xx <cmd>Trouble diagnostics toggle<cr>
+    nnoremap <silent> <leader>xX <cmd>Trouble diagnostics toggle filter.buf=0<cr>
+    nnoremap <silent> <leader>xs <cmd>Trouble symbols toggle<cr>
+    nnoremap <silent> <leader>xq <cmd>Trouble qflist toggle<cr>
+
+    " gitsigns (<leader>G* prefix; <leader>h is taken by :History)
+    nnoremap <silent> ]c <cmd>lua require('gitsigns').nav_hunk('next')<cr>
+    nnoremap <silent> [c <cmd>lua require('gitsigns').nav_hunk('prev')<cr>
+    nnoremap <silent> <leader>Gs <cmd>lua require('gitsigns').stage_hunk()<cr>
+    nnoremap <silent> <leader>Gr <cmd>lua require('gitsigns').reset_hunk()<cr>
+    nnoremap <silent> <leader>Gp <cmd>lua require('gitsigns').preview_hunk()<cr>
+    nnoremap <silent> <leader>Gb <cmd>lua require('gitsigns').blame_line({full=true})<cr>
+    nnoremap <silent> <leader>Gd <cmd>lua require('gitsigns').diffthis()<cr>
+
+    " conform: format buffer / selection
+    nnoremap <silent> <leader>F <cmd>lua require('conform').format({async=true, lsp_format='fallback'})<cr>
+    xnoremap <silent> <leader>F <cmd>lua require('conform').format({async=true, lsp_format='fallback'})<cr>
+
+    " aerial: symbol outline
+    nnoremap <silent> <leader>o <cmd>AerialToggle!<cr>
+
+    " flash: s = jump, S = treesitter select (n, o; visual left for surround)
+    nnoremap <silent> s <cmd>lua require('flash').jump()<cr>
+    onoremap <silent> s <cmd>lua require('flash').jump()<cr>
+    nnoremap <silent> S <cmd>lua require('flash').treesitter()<cr>
+    onoremap <silent> S <cmd>lua require('flash').treesitter()<cr>
+
+    " Leave terminal-mode (e.g. the Claude Code terminal) without moving window
+    tnoremap <C-w>t <C-\><C-n>
+
+    " claudecode.nvim : Claude Code CLI
+    nnoremap <silent> <leader>ac <cmd>ClaudeCode<cr>
+    nnoremap <silent> <leader>af <cmd>ClaudeCodeFocus<cr>
+    nnoremap <silent> <leader>aC <cmd>ClaudeCode --continue<cr>
+    nnoremap <silent> <leader>ar <cmd>ClaudeCode --resume<cr>
+    nnoremap <silent> <leader>ab <cmd>ClaudeCodeAdd %<cr>
+    xnoremap <silent> <leader>as <cmd>ClaudeCodeSend<cr>
+
+    " codecompanion.nvim : chat + inline (Anthropic API)
+    nnoremap <silent> <leader>ap <cmd>CodeCompanionActions<cr>
+    xnoremap <silent> <leader>ap <cmd>CodeCompanionActions<cr>
+    nnoremap <silent> <leader>ax <cmd>CodeCompanionChat Toggle<cr>
+    xnoremap <silent> <leader>ax <cmd>CodeCompanionChat Toggle<cr>
+    xnoremap <silent> <leader>ai <cmd>CodeCompanion<cr>
+endif
+" }}} Neovim plugins "
 " }}} Plugins "

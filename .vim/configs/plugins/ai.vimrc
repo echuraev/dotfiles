@@ -1,36 +1,33 @@
-" AI assistants (Neovim only). Three complementary options are wired up; they
-" overlap, so disable whichever you don't use:
+" AI assistants (Neovim only). Three complementary options:
 "   * coder/claudecode.nvim - drives the Claude Code CLI (IDE-grade: sends
-"     selections, @-mentions files, shows diffs).      Prefix: <leader>a
+"     selections, @-mentions files, shows diffs).
 "   * olimorris/codecompanion.nvim - in-editor chat + inline edits via the
-"     Anthropic API (needs ANTHROPIC_API_KEY).         Prefix: <leader>a {p,x,i}
+"     Anthropic API (needs ANTHROPIC_API_KEY).
 "   * yetone/avante.nvim - Cursor-like sidebar with diff-apply (Anthropic API).
-"                                                       Prefix: <leader>v
+"
+" Keybindings for claudecode/codecompanion live in key-bindings.vimrc. Avante
+" is the exception: it registers its own keymaps from the setup table below
+" (no clean way to disable them under vim-plug), so they stay here and are
+" relocated to the <leader>v prefix to avoid clashing with the <leader>a maps.
 if !has('nvim')
     finish
 endif
 
 lua << EOF
+-- mapleader must match key-bindings.vimrc; this file is sourced before it is
+-- set there, and avante reads <leader> from its setup table below.
+vim.g.mapleader = ','
+vim.g.maplocalleader = ','
+
 -- Bail out cleanly on first launch, before :PlugInstall has fetched plugins.
 if not pcall(require, 'claudecode') then
   return
 end
 
-----------------------------------------------------------------------
 -- claudecode.nvim : Claude Code CLI integration
-----------------------------------------------------------------------
 require('claudecode').setup({})
 
-vim.keymap.set('n', '<leader>ac', '<cmd>ClaudeCode<cr>',            { desc = 'Claude: toggle' })
-vim.keymap.set('n', '<leader>af', '<cmd>ClaudeCodeFocus<cr>',       { desc = 'Claude: focus' })
-vim.keymap.set('n', '<leader>aC', '<cmd>ClaudeCode --continue<cr>', { desc = 'Claude: continue' })
-vim.keymap.set('n', '<leader>ar', '<cmd>ClaudeCode --resume<cr>',   { desc = 'Claude: resume' })
-vim.keymap.set('n', '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>',       { desc = 'Claude: add current file' })
-vim.keymap.set('v', '<leader>as', '<cmd>ClaudeCodeSend<cr>',        { desc = 'Claude: send selection' })
-
-----------------------------------------------------------------------
 -- codecompanion.nvim : chat + inline edits via the Anthropic API
-----------------------------------------------------------------------
 if pcall(require, 'codecompanion') then
   require('codecompanion').setup({
     strategies = {
@@ -38,21 +35,23 @@ if pcall(require, 'codecompanion') then
       inline = { adapter = 'anthropic' },
     },
   })
-  vim.keymap.set({ 'n', 'v' }, '<leader>ap', '<cmd>CodeCompanionActions<cr>',     { desc = 'CodeCompanion: actions' })
-  vim.keymap.set({ 'n', 'v' }, '<leader>ax', '<cmd>CodeCompanionChat Toggle<cr>', { desc = 'CodeCompanion: chat' })
-  vim.keymap.set('v',          '<leader>ai', '<cmd>CodeCompanion<cr>',            { desc = 'CodeCompanion: inline' })
 end
 
-----------------------------------------------------------------------
--- avante.nvim : Cursor-like sidebar (prefix <leader>v to avoid clashes)
-----------------------------------------------------------------------
+-- avante.nvim : Cursor-like sidebar. Its keymaps are relocated to <leader>v.
 if pcall(require, 'avante') then
   require('avante').setup({
     provider = 'claude',
     mappings = {
-      ask     = '<leader>va',
-      edit    = '<leader>ve',
-      refresh = '<leader>vr',
+      ask = '<leader>va', new_ask = '<leader>vn', zen_mode = '<leader>vz',
+      edit = '<leader>ve', refresh = '<leader>vr', focus = '<leader>vf',
+      stop = '<leader>vS',
+      toggle = {
+        default = '<leader>vt', debug = '<leader>vd', selection = '<leader>vC',
+        suggestion = '<leader>vs', repomap = '<leader>vR',
+      },
+      files = { add_current = '<leader>vc', add_all_buffers = '<leader>vB' },
+      select_model = '<leader>v?', select_history = '<leader>vh',
+      select_acp_model = '<leader>vM', select_acp_mode = '<leader>vm',
     },
   })
 end
