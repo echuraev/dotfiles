@@ -97,3 +97,17 @@ if [ ! -f $TRANS_BIN ]; then
     chmod +x $TRANS_BIN
 fi
 # }}} Install translate-shell #
+# Neovim Python 3 provider {{{ #
+# Dedicated venv with pynvim so Neovim's python3 provider (vimspector, etc.)
+# works independently of conda environments. init.vim points
+# g:python3_host_prog at this interpreter.
+NVIM_VENV="$HOME/.local/share/nvim-venv"
+if command -v nvim >/dev/null 2>&1 && [ ! -x "$NVIM_VENV/bin/python" ]; then
+    echo "Creating Neovim python provider venv"
+    base_python=$(command -v python3 || command -v python)
+    if [ -n "$base_python" ]; then
+        "$base_python" -m venv "$NVIM_VENV" \
+            && "$NVIM_VENV/bin/python" -m pip install --quiet --upgrade pip pynvim
+    fi
+fi
+# }}} Neovim Python 3 provider #
