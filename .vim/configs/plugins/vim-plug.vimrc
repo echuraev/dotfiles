@@ -124,7 +124,9 @@ endif
 " Other {{{ "
 Plug 'scrooloose/nerdcommenter'                         " Enable commentaries
 
-if executable('ctags') || executable('cscope') || executable('gtags')
+" Neovim uses native LSP for tags/symbols (and clangd for :A), so the
+" background ctags generation is only worth it in plain Vim.
+if (executable('ctags') || executable('cscope') || executable('gtags')) && !has('nvim')
 	Plug 'ludovicchabant/vim-gutentags'                 " Ctags support
 endif
 " }}} Other "

@@ -1,3 +1,5 @@
+" gutentags / ctags settings are only used in plain Vim (see vim-plug.vimrc).
+if !has('nvim')
 let g:gutentags_project_root = ['.git', '.local_vimrc', '.hg', '.svn']
 let g:gutentags_add_default_project_roots  = 1
 let g:gutentags_add_ctrlp_root_markers = 0
@@ -43,6 +45,29 @@ let g:gutentags_ctags_extra_args = [
     \ '--c++-kinds=+p',
     \ '--exclude=*.pb',
     \ ]
+endif
+
+" Neovim: switch header/source via clangd (textDocument/switchSourceHeader).
+" Opens the alternate file with the given command (':e', ':vsplit', ...).
+if has('nvim')
+lua << EOF
+function _G.SwitchSourceHeaderClangd(open_cmd)
+  local clients = vim.lsp.get_clients({ bufnr = 0, name = 'clangd' })
+  if #clients == 0 then
+    vim.notify('clangd not attached; cannot switch source/header', vim.log.levels.WARN)
+    return
+  end
+  local params = { uri = vim.uri_from_bufnr(0) }
+  clients[1]:request('textDocument/switchSourceHeader', params, function(err, result)
+    if err or not result or result == '' then
+      vim.notify('No alternate file for ' .. vim.fn.expand('%'), vim.log.levels.WARN)
+      return
+    end
+    vim.cmd(open_cmd .. ' ' .. vim.fn.fnameescape(vim.uri_to_fname(result)))
+  end, 0)
+end
+EOF
+endif
 
 " Find alternate
 " Use --extra=+f for ctags
@@ -77,15 +102,21 @@ function! SwitchSource(splitType)
                 return
             endif
         endfor
-        for altExt in extMap[ext]
-            let altFile = fileName.".".altExt
-            for entry in taglist(altFile)
-                if index(kinds, entry.kind) > -1
-                    silent! execute openCommand." ".entry.filename
-                    return
-                endif
+        " Cross-directory fallback: clangd in Neovim, ctags taglist() in Vim.
+        if has('nvim')
+            call v:lua.SwitchSourceHeaderClangd(openCommand)
+            return
+        else
+            for altExt in extMap[ext]
+                let altFile = fileName.".".altExt
+                for entry in taglist(altFile)
+                    if index(kinds, entry.kind) > -1
+                        silent! execute openCommand." ".entry.filename
+                        return
+                    endif
+                endfor
             endfor
-        endfor
+        endif
     endif
     echohl ErrorMsg |
                 \ echomsg "Cannot find alternate file for: ".@% |

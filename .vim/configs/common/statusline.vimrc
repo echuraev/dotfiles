@@ -169,10 +169,10 @@ function! GitInfo()
 endfunction
 
 function! CTagsInfo()
-    if !exists('gutentags#statusline()')
+    if !exists('*gutentags#statusline')
         return ''
     endif
-    return  gutentags#statusline('[', ']')
+    return gutentags#statusline('[', ']')
 endfunction
 " }}} Common functions "
 
